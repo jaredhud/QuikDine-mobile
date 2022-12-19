@@ -33,6 +33,30 @@ const HomeScreen = () => {
       >
         <Text style={styles.buttonText}>Register</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("MyPantry")}
+        style={[styles.button]}
+      >
+        <Text style={styles.buttonText}>My Pantry</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Camera")}
+        style={[styles.button]}
+      >
+        <Text style={styles.buttonText}>Camera</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Voting")}
+        style={[styles.button]}
+      >
+        <Text style={styles.buttonText}>Voting</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Recipe")}
+        style={[styles.button]}
+      >
+        <Text style={styles.buttonText}>Recipe</Text>
+      </TouchableOpacity>
     </View>
   );
 };

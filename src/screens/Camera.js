@@ -2,7 +2,7 @@ import { useNavigation } from "@react-navigation/core";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-const RegisterPage = () => {
+const Camera = () => {
   const navigation = useNavigation();
 
   return (
@@ -17,7 +17,7 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default Camera;
 
 const styles = StyleSheet.create({
   container: {
