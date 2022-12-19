@@ -27,12 +27,6 @@ const HomeScreen = () => {
       >
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("RegisterPage")}
-        style={[styles.button]}
-      >
-        <Text style={styles.buttonText}>Register</Text>
-      </TouchableOpacity>
     </View>
   );
 };
