@@ -17,7 +17,7 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Email: {auth.currentUser?.email}</Text>
+      {/* <Text>Email: {auth.currentUser?.email}</Text> */}
       <TouchableOpacity onPress={handleSignOut} style={styles.button}>
         <Text style={styles.buttonText}>Sign out</Text>
       </TouchableOpacity>
@@ -28,7 +28,7 @@ const HomeScreen = () => {
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigation.navigate("RegisterPage")}
+        onPress={() => navigation.navigate("Register")}
         style={[styles.button]}
       >
         <Text style={styles.buttonText}>Register</Text>
