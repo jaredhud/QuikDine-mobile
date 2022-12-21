@@ -21,7 +21,7 @@ export default function App() {
         <Stack.Screen name="MyPantry" component={MyPantry} />
         <Stack.Screen name="Camera" component={Camera} />
         <Stack.Screen name="Voting" component={VotingPage} />
-        <Stack.Screen name="Recipe" component={VotingPage} />
+        <Stack.Screen name="Recipe" component={RecipePage} />
         <Stack.Screen
           options={{ headerShown: false }}
           name="LoginScreen"
