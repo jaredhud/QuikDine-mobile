@@ -9,6 +9,7 @@ import RegisterPage from "./src/screens/RegisterPage";
 import MyPantry from "./src/screens/MyPantry";
 import Camera from "./src/screens/Camera";
 import VotingPage from "./src/screens/VotingPage";
+import RecipePage from "./src/screens/RecipePage";
 
 const Stack = createNativeStackNavigator();
 

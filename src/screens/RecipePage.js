@@ -1,41 +1,53 @@
-import { useNavigation } from "@react-navigation/core";
-import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StatusBar } from 'expo-status-bar';
+import { ScrollView, StyleSheet,Text, View} from "react-native";
+import { useState,useEffect } from "react";
+import { Appbar, Searchbar, Card, Paragraph} from "react-native-paper";
+//import { ScrollView } from 'react-native-web';
 
 const RecipePage = () => {
-  const navigation = useNavigation();
+  const [meals, setMeals] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  console.log(meals);
+  const url = "https://www.themealdb.com/api/json/v1/1/categories.php";
+  
+  const getMeals = async function(){
+    const response = await fetch(url);
+    const data = await response.json();
+    setMeals(data.categories);
+  }
 
+  useEffect(()=>{
+    getMeals();
+  },[])
+
+  const onChangeSearch = query => setSearchQuery(query);
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Home")}
-        style={[styles.button]}
-      >
-        <Text style={styles.buttonText}>Home</Text>
-      </TouchableOpacity>
+      <Appbar>
+        <Appbar.Content title="Recipes"/>
+      </Appbar>
+      <Searchbar placeholder='Search Recipes' 
+      value={searchQuery}
+      onChangeText={onChangeSearch}/>
+         <ScrollView>{
+         meals.map(meal=>(
+          <Card key={meal.idCategory}>
+            <Card.Cover source={meal.strCategoryThumb}/>
+            <Card.Title title={meal.strCategory}/>
+            <Card.Content>
+              <Paragraph>{meal.strCategoryDescription}</Paragraph>
+            </Card.Content>
+          </Card>
+        ))
+}
+      </ScrollView>
+      
+
+      <StatusBar style="auto" />
     </View>
   );
-};
+}
 
 export default RecipePage;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  button: {
-    backgroundColor: "#0782F9",
-    width: "60%",
-    padding: 15,
-    borderRadius: 10,
-    alignItems: "center",
-    marginTop: 40,
-  },
-  buttonText: {
-    color: "white",
-    fontWeight: "700",
-    fontSize: 16,
-  },
-});
+const styles = StyleSheet.create({});
