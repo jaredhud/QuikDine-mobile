@@ -10,6 +10,7 @@ import MyPantry from "./src/screens/MyPantry";
 import Camera from "./src/screens/Camera";
 import VotingPage from "./src/screens/VotingPage";
 import RecipePage from "./src/screens/RecipePage";
+import CameraPage from "./src/screens/CameraPage";
 
 const Stack = createNativeStackNavigator();
 
@@ -20,7 +21,7 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Register" component={RegisterPage} />
         <Stack.Screen name="MyPantry" component={MyPantry} />
-        <Stack.Screen name="Camera" component={Camera} />
+        <Stack.Screen name="Camera" component={CameraPage} />
         <Stack.Screen name="Voting" component={VotingPage} />
         <Stack.Screen name="Recipe" component={RecipePage} />
         <Stack.Screen
