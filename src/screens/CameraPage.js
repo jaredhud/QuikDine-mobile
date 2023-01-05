@@ -30,7 +30,7 @@ const CameraPage = () => {
           headers: {
             // in terminal run "gcloud auth print-access-token" to get Authorization: Bearer info
             Authorization:
-              "Bearer ya29.a0AX9GBdU9AacbysvY8e7hJFnbmUNXVDGvTgZP-0-Vw8TAqsqMNl6m3xZtMjFgMMsWEshRK0gwrmy_bIWkW7KFe_cJ1b85ZZiTcsu_3Ke-OvSQ8MsqPTiQElBxPyZ8xGkRQUiLNgV46b_0AwTXpl7E06Q1EieLUfkDnbvpCQaCgYKAZASAQASFQHUCsbCGn5UTro-fuat8MuJvfrSYw0173",
+              "Bearer ya29.a0AX9GBdWy1acoV-HV_ry4qTwmeVxvcYNKJ40CNBLa2sWtz_ZYxVgQkDLsSahVc_zKbu7xI0dvAlTDAxBCCr2zFWRxQOer_S7YMVnZzmD0qrNkGE9o49weWvFPElLZrM3OxF7fTi244W27dH3C664FS-mMhtGyMOid6KyV2AaCgYKAfsSAQASFQHUCsbCc6KMRM5c9rF3z3r7kJjKIw0173",
             "x-goog-user-project": "maximal-journey-372215",
             "Content-type": "application/json; charset=utf-8",
           },
