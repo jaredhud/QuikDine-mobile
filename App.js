@@ -11,6 +11,7 @@ import Camera from "./src/screens/Camera";
 import VotingPage from "./src/screens/VotingPage";
 import RecipePage from "./src/screens/RecipePage";
 import CameraPage from "./src/screens/CameraPage";
+import AddIngredient from "./src/screens/AddIngredient";
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +25,7 @@ export default function App() {
         <Stack.Screen name="Camera" component={CameraPage} />
         <Stack.Screen name="Voting" component={VotingPage} />
         <Stack.Screen name="Recipe" component={RecipePage} />
+        <Stack.Screen name="AddIngredient" component={AddIngredient} />
         <Stack.Screen
           options={{ headerShown: false }}
           name="LoginScreen"
