@@ -21,26 +21,10 @@ const DashBoard = () => {
           marginTop: 60,
           padding: 0,
         }}
-      ></Image>
-      <View style={styles.parentView}>
-        <Text style={styles.titleHome}>Welcome Aboard Mate!</Text>
-        <Text>
-          <Text style={{ fontWeight: "bold" }}>Chef Greg: </Text>
-          <Text>
-            I'm looking for a chef to join my crew and help create amazing meals
-            for our guests. No experience required in creating delicious dishes.
-            Just bring your creativity and flair to the table.
-          </Text>
-        </Text>
-      </View>
-      <View>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("Register")}
-          style={[styles.button]}
-        >
-          <Text style={styles.buttonText}>Get Started</Text>
-        </TouchableOpacity>
-      </View>
+      >
+        {" "}
+        <Text>Hello</Text>
+      </Image>
     </View>
   );
 };
