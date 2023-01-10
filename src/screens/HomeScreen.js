@@ -58,10 +58,10 @@ const HomeScreen = () => {
         <Text style={styles.buttonText}>Recipe</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigation.navigate("AddIngredient")}
+        onPress={() => navigation.navigate("LandingPage")}
         style={[styles.button]}
       >
-        <Text style={styles.buttonText}>Add Ingredient</Text>
+        <Text style={styles.buttonText}>Landing Page</Text>
       </TouchableOpacity>
     </View>
   );
