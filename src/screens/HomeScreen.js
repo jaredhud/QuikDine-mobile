@@ -34,10 +34,10 @@ const HomeScreen = () => {
         <Text style={styles.buttonText}>Register</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigation.navigate("MyPantry")}
+        onPress={() => navigation.navigate("DashBoard")}
         style={[styles.button]}
       >
-        <Text style={styles.buttonText}>My Pantry</Text>
+        <Text style={styles.buttonText}>Dashboard</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate("Camera")}

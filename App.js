@@ -13,6 +13,7 @@ import RecipePage from "./src/screens/RecipePage";
 import CameraPage from "./src/screens/CameraPage";
 import AddIngredient from "./src/screens/AddIngredient";
 import LandingPage from "./src/screens/LandingPage";
+import DashBoard from "./src/screens/DashBoard";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,7 @@ export default function App() {
         <Stack.Screen name="Voting" component={VotingPage} />
         <Stack.Screen name="Recipe" component={RecipePage} />
         <Stack.Screen name="AddIngredient" component={AddIngredient} />
+        <Stack.Screen name="DashBoard" component={DashBoard} />
         <Stack.Screen name="LandingPage" component={LandingPage} />
         <Stack.Screen
           options={{ headerShown: false }}
