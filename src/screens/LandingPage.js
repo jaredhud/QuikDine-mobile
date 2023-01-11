@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/core";
 import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
+
 import chefGreg from "../img/chef-greg.png";
 
 const LandingPage = () => {

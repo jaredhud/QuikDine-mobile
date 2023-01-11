@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/core";
 import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
-import chefGreg from "../img/chef-greg.png";
 import { SubInfo } from "../components/DashBoardText";
+import chefGreg from "../img/chef-greg.png";
 
 const DashBoard = () => {
   const navigation = useNavigation();
