@@ -21,10 +21,8 @@ const DashBoard = () => {
           marginTop: 60,
           padding: 0,
         }}
-      >
-        {" "}
-        <Text>Hello</Text>
-      </Image>
+      ></Image>
+      <Text>Hello</Text>
     </View>
   );
 };
