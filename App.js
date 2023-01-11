@@ -16,6 +16,7 @@ import CameraPage from "./src/screens/CameraPage";
 import AddIngredient from "./src/screens/AddIngredient";
 import LandingPage from "./src/screens/LandingPage";
 import DashBoard from "./src/screens/DashBoard";
+import BarCodeScanner from "./src/screens/BarCodeScanner";
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +33,7 @@ export default function App() {
         <Stack.Screen name="AddIngredient" component={AddIngredient} />
         <Stack.Screen name="DashBoard" component={DashBoard} />
         <Stack.Screen name="LandingPage" component={LandingPage} />
+        <Stack.Screen name="BarCodeScanner" component={BarCodeScanner} />
         <Stack.Screen
           options={{ headerShown: false }}
           name="LoginScreen"
