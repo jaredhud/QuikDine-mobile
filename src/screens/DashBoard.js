@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigation } from "@react-navigation/core";
 import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 import chefGreg from "../img/chef-greg.png";
+import { SubInfo } from "../components/DashBoardText";
 
 const DashBoard = () => {
   const navigation = useNavigation();
@@ -12,17 +13,24 @@ const DashBoard = () => {
         source={chefGreg}
         resizeMode="cover"
         style={{
-          width: 300,
-          height: 300,
-          borderColor: "#379540",
+          width: 350,
+          height: 200,
           borderRadius: 30,
-          borderWidth: 10,
-          // borderStartWidth: 10,
-          marginTop: 60,
-          padding: 0,
+          marginTop: 10,
         }}
       ></Image>
-      <Text>Hello</Text>
+      <SubInfo />
+      <Image
+        source={chefGreg}
+        resizeMode="cover"
+        style={{
+          width: 350,
+          height: 200,
+          borderRadius: 30,
+          marginTop: 10,
+        }}
+      ></Image>
+      <SubInfo />
     </View>
   );
 };
