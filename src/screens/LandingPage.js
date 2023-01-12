@@ -36,7 +36,7 @@ const LandingPage = () => {
       </View>
       <View>
         <TouchableOpacity
-          onPress={() => navigation.navigate("Register")}
+          onPress={() => navigation.navigate("Home")}
           style={[styles.button]}
         >
           <Text style={styles.buttonText}>Get Started</Text>

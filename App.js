@@ -23,7 +23,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="LandingPage">
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Register" component={RegisterPage} />
         <Stack.Screen name="MyPantry" component={MyPantry} />
@@ -35,7 +35,7 @@ export default function App() {
         <Stack.Screen name="LandingPage" component={LandingPage} />
         <Stack.Screen name="BarCodeScanner" component={BarCodeScanner} />
         <Stack.Screen
-          options={{ headerShown: false }}
+          // options={{ headerShown: false }}
           name="LoginScreen"
           component={LoginScreen}
         />
