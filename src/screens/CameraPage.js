@@ -20,20 +20,12 @@ const CameraPage = () => {
   );
   const [visReqObj, setVisReqObj] = useState({});
   const [idObj, setIdObj] = useState("");
-  // "Authorization": "Bearer $(gcloud auth print-access-token)"
   useEffect(() => {
     async function getData() {
       const dataResponse = await fetch(
-        "https://vision.googleapis.com/v1/images:annotate",
+        "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyDwTU8anUs3wdIJqVoPy82vBp9uidntoyI",
         {
           method: "POST",
-          headers: {
-            // in terminal run "gcloud auth print-access-token" to get Authorization: Bearer info
-            Authorization:
-              "Bearer ya29.a0AX9GBdU9AacbysvY8e7hJFnbmUNXVDGvTgZP-0-Vw8TAqsqMNl6m3xZtMjFgMMsWEshRK0gwrmy_bIWkW7KFe_cJ1b85ZZiTcsu_3Ke-OvSQ8MsqPTiQElBxPyZ8xGkRQUiLNgV46b_0AwTXpl7E06Q1EieLUfkDnbvpCQaCgYKAZASAQASFQHUCsbCGn5UTro-fuat8MuJvfrSYw0173",
-            "x-goog-user-project": "maximal-journey-372215",
-            "Content-type": "application/json; charset=utf-8",
-          },
           body: JSON.stringify(visReqObj),
         }
       );
