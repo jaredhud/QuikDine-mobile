@@ -17,6 +17,8 @@ import AddIngredient from "./src/screens/AddIngredient";
 import LandingPage from "./src/screens/LandingPage";
 import DashBoard from "./src/screens/DashBoard";
 import BarCodeScanner from "./src/screens/BarCodeScanner";
+import SuggestedRecipes from "./src/screens/SuggestedRecipes";
+import PlanDinner from "./src/screens/PlanDinner";
 
 const Stack = createNativeStackNavigator();
 
@@ -34,6 +36,8 @@ export default function App() {
         <Stack.Screen name="DashBoard" component={DashBoard} />
         <Stack.Screen name="LandingPage" component={LandingPage} />
         <Stack.Screen name="BarCodeScanner" component={BarCodeScanner} />
+        <Stack.Screen name="PlanDinner" component={PlanDinner} />
+        <Stack.Screen name="SuggestedRecipes" component={SuggestedRecipes} />
         <Stack.Screen
           // options={{ headerShown: false }}
           name="LoginScreen"

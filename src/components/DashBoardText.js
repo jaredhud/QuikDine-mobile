@@ -4,20 +4,9 @@ import { Children, cloneElement, isValidElement } from "react";
 
 export const DashBoardText = () => {
   return (
-    <View style={{ flexDirection: "row", marginTop: -50, color: "#F44336" }}>
-      {/* <Text style={{ color: "#F44336" }}>Hello World</Text> */}
+    <View style={styles.dashboardView}>
       <TextStroke stroke={2} color={"#379540"}>
-        <Text
-          style={{
-            fontSize: 32,
-            color: "#FFFFFF",
-            flex: 1,
-            marginLeft: 50,
-          }}
-        >
-          {" "}
-          Suggested Recipes{" "}
-        </Text>
+        <Text style={styles.textStrokeText}> Suggested Recipes </Text>
       </TextStroke>
     </View>
   );
@@ -30,10 +19,54 @@ export const SubInfo = () => {
     </View>
   );
 };
+export const DashBoardText2 = () => {
+  return (
+    <View style={styles.dashboardView}>
+      <TextStroke stroke={2} color={"#379540"}>
+        <Text style={styles.textStrokeText}> Plan Dinner </Text>
+      </TextStroke>
+    </View>
+  );
+};
+
+export const SubInfo2 = () => {
+  return (
+    <View>
+      <DashBoardText2 />
+    </View>
+  );
+};
+export const DashBoardText3 = () => {
+  return (
+    <View style={styles.dashboardView}>
+      <TextStroke stroke={2} color={"#379540"}>
+        <Text style={styles.textStrokeText}> My Pantry </Text>
+      </TextStroke>
+    </View>
+  );
+};
+
+export const SubInfo3 = () => {
+  return (
+    <View>
+      <DashBoardText3 />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   outline: {
     position: "absolute",
+  },
+  dashboardView: {
+    flexDirection: "row",
+    marginTop: -50,
+    color: "#F44336",
+  },
+  textStrokeText: {
+    fontSize: 32,
+    color: "#FFFFFF",
+    textAlign: "right",
   },
 });
 

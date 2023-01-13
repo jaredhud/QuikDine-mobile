@@ -1,26 +1,38 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/core";
 import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
-import { SubInfo } from "../components/DashBoardText";
+import { SubInfo, SubInfo2, SubInfo3 } from "../components/DashBoardText";
 import fallveggie from "../img/falling-veggies.png";
+import { TextStroke } from "../components/DashBoardText";
 
 const DashBoard = () => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.containerHome}>
-      <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+      <TouchableOpacity onPress={() => navigation.navigate("SuggestedRecipes")}>
         <Image
           source={fallveggie}
           resizeMode="cover"
-          style={{
-            width: 350,
-            height: 200,
-            borderRadius: 30,
-            marginTop: 10,
-          }}
+          style={styles.dashboardButton}
         ></Image>
         <SubInfo />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("PlanDinner")}>
+        <Image
+          source={fallveggie}
+          resizeMode="cover"
+          style={styles.dashboardButton}
+        ></Image>
+        <SubInfo2 />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("MyPantry")}>
+        <Image
+          source={fallveggie}
+          resizeMode="cover"
+          style={styles.dashboardButton}
+        ></Image>
+        <SubInfo3 />
       </TouchableOpacity>
     </View>
   );
@@ -56,5 +68,11 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "700",
     fontSize: 16,
+  },
+  dashboardButton: {
+    width: 350,
+    height: 160,
+    borderRadius: 30,
+    marginTop: 10,
   },
 });
