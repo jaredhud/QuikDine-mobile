@@ -1,53 +1,90 @@
-import { StatusBar } from "expo-status-bar";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { useState, useEffect } from "react";
-import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
-//import { ScrollView } from 'react-native-web';
+import * as React from "react";
+import { Text, View, TouchableOpacity } from "react-native";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import RecipeRandomPage from "./RecipeRandomPage";
+// import Animated from "react-native-reanimated";
 
-const RecipePage = () => {
-  const [meals, setMeals] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
-  console.log(meals);
-  const url = "https://www.themealdb.com/api/json/v1/1/categories.php";
-
-  const getMeals = async function () {
-    const response = await fetch(url);
-    const data = await response.json();
-    setMeals(data.categories);
-  };
-
-  useEffect(() => {
-    getMeals();
-  }, []);
-
-  const onChangeSearch = (query) => setSearchQuery(query);
+function MyTabBar({ state, descriptors, navigation, position }) {
   return (
-    <View style={styles.container}>
-      <Appbar>
-        <Appbar.Content title="Recipes" />
-      </Appbar>
-      <Searchbar
-        placeholder="Search Recipes"
-        value={searchQuery}
-        onChangeText={onChangeSearch}
-      />
-      <ScrollView>
-        {meals.map((meal) => (
-          <Card key={meal.idCategory}>
-            <Card.Cover source={{ uri: meal.strCategoryThumb }} />
-            <Card.Title title={meal.strCategory} />
-            <Card.Content>
-              <Paragraph>{meal.strCategoryDescription}</Paragraph>
-            </Card.Content>
-          </Card>
-        ))}
-      </ScrollView>
+    <View style={{ flexDirection: "row", paddingTop: 20 }}>
+      {state.routes.map((route, index) => {
+        const { options } = descriptors[route.key];
+        const label =
+          options.tabBarLabel !== undefined
+            ? options.tabBarLabel
+            : options.title !== undefined
+            ? options.title
+            : route.name;
 
-      <StatusBar style="auto" />
+        const isFocused = state.index === index;
+
+        const onPress = () => {
+          const event = navigation.emit({
+            type: "tabPress",
+            target: route.key,
+          });
+
+          if (!isFocused && !event.defaultPrevented) {
+            navigation.navigate(route.name);
+          }
+        };
+
+        const onLongPress = () => {
+          navigation.emit({
+            type: "tabLongPress",
+            target: route.key,
+          });
+        };
+        // modify inputRange for custom behavior
+        const inputRange = state.routes.map((_, i) => i);
+        const opacity = 1;
+        // Animated.interpolate(position, {
+        //   inputRange,
+        //   outputRange: inputRange.map((i) => (i === index ? 1 : 0)),
+        // });
+
+        return (
+          <TouchableOpacity
+            accessibilityRole="button"
+            accessibilityState={isFocused ? { selected: true } : {}}
+            accessibilityLabel={options.tabBarAccessibilityLabel}
+            testID={options.tabBarTestID}
+            onPress={onPress}
+            onLongPress={onLongPress}
+            style={{ flex: 1 }}
+          >
+            <Text style={{ opacity }}>{label}</Text>
+          </TouchableOpacity>
+        );
+      })}
     </View>
   );
-};
+}
 
-export default RecipePage;
+function SettingsScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Settings!</Text>
+    </View>
+  );
+}
 
-const styles = StyleSheet.create({});
+function ProfileScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Profile!</Text>
+    </View>
+  );
+}
+
+const Tab = createMaterialTopTabNavigator();
+
+export default function RecipePage() {
+  return (
+    <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
+      <Tab.Screen name="Home" component={RecipeRandomPage} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+      <Tab.Screen name="Profile" component={ProfileScreen} />
+    </Tab.Navigator>
+  );
+}

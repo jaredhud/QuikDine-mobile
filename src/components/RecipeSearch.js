@@ -1,10 +1,6 @@
 const spoonAPIKey = "332d07c641fd4c11af3cf76f666e3666";
 
-export async function complexRecipeSearch(
-  searchCriteria,
-  page,
-  resultsPerPage
-) {
+export async function pantryRecipeSearch(searchCriteria, page, resultsPerPage) {
   console.log("searchCriteria: ", searchCriteria);
   let ingredients = searchCriteria.ingredients;
   let mealType = searchCriteria.mealType;
