@@ -2,35 +2,26 @@ import React from "react";
 import { useNavigation } from "@react-navigation/core";
 import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 import { SubInfo } from "../components/DashBoardText";
-import chefGreg from "../img/chef-greg.png";
+import fallveggie from "../img/falling-veggies.png";
 
 const DashBoard = () => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.containerHome}>
-      <Image
-        source={chefGreg}
-        resizeMode="cover"
-        style={{
-          width: 350,
-          height: 200,
-          borderRadius: 30,
-          marginTop: 10,
-        }}
-      ></Image>
-      <SubInfo />
-      <Image
-        source={chefGreg}
-        resizeMode="cover"
-        style={{
-          width: 350,
-          height: 200,
-          borderRadius: 30,
-          marginTop: 10,
-        }}
-      ></Image>
-      <SubInfo />
+      <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+        <Image
+          source={fallveggie}
+          resizeMode="cover"
+          style={{
+            width: 350,
+            height: 200,
+            borderRadius: 30,
+            marginTop: 10,
+          }}
+        ></Image>
+        <SubInfo />
+      </TouchableOpacity>
     </View>
   );
 };

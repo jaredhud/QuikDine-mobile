@@ -2,15 +2,17 @@ import React from "react";
 import { View, Image, Text, StyleSheet } from "react-native";
 import { Children, cloneElement, isValidElement } from "react";
 
-export const People = () => {
+export const DashBoardText = () => {
   return (
     <View style={{ flexDirection: "row", marginTop: -50, color: "#F44336" }}>
       {/* <Text style={{ color: "#F44336" }}>Hello World</Text> */}
-      <TextStroke stroke={2} color={"#000000"}>
+      <TextStroke stroke={2} color={"#379540"}>
         <Text
           style={{
             fontSize: 32,
             color: "#FFFFFF",
+            flex: 1,
+            marginLeft: 50,
           }}
         >
           {" "}
@@ -23,18 +25,8 @@ export const People = () => {
 
 export const SubInfo = () => {
   return (
-    <View
-      style={
-        {
-          // width: "100%",
-          // paddingHorizontal: 0,
-          // marginTop: 0,
-          // flexDirection: "row",
-          // justifyContent: "space-between",
-        }
-      }
-    >
-      <People />
+    <View>
+      <DashBoardText />
     </View>
   );
 };
