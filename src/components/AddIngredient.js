@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import Ingredient from "../components/Ingredient";
+import Ingredient from "./Ingredient";
 
 export default function App() {
   const [ingredient, setIngredient] = useState();
