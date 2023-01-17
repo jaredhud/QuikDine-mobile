@@ -60,13 +60,12 @@ const styles = StyleSheet.create({
   },
   dashboardView: {
     flexDirection: "row",
-    marginTop: -50,
+
     color: "#F44336",
   },
   textStrokeText: {
-    fontSize: 32,
+    fontSize: 20,
     color: "#FFFFFF",
-    textAlign: "right",
   },
 });
 

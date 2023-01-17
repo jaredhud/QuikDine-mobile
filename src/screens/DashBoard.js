@@ -93,28 +93,35 @@ export default function App() {
   const navigation = useNavigation();
   return (
     <View style={styleSheet.MainContainer}>
-      <Text style={{ fontSize: 28, color: "black", textAlign: "center" }}>
-        {" "}
-        Create View in Percentage in React Native{" "}
-      </Text>
+      <View
+        style={{
+          width: "95%",
+          height: "25%",
+          justifyContent: "center",
+          margin: "2%",
+        }}
+      >
+        <Text style={{ fontSize: 28, color: "black", textAlign: "center" }}>
+          {" "}
+          Welcome to QuiKDine{" "}
+        </Text>
+      </View>
       <TouchableOpacity
         onPress={() => navigation.navigate("SuggestedRecipes")}
         style={{
-          backgroundColor: "#00C853",
-          width: "80%",
-          height: "20%",
+          width: "95%",
+          height: "17%",
           justifyContent: "center",
-          margin: "2%",
+          margin: "1%",
         }}
       >
         <ImageBackground
           source={fallveggie}
           resizeMode="cover"
           style={styles.image}
+          borderRadius={30}
         >
-          <Text
-            style={{ textAlign: "center", marginTop: "43%", marginLeft: "10%" }}
-          >
+          <Text style={styleSheet.text}>
             {" "}
             <SubInfo />{" "}
           </Text>
@@ -123,10 +130,10 @@ export default function App() {
       <View
         style={{
           backgroundColor: "#AA00FF",
-          width: "80%",
-          height: "20%",
+          width: "95%",
+          height: "17%",
           justifyContent: "center",
-          margin: "2%",
+          margin: "1%",
         }}
       >
         <Text style={styleSheet.text}> View - 2 </Text>
@@ -134,10 +141,10 @@ export default function App() {
       <View
         style={{
           backgroundColor: "#00C853",
-          width: "80%",
-          height: "20%",
+          width: "95%",
+          height: "17%",
           justifyContent: "center",
-          margin: "2%",
+          margin: "1%",
         }}
       >
         <Text style={styleSheet.text}> View - 3 </Text>
@@ -151,11 +158,12 @@ const styleSheet = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     paddingTop: Platform.OS === "ios" ? 20 : 0,
+    backgroundColor: "#D3FAD9",
   },
 
   text: {
     fontSize: 26,
     color: "white",
-    textAlign: "center",
+    textAlign: "right",
   },
 });
