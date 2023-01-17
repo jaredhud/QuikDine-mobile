@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     color: "#F44336",
   },
   textStrokeText: {
-    fontSize: 20,
+    fontSize: 23,
     color: "#FFFFFF",
   },
 });

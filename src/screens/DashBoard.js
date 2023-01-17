@@ -12,6 +12,7 @@ import {
 import { SubInfo, SubInfo2, SubInfo3 } from "../components/DashBoardText";
 import fallveggie from "../img/falling-veggies.png";
 import { TextStroke } from "../components/DashBoardText";
+import quikdine from "../img/quik-dine.png";
 
 // const DashBoard = () => {
 // const navigation = useNavigation();
@@ -85,7 +86,8 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
   },
 });
 
@@ -93,6 +95,7 @@ export default function App() {
   const navigation = useNavigation();
   return (
     <View style={styleSheet.MainContainer}>
+      {/* Title Box */}
       <View
         style={{
           width: "95%",
@@ -101,17 +104,37 @@ export default function App() {
           margin: "2%",
         }}
       >
-        <Text style={{ fontSize: 28, color: "black", textAlign: "center" }}>
+        <Text
+          style={{
+            fontSize: 28,
+            color: "black",
+            textAlign: "left",
+            marginBottom: "13%",
+            marginTop: "10%",
+          }}
+        >
           {" "}
-          Welcome to QuiKDine{" "}
+          Welcome to{" "}
         </Text>
+        <Image
+          flex={1}
+          source={quikdine}
+          resizeMode="contain"
+          style={{
+            marginTop: "-20%",
+            textAlign: "right",
+            width: "70%",
+            height: "30%",
+          }}
+        ></Image>
       </View>
+      {/* First Box */}
       <TouchableOpacity
         onPress={() => navigation.navigate("SuggestedRecipes")}
         style={{
           width: "95%",
           height: "17%",
-          justifyContent: "center",
+
           margin: "1%",
         }}
       >
@@ -127,28 +150,50 @@ export default function App() {
           </Text>
         </ImageBackground>
       </TouchableOpacity>
-      <View
+      {/* Second Box */}
+      <TouchableOpacity
+        onPress={() => navigation.navigate("PlanDinner")}
         style={{
-          backgroundColor: "#AA00FF",
           width: "95%",
           height: "17%",
-          justifyContent: "center",
+
           margin: "1%",
         }}
       >
-        <Text style={styleSheet.text}> View - 2 </Text>
-      </View>
-      <View
+        <ImageBackground
+          source={fallveggie}
+          resizeMode="cover"
+          style={styles.image}
+          borderRadius={30}
+        >
+          <Text style={styleSheet.text}>
+            {" "}
+            <SubInfo2 />{" "}
+          </Text>
+        </ImageBackground>
+      </TouchableOpacity>
+      {/* Third Box */}
+      <TouchableOpacity
+        onPress={() => navigation.navigate("MyPantry")}
         style={{
-          backgroundColor: "#00C853",
           width: "95%",
           height: "17%",
-          justifyContent: "center",
+
           margin: "1%",
         }}
       >
-        <Text style={styleSheet.text}> View - 3 </Text>
-      </View>
+        <ImageBackground
+          source={fallveggie}
+          resizeMode="cover"
+          style={styles.image}
+          borderRadius={30}
+        >
+          <Text style={styleSheet.text}>
+            {" "}
+            <SubInfo3 />{" "}
+          </Text>
+        </ImageBackground>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -164,6 +209,5 @@ const styleSheet = StyleSheet.create({
   text: {
     fontSize: 26,
     color: "white",
-    textAlign: "right",
   },
 });
