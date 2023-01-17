@@ -23,7 +23,7 @@ export default function App() {
 
   const sendMail = async () => {
     const { uri } = await Print.printToFileAsync({
-      html: "<h1>My pdf!</h1>"
+      html: "<h1>Your file</h1>"
     });
 
     MailComposer.composeAsync({
