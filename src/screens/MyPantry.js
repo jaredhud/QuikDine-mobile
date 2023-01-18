@@ -61,7 +61,7 @@ export default function App() {
       </TouchableOpacity>
       {/* Second Box */}
       <TouchableOpacity
-        onPress={() => navigation.navigate("PlanDinner")}
+        onPress={() => navigation.navigate("ListIngredient")}
         style={styles.buttonNavigation}
       >
         <ImageBackground
