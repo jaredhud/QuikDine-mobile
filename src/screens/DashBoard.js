@@ -11,90 +11,12 @@ import {
 } from "react-native";
 import { SubInfo, SubInfo2, SubInfo3 } from "../components/DashBoardText";
 import fallveggie from "../img/falling-veggies.png";
-import { TextStroke } from "../components/DashBoardText";
 import quikdine from "../img/quik-dine.png";
-
-// const DashBoard = () => {
-// const navigation = useNavigation();
-
-//   return (
-//     <View style={styles.containerHome}>
-//       <TouchableOpacity onPress={() => navigation.navigate("SuggestedRecipes")}>
-//         <Image
-//           source={fallveggie}
-//           resizeMode="cover"
-//           style={styles.dashboardButton}
-//         ></Image>
-//         <SubInfo />
-//       </TouchableOpacity>
-//       <TouchableOpacity onPress={() => navigation.navigate("PlanDinner")}>
-//         <Image
-//           source={fallveggie}
-//           resizeMode="cover"
-//           style={styles.dashboardButton}
-//         ></Image>
-//         <SubInfo2 />
-//       </TouchableOpacity>
-//       <TouchableOpacity onPress={() => navigation.navigate("MyPantry")}>
-//         <Image
-//           source={fallveggie}
-//           resizeMode="cover"
-//           style={styles.dashboardButton}
-//         ></Image>
-//         <SubInfo3 />
-//       </TouchableOpacity>
-//     </View>
-//   );
-// };
-
-// export default DashBoard;
-
-const styles = StyleSheet.create({
-  titleHome: {
-    fontSize: 22,
-    fontWeight: "bold",
-    marginBottom: 2,
-  },
-  parentView: {
-    width: "85%",
-    marginTop: 40,
-    marginHorizontal: 10,
-  },
-  containerHome: {
-    flex: 1,
-    alignItems: "center",
-    backgroundColor: "#D3FAD9",
-  },
-  button: {
-    backgroundColor: "#379540",
-    width: 310,
-    padding: 10,
-    borderRadius: 10,
-    alignItems: "center",
-    marginTop: 70,
-  },
-  buttonText: {
-    color: "white",
-    fontWeight: "700",
-    fontSize: 16,
-  },
-  dashboardButton: {
-    width: 350,
-    height: 160,
-    borderRadius: 30,
-    marginTop: 10,
-  },
-  image: {
-    flex: 1,
-    justifyContent: "flex-end",
-    alignItems: "flex-end",
-  },
-});
 
 export default function App() {
   const navigation = useNavigation();
   return (
-    <View style={styleSheet.MainContainer}>
+    <View style={styles.mainContainer}>
       {/* Title Box */}
       <View
         style={{
@@ -131,20 +53,15 @@ export default function App() {
       {/* First Box */}
       <TouchableOpacity
         onPress={() => navigation.navigate("SuggestedRecipes")}
-        style={{
-          width: "95%",
-          height: "17%",
-
-          margin: "1%",
-        }}
+        style={styles.buttonNavigation}
       >
         <ImageBackground
           source={fallveggie}
           resizeMode="cover"
           style={styles.image}
-          borderRadius={30}
+          borderRadius={20}
         >
-          <Text style={styleSheet.text}>
+          <Text style={styles.text}>
             {" "}
             <SubInfo />{" "}
           </Text>
@@ -153,20 +70,15 @@ export default function App() {
       {/* Second Box */}
       <TouchableOpacity
         onPress={() => navigation.navigate("PlanDinner")}
-        style={{
-          width: "95%",
-          height: "17%",
-
-          margin: "1%",
-        }}
+        style={styles.buttonNavigation}
       >
         <ImageBackground
           source={fallveggie}
           resizeMode="cover"
           style={styles.image}
-          borderRadius={30}
+          borderRadius={20}
         >
-          <Text style={styleSheet.text}>
+          <Text style={styles.text}>
             {" "}
             <SubInfo2 />{" "}
           </Text>
@@ -175,20 +87,15 @@ export default function App() {
       {/* Third Box */}
       <TouchableOpacity
         onPress={() => navigation.navigate("MyPantry")}
-        style={{
-          width: "95%",
-          height: "17%",
-
-          margin: "1%",
-        }}
+        style={styles.buttonNavigation}
       >
         <ImageBackground
           source={fallveggie}
           resizeMode="cover"
           style={styles.image}
-          borderRadius={30}
+          borderRadius={20}
         >
-          <Text style={styleSheet.text}>
+          <Text style={styles.text}>
             {" "}
             <SubInfo3 />{" "}
           </Text>
@@ -198,8 +105,8 @@ export default function App() {
   );
 }
 
-const styleSheet = StyleSheet.create({
-  MainContainer: {
+const styles = StyleSheet.create({
+  mainContainer: {
     flex: 1,
     alignItems: "center",
     paddingTop: Platform.OS === "ios" ? 20 : 0,
@@ -209,5 +116,15 @@ const styleSheet = StyleSheet.create({
   text: {
     fontSize: 26,
     color: "white",
+  },
+  buttonNavigation: {
+    width: "95%",
+    height: "17%",
+    margin: "1%",
+  },
+  image: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
   },
 });
