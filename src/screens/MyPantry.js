@@ -15,14 +15,6 @@ import fallveggie from "../img/falling-veggies.png";
 import quikdine from "../img/quik-dine.png";
 
 export default function App() {
-  const [fontsLoaded] = useFonts({
-    "Ubuntu-Bold": require("../../assets/fonts/Ubuntu-Bold.ttf"),
-  });
-
-  if (!fontsLoaded) {
-    return null;
-  }
-
   const navigation = useNavigation();
 
   return (
@@ -42,7 +34,7 @@ export default function App() {
             color: "black",
             textAlign: "left",
             marginTop: "10%",
-            fontFamily: "Ubuntu-Bold",
+            // fontFamily: "Ubuntu-Bold",
           }}
         >
           {" "}

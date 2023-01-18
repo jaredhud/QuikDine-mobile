@@ -11,18 +11,11 @@ import {
 } from "react-native";
 import { useFonts } from "expo-font";
 import { SubInfo, SubInfo2, SubInfo3 } from "../components/DashBoardText";
+import { FontFamily } from "../../GlobalStyles";
 import fallveggie from "../img/falling-veggies.png";
 import quikdine from "../img/quik-dine.png";
 
 export default function App() {
-  const [fontsLoaded] = useFonts({
-    "Poppins-Regular": require("../../assets/fonts/Poppins-Regular.ttf"),
-  });
-
-  if (!fontsLoaded) {
-    return null;
-  }
-
   const navigation = useNavigation();
 
   return (
@@ -43,7 +36,8 @@ export default function App() {
             textAlign: "left",
             marginBottom: "13%",
             marginTop: "10%",
-            fontFamily: "Poppins-Regular",
+            fontFamily: FontFamily.poppins,
+            // fontFamily: "Poppins-Regular",
           }}
         >
           {" "}
