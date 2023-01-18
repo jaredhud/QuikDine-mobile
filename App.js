@@ -27,7 +27,8 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   const [fontsLoaded] = useFonts({
     Poppins: require("./assets/fonts/Poppins-Regular.ttf"),
-    Ubuntu: require("./assets/fonts/Ubuntu-Bold.ttf"),
+    UbuntuBold: require("./assets/fonts/Ubuntu-Bold.ttf"),
+    Ubuntu: require("./assets/fonts/Ubuntu-Regular.ttf"),
   });
 
   if (!fontsLoaded) {

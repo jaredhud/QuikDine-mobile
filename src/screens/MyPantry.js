@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { useFonts } from "expo-font";
 import { SubInfo, SubInfo2, SubInfo3 } from "../components/MyPantryText";
+import { FontFamily } from "../../GlobalStyles";
 import fallveggie from "../img/falling-veggies.png";
 import quikdine from "../img/quik-dine.png";
 
@@ -34,7 +35,7 @@ export default function App() {
             color: "black",
             textAlign: "left",
             marginTop: "10%",
-            // fontFamily: "Ubuntu-Bold",
+            fontFamily: FontFamily.ubuntubold,
           }}
         >
           {" "}

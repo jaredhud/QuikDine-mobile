@@ -31,13 +31,12 @@ export default function App() {
       >
         <Text
           style={{
-            fontSize: 28,
+            fontSize: 25,
             color: "black",
             textAlign: "left",
-            marginBottom: "13%",
+            marginBottom: "7%",
             marginTop: "10%",
-            fontFamily: FontFamily.poppins,
-            // fontFamily: "Poppins-Regular",
+            fontFamily: FontFamily.ubuntu,
           }}
         >
           {" "}

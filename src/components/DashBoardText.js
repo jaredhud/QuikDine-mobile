@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Image, Text, StyleSheet } from "react-native";
 import { Children, cloneElement, isValidElement } from "react";
+import { FontFamily } from "../../GlobalStyles";
 
 export const DashBoardText = () => {
   return (
@@ -64,8 +65,9 @@ const styles = StyleSheet.create({
     color: "#F44336",
   },
   textStrokeText: {
-    fontSize: 23,
+    fontSize: 25,
     color: "#FFFFFF",
+    fontFamily: FontFamily.poppins,
   },
 });
 
