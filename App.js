@@ -19,6 +19,8 @@ import DashBoard from "./src/screens/DashBoard";
 import BarCodeScanner from "./src/screens/BarCodeScanner";
 import SuggestedRecipes from "./src/screens/SuggestedRecipes";
 import PlanDinner from "./src/screens/PlanDinner";
+import SendEmail from "./src/screens/SendEmail";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +40,7 @@ export default function App() {
         <Stack.Screen name="BarCodeScanner" component={BarCodeScanner} />
         <Stack.Screen name="PlanDinner" component={PlanDinner} />
         <Stack.Screen name="SuggestedRecipes" component={SuggestedRecipes} />
+        <Stack.Screen name="SendEmail" component={SendEmail} />
         <Stack.Screen
           // options={{ headerShown: false }}
           name="LoginScreen"
