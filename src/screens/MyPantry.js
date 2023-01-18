@@ -1,41 +1,113 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/core";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Image,
+  Platform,
+  ImageBackground,
+} from "react-native";
+import { useFonts } from "expo-font";
+import { SubInfo, SubInfo2, SubInfo3 } from "../components/DashBoardText";
+import fallveggie from "../img/falling-veggies.png";
+import quikdine from "../img/quik-dine.png";
 
-const MyPantry = () => {
+export default function App() {
+  const [fontsLoaded] = useFonts({
+    "Poppins-Regular": require("../../assets/fonts/Poppins-Regular.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Home")}
-        style={[styles.button]}
+    <View style={styles.mainContainer}>
+      {/* Title Box */}
+      <View
+        style={{
+          width: "95%",
+          height: "25%",
+          justifyContent: "center",
+          margin: "2%",
+        }}
       >
-        <Text style={styles.buttonText}>Home</Text>
+        <Text
+          style={{
+            fontSize: 28,
+            color: "black",
+            textAlign: "left",
+            marginBottom: "13%",
+            marginTop: "10%",
+            fontFamily: "Poppins-Regular",
+          }}
+        >
+          {" "}
+          Welcome to{" "}
+        </Text>
+      </View>
+      {/* First Box */}
+      <TouchableOpacity
+        onPress={() => navigation.navigate("SuggestedRecipes")}
+        style={styles.buttonNavigation}
+      >
+        <ImageBackground
+          source={fallveggie}
+          resizeMode="cover"
+          style={styles.image}
+          borderRadius={20}
+        >
+          <Text style={styles.text}>
+            {" "}
+            <SubInfo />{" "}
+          </Text>
+        </ImageBackground>
+      </TouchableOpacity>
+      {/* Second Box */}
+      <TouchableOpacity
+        onPress={() => navigation.navigate("PlanDinner")}
+        style={styles.buttonNavigation}
+      >
+        <ImageBackground
+          source={fallveggie}
+          resizeMode="cover"
+          style={styles.image}
+          borderRadius={20}
+        >
+          <Text style={styles.text}>
+            {" "}
+            <SubInfo2 />{" "}
+          </Text>
+        </ImageBackground>
       </TouchableOpacity>
     </View>
   );
-};
-
-export default MyPantry;
+}
 
 const styles = StyleSheet.create({
-  container: {
+  mainContainer: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
+    paddingTop: Platform.OS === "ios" ? 20 : 0,
+    backgroundColor: "#D3FAD9",
   },
-  button: {
-    backgroundColor: "#0782F9",
-    width: "60%",
-    padding: 15,
-    borderRadius: 10,
-    alignItems: "center",
-    marginTop: 40,
-  },
-  buttonText: {
+
+  text: {
+    fontSize: 26,
     color: "white",
-    fontWeight: "700",
-    fontSize: 16,
+  },
+  buttonNavigation: {
+    width: "95%",
+    height: "17%",
+    margin: "1%",
+  },
+  image: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
   },
 });
