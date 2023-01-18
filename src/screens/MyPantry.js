@@ -10,13 +10,13 @@ import {
   ImageBackground,
 } from "react-native";
 import { useFonts } from "expo-font";
-import { SubInfo, SubInfo2, SubInfo3 } from "../components/DashBoardText";
+import { SubInfo, SubInfo2, SubInfo3 } from "../components/MyPantryText";
 import fallveggie from "../img/falling-veggies.png";
 import quikdine from "../img/quik-dine.png";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    "Poppins-Regular": require("../../assets/fonts/Poppins-Regular.ttf"),
+    "Ubuntu-Bold": require("../../assets/fonts/Ubuntu-Bold.ttf"),
   });
 
   if (!fontsLoaded) {
@@ -38,21 +38,20 @@ export default function App() {
       >
         <Text
           style={{
-            fontSize: 28,
+            fontSize: 42,
             color: "black",
             textAlign: "left",
-            marginBottom: "13%",
             marginTop: "10%",
-            fontFamily: "Poppins-Regular",
+            fontFamily: "Ubuntu-Bold",
           }}
         >
           {" "}
-          Welcome to{" "}
+          My Pantry{" "}
         </Text>
       </View>
       {/* First Box */}
       <TouchableOpacity
-        onPress={() => navigation.navigate("SuggestedRecipes")}
+        onPress={() => navigation.navigate("AddIngredient")}
         style={styles.buttonNavigation}
       >
         <ImageBackground
