@@ -22,6 +22,7 @@ import BarCodeScanner from "./src/screens/BarCodeScanner";
 import SuggestedRecipes from "./src/screens/SuggestedRecipes";
 import PlanDinner from "./src/screens/PlanDinner";
 import SendEmail from "./src/screens/SendEmail";
+import TestPage from "./src/screens/TestPage";
 
 const Stack = createNativeStackNavigator();
 
@@ -44,6 +45,7 @@ export default function App() {
         <Stack.Screen name="Camera" component={CameraPage} />
         <Stack.Screen name="Voting" component={VotingPage} />
         <Stack.Screen name="Recipe" component={RecipePage} />
+        <Stack.Screen name="TestPage" component={TestPage} />
         <Stack.Screen name="ListIngredient" component={ListIngredient} />
         <Stack.Screen name="AddIngredient" component={AddIngredient} />
         <Stack.Screen name="DashBoard" component={DashBoard} />

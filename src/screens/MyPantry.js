@@ -12,6 +12,7 @@ import {
 import { useFonts } from "expo-font";
 import { SubInfo, SubInfo2, SubInfo3 } from "../components/MyPantryText";
 import { FontFamily } from "../../GlobalStyles";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import fallveggie from "../img/falling-veggies.png";
 import quikdine from "../img/quik-dine.png";
 
@@ -20,6 +21,9 @@ export default function App() {
 
   return (
     <View style={styles.mainContainer}>
+      {/* <View style={styles.container}>
+        <Ionicons name="md-checkmark-circle" size={32} color="green" />
+      </View> */}
       {/* Title Box */}
       <View
         style={{
@@ -29,6 +33,13 @@ export default function App() {
           margin: "2%",
         }}
       >
+        <Ionicons
+          name="arrow-back-circle"
+          size={32}
+          color="green"
+          style={{ marginTop: "-12%" }}
+          onPress={() => navigation.navigate("DashBoard")}
+        />
         <Text
           style={{
             fontSize: 42,
@@ -87,7 +98,14 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === "ios" ? 20 : 0,
     backgroundColor: "#D3FAD9",
   },
-
+  container: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
+    margin: 10,
+    borderColor: "red",
+    borderWidth: 2,
+  },
   text: {
     fontSize: 26,
     color: "white",

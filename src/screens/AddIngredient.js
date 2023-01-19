@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { SubInfo, SubInfo2, SubInfo3 } from "../components/AddIngredientText";
 import { FontFamily } from "../../GlobalStyles";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import fallveggie from "../img/falling-veggies.png";
 
 export default function App() {
@@ -27,6 +28,13 @@ export default function App() {
           margin: "2%",
         }}
       >
+        <Ionicons
+          name="arrow-back-circle"
+          size={32}
+          color="green"
+          style={{ marginTop: "-12%" }}
+          onPress={() => navigation.navigate("MyPantry")}
+        />
         <Text
           style={{
             fontSize: 42,
