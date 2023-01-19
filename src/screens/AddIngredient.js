@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import Ingredient from "./Ingredient";
 
-export default function App() {
+export default function AddIngredient({ navigation }) {
   const [ingredient, setIngredient] = useState();
   const [ingredientItems, setIngredientItems] = useState([]);
 
@@ -18,6 +18,10 @@ export default function App() {
     Keyboard.dismiss();
     setIngredientItems([...ingredientItems, ingredient]);
     setIngredient(null);
+
+    navigation.navigate("Recipe", {
+      ingredients: ingredientItems,
+    });
   };
 
   const completeIngredient = (index) => {

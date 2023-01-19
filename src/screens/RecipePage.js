@@ -2,6 +2,8 @@ import * as React from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import RecipeRandomPage from "./RecipeRandomPage";
+import RecipeSearchPage from "./RecipeSearchPage";
+import RecipeIngredientSearchPage from "./RecipeIngredientSearchPage";
 // import Animated from "react-native-reanimated";
 
 function MyTabBar({ state, descriptors, navigation, position }) {
@@ -61,30 +63,22 @@ function MyTabBar({ state, descriptors, navigation, position }) {
   );
 }
 
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
-
-function ProfileScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Profile!</Text>
-    </View>
-  );
-}
-
 const Tab = createMaterialTopTabNavigator();
 
-export default function RecipePage() {
+export default function RecipePage(props) {
+  const { ingredients, mealType, cuisine } = props;
+  React.useEffect(() => {
+    console.log("Recipe Page");
+    navigation.navigate("RecipeIngredientSearchPage", route.params);
+  }, [route.params.ingredients]);
   return (
     <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
-      <Tab.Screen name="Home" component={RecipeRandomPage} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen name="Random Recipe" component={RecipeRandomPage} />
+      <Tab.Screen name="Search Recipe" component={RecipeSearchPage} />
+      <Tab.Screen
+        name="Use Ingredients"
+        component={RecipeIngredientSearchPage}
+      />
     </Tab.Navigator>
   );
 }

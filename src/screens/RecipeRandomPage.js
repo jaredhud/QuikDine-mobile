@@ -6,7 +6,7 @@ import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 const RecipeRandomPage = () => {
   const [meals, setMeals] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  console.log(meals);
+
   const url = "https://www.themealdb.com/api/json/v1/1/categories.php";
 
   const getMeals = async function () {

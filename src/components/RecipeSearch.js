@@ -4,14 +4,23 @@ export async function pantryRecipeSearch(searchCriteria, page, resultsPerPage) {
   console.log("searchCriteria: ", searchCriteria);
   let ingredients = searchCriteria.ingredients;
   let mealType = searchCriteria.mealType;
+  let cuisine = searchCriteria.cuisine;
+  let ingredientString = ``;
   let typeString = ``;
+  let cuisineString = ``;
+  ingredientString = ingredients.join();
+  ingredientString.replace(" ", "%20");
   if (mealType) {
     mealType.replace(" ", "%20");
     typeString = `&type=${mealType}`;
   }
+  if (cuisine) {
+    cuisine.replace(" ", "%20");
+    cuisineString = `&cuisine=${cuisine}`;
+  }
   const offset = (page - 1) * resultsPerPage;
   const response = await fetch(
-    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${spoonAPIKey}&${ingredients}&sort=max-used-ingredients&addRecipeInformation=true&addRecipeNutrition=false&fillIngredients=true${typeString}&offset=${offset}&number=${resultsPerPage}`
+    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${spoonAPIKey}&includeIngredients=${ingredientString}&sort=max-used-ingredients&addRecipeInformation=true&addRecipeNutrition=false&fillIngredients=true${typeString}${cuisineString}&offset=${offset}&number=${resultsPerPage}`
   );
   const recipes = await response.json();
   console.log(recipes);

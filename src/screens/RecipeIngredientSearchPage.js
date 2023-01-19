@@ -2,34 +2,31 @@ import { StatusBar } from "expo-status-bar";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { useState, useEffect } from "react";
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
+import { pantryRecipeSearch } from "../components/RecipeSearch";
 
-const RecipeIngredientSearchPage = () => {
+const RecipeIngredientSearchPage = (props) => {
+  const { ingredientList } = props;
   const [meals, setMeals] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
-  console.log(meals);
-  const url = "https://www.themealdb.com/api/json/v1/1/categories.php";
-
-  const getMeals = async function () {
-    const response = await fetch(url);
-    const data = await response.json();
-    setMeals(data.categories);
-  };
+  const [cuisine, setCuisine] = useState("");
+  const [mealType, setMealType] = useState("");
+  const [page, setPage] = useState(1);
+  const [resultsPerPage, setResultsPerPage] = useState(10);
 
   useEffect(() => {
-    getMeals();
-  }, []);
+    let searchCriteria = {
+      ingredients: ingredientList,
+      cuisine: cuisine,
+      mealType: mealType,
+    };
+    setMeals(pantryRecipeSearch(searchCriteria, page, resultsPerPage));
+  }, [ingredientList, cuisine, mealType, page, resultsPerPage]);
 
-  const onChangeSearch = (query) => setSearchQuery(query);
   return (
     <View style={styles.container}>
       <Appbar>
         <Appbar.Content title="Recipes" />
       </Appbar>
-      <Searchbar
-        placeholder="Search Recipes"
-        value={searchQuery}
-        onChangeText={onChangeSearch}
-      />
+
       <ScrollView>
         {meals.map((meal) => (
           <Card key={meal.idCategory}>
