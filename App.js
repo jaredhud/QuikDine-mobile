@@ -15,6 +15,7 @@ import VotingPage from "./src/screens/VotingPage";
 import RecipePage from "./src/screens/RecipePage";
 import CameraPage from "./src/screens/CameraPage";
 import ListIngredient from "./src/screens/ListIngredient";
+import AddIngredient from "./src/screens/AddIngredient";
 import LandingPage from "./src/screens/LandingPage";
 import DashBoard from "./src/screens/DashBoard";
 import BarCodeScanner from "./src/screens/BarCodeScanner";
@@ -44,6 +45,7 @@ export default function App() {
         <Stack.Screen name="Voting" component={VotingPage} />
         <Stack.Screen name="Recipe" component={RecipePage} />
         <Stack.Screen name="ListIngredient" component={ListIngredient} />
+        <Stack.Screen name="AddIngredient" component={AddIngredient} />
         <Stack.Screen name="DashBoard" component={DashBoard} />
         <Stack.Screen name="LandingPage" component={LandingPage} />
         <Stack.Screen name="BarCodeScanner" component={BarCodeScanner} />
