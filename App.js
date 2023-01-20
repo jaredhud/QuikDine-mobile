@@ -27,6 +27,9 @@ import TestPage from "./src/screens/TestPage";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+
+  const [ingredientList, setIngredientList] = React.useState([]);
+
   const [fontsLoaded] = useFonts({
     Poppins: require("./assets/fonts/Poppins-Regular.ttf"),
     UbuntuBold: require("./assets/fonts/Ubuntu-Bold.ttf"),
@@ -47,10 +50,22 @@ export default function App() {
         <Stack.Screen name="MyPantry" component={MyPantry} />
         <Stack.Screen name="Camera" component={CameraPage} />
         <Stack.Screen name="Voting" component={VotingPage} />
-        <Stack.Screen name="Recipe" component={RecipePage} />
+
+        <Stack.Screen name="Recipe">
+          {(props) => <RecipePage {...props} ingredientList={ingredientList} />}
+        </Stack.Screen>
+        <Stack.Screen name="AddIngredient">
+          {(props) => (
+            <AddIngredient
+              {...props}
+              ingredientList={ingredientList}
+              setIngredientList={setIngredientList}
+            />
+          )}
+        </Stack.Screen>
         <Stack.Screen name="TestPage" component={TestPage} />
         <Stack.Screen name="ListIngredient" component={ListIngredient} />
-        <Stack.Screen name="AddIngredient" component={AddIngredient} />
+
         <Stack.Screen name="DashBoard" component={DashBoard} />
         <Stack.Screen name="LandingPage" component={LandingPage} />
         <Stack.Screen name="BarCodeScanner" component={BarCodeScanner} />

@@ -1,6 +1,11 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/core";
 import {
+
+  Keyboard,
+  KeyboardAvoidingView,
+  ScrollView,
+
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -9,13 +14,32 @@ import {
   Platform,
   ImageBackground,
 } from "react-native";
+import Ingredient from "./Ingredient";
 import { SubInfo, SubInfo2, SubInfo3 } from "../components/AddIngredientText";
 import { FontFamily } from "../../GlobalStyles";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import fallveggie from "../img/falling-veggies.png";
 
-export default function App() {
-  const navigation = useNavigation();
+
+export default function AddIngredient(props) {
+  const { ingredientList, setIngredientList } = props;
+  console.log("IngredientPage", ingredientList);
+  const [ingredient, setIngredient] = useState();
+
+  const handleAddIngredient = () => {
+    Keyboard.dismiss();
+    setIngredientList([...ingredientList, ingredient]);
+    setIngredient(null);
+  };
+
+  const completeIngredient = (index) => {
+    let itemsCopy = [...ingredientList];
+    itemsCopy.splice(index, 1);
+    setIngredientList(itemsCopy);
+  };
+
+
+
 
   return (
     <View style={styles.mainContainer}>
@@ -27,6 +51,7 @@ export default function App() {
           justifyContent: "center",
           margin: "2%",
         }}
+
       >
         <Ionicons
           name="arrow-back-circle"
@@ -106,6 +131,27 @@ export default function App() {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
+    backgroundColor: "#EBEAED",
+  },
+  ingredientsWrapper: {
+    paddingTop: 80,
+    paddingHorizontal: 20,
+    paddingBottom: 150,
+  },
+  sectionTitle: {
+    fontSize: 24,
+    fontWeight: "bold",
+  },
+  items: {
+    marginTop: 30,
+  },
+  writeIngredientWrapper: {
+    position: "absolute",
+    bottom: 30,
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-around",
+
     alignItems: "center",
     paddingTop: Platform.OS === "ios" ? 20 : 0,
     backgroundColor: "#D3FAD9",

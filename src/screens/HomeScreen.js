@@ -64,6 +64,12 @@ const HomeScreen = () => {
       >
         <Text style={styles.buttonText}>Test Page</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("AddIngredient")}
+        style={[styles.button]}
+      >
+        <Text style={styles.buttonText}>AddIngredient Temp</Text>
+      </TouchableOpacity>
     </View>
   );
 };
