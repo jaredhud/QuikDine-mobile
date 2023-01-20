@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
+import { useNavigation } from "@react-navigation/core";
 import {
+
   Keyboard,
   KeyboardAvoidingView,
   ScrollView,
+
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
+  Image,
+  Platform,
+  ImageBackground,
 } from "react-native";
 import Ingredient from "./Ingredient";
+import { SubInfo, SubInfo2, SubInfo3 } from "../components/AddIngredientText";
+import { FontFamily } from "../../GlobalStyles";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import fallveggie from "../img/falling-veggies.png";
+
 
 export default function AddIngredient(props) {
   const { ingredientList, setIngredientList } = props;
@@ -28,45 +38,98 @@ export default function AddIngredient(props) {
     setIngredientList(itemsCopy);
   };
 
+
+
+
   return (
-    <View style={styles.container}>
-      <View style={styles.ingredientsWrapper}>
-        <Text style={styles.sectionTitle}>Your ingredients</Text>
-        <ScrollView style={styles.items}>
-          {ingredientList.map((item, index) => {
-            return (
-              <TouchableOpacity
-                key={index}
-                onPress={() => completeIngredient(index)}
-              >
-                <Ingredient text={item} />
-              </TouchableOpacity>
-            );
-          })}
-        </ScrollView>
-      </View>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={styles.writeIngredientWrapper}
+    <View style={styles.mainContainer}>
+      {/* Title Box */}
+      <View
+        style={{
+          width: "95%",
+          height: "25%",
+          justifyContent: "center",
+          margin: "2%",
+        }}
+
       >
-        <TextInput
-          style={styles.input}
-          placeholder={"Add an ingredient"}
-          value={ingredient}
-          onChangeText={(text) => setIngredient(text)}
+        <Ionicons
+          name="arrow-back-circle"
+          size={32}
+          color="green"
+          style={{ marginTop: "-12%" }}
+          onPress={() => navigation.navigate("MyPantry")}
         />
-        <TouchableOpacity onPress={() => handleAddIngredient()}>
-          <View style={styles.addWrapper}>
-            <Text style={styles.addText}>+</Text>
-          </View>
-        </TouchableOpacity>
-      </KeyboardAvoidingView>
+        <Text
+          style={{
+            fontSize: 42,
+            color: "black",
+            textAlign: "left",
+            marginTop: "10%",
+            fontFamily: FontFamily.ubuntubold,
+          }}
+        >
+          {" "}
+          Add Ingredients{" "}
+        </Text>
+      </View>
+      {/* First Box */}
+      <TouchableOpacity
+        onPress={() => navigation.navigate("")}
+        style={styles.buttonNavigation}
+      >
+        <ImageBackground
+          source={fallveggie}
+          resizeMode="cover"
+          style={styles.image}
+          borderRadius={20}
+        >
+          <Text style={styles.text}>
+            {" "}
+            <SubInfo />{" "}
+          </Text>
+        </ImageBackground>
+      </TouchableOpacity>
+      {/* Second Box */}
+      <TouchableOpacity
+        onPress={() => navigation.navigate("")}
+        style={styles.buttonNavigation}
+      >
+        <ImageBackground
+          source={fallveggie}
+          resizeMode="cover"
+          style={styles.image}
+          borderRadius={20}
+        >
+          <Text style={styles.text}>
+            {" "}
+            <SubInfo2 />{" "}
+          </Text>
+        </ImageBackground>
+      </TouchableOpacity>
+      {/* Third Box */}
+      <TouchableOpacity
+        onPress={() => navigation.navigate("")}
+        style={styles.buttonNavigation}
+      >
+        <ImageBackground
+          source={fallveggie}
+          resizeMode="cover"
+          style={styles.image}
+          borderRadius={20}
+        >
+          <Text style={styles.text}>
+            {" "}
+            <SubInfo3 />{" "}
+          </Text>
+        </ImageBackground>
+      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  mainContainer: {
     flex: 1,
     backgroundColor: "#EBEAED",
   },
@@ -88,26 +151,23 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-around",
+
     alignItems: "center",
+    paddingTop: Platform.OS === "ios" ? 20 : 0,
+    backgroundColor: "#D3FAD9",
   },
-  input: {
-    paddingVertical: 15,
-    paddingHorizontal: 15,
-    backgroundColor: "#FFF",
-    borderRadius: 60,
-    borderColor: "#C0C0C0",
-    borderWidth: 1,
-    width: 250,
+  text: {
+    fontSize: 26,
+    color: "white",
   },
-  addWrapper: {
-    width: 60,
-    height: 60,
-    backgroundColor: "#FFF",
-    borderRadius: 60,
-    justifyContent: "center",
-    alignItems: "center",
-    borderColor: "#C0C0C0",
-    borderWidth: 1,
+  buttonNavigation: {
+    width: "95%",
+    height: "17%",
+    margin: "1%",
   },
-  addText: {},
+  image: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
+  },
 });

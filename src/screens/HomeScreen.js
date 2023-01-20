@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigation } from "@react-navigation/core";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { auth } from "../../firebase";
+import { button } from "../../GlobalStyles";
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -23,45 +24,45 @@ const HomeScreen = () => {
       </TouchableOpacity> */}
       <TouchableOpacity
         onPress={() => navigation.navigate("LoginScreen")}
-        style={[styles.button]}
+        style={[button]}
       >
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate("BarCodeScanner")}
-        style={[styles.button]}
+        style={[button]}
       >
         <Text style={styles.buttonText}>Scan with Barcode</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate("DashBoard")}
-        style={[styles.button]}
+        style={[button]}
       >
         <Text style={styles.buttonText}>Dashboard</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate("Camera")}
-        style={[styles.button]}
+        style={[button]}
       >
         <Text style={styles.buttonText}>Camera</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigation.navigate("Voting")}
-        style={[styles.button]}
+        onPress={() => navigation.navigate("SendEmail")}
+        style={[button]}
       >
-        <Text style={styles.buttonText}>Voting</Text>
+        <Text style={styles.buttonText}>Send Email</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate("Recipe")}
-        style={[styles.button]}
+        style={[button]}
       >
         <Text style={styles.buttonText}>Recipe</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigation.navigate("LandingPage")}
-        style={[styles.button]}
+        onPress={() => navigation.navigate("TestPage")}
+        style={[button]}
       >
-        <Text style={styles.buttonText}>Landing Page</Text>
+        <Text style={styles.buttonText}>Test Page</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate("AddIngredient")}
@@ -81,14 +82,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#D3FAD9",
-  },
-  button: {
-    backgroundColor: "#379540",
-    width: "60%",
-    padding: 15,
-    borderRadius: 10,
-    alignItems: "center",
-    marginTop: 40,
   },
   buttonText: {
     color: "white",

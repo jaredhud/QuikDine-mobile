@@ -1,41 +1,123 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/core";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Image,
+  Platform,
+  ImageBackground,
+} from "react-native";
+import { useFonts } from "expo-font";
+import { SubInfo, SubInfo2, SubInfo3 } from "../components/MyPantryText";
+import { FontFamily } from "../../GlobalStyles";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import fallveggie from "../img/falling-veggies.png";
+import quikdine from "../img/quik-dine.png";
 
-const MyPantry = () => {
+export default function App() {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Home")}
-        style={[styles.button]}
+    <View style={styles.mainContainer}>
+      {/* <View style={styles.container}>
+        <Ionicons name="md-checkmark-circle" size={32} color="green" />
+      </View> */}
+      {/* Title Box */}
+      <View
+        style={{
+          width: "95%",
+          height: "25%",
+          justifyContent: "center",
+          margin: "2%",
+        }}
       >
-        <Text style={styles.buttonText}>Home</Text>
+        <Ionicons
+          name="arrow-back-circle"
+          size={32}
+          color="green"
+          style={{ marginTop: "-12%" }}
+          onPress={() => navigation.navigate("DashBoard")}
+        />
+        <Text
+          style={{
+            fontSize: 42,
+            color: "black",
+            textAlign: "left",
+            marginTop: "10%",
+            fontFamily: FontFamily.ubuntubold,
+          }}
+        >
+          {" "}
+          My Pantry{" "}
+        </Text>
+      </View>
+      {/* First Box */}
+      <TouchableOpacity
+        onPress={() => navigation.navigate("AddIngredient")}
+        style={styles.buttonNavigation}
+      >
+        <ImageBackground
+          source={fallveggie}
+          resizeMode="cover"
+          style={styles.image}
+          borderRadius={20}
+        >
+          <Text style={styles.text}>
+            {" "}
+            <SubInfo />{" "}
+          </Text>
+        </ImageBackground>
+      </TouchableOpacity>
+      {/* Second Box */}
+      <TouchableOpacity
+        onPress={() => navigation.navigate("ListIngredient")}
+        style={styles.buttonNavigation}
+      >
+        <ImageBackground
+          source={fallveggie}
+          resizeMode="cover"
+          style={styles.image}
+          borderRadius={20}
+        >
+          <Text style={styles.text}>
+            {" "}
+            <SubInfo2 />{" "}
+          </Text>
+        </ImageBackground>
       </TouchableOpacity>
     </View>
   );
-};
-
-export default MyPantry;
+}
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+    alignItems: "center",
+    paddingTop: Platform.OS === "ios" ? 20 : 0,
+    backgroundColor: "#D3FAD9",
+  },
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
+    margin: 10,
+    borderColor: "red",
+    borderWidth: 2,
   },
-  button: {
-    backgroundColor: "#0782F9",
-    width: "60%",
-    padding: 15,
-    borderRadius: 10,
-    alignItems: "center",
-    marginTop: 40,
-  },
-  buttonText: {
+  text: {
+    fontSize: 26,
     color: "white",
-    fontWeight: "700",
-    fontSize: 16,
+  },
+  buttonNavigation: {
+    width: "95%",
+    height: "17%",
+    margin: "1%",
+  },
+  image: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
   },
 });

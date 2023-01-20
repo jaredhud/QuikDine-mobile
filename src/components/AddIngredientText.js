@@ -7,7 +7,7 @@ export const DashBoardText = () => {
   return (
     <View style={styles.dashboardView}>
       <TextStroke stroke={2} color={"#379540"}>
-        <Text style={styles.textStrokeText}> Suggested Recipes </Text>
+        <Text style={styles.textStrokeText}> Search with Image </Text>
       </TextStroke>
     </View>
   );
@@ -24,7 +24,7 @@ export const DashBoardText2 = () => {
   return (
     <View style={styles.dashboardView}>
       <TextStroke stroke={2} color={"#379540"}>
-        <Text style={styles.textStrokeText}> Plan Dinner </Text>
+        <Text style={styles.textStrokeText}> Search with Barcode </Text>
       </TextStroke>
     </View>
   );
@@ -41,7 +41,7 @@ export const DashBoardText3 = () => {
   return (
     <View style={styles.dashboardView}>
       <TextStroke stroke={2} color={"#379540"}>
-        <Text style={styles.textStrokeText}> My Pantry </Text>
+        <Text style={styles.textStrokeText}> Add ingredients manually </Text>
       </TextStroke>
     </View>
   );
@@ -70,7 +70,6 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.poppins,
   },
 });
-
 export class TextStroke extends React.Component {
   createClones = (w, h, color) => {
     const { children } = this.props;
