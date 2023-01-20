@@ -38,7 +38,10 @@ export default function App() {
   }
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="LandingPage">
+      <Stack.Navigator
+        initialRouteName="LandingPage"
+        screenOptions={{ headerShown: false }}
+      >
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Register" component={RegisterPage} />
         <Stack.Screen name="MyPantry" component={MyPantry} />
