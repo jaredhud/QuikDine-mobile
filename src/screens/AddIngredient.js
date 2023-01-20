@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   Keyboard,
   KeyboardAvoidingView,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -10,32 +11,29 @@ import {
 } from "react-native";
 import Ingredient from "./Ingredient";
 
-export default function AddIngredient({ navigation }) {
+export default function AddIngredient(props) {
+  const { ingredientList, setIngredientList } = props;
+  console.log("IngredientPage", ingredientList);
   const [ingredient, setIngredient] = useState();
-  const [ingredientItems, setIngredientItems] = useState([]);
 
   const handleAddIngredient = () => {
     Keyboard.dismiss();
-    setIngredientItems([...ingredientItems, ingredient]);
+    setIngredientList([...ingredientList, ingredient]);
     setIngredient(null);
-
-    navigation.navigate("Recipe", {
-      ingredients: ingredientItems,
-    });
   };
 
   const completeIngredient = (index) => {
-    let itemsCopy = [...ingredientItems];
+    let itemsCopy = [...ingredientList];
     itemsCopy.splice(index, 1);
-    setIngredientItems(itemsCopy);
+    setIngredientList(itemsCopy);
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.ingredientsWrapper}>
         <Text style={styles.sectionTitle}>Your ingredients</Text>
-        <View style={styles.items}>
-          {ingredientItems.map((item, index) => {
+        <ScrollView style={styles.items}>
+          {ingredientList.map((item, index) => {
             return (
               <TouchableOpacity
                 key={index}
@@ -45,7 +43,7 @@ export default function AddIngredient({ navigation }) {
               </TouchableOpacity>
             );
           })}
-        </View>
+        </ScrollView>
       </View>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -75,6 +73,7 @@ const styles = StyleSheet.create({
   ingredientsWrapper: {
     paddingTop: 80,
     paddingHorizontal: 20,
+    paddingBottom: 150,
   },
   sectionTitle: {
     fontSize: 24,
@@ -85,7 +84,7 @@ const styles = StyleSheet.create({
   },
   writeIngredientWrapper: {
     position: "absolute",
-    bottom: 60,
+    bottom: 30,
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-around",

@@ -19,7 +19,11 @@ const RecipeIngredientSearchPage = (props) => {
       mealType: mealType,
     };
     setMeals(pantryRecipeSearch(searchCriteria, page, resultsPerPage));
-  }, [ingredientList, cuisine, mealType, page, resultsPerPage]);
+  }, [page, resultsPerPage]);
+
+  function pageHandler() {}
+
+  console.log("IngredientSearch", ingredientList);
 
   return (
     <View style={styles.container}>
@@ -27,7 +31,7 @@ const RecipeIngredientSearchPage = (props) => {
         <Appbar.Content title="Recipes" />
       </Appbar>
 
-      <ScrollView>
+      {/* <ScrollView>
         {meals.map((meal) => (
           <Card key={meal.idCategory}>
             <Card.Cover source={{ uri: meal.strCategoryThumb }} />
@@ -37,7 +41,7 @@ const RecipeIngredientSearchPage = (props) => {
             </Card.Content>
           </Card>
         ))}
-      </ScrollView>
+      </ScrollView> */}
 
       <StatusBar style="auto" />
     </View>

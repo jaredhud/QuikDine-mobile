@@ -66,19 +66,20 @@ function MyTabBar({ state, descriptors, navigation, position }) {
 const Tab = createMaterialTopTabNavigator();
 
 export default function RecipePage(props) {
-  const { ingredients, mealType, cuisine } = props;
-  React.useEffect(() => {
-    console.log("Recipe Page");
-    navigation.navigate("RecipeIngredientSearchPage", route.params);
-  }, [route.params.ingredients]);
+  const { ingredientList } = props;
+
   return (
     <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
       <Tab.Screen name="Random Recipe" component={RecipeRandomPage} />
       <Tab.Screen name="Search Recipe" component={RecipeSearchPage} />
-      <Tab.Screen
-        name="Use Ingredients"
-        component={RecipeIngredientSearchPage}
-      />
+      <Tab.Screen name="Use Ingredients">
+        {(props) => (
+          <RecipeIngredientSearchPage
+            {...props}
+            ingredientList={ingredientList}
+          />
+        )}
+      </Tab.Screen>
     </Tab.Navigator>
   );
 }

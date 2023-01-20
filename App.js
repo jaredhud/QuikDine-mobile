@@ -21,6 +21,7 @@ import BarCodeScanner from "./src/screens/BarCodeScanner";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [ingredientList, setIngredientList] = React.useState([]);
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="LandingPage">
@@ -29,8 +30,18 @@ export default function App() {
         <Stack.Screen name="MyPantry" component={MyPantry} />
         <Stack.Screen name="Camera" component={CameraPage} />
         <Stack.Screen name="Voting" component={VotingPage} />
-        <Stack.Screen name="Recipe" component={RecipePage} />
-        <Stack.Screen name="AddIngredient" component={AddIngredient} />
+        <Stack.Screen name="Recipe">
+          {(props) => <RecipePage {...props} ingredientList={ingredientList} />}
+        </Stack.Screen>
+        <Stack.Screen name="AddIngredient">
+          {(props) => (
+            <AddIngredient
+              {...props}
+              ingredientList={ingredientList}
+              setIngredientList={setIngredientList}
+            />
+          )}
+        </Stack.Screen>
         <Stack.Screen name="DashBoard" component={DashBoard} />
         <Stack.Screen name="LandingPage" component={LandingPage} />
         <Stack.Screen name="BarCodeScanner" component={BarCodeScanner} />
