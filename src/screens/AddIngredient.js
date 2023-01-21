@@ -1,11 +1,10 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/core";
+import { useState } from "react";
 import {
-
   Keyboard,
   KeyboardAvoidingView,
   ScrollView,
-
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -14,14 +13,14 @@ import {
   Platform,
   ImageBackground,
 } from "react-native";
-import Ingredient from "./Ingredient";
+import Ingredient from "../components/Ingredient";
 import { SubInfo, SubInfo2, SubInfo3 } from "../components/AddIngredientText";
 import { FontFamily } from "../../GlobalStyles";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import fallveggie from "../img/falling-veggies.png";
 
-
 export default function AddIngredient(props) {
+  const navigation = useNavigation();
   const { ingredientList, setIngredientList } = props;
   console.log("IngredientPage", ingredientList);
   const [ingredient, setIngredient] = useState();
@@ -38,9 +37,6 @@ export default function AddIngredient(props) {
     setIngredientList(itemsCopy);
   };
 
-
-
-
   return (
     <View style={styles.mainContainer}>
       {/* Title Box */}
@@ -51,7 +47,6 @@ export default function AddIngredient(props) {
           justifyContent: "center",
           margin: "2%",
         }}
-
       >
         <Ionicons
           name="arrow-back-circle"
