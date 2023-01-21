@@ -24,19 +24,20 @@ export default function App() {
       <View
         style={{
           width: "95%",
-          height: "25%",
+          height: "30%",
           justifyContent: "center",
           margin: "2%",
         }}
       >
         <Text
           style={{
-            fontSize: 25,
-            color: "black",
+            fontSize: 23,
+            color: "#379540",
             textAlign: "left",
             marginBottom: "7%",
-            marginTop: "10%",
-            fontFamily: FontFamily.ubuntu,
+            marginTop: "17%",
+            fontFamily: FontFamily.ubuntubold,
+            fontStyle: "italic",
           }}
         >
           {" "}
@@ -47,7 +48,7 @@ export default function App() {
           source={quikdine}
           resizeMode="contain"
           style={{
-            marginTop: "-20%",
+            marginTop: "-25%",
             textAlign: "right",
             width: "70%",
             height: "30%",

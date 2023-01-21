@@ -28,7 +28,7 @@ export default function App() {
       <View
         style={{
           width: "95%",
-          height: "25%",
+          height: "30%",
           justifyContent: "center",
           margin: "2%",
         }}
@@ -37,7 +37,7 @@ export default function App() {
           name="arrow-back-circle"
           size={32}
           color="green"
-          style={{ marginTop: "-12%" }}
+          style={{ marginTop: "-10%" }}
           onPress={() => navigation.navigate("DashBoard")}
         />
         <Text
@@ -45,7 +45,7 @@ export default function App() {
             fontSize: 42,
             color: "black",
             textAlign: "left",
-            marginTop: "10%",
+            marginTop: "15%",
             fontFamily: FontFamily.ubuntubold,
           }}
         >

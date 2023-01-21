@@ -13,13 +13,13 @@ const LandingPage = () => {
         source={chefGreg}
         resizeMode="cover"
         style={{
-          width: 300,
-          height: 300,
+          width: "80%",
+          height: "40%",
           borderColor: "#379540",
           borderRadius: 30,
           borderWidth: 10,
           // borderStartWidth: 10,
-          marginTop: 60,
+          marginTop: "30%",
           padding: 0,
         }}
       ></Image>
