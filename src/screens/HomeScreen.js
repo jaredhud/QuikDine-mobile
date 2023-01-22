@@ -3,7 +3,7 @@ import { useNavigation } from "@react-navigation/core";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { auth } from "../../firebase";
 import { button } from "../../GlobalStyles";
-import Icon from "react-native-ico";
+// import Icon from "react-native-ico";
 
 const HomeScreen = () => {
   const navigation = useNavigation();

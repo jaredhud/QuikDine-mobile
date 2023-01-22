@@ -24,17 +24,22 @@ import SuggestedRecipes from "./src/screens/SuggestedRecipes";
 import PlanDinner from "./src/screens/PlanDinner";
 import SendEmail from "./src/screens/SendEmail";
 import TestPage from "./src/screens/TestPage";
+import MyAccount from "./src/screens/MyAccount";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-function Home() {
+
+function NavBar() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator initialRouteName="Home">
+      <Tab.Screen name="MyAccount" component={MyAccount} />
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Register" component={RegisterPage} />
+      <Tab.Screen name="Plan Dinner" component={PlanDinner} />
+      <Tab.Screen name="MyPantry" component={MyPantry} />
     </Tab.Navigator>
   );
 }
+
 export default function App() {
   const [ingredientList, setIngredientList] = React.useState([]);
 
@@ -47,6 +52,7 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
+
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -55,12 +61,12 @@ export default function App() {
       >
         <Stack.Screen
           name="Home"
-          component={Home}
+          component={NavBar}
           options={{ headerShown: false }}
         />
         {/* <Stack.Screen name="Home" component={HomeScreen} /> */}
         {/* <Stack.Screen name="Register" component={RegisterPage} /> */}
-        <Stack.Screen name="MyPantry" component={MyPantry} />
+        {/* <Stack.Screen name="MyPantry" component={MyPantry} /> */}
         <Stack.Screen name="Camera" component={CameraPage} />
         <Stack.Screen name="Voting" component={VotingPage} />
 
@@ -82,7 +88,7 @@ export default function App() {
         <Stack.Screen name="DashBoard" component={DashBoard} />
         <Stack.Screen name="LandingPage" component={LandingPage} />
         <Stack.Screen name="BarCodeScanner" component={BarCodeScanner} />
-        <Stack.Screen name="PlanDinner" component={PlanDinner} />
+        {/* <Stack.Screen name="PlanDinner" component={PlanDinner} /> */}
         <Stack.Screen name="SuggestedRecipes" component={SuggestedRecipes} />
         <Stack.Screen name="SendEmail" component={SendEmail} />
         <Stack.Screen
