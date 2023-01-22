@@ -31,7 +31,7 @@ const Tab = createBottomTabNavigator();
 
 function NavBar() {
   return (
-    <Tab.Navigator initialRouteName="Home">
+    <Tab.Navigator initialRouteName="Home" options={{ headerShown: false }}>
       <Tab.Screen name="MyAccount" component={MyAccount} />
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Plan Dinner" component={PlanDinner} />
@@ -62,7 +62,7 @@ export default function App() {
         <Stack.Screen
           name="Home"
           component={NavBar}
-          options={{ headerShown: false }}
+          screenoptions={{ headerShown: false }}
         />
         {/* <Stack.Screen name="Home" component={HomeScreen} /> */}
         {/* <Stack.Screen name="Register" component={RegisterPage} /> */}

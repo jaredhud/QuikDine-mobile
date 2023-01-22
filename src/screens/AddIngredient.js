@@ -18,6 +18,7 @@ import { SubInfo, SubInfo2, SubInfo3 } from "../components/AddIngredientText";
 import { FontFamily } from "../../GlobalStyles";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import fallveggie from "../img/falling-veggies.png";
+import NavBar from "../components/NavBar";
 
 export default function AddIngredient(props) {
   const navigation = useNavigation();
@@ -38,7 +39,7 @@ export default function AddIngredient(props) {
   };
 
   return (
-    <View style={styles.mainContainer}>
+    <View style={styles.mainContainer} screenoptions={{ headerShown: false }}>
       {/* Title Box */}
       <View
         style={{
@@ -119,6 +120,7 @@ export default function AddIngredient(props) {
           </Text>
         </ImageBackground>
       </TouchableOpacity>
+      <NavBar />
     </View>
   );
 }

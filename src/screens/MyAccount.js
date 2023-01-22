@@ -16,7 +16,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import fallveggie from "../img/falling-veggies.png";
 import quikdine from "../img/quik-dine.png";
 
-export default function App() {
+export default function MyAccount() {
   const navigation = useNavigation();
 
   return (
@@ -50,7 +50,7 @@ export default function App() {
           }}
         >
           {" "}
-          My Pantry{" "}
+          My Account{" "}
         </Text>
       </View>
       {/* First Box */}
