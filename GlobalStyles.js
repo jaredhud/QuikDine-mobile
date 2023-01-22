@@ -11,3 +11,7 @@ export const button = {
   alignItems: "center",
   marginTop: 40,
 };
+export const colors = {
+  lightgreen: "#D3FAD9",
+  darkgreen: "#379540",
+};

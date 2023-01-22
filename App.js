@@ -26,16 +26,43 @@ import SendEmail from "./src/screens/SendEmail";
 import TestPage from "./src/screens/TestPage";
 import MyAccount from "./src/screens/MyAccount";
 
+import Ionicons from "react-native-vector-icons/Ionicons";
+
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function NavBar() {
   return (
-    <Tab.Navigator initialRouteName="Home" options={{ headerShown: false }}>
-      <Tab.Screen name="MyAccount" component={MyAccount} />
+    <Tab.Navigator
+      initialRouteName="Home"
+      options={{ headerShown: false }}
+      screenOptions={({ route }) => ({
+        headerShown: false,
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+
+          if (route.name === "Home") {
+            iconName = focused ? "home" : "home";
+          } else if (route.name === "My Account") {
+            iconName = focused ? "settings" : "settings-outline";
+          } else if (route.name === "Plan Dinner") {
+            iconName = focused ? "calendar" : "calendar";
+          } else if (route.name === "My Pantry") {
+            iconName = focused ? "fast-food" : "fast-food";
+          }
+
+          // You can return any component that you like here!
+          return <Ionicons name={iconName} size={30} color={color} />;
+        },
+        tabBarActiveTintColor: "#D3FAD9",
+        tabBarInactiveTintColor: "#379540",
+        tabBarStyle: { backgroundColor: "#333333" },
+      })}
+    >
+      <Tab.Screen name="My Account" component={MyAccount} />
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Plan Dinner" component={PlanDinner} />
-      <Tab.Screen name="MyPantry" component={MyPantry} />
+      <Tab.Screen name="My Pantry" component={MyPantry} />
     </Tab.Navigator>
   );
 }
