@@ -67,9 +67,9 @@ const HomeScreen = () => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate("AddIngredient")}
-        style={[styles.button]}
+        style={[button]}
       >
-        <Text style={styles.buttonText}>AddIngredient Temp</Text>
+        <Text style={styles.buttonText}>Add Ingredients</Text>
       </TouchableOpacity>
     </View>
   );

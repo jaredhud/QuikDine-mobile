@@ -9,7 +9,7 @@ const RegisterPage = () => {
     <View style={styles.container}>
       <TouchableOpacity
         onPress={() => navigation.navigate("Home")}
-        style={[styles.button]}
+        style={button}
       >
         <Text style={styles.buttonText}>Home</Text>
       </TouchableOpacity>
@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   button: {
-    backgroundColor: "#0782F9",
-    width: "60%",
+    backgroundColor: "#379540",
+    width: "65%",
     padding: 15,
     borderRadius: 10,
     alignItems: "center",

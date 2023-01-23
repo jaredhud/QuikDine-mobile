@@ -9,7 +9,7 @@ export const button = {
   padding: 15,
   borderRadius: 10,
   alignItems: "center",
-  marginTop: 40,
+  marginTop: 20,
 };
 export const colors = {
   lightgreen: "#D3FAD9",
