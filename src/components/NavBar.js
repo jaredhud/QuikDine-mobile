@@ -10,6 +10,7 @@ export default function NavBar() {
   return (
     <Tab.Navigator
       initialRouteName="Home"
+      options={{ headerShown: false }}
       screenoptions={{ headerShown: false }}
     >
       <Tab.Screen name="MyAccount" component={MyAccount} />
