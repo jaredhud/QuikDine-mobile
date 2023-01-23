@@ -54,7 +54,7 @@ export default function AddIngredient(props) {
           size={32}
           color="green"
           style={{ marginTop: "-10%" }}
-          onPress={() => navigation.navigate("MyPantry")}
+          onPress={() => navigation.navigate("Home")}
         />
         <Text
           style={{

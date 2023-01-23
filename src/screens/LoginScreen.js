@@ -9,6 +9,8 @@ import {
   View,
 } from "react-native";
 import { auth } from "../../firebase";
+import { processFontFamily } from "expo-font";
+import { FontFamily } from "../../GlobalStyles";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -26,16 +28,6 @@ const LoginScreen = () => {
   //   return unsubscribe;
   // }, []);
 
-  const handleSignUp = () => {
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((userCredentials) => {
-        const user = userCredentials.user;
-        console.log("Registered with:", user.email);
-      })
-      .catch((error) => alert(error.message));
-  };
-
   const handleLogin = () => {
     auth
       .signInWithEmailAndPassword(email, password)
@@ -45,10 +37,27 @@ const LoginScreen = () => {
       })
       .catch((error) => alert(error.message));
   };
-  console.log("Hello to my Login");
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <View style={styles.inputContainer}>
+        <View style={styles.parentView}>
+          <Text style={styles.titleHome}>Recipes Ahoy!</Text>
+          <Text>
+            <Text style={styles.paragraphText}>
+              Cooking at home has never been easy!
+            </Text>
+            <Text
+              style={{
+                fontFamily: FontFamily.poppins,
+                textAlign: "center",
+                marginBottom: 10,
+              }}
+            >
+              Register and unlock cooking possibilities!
+            </Text>
+          </Text>
+        </View>
+
         <TextInput
           placeholder="Email ID"
           value={email}
@@ -69,10 +78,10 @@ const LoginScreen = () => {
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={handleSignUp}
+          onPress={() => navigation.navigate("RegisterPage")}
           style={[styles.button, styles.buttonOutline]}
         >
-          <Text style={styles.buttonOutlineText}>Register</Text>
+          <Text style={styles.buttonOutlineText}>Registers</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
@@ -82,6 +91,10 @@ const LoginScreen = () => {
 export default LoginScreen;
 
 const styles = StyleSheet.create({
+  parentView: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
   container: {
     flex: 1,
     justifyContent: "center",
@@ -127,5 +140,16 @@ const styles = StyleSheet.create({
     color: "#379540",
     fontWeight: "700",
     fontSize: 16,
+  },
+  titleHome: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 15,
+    fontFamily: FontFamily.ubuntu,
+    textAlign: "center",
+  },
+  paragraphText: {
+    fontFamily: FontFamily.poppins,
+    textAlign: "center",
   },
 });
