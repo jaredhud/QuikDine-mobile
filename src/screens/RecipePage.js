@@ -70,9 +70,12 @@ export default function RecipePage(props) {
 
   return (
     <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
-      <Tab.Screen name="Random Recipe" component={RecipeRandomPage} />
-      <Tab.Screen name="Search Recipe" component={RecipeSearchPage} />
-      <Tab.Screen name="Use Ingredients">
+      <Tab.Screen name="Recipe Search">
+        {(props) => (
+          <RecipeSearchPage {...props} ingredientList={ingredientList} />
+        )}
+      </Tab.Screen>
+      <Tab.Screen name="Just Use My Ingredients">
         {(props) => (
           <RecipeIngredientSearchPage
             {...props}
