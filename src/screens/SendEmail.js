@@ -27,7 +27,7 @@ export default function App() {
     });
 
     MailComposer.composeAsync({
-      subject: subject,
+      subject: "QuikDine Event",
       body: body,
       recipients: recipients,
       attachments: [uri]
@@ -40,6 +40,11 @@ export default function App() {
 
     setRecipients(newRecipients);
     setEmail(undefined);
+  };
+
+  const removeRecipient = () => {
+    console.log("Recepients removed");
+    setRecipients("");
   };
 
   const showRecipients = () => {
@@ -58,6 +63,7 @@ export default function App() {
       <TextInput value={body} onChangeText={setBody} placeholder="Body" />
       <TextInput value={email} onChangeText={setEmail} placeholder="Email" />
       <Button title='Add Recipient' onPress={addRecipient} />
+      <Button title='Remove Recipient' onPress={removeRecipient} />
       {showRecipients()}
       {isAvailable ? <Button title='Send Mail' onPress={sendMail} /> : <Text>Email not available</Text>}
       <StatusBar style="auto" />
