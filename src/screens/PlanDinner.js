@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/core";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { button } from "../../GlobalStyles";
+import { colors } from "../../GlobalStyles";
 
 const PlanDinner = () => {
   const navigation = useNavigation();
@@ -24,9 +26,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: colors.lightgreen,
   },
   button: {
-    backgroundColor: "#0782F9",
+    backgroundColor: colors.darkgreen,
     width: "60%",
     padding: 15,
     borderRadius: 10,

@@ -118,6 +118,7 @@ export default function App() {
         {/* <Stack.Screen name="PlanDinner" component={PlanDinner} /> */}
         <Stack.Screen name="SuggestedRecipes" component={SuggestedRecipes} />
         <Stack.Screen name="SendEmail" component={SendEmail} />
+        <Stack.Screen name="RegisterPage" component={RegisterPage} />
         <Stack.Screen
           // options={{ headerShown: false }}
           name="LoginScreen"
