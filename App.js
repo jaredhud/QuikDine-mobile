@@ -25,6 +25,7 @@ import PlanDinner from "./src/screens/PlanDinner";
 import SendEmail from "./src/screens/SendEmail";
 import TestPage from "./src/screens/TestPage";
 import MyAccount from "./src/screens/MyAccount";
+import CreateEvent from "./src/screens/CreateEvent";
 
 import Ionicons from "react-native-vector-icons/Ionicons";
 
@@ -118,6 +119,7 @@ export default function App() {
         {/* <Stack.Screen name="PlanDinner" component={PlanDinner} /> */}
         <Stack.Screen name="SuggestedRecipes" component={SuggestedRecipes} />
         <Stack.Screen name="SendEmail" component={SendEmail} />
+        <Stack.Screen name="CreateEvent" component={CreateEvent} />
         <Stack.Screen name="RegisterPage" component={RegisterPage} />
         <Stack.Screen
           // options={{ headerShown: false }}

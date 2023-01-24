@@ -30,6 +30,12 @@ const HomeScreen = () => {
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity
+        onPress={() => navigation.navigate("CreateEvent")}
+        style={[button]}
+      >
+        <Text style={styles.buttonText}>Create Calendar Event</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
         onPress={() => navigation.navigate("BarCodeScanner")}
         style={[button]}
       >
@@ -51,6 +57,7 @@ const HomeScreen = () => {
         onPress={() => navigation.navigate("SendEmail")}
         style={[button]}
       >
+        
         <Text style={styles.buttonText}>Send Email</Text>
       </TouchableOpacity>
       <TouchableOpacity
