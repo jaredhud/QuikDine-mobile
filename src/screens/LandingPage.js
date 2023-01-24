@@ -3,6 +3,7 @@ import { useNavigation } from "@react-navigation/core";
 import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 
 import chefGreg from "../img/chef-greg.png";
+import { FontFamily } from "../../GlobalStyles";
 
 const LandingPage = () => {
   const navigation = useNavigation();
@@ -27,7 +28,7 @@ const LandingPage = () => {
         <Text style={styles.titleHome}>Welcome Aboard Mate!</Text>
         <Text>
           <Text style={{ fontWeight: "bold" }}>Chef Greg: </Text>
-          <Text>
+          <Text style={{ fontFamily: FontFamily.poppins }}>
             I'm looking for a chef to join my crew and help create amazing meals
             for our guests. No experience required in creating delicious dishes.
             Just bring your creativity and flair to the table.
@@ -53,11 +54,13 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "bold",
     marginBottom: 2,
+    fontFamily: FontFamily.poppins,
   },
   parentView: {
     width: "85%",
     marginTop: 40,
     marginHorizontal: 10,
+    gap: 10,
   },
   containerHome: {
     flex: 1,
