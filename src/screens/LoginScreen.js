@@ -7,10 +7,12 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Image,
 } from "react-native";
 import { auth } from "../../firebase";
 import { processFontFamily } from "expo-font";
 import { FontFamily } from "../../GlobalStyles";
+import chefGreg from "../img/chef-greg.png";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -39,25 +41,24 @@ const LoginScreen = () => {
   };
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
-      <View style={styles.inputContainer}>
-        <View style={styles.parentView}>
-          <Text style={styles.titleHome}>Recipes Ahoy!</Text>
-          <Text>
-            <Text style={styles.paragraphText}>
-              Cooking at home has never been easy!
-            </Text>
-            <Text
-              style={{
-                fontFamily: FontFamily.poppins,
-                textAlign: "center",
-                marginBottom: 10,
-              }}
-            >
-              Register and unlock cooking possibilities!
-            </Text>
-          </Text>
-        </View>
+      <View style={{ alignItems: "center", width: "90%", height: "90%" }}>
+        <Image
+          source={chefGreg}
+          resizeMode="cover"
+          style={{
+            width: "80%",
+            height: "40%",
+            borderColor: "#379540",
+            borderRadius: 30,
+            borderWidth: 10,
+            // borderStartWidth: 10,
+            marginTop: "10%",
 
+            padding: 0,
+          }}
+        ></Image>
+      </View>
+      <View style={styles.inputContainer}>
         <TextInput
           placeholder="Email ID"
           value={email}
@@ -77,12 +78,23 @@ const LoginScreen = () => {
         <TouchableOpacity onPress={handleLogin} style={styles.button}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity
+        <View style={{ paddingTop: 15 }}>
+          <Text>
+            <Text>Don’t have an account? </Text>
+            <Text
+              onPress={() => navigation.navigate("RegisterPage")}
+              style={{ fontFamily: FontFamily.ubuntubold, color: "#46ADA1" }}
+            >
+              Sign Up
+            </Text>
+          </Text>
+        </View>
+        {/* <TouchableOpacity
           onPress={() => navigation.navigate("RegisterPage")}
           style={[styles.button, styles.buttonOutline]}
         >
           <Text style={styles.buttonOutlineText}>Registers</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </KeyboardAvoidingView>
   );
@@ -94,6 +106,7 @@ const styles = StyleSheet.create({
   parentView: {
     alignItems: "center",
     justifyContent: "center",
+    marginBottom: 20,
   },
   container: {
     flex: 1,
@@ -102,6 +115,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#D3FAD9",
   },
   inputContainer: {
+    marginTop: "-90%",
+    marginBottom: "0%",
     width: "80%",
   },
   input: {
@@ -110,6 +125,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 5,
+    marginBottom: 15,
   },
   buttonContainer: {
     width: "60%",

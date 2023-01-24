@@ -9,6 +9,7 @@ import {
   View,
 } from "react-native";
 import { auth } from "../../firebase";
+import { FontFamily } from "../../GlobalStyles";
 
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
@@ -36,19 +37,35 @@ const RegisterPage = () => {
       .catch((error) => alert(error.message));
   };
 
-  const handleLogin = () => {
-    auth
-      .signInWithEmailAndPassword(email, password)
-      .then((userCredentials) => {
-        const user = userCredentials.user;
-        console.log("Logged in with:", user.email);
-      })
-      .catch((error) => alert(error.message));
-  };
-  console.log("Hello to my Login");
+  // const handleLogin = () => {
+  //   auth
+  //     .signInWithEmailAndPassword(email, password)
+  //     .then((userCredentials) => {
+  //       const user = userCredentials.user;
+  //       console.log("Logged in with:", user.email);
+  //     })
+  //     .catch((error) => alert(error.message));
+  // };
+
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <View style={styles.inputContainer}>
+        <View style={styles.parentView}>
+          <Text style={styles.titleHome}>Recipes Ahoy!</Text>
+          <Text>
+            <Text style={styles.paragraphText}>
+              Cooking at home has never been easy!
+            </Text>
+            <Text
+              style={{
+                fontFamily: FontFamily.poppins,
+                textAlign: "center",
+              }}
+            >
+              Register and unlock cooking possibilities!
+            </Text>
+          </Text>
+        </View>
         <TextInput
           placeholder="Email ID"
           value={email}
@@ -65,15 +82,23 @@ const RegisterPage = () => {
       </View>
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={handleLogin} style={styles.button}>
+        {/* <TouchableOpacity onPress={handleLogin} style={styles.button}>
           <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity> */}
+        <TouchableOpacity onPress={handleSignUp} style={[styles.button]}>
+          <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={handleSignUp}
-          style={[styles.button, styles.buttonOutline]}
-        >
-          <Text style={styles.buttonOutlineText}>Register</Text>
-        </TouchableOpacity>
+        <View style={{ paddingTop: 15 }}>
+          <Text>
+            <Text>Already have an account? </Text>
+            <Text
+              onPress={() => navigation.navigate("LoginScreen")}
+              style={{ fontFamily: FontFamily.ubuntubold, color: "#46ADA1" }}
+            >
+              Sign In
+            </Text>
+          </Text>
+        </View>
       </View>
     </KeyboardAvoidingView>
   );
@@ -82,6 +107,11 @@ const RegisterPage = () => {
 export default RegisterPage;
 
 const styles = StyleSheet.create({
+  parentView: {
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 20,
+  },
   container: {
     flex: 1,
     justifyContent: "center",
@@ -90,6 +120,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: "80%",
+    marginTop: "20%",
   },
   input: {
     backgroundColor: "white",
@@ -97,6 +128,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 5,
+    marginBottom: 15,
   },
   buttonContainer: {
     width: "60%",
@@ -127,5 +159,16 @@ const styles = StyleSheet.create({
     color: "#379540",
     fontWeight: "700",
     fontSize: 16,
+  },
+  titleHome: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 15,
+    fontFamily: FontFamily.ubuntu,
+    textAlign: "center",
+  },
+  paragraphText: {
+    fontFamily: FontFamily.poppins,
+    textAlign: "center",
   },
 });
