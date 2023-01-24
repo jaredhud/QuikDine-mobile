@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { useState, useEffect } from "react";
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
-import { pantryRecipeSearch } from "../components/RecipeSearch";
+import { pantryRecipeSearch } from "../components/RecipeSearchFunction";
 
 const RecipeIngredientSearchPage = (props) => {
   const { ingredientList } = props;

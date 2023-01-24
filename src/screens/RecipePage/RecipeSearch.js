@@ -2,9 +2,9 @@ import { StatusBar } from "expo-status-bar";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { useState, useEffect } from "react";
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
-import { pantryRecipeSearch } from "../components/RecipeSearchFunction";
+import { pantryRecipeSearch } from "../components/RecipeSearch";
 
-const RecipeSearchPage = () => {
+export const RecipeSearch = (props) => {
   const [meals, setMeals] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -35,7 +35,5 @@ const RecipeSearchPage = () => {
     </View>
   );
 };
-
-export default RecipeSearchPage;
 
 const styles = StyleSheet.create({});
