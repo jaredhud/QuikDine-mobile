@@ -13,6 +13,7 @@ import { auth } from "../../firebase";
 import { processFontFamily } from "expo-font";
 import { FontFamily } from "../../GlobalStyles";
 import chefGreg from "../img/chef-greg.png";
+import chefGreg2 from "../img/chef-greg2.png";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -42,8 +43,9 @@ const LoginScreen = () => {
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <View style={{ alignItems: "center", width: "90%", height: "90%" }}>
+        <Text style={styles.titleHome}>Welcome Back!</Text>
         <Image
-          source={chefGreg}
+          source={chefGreg2}
           resizeMode="cover"
           style={{
             width: "80%",
@@ -72,6 +74,19 @@ const LoginScreen = () => {
           style={styles.input}
           secureTextEntry
         />
+      </View>
+      <View>
+        <Text
+          onPress={() => navigation.navigate("RegisterPage")}
+          style={{
+            fontFamily: FontFamily.ubuntubold,
+            color: "#46ADA1",
+            marginTop: "5%",
+            marginBottom: "-5%",
+          }}
+        >
+          Forgot Password?
+        </Text>
       </View>
 
       <View style={styles.buttonContainer}>
@@ -115,7 +130,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#D3FAD9",
   },
   inputContainer: {
-    marginTop: "-90%",
+    marginTop: "-85%",
     marginBottom: "0%",
     width: "80%",
   },
@@ -160,7 +175,7 @@ const styles = StyleSheet.create({
   titleHome: {
     fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 15,
+    marginBottom: "-5%",
     fontFamily: FontFamily.ubuntu,
     textAlign: "center",
   },
