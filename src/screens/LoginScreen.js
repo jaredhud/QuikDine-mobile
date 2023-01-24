@@ -7,8 +7,13 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Image,
 } from "react-native";
 import { auth } from "../../firebase";
+import { processFontFamily } from "expo-font";
+import { FontFamily } from "../../GlobalStyles";
+import chefGreg from "../img/chef-greg.png";
+import chefGreg2 from "../img/chef-greg2.png";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -26,16 +31,6 @@ const LoginScreen = () => {
   //   return unsubscribe;
   // }, []);
 
-  const handleSignUp = () => {
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((userCredentials) => {
-        const user = userCredentials.user;
-        console.log("Registered with:", user.email);
-      })
-      .catch((error) => alert(error.message));
-  };
-
   const handleLogin = () => {
     auth
       .signInWithEmailAndPassword(email, password)
@@ -45,9 +40,26 @@ const LoginScreen = () => {
       })
       .catch((error) => alert(error.message));
   };
-  console.log("Hello to my Login");
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
+      <View style={{ alignItems: "center", width: "90%", height: "90%" }}>
+        <Text style={styles.titleHome}>Welcome Back!</Text>
+        <Image
+          source={chefGreg2}
+          resizeMode="cover"
+          style={{
+            width: "80%",
+            height: "40%",
+            borderColor: "#379540",
+            borderRadius: 30,
+            borderWidth: 10,
+            // borderStartWidth: 10,
+            marginTop: "10%",
+
+            padding: 0,
+          }}
+        ></Image>
+      </View>
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Email ID"
@@ -63,17 +75,41 @@ const LoginScreen = () => {
           secureTextEntry
         />
       </View>
+      <View>
+        <Text
+          onPress={() => navigation.navigate("RegisterPage")}
+          style={{
+            fontFamily: FontFamily.ubuntubold,
+            color: "#46ADA1",
+            marginTop: "5%",
+            marginBottom: "-5%",
+          }}
+        >
+          Forgot Password?
+        </Text>
+      </View>
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity onPress={handleLogin} style={styles.button}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={handleSignUp}
+        <View style={{ paddingTop: 15 }}>
+          <Text>
+            <Text>Don’t have an account? </Text>
+            <Text
+              onPress={() => navigation.navigate("RegisterPage")}
+              style={{ fontFamily: FontFamily.ubuntubold, color: "#46ADA1" }}
+            >
+              Sign Up
+            </Text>
+          </Text>
+        </View>
+        {/* <TouchableOpacity
+          onPress={() => navigation.navigate("RegisterPage")}
           style={[styles.button, styles.buttonOutline]}
         >
-          <Text style={styles.buttonOutlineText}>Register</Text>
-        </TouchableOpacity>
+          <Text style={styles.buttonOutlineText}>Registers</Text>
+        </TouchableOpacity> */}
       </View>
     </KeyboardAvoidingView>
   );
@@ -82,6 +118,11 @@ const LoginScreen = () => {
 export default LoginScreen;
 
 const styles = StyleSheet.create({
+  parentView: {
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 20,
+  },
   container: {
     flex: 1,
     justifyContent: "center",
@@ -89,6 +130,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#D3FAD9",
   },
   inputContainer: {
+    marginTop: "-85%",
+    marginBottom: "0%",
     width: "80%",
   },
   input: {
@@ -97,6 +140,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 5,
+    marginBottom: 15,
   },
   buttonContainer: {
     width: "60%",
@@ -127,5 +171,16 @@ const styles = StyleSheet.create({
     color: "#379540",
     fontWeight: "700",
     fontSize: 16,
+  },
+  titleHome: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: "-5%",
+    fontFamily: FontFamily.ubuntu,
+    textAlign: "center",
+  },
+  paragraphText: {
+    fontFamily: FontFamily.poppins,
+    textAlign: "center",
   },
 });
