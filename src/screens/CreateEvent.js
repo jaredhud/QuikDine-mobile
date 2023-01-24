@@ -9,12 +9,20 @@ const CreateEvent = () => {
   const [showModal, setShowModal ] = useState(false);
   return(
     <View>
-      <TouchableOpacity onPress={ ()=>setShowModal(true) } style = {{backgroundColor: 'black', borderRadius:10, margin:40, padding:10, width:200, alignItems:'center' }}>
-        <Text style={{color: 'white', fontSize: 22}}>Show Calendar</Text>
+      <TouchableOpacity onPress={ ()=>setShowModal(true) } style = {{backgroundColor: 'black', borderRadius:10, margin:90, padding:10, width:70, alignItems:'center' }}>
+        <Text style={{color: 'white', fontSize: 20}}>Show Calendar</Text>
           
       </TouchableOpacity>
-      <Modal visible = {showModal}>
-        <Calendar />
+      <Modal visible = {showModal} animationType = "fade">
+        <Calendar style = {{ borderRadius:40, elevation:4, margin:40 }}
+        onDayPress={date => {console.log(date)
+          
+        }}
+        initialDate= {'2023-01-01'}
+        markingType = {'period'}
+        markedDates ={{
+          'currentDay': {marked: true, selected: true, dotColour:'red', selectedColour:'purple'}       }}
+        />
       </Modal>
     </View>
 
