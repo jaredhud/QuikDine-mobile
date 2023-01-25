@@ -6,7 +6,6 @@ import MyPantry from "./MyPantry";
 const Stack = createNativeStackNavigator();
 export default function PantryNav(props) {
   const { ingredientList, setIngredientList } = props;
-  console.log(props);
   return (
     <Stack.Navigator id="Pantry Nav">
       <Stack.Screen name="My Pantry">
