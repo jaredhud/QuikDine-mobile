@@ -15,8 +15,25 @@ import { pantryRecipeSearch } from "../../components/RecipeSearchFunction";
 
 export const RecipeSearch = (props) => {
   const navigation = useNavigation();
+  const { ingredientList } = props;
   const [meals, setMeals] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [cuisine, setCuisine] = useState("");
+  const [mealType, setMealType] = useState("");
+  const [page, setPage] = useState(1);
+  const [resultsPerPage, setResultsPerPage] = useState(10);
+
+  useEffect(() => {
+    let searchCriteria = {
+      ingredients: ingredientList,
+      cuisine: cuisine,
+      mealType: mealType,
+    };
+    setMeals(pantryRecipeSearch(searchCriteria, page, resultsPerPage));
+  }, [page, resultsPerPage]);
+
+  function pageHandler() {}
+
+  console.log("IngredientSearch", ingredientList);
 
   const onChangeSearch = (query) => setSearchQuery(query);
   return (

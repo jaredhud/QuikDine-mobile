@@ -1,121 +1,113 @@
-import React from "react";
-import { useNavigation } from "@react-navigation/core";
+import React, { useState } from "react";
 import {
+  Keyboard,
+  KeyboardAvoidingView,
+  ScrollView,
   StyleSheet,
   Text,
+  TextInput,
   TouchableOpacity,
   View,
-  Image,
-  Platform,
-  ImageBackground,
 } from "react-native";
+import Ingredient from "../../components/Ingredient";
 
-import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
-import { useFonts } from "expo-font";
-import { SubInfo, SubInfo2, SubInfo3 } from "../../components/MyPantryText";
-import { FontFamily } from "../../../GlobalStyles";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import fallveggie from "../../img/falling-veggies.png";
-import quikdine from "../../img/quik-dine.png";
+export default function MyPantry(props) {
+  const { ingredientList, setIngredientList } = props;
+  console.log("IngredientPage", ingredientList);
+  const [ingredient, setIngredient] = useState();
 
-export default function MyPantry() {
-  const navigation = useNavigation();
+  const handleAddIngredient = () => {
+    Keyboard.dismiss();
+    setIngredientList([...ingredientList, ingredient]);
+    setIngredient(null);
+  };
+
+  const completeIngredient = (index) => {
+    let itemsCopy = [...ingredientList];
+    itemsCopy.splice(index, 1);
+    setIngredientList(itemsCopy);
+  };
 
   return (
-    <View style={styles.mainContainer}>
-      <View
-        style={{
-          width: "95%",
-          height: "30%",
-          justifyContent: "center",
-          margin: "2%",
-        }}
-      >
-        <Ionicons
-          name="arrow-back-circle"
-          size={32}
-          color="green"
-          style={{ marginTop: "-10%" }}
-          onPress={() => navigation.navigate("DashBoard")}
-        />
-        <Text
-          style={{
-            fontSize: 42,
-            color: "black",
-            textAlign: "left",
-            marginTop: "15%",
-            fontFamily: FontFamily.ubuntubold,
-          }}
-        >
-          {" "}
-          My Pantry{" "}
-        </Text>
+    <View style={styles.container}>
+      <View style={styles.ingredientsWrapper}>
+        <Text style={styles.sectionTitle}>Your ingredients</Text>
+        <ScrollView style={styles.items}>
+          {ingredientList.map((item, index) => {
+            return (
+              <TouchableOpacity
+                key={index}
+                onPress={() => completeIngredient(index)}
+              >
+                <Ingredient text={item} />
+              </TouchableOpacity>
+            );
+          })}
+        </ScrollView>
       </View>
-      {/* First Box */}
-      <TouchableOpacity
-        onPress={() => navigation.navigate("AddIngredient")}
-        style={styles.buttonNavigation}
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.writeIngredientWrapper}
       >
-        <ImageBackground
-          source={fallveggie}
-          resizeMode="cover"
-          style={styles.image}
-          borderRadius={20}
-        >
-          <Text style={styles.text}>
-            {" "}
-            <SubInfo />{" "}
-          </Text>
-        </ImageBackground>
-      </TouchableOpacity>
-      {/* Second Box */}
-      <TouchableOpacity
-        onPress={() => navigation.navigate("ListIngredient")}
-        style={styles.buttonNavigation}
-      >
-        <ImageBackground
-          source={fallveggie}
-          resizeMode="cover"
-          style={styles.image}
-          borderRadius={20}
-        >
-          <Text style={styles.text}>
-            {" "}
-            <SubInfo2 />{" "}
-          </Text>
-        </ImageBackground>
-      </TouchableOpacity>
+        <TextInput
+          style={styles.input}
+          placeholder={"Add an ingredient"}
+          value={ingredient}
+          onChangeText={(text) => setIngredient(text)}
+        />
+        <TouchableOpacity onPress={() => handleAddIngredient()}>
+          <View style={styles.addWrapper}>
+            <Text style={styles.addText}>+</Text>
+          </View>
+        </TouchableOpacity>
+      </KeyboardAvoidingView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    flex: 1,
-    alignItems: "center",
-    paddingTop: Platform.OS === "ios" ? 20 : 0,
-    backgroundColor: "#D3FAD9",
-  },
   container: {
     flex: 1,
-    justifyContent: "flex-end",
-    alignItems: "flex-end",
-    margin: 10,
-    borderColor: "red",
-    borderWidth: 2,
+    backgroundColor: "#EBEAED",
   },
-  text: {
-    fontSize: 26,
-    color: "white",
+  ingredientsWrapper: {
+    paddingTop: 80,
+    paddingHorizontal: 20,
+    paddingBottom: 150,
   },
-  buttonNavigation: {
-    width: "95%",
-    height: "17%",
-    margin: "1%",
+  sectionTitle: {
+    fontSize: 24,
+    fontWeight: "bold",
   },
-  image: {
-    flex: 1,
-    justifyContent: "flex-end",
-    alignItems: "flex-end",
+  items: {
+    marginTop: 30,
   },
+  writeIngredientWrapper: {
+    position: "absolute",
+    bottom: 30,
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+  },
+  input: {
+    paddingVertical: 15,
+    paddingHorizontal: 15,
+    backgroundColor: "#FFF",
+    borderRadius: 60,
+    borderColor: "#C0C0C0",
+    borderWidth: 1,
+    width: 250,
+  },
+  addWrapper: {
+    width: 60,
+    height: 60,
+    backgroundColor: "#FFF",
+    borderRadius: 60,
+    justifyContent: "center",
+    alignItems: "center",
+    borderColor: "#C0C0C0",
+    borderWidth: 1,
+  },
+  addText: {},
 });
