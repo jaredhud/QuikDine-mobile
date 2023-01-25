@@ -1,24 +1,21 @@
 import { useState, useEffect } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RecipeSearch } from "../RecipePage/RecipeSearch";
-import { RecipeResult } from "../RecipePage/RecipeResult";
-import { AdvancedSearch } from "../RecipePage/AdvancedSearch";
+import MyPantry from "./MyPantry";
 
 const Stack = createNativeStackNavigator();
 export default function PantryNav(props) {
-  const { ingredientList } = props;
-
+  const { ingredientList, setIngredientList } = props;
+  console.log(props);
   return (
     <Stack.Navigator id="Pantry Nav">
-      <Stack.Screen name="Recipe Search">
-        {(props) => <RecipeSearch {...props} ingredientList={ingredientList} />}
-      </Stack.Screen>
-      <Stack.Screen name="Recipe Result">
-        {(props) => <RecipeResult {...props} ingredientList={ingredientList} />}
-      </Stack.Screen>
-      <Stack.Screen name="Advanced Search">
+      <Stack.Screen name="My Pantry">
         {(props) => (
-          <AdvancedSearch {...props} ingredientList={ingredientList} />
+          <MyPantry
+            {...props}
+            ingredientList={ingredientList}
+            setIngredientList={setIngredientList}
+          />
         )}
       </Stack.Screen>
     </Stack.Navigator>

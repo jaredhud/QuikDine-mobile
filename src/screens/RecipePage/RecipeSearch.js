@@ -35,17 +35,12 @@ export const RecipeSearch = (props) => {
 
   console.log("IngredientSearch", ingredientList);
 
-  const onChangeSearch = (query) => setSearchQuery(query);
   return (
     <View style={styles.container}>
       <Appbar>
         <Appbar.Content title="Recipes" />
       </Appbar>
-      <Searchbar
-        placeholder="Search Recipes"
-        value={searchQuery}
-        onChangeText={onChangeSearch}
-      />
+      <Searchbar placeholder="Search Recipes" />
       <TouchableOpacity
         onPress={() => navigation.navigate("Recipe Result")}
         style={[button]}

@@ -21,6 +21,12 @@ export const NewEvent = () => {
       >
         <Text style={styles.buttonText}>Event List</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Guest List")}
+        style={[button]}
+      >
+        <Text style={styles.buttonText}>Guest List</Text>
+      </TouchableOpacity>
     </View>
   );
 };

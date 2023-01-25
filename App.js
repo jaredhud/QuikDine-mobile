@@ -7,36 +7,18 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts } from "expo-font";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import LoginScreen from "./src/screens/LoginScreen";
-import HomeScreen from "./src/screens/HomeScreen";
-import RegisterPage from "./src/screens/RegisterPage";
-import MyPantry from "./src/screens/MyPantry";
-import Camera from "./src/screens/Camera";
-import VotingPage from "./src/screens/VotingPage";
-import RecipePage from "./src/screens/RecipePage";
-import CameraPage from "./src/screens/CameraPage";
-import ListIngredient from "./src/screens/ListIngredient";
-import AddIngredient from "./src/screens/AddIngredient";
-import LandingPage from "./src/screens/LandingPage";
-import DashBoard from "./src/screens/DashBoard";
-import BarCodeScanner from "./src/screens/BarCodeScanner";
-import SuggestedRecipes from "./src/screens/SuggestedRecipes";
-import PlanDinner from "./src/screens/PlanDinner";
-import SendEmail from "./src/screens/SendEmail";
-import TestPage from "./src/screens/TestPage";
-import MyAccount from "./src/screens/MyAccount";
-
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AccountNav from "./src/screens/MyAccount/_AccountNav";
 import RecipeNav from "./src/screens/RecipePage/_RecipeNav";
 import PantryNav from "./src/screens/MyPantry/_PantryNav";
 import PlanNav from "./src/screens/PlanDinner/_PlanNav";
+import { Home } from "./src/screens/Home";
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
   const [ingredientList, setIngredientList] = useState([]);
-  const [recipeList, setRecipeList] = useState([]);
+  const [selectedRecipesList, setSelectedRecipesList] = useState([]);
 
   const [fontsLoaded] = useFonts({
     Poppins: require("./assets/fonts/Poppins-Regular.ttf"),
@@ -77,11 +59,19 @@ export default function App() {
         })}
       >
         <Tab.Screen name="Plan Nav">
-          {(props) => <PlanNav {...props} recipeList={recipeList} />}
+          {(props) => <PlanNav {...props} recipeList={selectedRecipesList} />}
         </Tab.Screen>
         <Tab.Screen name="Recipe Nav">
-          {(props) => <RecipeNav {...props} ingredientList={ingredientList} />}
+          {(props) => (
+            <RecipeNav
+              {...props}
+              ingredientList={ingredientList}
+              selectedRecipesList={selectedRecipesList}
+              setSelectedRecipesList={setSelectedRecipesList}
+            />
+          )}
         </Tab.Screen>
+        <Tab.Screen name="Home">{(props) => <Home {...props} />}</Tab.Screen>
         <Tab.Screen name="Pantry Nav">
           {(props) => (
             <PantryNav
