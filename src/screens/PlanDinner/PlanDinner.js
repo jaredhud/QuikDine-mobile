@@ -1,10 +1,12 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/core";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { button } from "../../GlobalStyles";
-import { colors } from "../../GlobalStyles";
 
-const PlanDinner = () => {
+import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
+import { button } from "../../../GlobalStyles";
+import { colors } from "../../../GlobalStyles";
+
+export const PlanDinner = (props) => {
   const navigation = useNavigation();
 
   return (
@@ -18,8 +20,6 @@ const PlanDinner = () => {
     </View>
   );
 };
-
-export default PlanDinner;
 
 const styles = StyleSheet.create({
   container: {

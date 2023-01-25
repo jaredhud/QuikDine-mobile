@@ -1,10 +1,20 @@
 import { StatusBar } from "expo-status-bar";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from "react-native";
+
+import { useNavigation } from "@react-navigation/core";
 import { useState, useEffect } from "react";
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
-import { pantryRecipeSearch } from "../components/RecipeSearch";
+import { button } from "../../../GlobalStyles";
+import { pantryRecipeSearch } from "../../components/RecipeSearchFunction";
 
 export const RecipeSearch = (props) => {
+  const navigation = useNavigation();
   const [meals, setMeals] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -19,18 +29,18 @@ export const RecipeSearch = (props) => {
         value={searchQuery}
         onChangeText={onChangeSearch}
       />
-      <ScrollView>
-        {meals.map((meal) => (
-          <Card key={meal.idCategory}>
-            <Card.Cover source={{ uri: meal.strCategoryThumb }} />
-            <Card.Title title={meal.strCategory} />
-            <Card.Content>
-              <Paragraph>{meal.strCategoryDescription}</Paragraph>
-            </Card.Content>
-          </Card>
-        ))}
-      </ScrollView>
-
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Recipe Result")}
+        style={[button]}
+      >
+        <Text style={styles.buttonText}>Recipe Result</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Advanced Search")}
+        style={[button]}
+      >
+        <Text style={styles.buttonText}>Advanced Search</Text>
+      </TouchableOpacity>
       <StatusBar style="auto" />
     </View>
   );

@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { RecipeSearch } from "../RecipePage/RecipeSearch";
+import { RecipeResult } from "../RecipePage/RecipeResult";
+import { AdvancedSearch } from "../RecipePage/AdvancedSearch";
 
 const Stack = createNativeStackNavigator();
-export default function RecipePage(props) {
+export default function AccountNav(props) {
   const { ingredientList } = props;
 
   return (
-    <Stack.Navigator id="Recipe Nav">
+    <Stack.Navigator id="Account Nav">
       <Stack.Screen name="Recipe Search">
         {(props) => <RecipeSearch {...props} ingredientList={ingredientList} />}
       </Stack.Screen>

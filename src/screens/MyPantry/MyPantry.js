@@ -9,22 +9,20 @@ import {
   Platform,
   ImageBackground,
 } from "react-native";
+
+import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import { useFonts } from "expo-font";
-import { SubInfo, SubInfo2, SubInfo3 } from "../components/MyPantryText";
-import { FontFamily } from "../../GlobalStyles";
+import { SubInfo, SubInfo2, SubInfo3 } from "../../components/MyPantryText";
+import { FontFamily } from "../../../GlobalStyles";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import fallveggie from "../img/falling-veggies.png";
-import quikdine from "../img/quik-dine.png";
+import fallveggie from "../../img/falling-veggies.png";
+import quikdine from "../../img/quik-dine.png";
 
 export default function MyPantry() {
   const navigation = useNavigation();
 
   return (
     <View style={styles.mainContainer}>
-      {/* <View style={styles.container}>
-        <Ionicons name="md-checkmark-circle" size={32} color="green" />
-      </View> */}
-      {/* Title Box */}
       <View
         style={{
           width: "95%",
