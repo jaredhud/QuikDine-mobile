@@ -99,8 +99,10 @@ export default function SendEmail() {
       <TouchableOpacity onPress={addRecipient} style={styles.button}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
-      <Button title="Add Recipient" onPress={addRecipient} />
-      <Button title="Remove Recipient" onPress={removeRecipient} />
+      <View style={{ flexDirection: "row" }}>
+        <Button title="Add Recipient" onPress={addRecipient} />
+        <Button title="Remove Recipient" onPress={removeRecipient} />
+      </View>
       {showRecipients()}
       {isAvailable ? (
         <Button title="Send Mail" onPress={sendMail} />
