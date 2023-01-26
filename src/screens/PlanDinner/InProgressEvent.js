@@ -7,7 +7,7 @@ import { auth } from "../../../firebase";
 import { button } from "../../../GlobalStyles";
 // import Icon from "react-native-ico";
 
-export const InProgressEvent = () => {
+export const InProgressEvent = (props) => {
   const navigation = useNavigation();
 
   return (

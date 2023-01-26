@@ -10,10 +10,9 @@ import {
 import { useEffect, useState } from "react";
 import * as MailComposer from "expo-mail-composer";
 import * as Print from "expo-print";
-
 import { colors } from "../../../GlobalStyles";
 
-export default function SendEmail() {
+export default function SendEmail(props) {
   const [isAvailable, setIsAvailable] = useState(false);
   const [recipients, setRecipients] = useState([]);
   const [subject, setSubject] = useState(undefined);

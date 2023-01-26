@@ -13,7 +13,6 @@ import Ingredient from "../../components/Ingredient";
 
 export default function MyPantry(props) {
   const { ingredientList, setIngredientList } = props;
-  console.log("IngredientPage", ingredientList);
   const [ingredient, setIngredient] = useState();
 
   const handleAddIngredient = () => {

@@ -7,8 +7,9 @@ import { auth } from "../../../firebase";
 import { button } from "../../../GlobalStyles";
 // import Icon from "react-native-ico";
 
-export const NewEvent = () => {
+export const NewEvent = (props) => {
   const navigation = useNavigation();
+  const { selectedRecipesList } = props;
 
   return (
     <View style={styles.container}>

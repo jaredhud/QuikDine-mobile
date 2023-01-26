@@ -6,13 +6,14 @@ export async function pantryRecipeSearch(searchCriteria, page, resultsPerPage) {
   const ingredients = searchCriteria.ingredients;
   const mealType = searchCriteria.mealType;
   const cuisine = searchCriteria.cuisine;
+  const diet = searchCriteria.diet;
   let ingredientString = ``;
   let typeString = ``;
   let cuisineString = ``;
+  let queryString = ``;
+  let dietString = ``;
   if (query.length > 0) {
-    const queryString = `&query=${query}`;
-  } else {
-    const queryString = ``;
+    queryString = `&query=${query.toLowerCase().replace(/ /g, "%20")}`;
   }
   if (ingredients.length > 0) {
     ingredientString = `&includesIngredients=${ingredients
@@ -20,15 +21,17 @@ export async function pantryRecipeSearch(searchCriteria, page, resultsPerPage) {
       .toLowerCase()
       .replace(/ /g, "%20")}`;
   }
-  console.log(ingredientString);
   if (mealType.length > 0) {
     typeString = `&type=${mealType.replace(/ /g, "%20")}`;
   }
   if (cuisine.length > 0) {
     cuisineString = `&cuisine=${cuisine.replace(/ /g, "%20")}`;
   }
+  if (diet.length > 0) {
+    dietString = `&diet=${diet.replace(/ /g, "%20")}`;
+  }
   const offset = (page - 1) * resultsPerPage;
-  const fetchString = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${spoonAPIKey}${ingredientString}&sort=max-used-ingredients&addRecipeInformation=true&addRecipeNutrition=false&fillIngredients=true${typeString}${cuisineString}&offset=${offset}&number=${resultsPerPage}`;
+  const fetchString = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${spoonAPIKey}${queryString}${ingredientString}&sort=max-used-ingredients&addRecipeInformation=true&addRecipeNutrition=false&fillIngredients=true${typeString}${cuisineString}${dietString}&offset=${offset}&number=${resultsPerPage}`;
   console.log(fetchString);
   // const response = await fetch(fetchString);
   // const recipes = await response.json();

@@ -7,7 +7,7 @@ import { auth } from "../../../firebase";
 import { button } from "../../../GlobalStyles";
 // import Icon from "react-native-ico";
 
-export const VotingPage = () => {
+export const VotingPage = (props) => {
   const navigation = useNavigation();
 
   return (
