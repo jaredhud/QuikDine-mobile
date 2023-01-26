@@ -40,21 +40,23 @@ export default function App() {
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
 
-            if (route.name === "Recipe") {
+            if (route.name === "Recipe Nav") {
               iconName = focused ? "restaurant" : "restaurant";
-            } else if (route.name === "My Account") {
+            } else if (route.name === "Account Nav") {
               iconName = focused ? "settings" : "settings-outline";
-            } else if (route.name === "Plan Dinner") {
+            } else if (route.name === "Plan Nav") {
               iconName = focused ? "calendar" : "calendar";
-            } else if (route.name === "My Pantry") {
+            } else if (route.name === "Pantry Nav") {
               iconName = focused ? "fast-food" : "fast-food";
+            } else if (route.name === "Home") {
+              iconName = focused ? "home" : "home";
             }
 
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={30} color={color} />;
           },
           tabBarActiveTintColor: "#D3FAD9",
-          tabBarInactiveTintColor: "#379540",
+          tabBarInactiveTintColor: "#47c053",
           tabBarStyle: { backgroundColor: "#333333" },
         })}
       >
