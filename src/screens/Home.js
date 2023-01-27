@@ -49,7 +49,7 @@ export const Home = () => {
           source={quikdine}
           resizeMode="contain"
           style={{
-            marginTop: "-25%",
+            marginTop: "-20%",
             textAlign: "right",
             width: "70%",
             height: "30%",
@@ -61,7 +61,7 @@ export const Home = () => {
         <Text style={styles.buttonText}>Sign out</Text>
       </TouchableOpacity> */}
       <TouchableOpacity
-        onPress={() => navigation.navigate("Recipe Nav")}
+        onPress={() => navigation.navigate("Plan Meal")}
         style={styles.buttonNavigation}
       >
         <ImageBackground
@@ -70,25 +70,56 @@ export const Home = () => {
           style={styles.image}
           borderRadius={20}
         >
-          <Text style={styles.text}>
+          <Text style={{ marginBottom: -5 }}>
             {" "}
             <SubInfo />{" "}
           </Text>
         </ImageBackground>
-        <Text style={styles.buttonText}>Recipes</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigation.navigate("Pantry Nav")}
+        onPress={() => navigation.navigate("Recipe")}
+        style={styles.buttonNavigation}
+      >
+        <ImageBackground
+          source={fallveggie}
+          resizeMode="cover"
+          style={styles.image}
+          borderRadius={20}
+        >
+          <Text style={{ marginBottom: -5 }}>
+            {" "}
+            <SubInfo2 />{" "}
+          </Text>
+        </ImageBackground>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Pantry")}
+        style={styles.buttonNavigation}
+      >
+        <ImageBackground
+          source={fallveggie}
+          resizeMode="cover"
+          style={styles.image}
+          borderRadius={20}
+        >
+          <Text style={{ marginBottom: -5 }}>
+            {" "}
+            <SubInfo3 />{" "}
+          </Text>
+        </ImageBackground>
+      </TouchableOpacity>
+      {/* <TouchableOpacity
+        onPress={() => navigation.navigate("Pantry")}
         style={[button]}
       >
-        <Text style={styles.buttonText}>My Pantry</Text>
+        <Text style={styles.buttonText}>My Pantrys</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigation.navigate("Plan Nav")}
+        onPress={() => navigation.navigate("Plan Event")}
         style={[button]}
       >
         <Text style={styles.buttonText}>Plan a Meal</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 };
@@ -118,8 +149,8 @@ const styles = StyleSheet.create({
   },
   buttonNavigation: {
     width: "95%",
-    height: "17%",
-    margin: "1%",
+    height: "18%",
+    margin: "2%",
   },
   image: {
     flex: 1,

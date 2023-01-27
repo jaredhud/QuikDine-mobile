@@ -44,7 +44,7 @@ export default function App() {
               iconName = focused ? "restaurant" : "restaurant";
             } else if (route.name === "Account") {
               iconName = focused ? "settings" : "settings-outline";
-            } else if (route.name === "Plan Event") {
+            } else if (route.name === "Plan Meal") {
               iconName = focused ? "calendar" : "calendar";
             } else if (route.name === "Pantry") {
               iconName = focused ? "fast-food" : "fast-food";
@@ -61,9 +61,13 @@ export default function App() {
           tabBarLabelStyle: { fontSize: 12, height: 25, marginTop: -10 },
         })}
       >
-        <Tab.Screen name="Plan Event">
+        <Tab.Screen name="Account">
+          {(props) => <AccountNav {...props} />}
+        </Tab.Screen>
+        <Tab.Screen name="Plan Meal">
           {(props) => <PlanNav {...props} recipeList={selectedRecipesList} />}
         </Tab.Screen>
+        <Tab.Screen name="Home">{(props) => <Home {...props} />}</Tab.Screen>
         <Tab.Screen name="Recipe">
           {(props) => (
             <RecipeNav
@@ -74,7 +78,6 @@ export default function App() {
             />
           )}
         </Tab.Screen>
-        <Tab.Screen name="Home">{(props) => <Home {...props} />}</Tab.Screen>
         <Tab.Screen name="Pantry">
           {(props) => (
             <PantryNav
@@ -83,9 +86,6 @@ export default function App() {
               setIngredientList={setIngredientList}
             />
           )}
-        </Tab.Screen>
-        <Tab.Screen name="Account">
-          {(props) => <AccountNav {...props} />}
         </Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
