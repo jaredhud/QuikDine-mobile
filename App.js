@@ -40,13 +40,13 @@ export default function App() {
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
 
-            if (route.name === "Recipe Nav") {
+            if (route.name === "Recipe") {
               iconName = focused ? "restaurant" : "restaurant";
-            } else if (route.name === "Account Nav") {
+            } else if (route.name === "Account") {
               iconName = focused ? "settings" : "settings-outline";
-            } else if (route.name === "Plan Nav") {
+            } else if (route.name === "Plan Event") {
               iconName = focused ? "calendar" : "calendar";
-            } else if (route.name === "Pantry Nav") {
+            } else if (route.name === "Pantry") {
               iconName = focused ? "fast-food" : "fast-food";
             } else if (route.name === "Home") {
               iconName = focused ? "home" : "home";
@@ -57,13 +57,14 @@ export default function App() {
           },
           tabBarActiveTintColor: "#D3FAD9",
           tabBarInactiveTintColor: "#47c053",
-          tabBarStyle: { backgroundColor: "#333333" },
+          tabBarStyle: { backgroundColor: "#333333", height: "8%" },
+          tabBarLabelStyle: { fontSize: 12, height: 25, marginTop: -10 },
         })}
       >
-        <Tab.Screen name="Plan Nav">
+        <Tab.Screen name="Plan Event">
           {(props) => <PlanNav {...props} recipeList={selectedRecipesList} />}
         </Tab.Screen>
-        <Tab.Screen name="Recipe Nav">
+        <Tab.Screen name="Recipe">
           {(props) => (
             <RecipeNav
               {...props}
@@ -74,7 +75,7 @@ export default function App() {
           )}
         </Tab.Screen>
         <Tab.Screen name="Home">{(props) => <Home {...props} />}</Tab.Screen>
-        <Tab.Screen name="Pantry Nav">
+        <Tab.Screen name="Pantry">
           {(props) => (
             <PantryNav
               {...props}
@@ -83,7 +84,7 @@ export default function App() {
             />
           )}
         </Tab.Screen>
-        <Tab.Screen name="Account Nav">
+        <Tab.Screen name="Account">
           {(props) => <AccountNav {...props} />}
         </Tab.Screen>
       </Tab.Navigator>
