@@ -13,6 +13,8 @@ import RecipeNav from "./src/screens/RecipePage/_RecipeNav";
 import PantryNav from "./src/screens/MyPantry/_PantryNav";
 import PlanNav from "./src/screens/PlanDinner/_PlanNav";
 import { Home } from "./src/screens/Home";
+// Test
+import TestNav from "./src/screens/TestPage/_TestNav";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,7 +35,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="Recipe Nav"
+        initialRouteName="Home"
         options={{ headerShown: false }}
         screenOptions={({ route }) => ({
           headerShown: false,
@@ -68,6 +70,8 @@ export default function App() {
           {(props) => <PlanNav {...props} recipeList={selectedRecipesList} />}
         </Tab.Screen>
         <Tab.Screen name="Home">{(props) => <Home {...props} />}</Tab.Screen>
+        {/* Test */}
+        <Tab.Screen name="Test">{(props) => <TestNav {...props} />}</Tab.Screen>
         <Tab.Screen name="Recipe">
           {(props) => (
             <RecipeNav
