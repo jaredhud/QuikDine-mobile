@@ -29,54 +29,26 @@ const HomeScreen = () => {
       >
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("CreateEvent")}
-        style={[button]}
-      >
-        <Text style={styles.buttonText}>Create Calendar Event</Text>
-      </TouchableOpacity>
+
       <TouchableOpacity
         onPress={() => navigation.navigate("BarCodeScanner")}
         style={[button]}
       >
         <Text style={styles.buttonText}>Scan with Barcode</Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("DashBoard")}
-        style={[button]}
-      >
-        <Text style={styles.buttonText}>Dashboard</Text>
-      </TouchableOpacity>
+
       <TouchableOpacity
         onPress={() => navigation.navigate("Camera")}
         style={[button]}
       >
         <Text style={styles.buttonText}>Camera</Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("SendEmail")}
-        style={[button]}
-      >
-        
-        <Text style={styles.buttonText}>Send Email</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Recipe")}
-        style={[button]}
-      >
-        <Text style={styles.buttonText}>Recipe</Text>
-      </TouchableOpacity>
+
       <TouchableOpacity
         onPress={() => navigation.navigate("TestPage")}
         style={[button]}
       >
         <Text style={styles.buttonText}>Test Page</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("AddIngredient")}
-        style={[button]}
-      >
-        <Text style={styles.buttonText}>Add Ingredients</Text>
       </TouchableOpacity>
     </View>
   );

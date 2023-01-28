@@ -15,7 +15,7 @@ import { FontFamily } from "../../GlobalStyles";
 import fallveggie from "../img/falling-veggies.png";
 import quikdine from "../img/quik-dine.png";
 
-export default function App() {
+export default function DashBoard() {
   const navigation = useNavigation();
 
   return (
