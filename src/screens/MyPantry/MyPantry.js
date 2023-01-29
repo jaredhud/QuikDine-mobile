@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { colors } from "../../../GlobalStyles";
+import { colors, FontFamily } from "../../../GlobalStyles";
 import Ingredient from "../../components/Ingredient";
 
 export default function MyPantry(props) {
@@ -31,7 +31,8 @@ export default function MyPantry(props) {
   return (
     <View style={styles.container}>
       <View style={styles.ingredientsWrapper}>
-        <Text style={styles.sectionTitle}>Your ingredients</Text>
+        <Text style={styles.title}>My Pantry</Text>
+        <Text style={styles.sectionTitle}>Ingredients List</Text>
         <ScrollView style={styles.items}>
           {ingredientList.map((item, index) => {
             return (
@@ -77,7 +78,13 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 24,
-    fontWeight: "bold",
+
+    fontFamily: FontFamily.poppins,
+  },
+  title: {
+    fontSize: 44,
+    // fontWeight: "bold",
+    fontFamily: FontFamily.ubuntubold,
   },
   items: {
     marginTop: 30,
@@ -97,6 +104,7 @@ const styles = StyleSheet.create({
     borderRadius: 60,
     borderColor: "#C0C0C0",
     borderWidth: 1,
+    fontSize: 18,
     width: 250,
   },
   addWrapper: {

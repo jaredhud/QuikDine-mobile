@@ -16,9 +16,9 @@ const Ingredient = (props) => {
         resizeMode="contain"
         style={{
           // marginTop: "-25%",
-          textAlign: "right",
-          width: "150%",
-          height: "150%",
+          marginLeft: "-15%",
+          width: "170%",
+          height: "170%",
         }}
       ></Image>
     </View>
@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
   },
   itemText: {
     maxWidth: "80%",
+    fontSize: 18,
   },
   circular: {
     width: 12,

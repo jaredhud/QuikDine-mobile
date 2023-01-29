@@ -8,7 +8,7 @@ export default function PantryNav(props) {
   const { ingredientList, setIngredientList } = props;
   return (
     <Stack.Navigator id="Pantry Nav">
-      <Stack.Screen name="My Pantry">
+      <Stack.Screen name="My Pantry" options={{ headerShown: false }}>
         {(props) => (
           <MyPantry
             {...props}
