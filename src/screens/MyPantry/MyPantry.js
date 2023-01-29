@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { colors } from "../../../GlobalStyles";
 import Ingredient from "../../components/Ingredient";
 
 export default function MyPantry(props) {
@@ -67,7 +68,7 @@ export default function MyPantry(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#EBEAED",
+    backgroundColor: colors.lightgreen,
   },
   ingredientsWrapper: {
     paddingTop: 80,

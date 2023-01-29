@@ -10,7 +10,7 @@ import {
   ImageBackground,
 } from "react-native";
 import { auth } from "../../firebase";
-import { button } from "../../GlobalStyles";
+import { button, colors } from "../../GlobalStyles";
 import { FontFamily } from "../../GlobalStyles";
 import { SubInfo, SubInfo2, SubInfo3 } from "../components/DashBoardText";
 import fallveggie from "../img/falling-veggies.png";
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#D3FAD9",
+    backgroundColor: colors.lightgreen,
   },
   buttonText: {
     color: "white",
@@ -139,8 +139,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     alignItems: "center",
-    paddingTop: Platform.OS === "ios" ? 20 : 0,
-    backgroundColor: "#D3FAD9",
+    backgroundColor: colors.lightgreen,
   },
 
   text: {
