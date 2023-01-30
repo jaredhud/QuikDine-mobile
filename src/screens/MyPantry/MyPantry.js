@@ -78,12 +78,10 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 24,
-
     fontFamily: FontFamily.poppins,
   },
   title: {
     fontSize: 44,
-    // fontWeight: "bold",
     fontFamily: FontFamily.ubuntubold,
   },
   items: {

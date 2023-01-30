@@ -10,7 +10,7 @@ import {
 import { useEffect, useState } from "react";
 import * as MailComposer from "expo-mail-composer";
 import * as Print from "expo-print";
-import { colors } from "../../../GlobalStyles";
+import { colors, FontFamily } from "../../../GlobalStyles";
 
 export default function SendEmail(props) {
   const [isAvailable, setIsAvailable] = useState(false);
@@ -67,6 +67,8 @@ export default function SendEmail(props) {
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
+        <Text style={styles.title}>Send Email</Text>
+        <Text style={styles.sectionTitle}>to your Friends and Family</Text>
         <TextInput
           placeholder="Subject"
           value={subject}
@@ -78,14 +80,14 @@ export default function SendEmail(props) {
           value={body}
           onChangeText={setBody}
           style={styles.input}
-          secureTextEntry
+          // secureTextEntry
         />
         <TextInput
           placeholder="Email"
           value={email}
           onChangeText={setEmail}
           style={styles.input}
-          secureTextEntry
+          // secureTextEntry
         />
       </View>
       {/* <TextInput
@@ -95,16 +97,29 @@ export default function SendEmail(props) {
       />
       <TextInput value={body} onChangeText={setBody} placeholder="Body" />
       <TextInput value={email} onChangeText={setEmail} placeholder="Email" /> */}
-      <TouchableOpacity onPress={addRecipient} style={styles.button}>
+      {/* <TouchableOpacity onPress={addRecipient} style={styles.button}>
         <Text style={styles.buttonText}>Login</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <View style={{ flexDirection: "row" }}>
-        <Button title="Add Recipient" onPress={addRecipient} />
-        <Button title="Remove Recipient" onPress={removeRecipient} />
+        {/* <Button
+          style={styles.button}
+          title="Add Recipient"
+          onPress={addRecipient}
+        />
+        <Button title="Remove Recipient" onPress={removeRecipient} /> */}
+        <TouchableOpacity onPress={removeRecipient} style={styles.buttonRed}>
+          <Text style={styles.buttonText}>Remove Recipient</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={addRecipient} style={styles.buttonGreen}>
+          <Text style={styles.buttonText}>Add Recipient</Text>
+        </TouchableOpacity>
       </View>
-      {showRecipients()}
+      <View style={styles.inputRecepient}>{showRecipients()}</View>
       {isAvailable ? (
-        <Button title="Send Mail" onPress={sendMail} />
+        // <Button style={{ fontSize: 20 }} title="Send Mail" onPress={sendMail} />
+        <TouchableOpacity onPress={sendMail} style={styles.buttonSend}>
+          <Text style={styles.buttonText}>Send Mail</Text>
+        </TouchableOpacity>
       ) : (
         <Text>Email not available</Text>
       )}
@@ -120,8 +135,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  sectionTitle: {
+    fontSize: 16,
+    fontFamily: FontFamily.poppins,
+    marginBottom: 15,
+  },
+  title: {
+    fontSize: 44,
+    fontFamily: FontFamily.ubuntubold,
+  },
   inputContainer: {
-    marginTop: "-85%",
+    marginTop: "0%",
     marginBottom: "0%",
     width: "80%",
   },
@@ -133,9 +157,37 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 15,
   },
-  button: {
+  inputRecepient: {
+    backgroundColor: "white",
+    paddingHorizontal: 65,
+    paddingVertical: 10,
+    borderRadius: 10,
+    marginTop: 5,
+    marginBottom: 15,
+  },
+  buttonRed: {
+    backgroundColor: "#953737",
+    width: "45%",
+    padding: 15,
+    borderRadius: 10,
+    alignItems: "center",
+    marginTop: 20,
+    marginBottom: 10,
+    margin: 5,
+  },
+  buttonGreen: {
     backgroundColor: "#379540",
-    width: "80%",
+    width: "45%",
+    padding: 15,
+    borderRadius: 10,
+    alignItems: "center",
+    marginTop: 20,
+    marginBottom: 10,
+    margin: 5,
+  },
+  buttonSend: {
+    backgroundColor: "#379540",
+    width: "60%",
     padding: 15,
     borderRadius: 10,
     alignItems: "center",
