@@ -21,6 +21,7 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   const [ingredientList, setIngredientList] = useState([]);
   const [selectedRecipesList, setSelectedRecipesList] = useState([]);
+  const [recipeID, setRecipeID] = useState();
 
   const [fontsLoaded] = useFonts({
     Poppins: require("./assets/fonts/Poppins-Regular.ttf"),
@@ -63,11 +64,15 @@ export default function App() {
           tabBarLabelStyle: { fontSize: 12, height: 25, marginTop: -10 },
         })}
       >
-        <Tab.Screen name="Account">
-          {(props) => <AccountNav {...props} />}
-        </Tab.Screen>
-        <Tab.Screen name="Plan Meal">
-          {(props) => <PlanNav {...props} recipeList={selectedRecipesList} />}
+        <Tab.Screen name="Plan Nav">
+          {(props) => (
+            <PlanNav
+              {...props}
+              recipeList={selectedRecipesList}
+              recipeID={recipeID}
+              setRecipeID={setRecipeID}
+            />
+          )}
         </Tab.Screen>
         <Tab.Screen name="Home">{(props) => <Home {...props} />}</Tab.Screen>
         {/* Test */}
@@ -79,6 +84,8 @@ export default function App() {
               ingredientList={ingredientList}
               selectedRecipesList={selectedRecipesList}
               setSelectedRecipesList={setSelectedRecipesList}
+              recipeID={recipeID}
+              setRecipeID={setRecipeID}
             />
           )}
         </Tab.Screen>
