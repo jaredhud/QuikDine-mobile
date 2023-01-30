@@ -2,11 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, Button, Platform, SafeAreaView } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker'
-import { useNavigation } from '@react-navigation/core';
 
-export const NewEvent = (props) => {
-  const navigation = useNavigation();
-  
+export default function App() {
   const [date, setDate] = useState(new Date());
   const[time, setTime]= useState(new Date(Date.now()));
   const[datePicker, setDatePicker] = useState(false);

@@ -13,6 +13,8 @@ import RecipeNav from "./src/screens/RecipePage/_RecipeNav";
 import PantryNav from "./src/screens/MyPantry/_PantryNav";
 import PlanNav from "./src/screens/PlanDinner/_PlanNav";
 import { Home } from "./src/screens/Home";
+// Test
+import TestNav from "./src/screens/TestPage/_TestNav";
 
 const Tab = createBottomTabNavigator();
 
@@ -34,7 +36,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="Recipe Nav"
+        initialRouteName="Home"
         options={{ headerShown: false }}
         screenOptions={({ route }) => ({
           headerShown: false,
@@ -43,20 +45,23 @@ export default function App() {
 
             if (route.name === "Recipe") {
               iconName = focused ? "restaurant" : "restaurant";
-            } else if (route.name === "My Account") {
+            } else if (route.name === "Account") {
               iconName = focused ? "settings" : "settings-outline";
-            } else if (route.name === "Plan Dinner") {
+            } else if (route.name === "Plan Meal") {
               iconName = focused ? "calendar" : "calendar";
-            } else if (route.name === "My Pantry") {
+            } else if (route.name === "Pantry") {
               iconName = focused ? "fast-food" : "fast-food";
+            } else if (route.name === "Home") {
+              iconName = focused ? "home" : "home";
             }
 
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={30} color={color} />;
           },
           tabBarActiveTintColor: "#D3FAD9",
-          tabBarInactiveTintColor: "#379540",
-          tabBarStyle: { backgroundColor: "#333333" },
+          tabBarInactiveTintColor: "#47c053",
+          tabBarStyle: { backgroundColor: "#333333", height: "8%" },
+          tabBarLabelStyle: { fontSize: 12, height: 25, marginTop: -10 },
         })}
       >
         <Tab.Screen name="Plan Nav">
@@ -69,7 +74,10 @@ export default function App() {
             />
           )}
         </Tab.Screen>
-        <Tab.Screen name="Recipe Nav">
+        <Tab.Screen name="Home">{(props) => <Home {...props} />}</Tab.Screen>
+        {/* Test */}
+        <Tab.Screen name="Test">{(props) => <TestNav {...props} />}</Tab.Screen>
+        <Tab.Screen name="Recipe">
           {(props) => (
             <RecipeNav
               {...props}
@@ -81,8 +89,7 @@ export default function App() {
             />
           )}
         </Tab.Screen>
-        <Tab.Screen name="Home">{(props) => <Home {...props} />}</Tab.Screen>
-        <Tab.Screen name="Pantry Nav">
+        <Tab.Screen name="Pantry">
           {(props) => (
             <PantryNav
               {...props}
@@ -90,9 +97,6 @@ export default function App() {
               setIngredientList={setIngredientList}
             />
           )}
-        </Tab.Screen>
-        <Tab.Screen name="Account Nav">
-          {(props) => <AccountNav {...props} />}
         </Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>

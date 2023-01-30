@@ -3,11 +3,11 @@ import { View, Image, Text, StyleSheet } from "react-native";
 import { Children, cloneElement, isValidElement } from "react";
 import { FontFamily } from "../../GlobalStyles";
 
-export const DashBoardText = () => {
+export const PlanMealText = () => {
   return (
     <View style={styles.dashboardView}>
       <TextStroke stroke={2} color={"#379540"}>
-        <Text style={styles.textStrokeText}> Plan Meal </Text>
+        <Text style={styles.textStrokeText}> New Event </Text>
       </TextStroke>
     </View>
   );
@@ -16,15 +16,15 @@ export const DashBoardText = () => {
 export const SubInfo = () => {
   return (
     <View>
-      <DashBoardText />
+      <PlanMealText />
     </View>
   );
 };
-export const DashBoardText2 = () => {
+export const PlanMealText2 = () => {
   return (
     <View style={styles.dashboardView}>
       <TextStroke stroke={2} color={"#379540"}>
-        <Text style={styles.textStrokeText}> Suggested Recipes </Text>
+        <Text style={styles.textStrokeText}> In-Progress Event </Text>
       </TextStroke>
     </View>
   );
@@ -33,15 +33,15 @@ export const DashBoardText2 = () => {
 export const SubInfo2 = () => {
   return (
     <View>
-      <DashBoardText2 />
+      <PlanMealText2 />
     </View>
   );
 };
-export const DashBoardText3 = () => {
+export const PlanMealText3 = () => {
   return (
     <View style={styles.dashboardView}>
       <TextStroke stroke={2} color={"#379540"}>
-        <Text style={styles.textStrokeText}> My Pantry </Text>
+        <Text style={styles.textStrokeText}> Past Event </Text>
       </TextStroke>
     </View>
   );
@@ -50,7 +50,7 @@ export const DashBoardText3 = () => {
 export const SubInfo3 = () => {
   return (
     <View>
-      <DashBoardText3 />
+      <PlanMealText3 />
     </View>
   );
 };

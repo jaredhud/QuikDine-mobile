@@ -13,7 +13,7 @@ export default function PlanNav(props) {
   const { selectedRecipesList } = props;
   return (
     <Stack.Navigator id="Plan Nav">
-      <Stack.Screen name="Event List">
+      <Stack.Screen name="Event List" options={{ headerShown: false }}>
         {(props) => <EventList {...props} />}
       </Stack.Screen>
       <Stack.Screen name="New Event">
@@ -30,7 +30,7 @@ export default function PlanNav(props) {
       <Stack.Screen name="Voting Page">
         {(props) => <VotingPage {...props} />}
       </Stack.Screen>
-      <Stack.Screen name="Guest List">
+      <Stack.Screen name="Guest List" options={{ headerShown: false }}>
         {(props) => <SendEmail {...props} />}
       </Stack.Screen>
     </Stack.Navigator>

@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { colors, FontFamily } from "../../../GlobalStyles";
 import Ingredient from "../../components/Ingredient";
 
 export default function MyPantry(props) {
@@ -30,7 +31,8 @@ export default function MyPantry(props) {
   return (
     <View style={styles.container}>
       <View style={styles.ingredientsWrapper}>
-        <Text style={styles.sectionTitle}>Your ingredients</Text>
+        <Text style={styles.title}>My Pantry</Text>
+        <Text style={styles.sectionTitle}>Ingredients List</Text>
         <ScrollView style={styles.items}>
           {ingredientList.map((item, index) => {
             return (
@@ -67,7 +69,7 @@ export default function MyPantry(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#EBEAED",
+    backgroundColor: colors.lightgreen,
   },
   ingredientsWrapper: {
     paddingTop: 80,
@@ -76,7 +78,11 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontFamily: FontFamily.poppins,
+  },
+  title: {
+    fontSize: 44,
+    fontFamily: FontFamily.ubuntubold,
   },
   items: {
     marginTop: 30,
@@ -96,12 +102,17 @@ const styles = StyleSheet.create({
     borderRadius: 60,
     borderColor: "#C0C0C0",
     borderWidth: 1,
-    width: 250,
+    fontSize: 18,
+    width: 280,
+    marginLeft: "3%",
+    marginRight: "0%",
   },
   addWrapper: {
     width: 60,
     height: 60,
     backgroundColor: "#FFF",
+    marginRight: "3%",
+    marginLeft: "0%",
     borderRadius: 60,
     justifyContent: "center",
     alignItems: "center",

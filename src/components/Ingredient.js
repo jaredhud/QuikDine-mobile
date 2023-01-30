@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import deleteIcon from "../img/delete.png";
 
 const Ingredient = (props) => {
   return (
@@ -8,7 +9,18 @@ const Ingredient = (props) => {
         <View style={styles.square}></View>
         <Text style={styles.itemText}>{props.text}</Text>
       </View>
-      <View style={styles.circular}></View>
+      {/* <View style={styles.circular}></View> */}
+      <Image
+        // flex={1}
+        source={deleteIcon}
+        resizeMode="contain"
+        style={{
+          // marginTop: "-25%",
+          marginLeft: "-15%",
+          width: "170%",
+          height: "170%",
+        }}
+      ></Image>
     </View>
   );
 };
@@ -38,6 +50,7 @@ const styles = StyleSheet.create({
   },
   itemText: {
     maxWidth: "80%",
+    fontSize: 18,
   },
   circular: {
     width: 12,
