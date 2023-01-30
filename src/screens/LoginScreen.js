@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { auth } from "../../firebase";
 import { processFontFamily } from "expo-font";
-import { FontFamily } from "../../GlobalStyles";
+import { colors, FontFamily } from "../../GlobalStyles";
 import chefGreg from "../img/chef-greg.png";
 import chefGreg2 from "../img/chef-greg2.png";
 
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#D3FAD9",
+    backgroundColor: colors.lightgreen,
   },
   inputContainer: {
     marginTop: "-85%",
@@ -149,7 +149,8 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   button: {
-    backgroundColor: "#379540",
+    backgroundColor: colors.darkgreen,
+
     width: "100%",
     padding: 15,
     borderRadius: 10,

@@ -8,10 +8,12 @@ import {
   View,
   TextInput,
 } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import profile from "../../img/profile.png";
 
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import { auth } from "../../../firebase";
-import { button } from "../../../GlobalStyles";
+import { button, colors } from "../../../GlobalStyles";
 // import Icon from "react-native-ico";
 
 export const AccountHome = (props) => {
@@ -25,7 +27,7 @@ export const AccountHome = (props) => {
         style={{
           width: "100%",
           height: "100%",
-          backgroundColor: "white",
+          backgroundColor: colors.lightgreen,
         }}
       >
         <View
@@ -37,16 +39,19 @@ export const AccountHome = (props) => {
           }}
         >
           {/* <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Ionic name="close-outline" style={{fontSize: 35}} />
-        </TouchableOpacity> */}
-          <Text style={{ fontSize: 16, fontWeight: "bold" }}>Edit Profile</Text>
+            <Ionicons
+              name="arrow-back-circle-outline"
+              style={{ fontSize: 35 }}
+            />
+          </TouchableOpacity> */}
+          <Text style={{ fontSize: 18, fontWeight: "bold" }}>Edit Profile</Text>
           <TouchableOpacity
             onPress={() => {
               TostMessage();
               navigation.goBack();
             }}
           >
-            {/* <Ionic
+            {/* <Ionicons
               name="checkmark"
               style={{ fontSize: 35, color: "#3493D9" }}
             /> */}
@@ -54,22 +59,31 @@ export const AccountHome = (props) => {
         </View>
         <View style={{ padding: 20, alignItems: "center" }}>
           <Image
-            // source={profileImage}
-            style={{ width: 80, height: 80, borderRadius: 100 }}
+            source={profile}
+            style={{ width: 200, height: 200, borderRadius: 100 }}
           />
-          <Text
+          {/* <Text
             style={{
               color: "#3493D9",
             }}
           >
             Change profile photo
-          </Text>
+          </Text> */}
+        </View>
+        <View style={styles.add}>
+          <Ionicons
+            name="ios-add"
+            size={48}
+            color="#DFD8C8"
+            style={{ marginTop: 6, marginLeft: 2 }}
+          ></Ionicons>
         </View>
         <View style={{ padding: 10 }}>
           <View>
             <Text
               style={{
                 opacity: 0.5,
+                fontSize: 18,
               }}
             >
               Name
@@ -78,7 +92,7 @@ export const AccountHome = (props) => {
               placeholder="name"
               defaultValue={name}
               style={{
-                fontSize: 16,
+                fontSize: 18,
                 borderBottomWidth: 1,
                 borderColor: "#CDCDCD",
               }}
@@ -88,6 +102,7 @@ export const AccountHome = (props) => {
             <Text
               style={{
                 opacity: 0.5,
+                fontSize: 18,
               }}
             >
               Username
@@ -96,7 +111,7 @@ export const AccountHome = (props) => {
               placeholder="accountname"
               defaultValue={accountName}
               style={{
-                fontSize: 16,
+                fontSize: 18,
                 borderBottomWidth: 1,
                 borderColor: "#CDCDCD",
               }}
@@ -106,7 +121,7 @@ export const AccountHome = (props) => {
             <TextInput
               placeholder="Website"
               style={{
-                fontSize: 16,
+                fontSize: 18,
                 borderBottomWidth: 1,
                 borderColor: "#CDCDCD",
               }}
@@ -116,14 +131,14 @@ export const AccountHome = (props) => {
             <TextInput
               placeholder="Bio"
               style={{
-                fontSize: 16,
+                fontSize: 18,
                 borderBottomWidth: 1,
                 borderColor: "#CDCDCD",
               }}
             />
           </View>
         </View>
-        <View>
+        {/* <View>
           <Text
             style={{
               marginVertical: 10,
@@ -146,9 +161,9 @@ export const AccountHome = (props) => {
               borderColor: "#EFEFEF",
             }}
           >
-            Persnol information setting
+            Personal information setting
           </Text>
-        </View>
+        </View> */}
       </View>
     </View>
   );
@@ -161,11 +176,22 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#D3FAD9",
+    backgroundColor: colors.lightgreen,
   },
   buttonText: {
     color: "white",
     fontWeight: "700",
     fontSize: 16,
+  },
+  add: {
+    backgroundColor: "#41444B",
+    position: "absolute",
+    bottom: 530,
+    right: 100,
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
