@@ -12,6 +12,7 @@ export const RecipeCard = (recipe) => (
     />
     <Card.Content>
       <Text variant="titleLarge">Card title</Text>
+      <Text>Why</Text>
       <Text variant="bodyMedium">Card content</Text>
     </Card.Content>
     <Card.Cover source={{ uri: "https://picsum.photos/700" }} />
