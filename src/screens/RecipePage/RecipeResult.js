@@ -9,7 +9,12 @@ import { button } from "../../../GlobalStyles";
 
 export const RecipeResult = (props) => {
   const navigation = useNavigation();
-
+  const {
+    ingredientList,
+    selectedRecipeList,
+    setSelectedRecipeList,
+    recipeID,
+  } = props;
   return (
     <View style={styles.container}>
       <Appbar>

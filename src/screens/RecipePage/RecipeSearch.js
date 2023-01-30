@@ -16,10 +16,19 @@ import { RecipeCard } from "../../components/RecipeCard";
 
 export const RecipeSearch = (props) => {
   const navigation = useNavigation();
-  const { ingredientList } = props;
+  const {
+    ingredientList,
+    selectedRecipeList,
+    setSelectedRecipeList,
+    recipeID,
+    setRecipeID,
+    cuisine,
+    mealType,
+    query,
+    diet,
+  } = props;
   const [meals, setMeals] = useState([]);
-  const [cuisine, setCuisine] = useState("");
-  const [mealType, setMealType] = useState("");
+
   const [page, setPage] = useState(1);
   const [resultsPerPage, setResultsPerPage] = useState(10);
   const [searchResults, setSearchResults] = useState(null);
@@ -29,6 +38,8 @@ export const RecipeSearch = (props) => {
       ingredients: ingredientList,
       cuisine: cuisine,
       mealType: mealType,
+      diet: diet,
+      query: query,
     };
     setMeals(pantryRecipeSearch(searchCriteria, page, resultsPerPage));
   }, [page, resultsPerPage]);
