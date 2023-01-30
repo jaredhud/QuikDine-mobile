@@ -13,11 +13,7 @@ export const RecipeCard = (recipe) => {
 
   return (
     <Card onPress={() => pullUpRecipe(recipe.id)}>
-      <Card.Title
-        title="Card Title"
-        subtitle="Card Subtitle"
-        left={LeftContent}
-      />
+      <Card.Title title={recipe.title} left={LeftContent} />
       <Card.Content>
         <Text variant="titleLarge">Card title</Text>
         <Text variant="bodyMedium">Card content</Text>
