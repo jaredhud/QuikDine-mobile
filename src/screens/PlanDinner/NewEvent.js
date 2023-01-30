@@ -1,12 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, Button, Platform, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, Button, Platform, SafeAreaView, TouchableOpacity } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker'
 import { useNavigation } from '@react-navigation/core';
+import { button } from "../../../GlobalStyles";
 
 export const NewEvent = (props) => {
   const navigation = useNavigation();
-  
+
   const [date, setDate] = useState(new Date());
   const[time, setTime]= useState(new Date(Date.now()));
   const[datePicker, setDatePicker] = useState(false);
@@ -57,6 +58,13 @@ onChange={onChange}
 />)}
 
 <StatusBar style="auto"/>
+
+<TouchableOpacity
+        onPress={() => navigation.navigate("Event List")}
+        style={[button]}
+      >
+        <Text style={styles.buttonText}>Invite Recepients</Text>
+      </TouchableOpacity>
 </View>
 );
 }
