@@ -13,7 +13,7 @@ export default function PlanNav(props) {
   const { selectedRecipesList } = props;
   return (
     <Stack.Navigator id="Plan Nav">
-      <Stack.Screen name="Event List">
+      <Stack.Screen name="Event List" options={{ headerShown: false }}>
         {(props) => <EventList {...props} />}
       </Stack.Screen>
       <Stack.Screen name="New Event">
