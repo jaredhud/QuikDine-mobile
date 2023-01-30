@@ -60,7 +60,7 @@ onChange={onChange}
 <StatusBar style="auto"/>
 
 <TouchableOpacity
-        onPress={() => navigation.navigate("Event List")}
+        onPress={() => navigation.navigate("Send Email")}
         style={[button]}
       >
         <Text style={styles.buttonText}>Invite Recepients</Text>
@@ -68,11 +68,7 @@ onChange={onChange}
 </View>
 );
 }
-        
-
-
-
-
+    
 const styles = StyleSheet.create({
   Container: {
     flex: 1,
@@ -80,6 +76,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  buttonText: {
+    color: "white",
+    fontWeight: "700",
+    fontSize: 16,
   },
 
   Text: {

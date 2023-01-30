@@ -30,7 +30,7 @@ export default function PlanNav(props) {
       <Stack.Screen name="Voting Page">
         {(props) => <VotingPage {...props} />}
       </Stack.Screen>
-      <Stack.Screen name="Guest List" options={{ headerShown: false }}>
+      <Stack.Screen name="Send Email" options={{ headerShown: false }}>
         {(props) => <SendEmail {...props} />}
       </Stack.Screen>
     </Stack.Navigator>
