@@ -10,88 +10,51 @@ export default function App() {
   const[timePicker, setTimePicker] = useState(false);
   const[mode, setMode] = useState('date');
   const[show, setShow] = useState(false);
-  const[text, setText]= useState('Empty');
+  const[text, setText]= useState('');
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === "ios");
     setDate(currentDate);
-
+  
     let tempDate = new Date(currentDate);
     let fDate = tempDate.getDate() + '/' + (tempDate.getMonth() +1 ) + '/' + tempDate.getFullYear();
     let fTime =  tempDate.getHours() + ':' + tempDate.getMinutes();
-    setText (fDate + fTime)
+    setText (fDate + '\n' + fTime)
     console.log(fDate + ' / ' +fTime)
   }
 
   const showMode = (currentMode) => {
     setShow(true);
     setMode(currentMode);
-  }
- function showDatePicker () {
-  setDatePicker(true);
-  setMode(date)
-  setShow(true);
- };
-
- function showTimePicker () {
-  setTimePicker(true);
- };
-
- 
- function onTimeSelected (event, value) {
-  setTime(value);
-  setTimePicker(false);
-};
-
-function onDateSelected (event, value) {
-  setDate(value);
-  setDatePicker(false);
-};
+     }
  
 return (
-<SafeAreaView style={{flex:1 }}>
-  <View style={StyleSheet.MainContainer}>
 
-    {datePicker && (
-      <DateTimePicker
-      value={date}
-      mode={'date'}
-      display={Platform.OS ==='ios' ? 'spinner': 'default'}
-      is24Hour={true}
-      onChange={onChange}
-      style={StyleSheet.DatePicker}/>
-    )}
+  <View style={StyleSheet.Container}>
+    <Text style={{fontWeight:'bold', fontSize:20}}>{text}</Text>
+    <View style={{margin:20}}>
+<Button title='DatePicker' onPress={() => showMode('date') }/>
+</View>
+<View style={StyleSheet.Container}>
+<Button title='Pick Start Time' onPress={() => showMode('time') }/>
+</View>
+<View style={StyleSheet.Container}>
+<Button title='Pick End Time' onPress={() => showMode('time') }/>
+</View>
 
-{timePicker && (
-      <DateTimePicker
-      value={time}
-      mode={'time'}
-      display={Platform.OS ==='ios' ? 'spinner': 'default'}
-      is24Hour={true}
-      onChange={onChange}
-      style={StyleSheet.DatePicker}/>
-    )}
+{show && (
+<DateTimePicker
+testID='dateTimePicker'
+value={date}
+mode={mode}
+is24Hour={true}
+display='default'
+onChange={onChange}
+/>)}
 
-    { !datePicker && (
-      <View style={{margin:10}}>
-        <Text style={{fontWeight:'bold',fontSize:20}}></Text>
-        <View style={{margin:20}}/>
-        <Button title="Choose a Date" color="green" onPress={showDatePicker}/>
-        </View>
-    )}
-
-{ !timePicker && (
-      <View style={{margin:10}}>
-        <Text style={{fontWeight:'bold',fontSize:20}}></Text>
-        <View style={{margin:20}}/>
-        <Button title="Start Time" color="green" onPress={showTimePicker} />
-        </View>
-    )}
-    
-
-  </View>
-</SafeAreaView>
+<StatusBar style="auto"/>
+</View>
 );
 }
         
@@ -100,7 +63,7 @@ return (
 
 
 const styles = StyleSheet.create({
-  MainContainer: {
+  Container: {
     flex: 1,
     padding: 6,
     backgroundColor: '#fff',
