@@ -1,47 +1,84 @@
-import React from "react";
-import { useNavigation } from "@react-navigation/core";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-
-import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
-import { auth } from "../../../firebase";
-import { button } from "../../../GlobalStyles";
-// import Icon from "react-native-ico";
+import { StatusBar } from 'expo-status-bar';
+import React, {useState} from 'react';
+import { StyleSheet, Text, View, Button, Platform, SafeAreaView } from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker'
+import { useNavigation } from '@react-navigation/core';
 
 export const NewEvent = (props) => {
   const navigation = useNavigation();
-  const { selectedRecipesList } = props;
+  
+  const [date, setDate] = useState(new Date());
+  const[time, setTime]= useState(new Date(Date.now()));
+  const[datePicker, setDatePicker] = useState(false);
+  const[timePicker, setTimePicker] = useState(false);
+  const[mode, setMode] = useState('date');
+  const[show, setShow] = useState(false);
+  const[text, setText]= useState('');
 
-  return (
-    <View style={styles.container}>
-      <Appbar>
-        <Appbar.Content title="New Event" />
-      </Appbar>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Event List")}
-        style={[button]}
-      >
-        <Text style={styles.buttonText}>Event List</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Guest List")}
-        style={[button]}
-      >
-        <Text style={styles.buttonText}>Guest List</Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS === "ios");
+    setDate(currentDate);
+  
+    let tempDate = new Date(currentDate);
+    let fDate = tempDate.getDate() + '/' + (tempDate.getMonth() +1 ) + '/' + tempDate.getFullYear();
+    let fTime =  tempDate.getHours() + ':' + tempDate.getMinutes();
+    setText (fDate + '\n' + fTime)
+    console.log(fDate + ' / ' +fTime)
+  }
+
+  const showMode = (currentMode) => {
+    setShow(true);
+    setMode(currentMode);
+     }
+ 
+return (
+
+  <View style={StyleSheet.Container}>
+    <Text style={{fontWeight:'bold', fontSize:20}}>{text}</Text>
+    <View style={{margin:20}}>
+<Button title='DatePicker' onPress={() => showMode('date') }/>
+</View>
+<View style={StyleSheet.Container}>
+<Button title='Pick Start Time' onPress={() => showMode('time') }/>
+</View>
+<View style={StyleSheet.Container}>
+<Button title='Pick End Time' onPress={() => showMode('time') }/>
+</View>
+
+{show && (
+<DateTimePicker
+testID='dateTimePicker'
+value={date}
+mode={mode}
+is24Hour={true}
+display='default'
+onChange={onChange}
+/>)}
+
+<StatusBar style="auto"/>
+</View>
+);
+}
+        
+
+
+
 
 const styles = StyleSheet.create({
-  container: {
+  Container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#D3FAD9",
+    padding: 6,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  buttonText: {
-    color: "white",
-    fontWeight: "700",
-    fontSize: 16,
-  },
+
+  Text: {
+    fontSize: 25,
+    color: 'red',
+    paddin: 3,
+    marginBottom: 10,
+    textAlign: 'center'
+  }
 });
