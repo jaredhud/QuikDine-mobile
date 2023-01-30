@@ -22,6 +22,7 @@ export const RecipeSearch = (props) => {
   const [mealType, setMealType] = useState("");
   const [page, setPage] = useState(1);
   const [resultsPerPage, setResultsPerPage] = useState(10);
+  const [searchResults, setSearchResults] = useState(null);
 
   useEffect(() => {
     let searchCriteria = {
@@ -40,7 +41,11 @@ export const RecipeSearch = (props) => {
         <Appbar.Content title="Recipes" />
       </Appbar>
       <Searchbar placeholder="Search Recipes" />
-      <RecipeCard />
+      {searchResults && [
+        searchResults.map((recipe) => {
+          return <RecipeCard recipe={recipe} />;
+        }),
+      ]}
       <TouchableOpacity
         onPress={() => navigation.navigate("Recipe Result")}
         style={[button]}

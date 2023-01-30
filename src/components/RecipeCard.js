@@ -5,11 +5,7 @@ const LeftContent = (props) => <Avatar.Icon {...props} icon="folder" />;
 
 export const RecipeCard = (recipe) => (
   <Card>
-    <Card.Title
-      title="Card Title"
-      subtitle="Card Subtitle"
-      left={LeftContent}
-    />
+    <Card.Title title={recipe.title} left={LeftContent} />
     <Card.Content>
       <Text variant="titleLarge">Card title</Text>
       <Text>Why</Text>
