@@ -64,7 +64,7 @@ export default function App() {
           tabBarLabelStyle: { fontSize: 12, height: 25, marginTop: -10 },
         })}
       >
-        <Tab.Screen name="Plan Nav">
+        <Tab.Screen name="Plan Meal">
           {(props) => (
             <PlanNav
               {...props}
