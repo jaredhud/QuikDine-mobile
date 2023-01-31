@@ -37,12 +37,12 @@ const HomeScreen = () => {
         <Text style={styles.buttonText}>Scan with Barcode</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity
+      {/* <TouchableOpacity
         onPress={() => navigation.navigate("Camera")}
         style={[button]}
       >
         <Text style={styles.buttonText}>Camera</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
       <TouchableOpacity
         onPress={() => navigation.navigate("TestPage")}

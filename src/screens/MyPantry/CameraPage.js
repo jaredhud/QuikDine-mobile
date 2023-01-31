@@ -9,8 +9,8 @@ import {
   View,
   Image,
 } from "react-native";
-import cameraWhite from "../img/camera.png";
-import cameraFlipWhite from "../img/camera-flip-white.png";
+import cameraWhite from "../../img/camera.png";
+import cameraFlipWhite from "../../img/camera-flip-white.png";
 import { useNavigation } from "@react-navigation/native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
@@ -135,7 +135,10 @@ const CameraPage = () => {
         </View>
       </Camera>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={toggleRatio}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("My Pantry")}
+        >
           {/* <Image
                 // flex={1}
                 source={cameraWhite}
