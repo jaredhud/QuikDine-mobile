@@ -7,7 +7,12 @@ import {
   Dimensions,
   TouchableOpacity,
   View,
+  Image,
 } from "react-native";
+import cameraWhite from "../img/camera.png";
+import cameraFlipWhite from "../img/camera-flip-white.png";
+import { useNavigation } from "@react-navigation/native";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 const CameraPage = () => {
   const { height, width } = Dimensions.get("window");
@@ -20,6 +25,23 @@ const CameraPage = () => {
   );
   const [visReqObj, setVisReqObj] = useState({});
   const [idObj, setIdObj] = useState("");
+  const navigation = useNavigation();
+  let iconName = "fast-food";
+  let cameraIcon = "camera";
+  let cameraIconReverse = "camera-reverse-outline";
+  // Removes Tab Navigation - Start
+  useEffect(() => {
+    navigation.getParent()?.setOptions({
+      tabBarStyle: {
+        display: "none",
+      },
+    });
+    return () =>
+      navigation.getParent()?.setOptions({
+        tabBarStyle: undefined,
+      });
+  }, [navigation]);
+  // Removes Tab Navigation - End
   useEffect(() => {
     async function getData() {
       const dataResponse = await fetch(
@@ -111,18 +133,44 @@ const CameraPage = () => {
         <View style={styles.result}>
           <Text style={styles.text}>{idObj}</Text>
         </View>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={takePic}>
-            <Text style={styles.text}>Take Picture</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={toggleCameraType}>
-            <Text style={styles.text}>Flip Camera</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={toggleRatio}>
-            <Text style={styles.text}>Change Ratio</Text>
-          </TouchableOpacity>
-        </View>
       </Camera>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.button} onPress={toggleRatio}>
+          {/* <Image
+                // flex={1}
+                source={cameraWhite}
+                resizeMode="contain"
+                style={{
+                  // marginTop: "-25%",
+                  // marginLeft: "-15%",
+                  // width: "110%",
+                  height: 90,
+                }}
+              ></Image> */}
+          <Ionicons name={iconName} size={50} color="white" />
+          <Text style={styles.text}>My Pantry</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={takePic}>
+          {/* <Image
+            // flex={1}
+            source={cameraWhite}
+            resizeMode="contain"
+            style={{
+              // marginTop: "-25%",
+              // marginLeft: "-15%",
+              // width: "110%",
+              height: 90,
+            }}
+          ></Image> */}
+          <Ionicons name={cameraIcon} size={60} color="white" />
+          <Text style={styles.cameraText}>Scan</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={toggleCameraType}>
+          {/* <Text style={styles.text}>Flip Camera</Text> */}
+          <Ionicons name={cameraIconReverse} size={60} color="white" />
+          <Text style={styles.cameraText}>Flip Camera</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -147,7 +195,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   text: {
-    fontSize: 24,
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "white",
+  },
+  cameraText: {
+    marginTop: -8,
+    fontSize: 15,
     fontWeight: "bold",
     color: "white",
   },

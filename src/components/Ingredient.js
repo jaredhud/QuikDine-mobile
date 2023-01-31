@@ -11,16 +11,18 @@ const Ingredient = (props) => {
       </View>
       {/* <View style={styles.circular}></View> */}
       <Image
-        // flex={1}
+        flex={1}
         source={deleteIcon}
         resizeMode="contain"
         style={{
           // marginTop: "-25%",
-          marginLeft: "-15%",
+          marginLeft: "20%",
           width: "170%",
           height: "170%",
+          flexDirection: "row-reverse",
         }}
       ></Image>
+      {/* <View style={styles.circular}></View> */}
     </View>
   );
 };

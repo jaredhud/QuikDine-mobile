@@ -8,11 +8,16 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Image,
 } from "react-native";
+import { useNavigation } from "@react-navigation/core";
 import { colors, FontFamily } from "../../../GlobalStyles";
 import Ingredient from "../../components/Ingredient";
+import cameraPlus from "../../img/camera-plus.png";
+import plusWhite from "../../img/plus-white.png";
 
 export default function MyPantry(props) {
+  const navigation = useNavigation();
   const { ingredientList, setIngredientList } = props;
   const [ingredient, setIngredient] = useState();
 
@@ -58,7 +63,32 @@ export default function MyPantry(props) {
         />
         <TouchableOpacity onPress={() => handleAddIngredient()}>
           <View style={styles.addWrapper}>
-            <Text style={styles.addText}>+</Text>
+            <Image
+              // flex={1}
+              source={plusWhite}
+              resizeMode="contain"
+              style={{
+                // marginTop: "-25%",
+                // marginLeft: "-15%",
+                width: "60%",
+                height: "120%",
+              }}
+            ></Image>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
+          <View style={styles.addWrapperCamera}>
+            <Image
+              // flex={1}
+              source={cameraPlus}
+              resizeMode="contain"
+              style={{
+                // marginTop: "-25%",
+                // marginLeft: "-15%",
+                width: "120%",
+                height: "120%",
+              }}
+            ></Image>
           </View>
         </TouchableOpacity>
       </KeyboardAvoidingView>
@@ -105,13 +135,25 @@ const styles = StyleSheet.create({
     fontSize: 18,
     width: 280,
     marginLeft: "3%",
-    marginRight: "0%",
+    marginRight: "-15%",
   },
   addWrapper: {
     width: 60,
     height: 60,
-    backgroundColor: "#FFF",
+    backgroundColor: colors.darkgreen,
     marginRight: "3%",
+    marginLeft: "0%",
+    borderRadius: 60,
+    justifyContent: "center",
+    alignItems: "center",
+    borderColor: "#C0C0C0",
+    borderWidth: 1,
+  },
+  addWrapperCamera: {
+    width: 60,
+    height: 60,
+    backgroundColor: colors.darkgreen,
+    marginRight: "5%",
     marginLeft: "0%",
     borderRadius: 60,
     justifyContent: "center",
