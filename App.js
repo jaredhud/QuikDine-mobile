@@ -45,8 +45,8 @@ export default function App() {
 
             if (route.name === "Recipe") {
               iconName = focused ? "restaurant" : "restaurant";
-            } else if (route.name === "Account") {
-              iconName = focused ? "settings" : "settings-outline";
+            } else if (route.name === "Profile") {
+              iconName = focused ? "person-circle" : "person-circle";
             } else if (route.name === "Plan Meal") {
               iconName = focused ? "calendar" : "calendar";
             } else if (route.name === "Pantry") {
@@ -64,6 +64,9 @@ export default function App() {
           tabBarLabelStyle: { fontSize: 12, height: 25, marginTop: -10 },
         })}
       >
+        <Tab.Screen name="Profile">
+          {(props) => <AccountNav {...props} />}
+        </Tab.Screen>
         <Tab.Screen name="Plan Meal">
           {(props) => (
             <PlanNav
@@ -75,6 +78,7 @@ export default function App() {
           )}
         </Tab.Screen>
         <Tab.Screen name="Home">{(props) => <Home {...props} />}</Tab.Screen>
+
         {/* Test */}
         <Tab.Screen name="Test">{(props) => <TestNav {...props} />}</Tab.Screen>
         <Tab.Screen name="Recipe">
