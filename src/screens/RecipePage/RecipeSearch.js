@@ -27,13 +27,12 @@ export const RecipeSearch = (props) => {
     query,
     diet,
   } = props;
-  const [meals, setMeals] = useState([]);
 
   const [page, setPage] = useState(1);
   const [resultsPerPage, setResultsPerPage] = useState(10);
-  const [searchResults, setSearchResults] = useState(null);
+  const [searchResults, setSearchResults] = useState({});
 
-  useEffect(() => {
+  useEffect(async () => {
     let searchCriteria = {
       ingredients: ingredientList,
       cuisine: cuisine,
@@ -41,8 +40,14 @@ export const RecipeSearch = (props) => {
       diet: diet,
       query: query,
     };
-    setMeals(pantryRecipeSearch(searchCriteria, page, resultsPerPage));
-  }, [page, resultsPerPage]);
+
+    const result = await pantryRecipeSearch(
+      searchCriteria,
+      page,
+      resultsPerPage
+    );
+    setSearchResults(result);
+  }, []);
 
   function pageHandler() {}
 
@@ -52,23 +57,30 @@ export const RecipeSearch = (props) => {
         <Appbar.Content title="Recipes" />
       </Appbar>
       <Searchbar placeholder="Search Recipes" />
-      {searchResults && [
-        searchResults.map((recipe) => {
-          return <RecipeCard recipe={recipe} />;
-        }),
-      ]}
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Recipe Result")}
-        style={[button]}
-      >
-        <Text style={styles.buttonText}>Recipe Result</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Advanced Search")}
-        style={[button]}
-      >
-        <Text style={styles.buttonText}>Advanced Search</Text>
-      </TouchableOpacity>
+      <View>
+        <ScrollView>
+          {searchResults.results && [
+            searchResults.results.map((recipe) => {
+              return <RecipeCard key={recipe.id} recipe={recipe} />;
+            }),
+          ]}
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Recipe Result")}
+            style={[button]}
+          >
+            <Text style={styles.buttonText}>Recipe Result</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Advanced Search")}
+            style={[button]}
+          >
+            <Text style={styles.buttonText}>Advanced Search</Text>
+          </TouchableOpacity>
+        </ScrollView>
+      </View>
+      <View>
+        <Text>Where</Text>
+      </View>
       <StatusBar style="auto" />
     </View>
   );

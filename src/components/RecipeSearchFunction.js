@@ -16,7 +16,7 @@ export async function pantryRecipeSearch(searchCriteria, page, resultsPerPage) {
     queryString = `&query=${query.toLowerCase().replace(/ /g, "%20")}`;
   }
   if (ingredients.length > 0) {
-    ingredientString = `&includesIngredients=${ingredients
+    ingredientString = `&includeIngredients=${ingredients
       .join()
       .toLowerCase()
       .replace(/ /g, "%20")}`;
@@ -33,10 +33,9 @@ export async function pantryRecipeSearch(searchCriteria, page, resultsPerPage) {
   const offset = (page - 1) * resultsPerPage;
   const fetchString = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${spoonAPIKey}${queryString}${ingredientString}&sort=max-used-ingredients&addRecipeInformation=true&addRecipeNutrition=false&fillIngredients=true${typeString}${cuisineString}${dietString}&offset=${offset}&number=${resultsPerPage}`;
   console.log(fetchString);
-  // const response = await fetch(fetchString);
-  // const recipes = await response.json();
-  // console.log(recipes);
-  // return recipes;
+  const response = await fetch(fetchString);
+  const recipes = await response.json();
+  return recipes;
 }
 
 // https://api.spoonacular.com/recipes/complexSearch?apiKey=332d07c641fd4c11af3cf76f666e3666&query=&includeIngredients=flour,beef,egg%20whites&sort=min-missing-ingredients&addRecipeInformation=true&addRecipeNutrition=false&fillIngredients=true&type=main%20course&excludeIngredients=&number=1
