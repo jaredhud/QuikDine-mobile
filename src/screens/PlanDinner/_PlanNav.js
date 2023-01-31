@@ -16,7 +16,7 @@ export default function PlanNav(props) {
       <Stack.Screen name="Event List" options={{ headerShown: false }}>
         {(props) => <EventList {...props} />}
       </Stack.Screen>
-      <Stack.Screen name="New Event">
+      <Stack.Screen name="New Event" options={{ headerShown: false }}>
         {(props) => (
           <NewEvent {...props} selectedRecipesList={selectedRecipesList} />
         )}

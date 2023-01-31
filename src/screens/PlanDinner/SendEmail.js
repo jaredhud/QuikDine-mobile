@@ -11,8 +11,11 @@ import { useEffect, useState } from "react";
 import * as MailComposer from "expo-mail-composer";
 import * as Print from "expo-print";
 import { colors, FontFamily } from "../../../GlobalStyles";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { useNavigation } from "@react-navigation/core";
 
 export default function SendEmail(props) {
+  const navigation = useNavigation();
   const [isAvailable, setIsAvailable] = useState(false);
   const [recipients, setRecipients] = useState([]);
   const [subject, setSubject] = useState(undefined);
@@ -66,6 +69,14 @@ export default function SendEmail(props) {
 
   return (
     <View style={styles.container}>
+      <View style={styles.backLocation}>
+        <Ionicons
+          name="arrow-back-circle"
+          size={32}
+          color="green"
+          onPress={() => navigation.navigate("New Event")}
+        />
+      </View>
       <View style={styles.inputContainer}>
         <Text style={styles.title}>Send Email</Text>
         <Text style={styles.sectionTitle}>to your Friends and Family</Text>
@@ -209,5 +220,10 @@ const styles = StyleSheet.create({
     color: "#379540",
     fontWeight: "700",
     fontSize: 16,
+  },
+  backLocation: {
+    position: "absolute",
+    top: 40,
+    left: 15,
   },
 });
