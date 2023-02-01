@@ -38,7 +38,7 @@ const CameraPage = () => {
     });
     return () =>
       navigation.getParent()?.setOptions({
-        tabBarStyle: { backgroundColor: "#333333", height: "8%" },
+        tabBarStyle: { backgroundColor: "#333333", height: 70 },
       });
   }, [navigation]);
   // Removes Tab Navigation - End
