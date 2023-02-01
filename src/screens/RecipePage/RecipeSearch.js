@@ -58,6 +58,26 @@ export const RecipeSearch = (props) => {
     }
     resultFetch();
   }, [page, ingredientList]);
+  useEffect(() => {
+    async function getData() {
+      const filterPacket = {
+        timeFilters,
+        weights,
+      };
+      const dataResponse = await fetch("/api/spoonacular/search", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(filterPacket),
+      });
+      const responseValue = await dataResponse.json();
+      setDataValue(responseValue);
+    }
+    if (weights.assault !== undefined && timeFilters.length > 0) {
+      getData();
+    }
+  }, [timeFilters, weights]);
 
   return (
     <View style={[containerRecipe]}>
