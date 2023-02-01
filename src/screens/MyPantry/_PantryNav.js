@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RecipeSearch } from "../RecipePage/RecipeSearch";
 import MyPantry from "./MyPantry";
 import CameraPage from "../MyPantry/CameraPage";
+import BarCodeScan from "../MyPantry/BarCodeScanner";
 
 const Stack = createNativeStackNavigator();
 export default function PantryNav(props) {
@@ -20,6 +21,9 @@ export default function PantryNav(props) {
       </Stack.Screen>
       <Stack.Screen name="Camera" options={{ headerShown: false }}>
         {() => <CameraPage />}
+      </Stack.Screen>
+      <Stack.Screen name="BarCodeScanner" options={{ headerShown: false }}>
+        {() => <BarCodeScan />}
       </Stack.Screen>
     </Stack.Navigator>
   );

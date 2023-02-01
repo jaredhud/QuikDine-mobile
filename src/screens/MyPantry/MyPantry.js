@@ -80,8 +80,8 @@ export default function MyPantry(props) {
           </View>
         </TouchableOpacity> */}
         <TouchableOpacity
-          onPress={() => navigation.navigate("Camera")}
-          style={[{ justifyContent: "flex-end" }, { marginRight: 7 }]}
+          onPress={() => navigation.navigate("BarCodeScanner")}
+          style={[{ justifyContent: "flex-end" }, { marginRight: 5 }]}
         >
           <View style={styles.addWrapperCamera}>
             <Image
