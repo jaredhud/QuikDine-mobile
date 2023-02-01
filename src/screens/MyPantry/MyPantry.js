@@ -180,8 +180,8 @@ const styles = StyleSheet.create({
     borderColor: "#C0C0C0",
     borderWidth: 1,
     fontSize: 18,
-    width: 280,
-    marginLeft: "3%",
+    width: 260,
+    marginLeft: "5%",
     marginRight: "-15%",
   },
   addWrapper: {

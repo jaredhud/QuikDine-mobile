@@ -60,7 +60,7 @@ export default function App() {
           },
           tabBarActiveTintColor: "#D3FAD9",
           tabBarInactiveTintColor: "#47c053",
-          tabBarStyle: { backgroundColor: "#333333", height: "8%" },
+          tabBarStyle: { backgroundColor: "#333333", height: 70 },
           tabBarLabelStyle: { fontSize: 12, height: 25, marginTop: -10 },
         })}
       >
@@ -80,7 +80,7 @@ export default function App() {
         <Tab.Screen name="Home">{(props) => <Home {...props} />}</Tab.Screen>
 
         {/* Test */}
-        <Tab.Screen name="Test">{(props) => <TestNav {...props} />}</Tab.Screen>
+        {/* <Tab.Screen name="Test">{(props) => <TestNav {...props} />}</Tab.Screen> */}
         <Tab.Screen name="Recipe">
           {(props) => (
             <RecipeNav
