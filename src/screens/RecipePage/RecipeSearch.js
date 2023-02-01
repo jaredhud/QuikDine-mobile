@@ -7,8 +7,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import { useNavigation } from "@react-navigation/core";
-import { useState, useEffect } from "react";
+import { useFocusEffect, useNavigation } from "@react-navigation/core";
+import { useState, useEffect, useCallback } from "react";
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import { button } from "../../../GlobalStyles";
 import { pantryRecipeSearch } from "../../components/RecipeSearchFunction";
@@ -17,7 +17,7 @@ import { RecipeCard } from "../../components/RecipeCard";
 export const RecipeSearch = (props) => {
   const navigation = useNavigation();
   const {
-    ingredientList,
+    pantryList,
     selectedRecipeList,
     setSelectedRecipeList,
     recipeID,
@@ -29,10 +29,17 @@ export const RecipeSearch = (props) => {
   } = props;
 
   const [page, setPage] = useState(1);
-  const [resultsPerPage, setResultsPerPage] = useState(10);
+  const [resultsPerPage, setResultsPerPage] = useState(1);
   const [searchResults, setSearchResults] = useState({});
+  const [ingredientList, setIngredientList] = useState([]);
 
-  useEffect(async () => {
+  useFocusEffect(
+    useCallback(() => {
+      setIngredientList(pantryList);
+    }, [pantryList])
+  );
+
+  useEffect(() => {
     let searchCriteria = {
       ingredients: ingredientList,
       cuisine: cuisine,
@@ -40,14 +47,16 @@ export const RecipeSearch = (props) => {
       diet: diet,
       query: query,
     };
-
-    const result = await pantryRecipeSearch(
-      searchCriteria,
-      page,
-      resultsPerPage
-    );
-    setSearchResults(result);
-  }, []);
+    async function resultFetch() {
+      const result = await pantryRecipeSearch(
+        searchCriteria,
+        page,
+        resultsPerPage
+      );
+      setSearchResults(result);
+    }
+    resultFetch();
+  }, [page]);
 
   function pageHandler() {}
 
@@ -64,19 +73,19 @@ export const RecipeSearch = (props) => {
               return <RecipeCard key={recipe.id} recipe={recipe} />;
             }),
           ]}
-          <TouchableOpacity
-            onPress={() => navigation.navigate("Recipe Result")}
-            style={[button]}
-          >
-            <Text style={styles.buttonText}>Recipe Result</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("Advanced Search")}
-            style={[button]}
-          >
-            <Text style={styles.buttonText}>Advanced Search</Text>
-          </TouchableOpacity>
         </ScrollView>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Recipe Result")}
+          style={[button]}
+        >
+          <Text style={styles.buttonText}>Recipe Result</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Advanced Search")}
+          style={[button]}
+        >
+          <Text style={styles.buttonText}>Advanced Search</Text>
+        </TouchableOpacity>
       </View>
       <View>
         <Text>Where</Text>
