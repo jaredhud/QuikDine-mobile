@@ -15,3 +15,11 @@ export const colors = {
   lightgreen: "#D3FAD9",
   darkgreen: "#379540",
 };
+export const buttonText = {
+  color: "white",
+  fontWeight: "700",
+  fontSize: 16,
+};
+export const containerRecipe = {
+  margin: 10,
+};

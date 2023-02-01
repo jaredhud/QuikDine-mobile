@@ -10,7 +10,7 @@ import {
 import { useNavigation } from "@react-navigation/core";
 import { useState, useEffect } from "react";
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
-import { button } from "../../../GlobalStyles";
+import { button, buttonText, containerRecipe } from "../../../GlobalStyles";
 import { pantryRecipeSearch } from "../../components/RecipeSearchFunction";
 import { RecipeCard } from "../../components/RecipeCard";
 
@@ -52,7 +52,7 @@ export const RecipeSearch = (props) => {
   function pageHandler() {}
 
   return (
-    <View style={styles.container}>
+    <View style={[containerRecipe]}>
       <Appbar>
         <Appbar.Content title="Recipes" />
       </Appbar>
@@ -68,13 +68,13 @@ export const RecipeSearch = (props) => {
             onPress={() => navigation.navigate("Recipe Result")}
             style={[button]}
           >
-            <Text style={styles.buttonText}>Recipe Result</Text>
+            <Text style={[buttonText]}>Recipe Result</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => navigation.navigate("Advanced Search")}
             style={[button]}
           >
-            <Text style={styles.buttonText}>Advanced Search</Text>
+            <Text style={[buttonText]}>Advanced Search</Text>
           </TouchableOpacity>
         </ScrollView>
       </View>

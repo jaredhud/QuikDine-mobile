@@ -21,7 +21,7 @@ export default function RecipeNav(props) {
 
   return (
     <Stack.Navigator id="Recipe Nav">
-      <Stack.Screen name="Recipe Search">
+      <Stack.Screen name="Recipe Search" options={{ headerShown: false }}>
         {(props) => (
           <RecipeSearch
             {...props}
