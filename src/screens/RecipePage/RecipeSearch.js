@@ -65,7 +65,7 @@ export const RecipeSearch = (props) => {
         <Appbar.Content title="Recipes" />
       </Appbar>
       <Searchbar placeholder="Search Recipes" />
-      <View>
+      <View style={{ height: "70%" }}>
         <ScrollView style={{ height: "50%" }}>
           {searchResults.results && [
             searchResults.results.map((recipe) => {
@@ -105,6 +105,7 @@ export const RecipeSearch = (props) => {
           <Text style={styles.buttonText}>Advanced Search</Text>
         </TouchableOpacity>
       </View>
+      <View style={{ height: "10%" }}></View>
       <StatusBar style="auto" />
     </View>
   );
