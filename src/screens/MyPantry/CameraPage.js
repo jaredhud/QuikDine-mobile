@@ -38,7 +38,7 @@ const CameraPage = () => {
     });
     return () =>
       navigation.getParent()?.setOptions({
-        tabBarStyle: undefined,
+        tabBarStyle: { backgroundColor: "#333333", height: "8%" },
       });
   }, [navigation]);
   // Removes Tab Navigation - End
@@ -85,20 +85,6 @@ const CameraPage = () => {
     setType((current) =>
       current === CameraType.back ? CameraType.front : CameraType.back
     );
-  }
-  function toggleRatio() {
-    setRatio((current) => {
-      if (current === "16:9") {
-        setRatio("4:3");
-        setCameraPadding((height - (width / 3) * 4) / 2);
-      } else if (current === "4:3") {
-        setRatio("1:1");
-        setCameraPadding((height - width) / 2);
-      } else {
-        setRatio("16:9");
-        setCameraPadding((height - (width / 9) * 16) / 2);
-      }
-    });
   }
 
   async function takePic() {
