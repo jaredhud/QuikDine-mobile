@@ -17,6 +17,8 @@ import { RecipeCard } from "../../components/RecipeCard";
 export const RecipeSearch = (props) => {
   const navigation = useNavigation();
   const {
+    ingredientList,
+    setIngredientList,
     pantryList,
     selectedRecipeList,
     setSelectedRecipeList,
@@ -31,7 +33,6 @@ export const RecipeSearch = (props) => {
   const [page, setPage] = useState(1);
   const [resultsPerPage, setResultsPerPage] = useState(1);
   const [searchResults, setSearchResults] = useState({});
-  const [ingredientList, setIngredientList] = useState([]);
 
   useFocusEffect(
     useCallback(() => {
@@ -75,20 +76,11 @@ export const RecipeSearch = (props) => {
           ]}
         </ScrollView>
         <TouchableOpacity
-          onPress={() => navigation.navigate("Recipe Result")}
-          style={[button]}
-        >
-          <Text style={styles.buttonText}>Recipe Result</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
           onPress={() => navigation.navigate("Advanced Search")}
           style={[button]}
         >
           <Text style={styles.buttonText}>Advanced Search</Text>
         </TouchableOpacity>
-      </View>
-      <View>
-        <Text>Where</Text>
       </View>
       <StatusBar style="auto" />
     </View>

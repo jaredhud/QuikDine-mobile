@@ -8,7 +8,7 @@ const Stack = createNativeStackNavigator();
 
 export default function RecipeNav(props) {
   const {
-    ingredientList,
+    pantryList,
     selectedRecipeList,
     setSelectedRecipeList,
     recipeID,
@@ -18,6 +18,7 @@ export default function RecipeNav(props) {
   const [mealType, setMealType] = useState("");
   const [query, setQuery] = useState("");
   const [diet, setDiet] = useState("");
+  const [ingredientList, setIngredientList] = useState([]);
 
   return (
     <Stack.Navigator id="Recipe Nav">
@@ -26,6 +27,8 @@ export default function RecipeNav(props) {
           <RecipeSearch
             {...props}
             ingredientList={ingredientList}
+            setIngredientList={setIngredientList}
+            pantryList={pantryList}
             recipeID={recipeID}
             setRecipeID={setRecipeID}
             selectedRecipeList={selectedRecipeList}
@@ -41,7 +44,6 @@ export default function RecipeNav(props) {
         {(props) => (
           <RecipeResult
             {...props}
-            ingredientList={ingredientList}
             recipeID={recipeID}
             selectedRecipeList={selectedRecipeList}
             setSelectedRecipeList={setSelectedRecipeList}
@@ -50,7 +52,12 @@ export default function RecipeNav(props) {
       </Stack.Screen>
       <Stack.Screen name="Advanced Search">
         {(props) => (
-          <AdvancedSearch {...props} ingredientList={ingredientList} />
+          <AdvancedSearch
+            {...props}
+            pantryList={pantryList}
+            ingredientList={ingredientList}
+            setIngredientList={setIngredientList}
+          />
         )}
       </Stack.Screen>
     </Stack.Navigator>

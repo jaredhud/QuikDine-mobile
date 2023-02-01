@@ -19,19 +19,19 @@ import plusWhite from "../../img/plus-white.png";
 
 export default function MyPantry(props) {
   const navigation = useNavigation();
-  const { ingredientList, setIngredientList } = props;
+  const { pantryList, setPantryList } = props;
   const [ingredient, setIngredient] = useState();
 
   const handleAddIngredient = () => {
     Keyboard.dismiss();
-    setIngredientList([...ingredientList, ingredient]);
+    setPantryList([...pantryList, ingredient]);
     setIngredient(null);
   };
 
   const completeIngredient = (index) => {
-    let itemsCopy = [...ingredientList];
+    let itemsCopy = [...pantryList];
     itemsCopy.splice(index, 1);
-    setIngredientList(itemsCopy);
+    setPantryList(itemsCopy);
   };
 
   return (
@@ -40,7 +40,7 @@ export default function MyPantry(props) {
         <Text style={styles.title}>My Pantry</Text>
         <Text style={styles.sectionTitle}>Ingredients List</Text>
         <ScrollView style={styles.items}>
-          {ingredientList.map((item, index) => {
+          {pantryList.map((item, index) => {
             return (
               <TouchableOpacity
                 key={index}

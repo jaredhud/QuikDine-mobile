@@ -7,15 +7,15 @@ import BarCodeScan from "../MyPantry/BarCodeScanner";
 
 const Stack = createNativeStackNavigator();
 export default function PantryNav(props) {
-  const { ingredientList, setIngredientList } = props;
+  const { pantryList, setPantryList } = props;
   return (
     <Stack.Navigator id="Pantry Nav">
       <Stack.Screen name="My Pantry" options={{ headerShown: false }}>
         {(props) => (
           <MyPantry
             {...props}
-            ingredientList={ingredientList}
-            setIngredientList={setIngredientList}
+            pantryList={pantryList}
+            setPantryList={setPantryList}
           />
         )}
       </Stack.Screen>

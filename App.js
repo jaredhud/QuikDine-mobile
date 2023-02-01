@@ -19,7 +19,7 @@ import TestNav from "./src/screens/TestPage/_TestNav";
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const [ingredientList, setIngredientList] = useState([]);
+  const [pantryList, setPantryList] = useState([]);
   const [selectedRecipesList, setSelectedRecipesList] = useState([]);
   const [recipeID, setRecipeID] = useState();
 
@@ -85,7 +85,7 @@ export default function App() {
           {(props) => (
             <RecipeNav
               {...props}
-              ingredientList={ingredientList}
+              pantryList={pantryList}
               selectedRecipesList={selectedRecipesList}
               setSelectedRecipesList={setSelectedRecipesList}
               recipeID={recipeID}
@@ -97,8 +97,8 @@ export default function App() {
           {(props) => (
             <PantryNav
               {...props}
-              ingredientList={ingredientList}
-              setIngredientList={setIngredientList}
+              pantryList={pantryList}
+              setPantryList={setPantryList}
             />
           )}
         </Tab.Screen>
