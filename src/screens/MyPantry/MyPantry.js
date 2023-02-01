@@ -14,6 +14,7 @@ import { useNavigation } from "@react-navigation/core";
 import { colors, FontFamily } from "../../../GlobalStyles";
 import Ingredient from "../../components/Ingredient";
 import cameraPlus from "../../img/camera-plus.png";
+import barcodePlus from "../../img/barcode-plus.png";
 import plusWhite from "../../img/plus-white.png";
 
 export default function MyPantry(props) {
@@ -51,6 +52,52 @@ export default function MyPantry(props) {
           })}
         </ScrollView>
       </View>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={[
+          styles.writeIngredientWrapper,
+          { marginBottom: 80 },
+          { flexDirection: "row-reverse" },
+          { justifyContent: "space-between" },
+        ]}
+      >
+        {/* <TouchableOpacity
+          onPress={() => navigation.navigate("Camera")}
+          style={{ justifyContent: "flex-end" }}
+        >
+          <View style={styles.addWrapperCamera}>
+            <Image
+              // flex={1}
+              source={cameraPlus}
+              resizeMode="contain"
+              style={{
+                // marginTop: "-25%",
+                // marginLeft: "-15%",
+                width: "120%",
+                height: "120%",
+              }}
+            ></Image>
+          </View>
+        </TouchableOpacity> */}
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Camera")}
+          style={[{ justifyContent: "flex-end" }, { marginRight: 7 }]}
+        >
+          <View style={styles.addWrapperCamera}>
+            <Image
+              // flex={1}
+              source={barcodePlus}
+              resizeMode="contain"
+              style={{
+                // marginTop: "-25%",
+                // marginLeft: "-15%",
+                width: "120%",
+                height: "120%",
+              }}
+            ></Image>
+          </View>
+        </TouchableOpacity>
+      </KeyboardAvoidingView>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.writeIngredientWrapper}
