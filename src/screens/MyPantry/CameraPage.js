@@ -139,32 +139,10 @@ const CameraPage = () => {
           style={styles.button}
           onPress={() => navigation.navigate("My Pantry")}
         >
-          {/* <Image
-                // flex={1}
-                source={cameraWhite}
-                resizeMode="contain"
-                style={{
-                  // marginTop: "-25%",
-                  // marginLeft: "-15%",
-                  // width: "110%",
-                  height: 90,
-                }}
-              ></Image> */}
           <Ionicons name={iconName} size={50} color="white" />
           <Text style={styles.text}>My Pantry</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={takePic}>
-          {/* <Image
-            // flex={1}
-            source={cameraWhite}
-            resizeMode="contain"
-            style={{
-              // marginTop: "-25%",
-              // marginLeft: "-15%",
-              // width: "110%",
-              height: 90,
-            }}
-          ></Image> */}
           <Ionicons name={cameraIcon} size={60} color="white" />
           <Text style={styles.cameraText}>Scan</Text>
         </TouchableOpacity>
@@ -187,10 +165,10 @@ const styles = StyleSheet.create({
   camera: { flex: 1 },
   result: { flexDirection: "row", justifyContent: "flex-end" },
   buttonContainer: {
-    flex: 1,
     flexDirection: "row",
     backgroundColor: "transparent",
-    margin: 64,
+    marginBottom: 20,
+    marginTop: -25,
   },
   button: {
     flex: 1,
