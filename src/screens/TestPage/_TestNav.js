@@ -15,7 +15,7 @@ import {
 import LoginScreen from "../LoginScreen";
 import HomeScreen from "../HomeScreen";
 import TestPage from "../TestPage";
-import CameraPage from "../CameraPage";
+import CameraPage from "../MyPantry/CameraPage";
 import RegisterPage from "../RegisterPage";
 
 const Stack = createNativeStackNavigator();
@@ -38,9 +38,9 @@ export default function TestNav() {
       <Stack.Screen name="TestPage" options={{ headerShown: false }}>
         {() => <TestPage />}
       </Stack.Screen>
-      <Stack.Screen name="Camera" options={{ headerShown: false }}>
+      {/* <Stack.Screen name="Camera" options={{ headerShown: false }}>
         {() => <CameraPage />}
-      </Stack.Screen>
+      </Stack.Screen> */}
 
       {/* <Stack.Screen name="Advanced Search">
         <Text>Hello</Text>

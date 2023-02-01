@@ -16,15 +16,15 @@ export default function PlanNav(props) {
       <Stack.Screen name="Event List" options={{ headerShown: false }}>
         {(props) => <EventList {...props} />}
       </Stack.Screen>
-      <Stack.Screen name="New Event">
+      <Stack.Screen name="New Event" options={{ headerShown: false }}>
         {(props) => (
           <NewEvent {...props} selectedRecipesList={selectedRecipesList} />
         )}
       </Stack.Screen>
-      <Stack.Screen name="Past Event">
+      <Stack.Screen name="Past Event" options={{ headerShown: false }}>
         {(props) => <PastEvent {...props} />}
       </Stack.Screen>
-      <Stack.Screen name="In-Progress Event">
+      <Stack.Screen name="In-Progress Event" options={{ headerShown: false }}>
         {(props) => <InProgressEvent {...props} />}
       </Stack.Screen>
       <Stack.Screen name="Voting Page">

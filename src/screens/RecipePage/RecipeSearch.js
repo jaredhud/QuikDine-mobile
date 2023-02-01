@@ -10,7 +10,7 @@ import {
 import { useFocusEffect, useNavigation } from "@react-navigation/core";
 import { useState, useEffect, useCallback } from "react";
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
-import { button } from "../../../GlobalStyles";
+import { button, buttonText, containerRecipe } from "../../../GlobalStyles";
 import { pantryRecipeSearch } from "../../components/RecipeSearchFunction";
 import { RecipeCard } from "../../components/RecipeCard";
 
@@ -61,7 +61,7 @@ export const RecipeSearch = (props) => {
   function pageHandler() {}
 
   return (
-    <View style={styles.container}>
+    <View style={[containerRecipe]}>
       <Appbar>
         <Appbar.Content title="Recipes" />
       </Appbar>
