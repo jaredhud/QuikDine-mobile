@@ -57,9 +57,7 @@ export const RecipeSearch = (props) => {
       setSearchResults(result);
     }
     resultFetch();
-  }, [page]);
-
-  function pageHandler() {}
+  }, [page, ingredientList]);
 
   return (
     <View style={[containerRecipe]}>
@@ -68,13 +66,38 @@ export const RecipeSearch = (props) => {
       </Appbar>
       <Searchbar placeholder="Search Recipes" />
       <View>
-        <ScrollView>
+        <ScrollView style={{ height: "50%" }}>
           {searchResults.results && [
             searchResults.results.map((recipe) => {
-              return <RecipeCard key={recipe.id} recipe={recipe} />;
+              return (
+                <RecipeCard
+                  key={recipe.id}
+                  recipe={recipe}
+                  setRecipeID={setRecipeID}
+                />
+              );
             }),
           ]}
         </ScrollView>
+        <TouchableOpacity
+          onPress={() => {
+            setPage(page - 1);
+          }}
+          style={[button]}
+        >
+          <Text style={styles.buttonText}>Previous Page</Text>
+        </TouchableOpacity>
+        <Text>{`Showing results ${1 + resultsPerPage * (page - 1)}-${
+          resultsPerPage * page
+        }\nPage ${page}`}</Text>
+        <TouchableOpacity
+          onPress={() => {
+            setPage(page + 1);
+          }}
+          style={[button]}
+        >
+          <Text style={styles.buttonText}>Next Page</Text>
+        </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate("Advanced Search")}
           style={[button]}

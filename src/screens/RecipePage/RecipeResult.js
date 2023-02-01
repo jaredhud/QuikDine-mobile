@@ -1,20 +1,30 @@
-import React from "react";
-import { useNavigation } from "@react-navigation/core";
+import React, { useCallback, useState } from "react";
+import { useFocusEffect, useNavigation } from "@react-navigation/core";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import { auth } from "../../../firebase";
 import { button } from "../../../GlobalStyles";
+import { idRecipeSearch } from "../../components/RecipeSearchFunction";
 // import Icon from "react-native-ico";
 
 export const RecipeResult = (props) => {
   const navigation = useNavigation();
-  const {
-    ingredientList,
-    selectedRecipeList,
-    setSelectedRecipeList,
-    recipeID,
-  } = props;
+  const { selectedRecipeList, setSelectedRecipeList, recipeID } = props;
+
+  const [selectedRecipe, setSelectedRecipe] = useState({});
+
+  useFocusEffect(
+    useCallback(() => {
+      async function recipeFetch() {
+        const result = await idRecipeSearch(recipeID);
+        setSelectedRecipe(result);
+      }
+
+      recipeFetch();
+    }, [recipeID])
+  );
+  console.log(selectedRecipe);
   return (
     <View style={styles.container}>
       <Appbar>

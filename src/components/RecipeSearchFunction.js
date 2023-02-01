@@ -37,6 +37,12 @@ export async function pantryRecipeSearch(searchCriteria, page, resultsPerPage) {
   const recipes = await response.json();
   return recipes;
 }
-
+export async function idRecipeSearch(id) {
+  const response = await fetch(
+    `https://api.spoonacular.com/recipes/${id}/information?apiKey=${spoonAPIKey}`
+  );
+  const recipe = await response.json();
+  return recipe;
+}
 // https://api.spoonacular.com/recipes/complexSearch?apiKey=332d07c641fd4c11af3cf76f666e3666&query=&includeIngredients=flour,beef,egg%20whites&sort=min-missing-ingredients&addRecipeInformation=true&addRecipeNutrition=false&fillIngredients=true&type=main%20course&excludeIngredients=&number=1
 // &sortDirection=asc  desc

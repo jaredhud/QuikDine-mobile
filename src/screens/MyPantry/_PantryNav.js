@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { RecipeSearch } from "../RecipePage/RecipeSearch";
 import MyPantry from "./MyPantry";
 import CameraPage from "../MyPantry/CameraPage";
 import BarCodeScan from "../MyPantry/BarCodeScanner";
