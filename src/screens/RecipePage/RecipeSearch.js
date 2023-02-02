@@ -10,7 +10,12 @@ import {
 import { useFocusEffect, useNavigation } from "@react-navigation/core";
 import { useState, useEffect, useCallback } from "react";
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
-import { button, buttonText, containerRecipe } from "../../../GlobalStyles";
+import {
+  button,
+  buttonText,
+  containerRecipe,
+  FontFamily,
+} from "../../../GlobalStyles";
 import { pantryRecipeSearch } from "../../components/RecipeSearchFunction";
 import { RecipeCard } from "../../components/RecipeCard";
 
@@ -112,31 +117,58 @@ export const RecipeSearch = (props) => {
             }),
           ]}
         </ScrollView>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() => {
             setPage(page - 1);
           }}
           style={[button]}
         >
           <Text style={styles.buttonText}>Previous Page</Text>
-        </TouchableOpacity>
-        <Text>{`Showing results ${1 + resultsPerPage * (page - 1)}-${
+        </TouchableOpacity> */}
+        {/* <Text>{`Showing results ${1 + resultsPerPage * (page - 1)}-${
           resultsPerPage * page
-        }\nPage ${page}`}</Text>
-        <TouchableOpacity
-          onPress={() => {
-            setPage(page + 1);
-          }}
-          style={[button]}
-        >
-          <Text style={styles.buttonText}>Next Page</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
+        }\nPage ${page}`}</Text> */}
+
+        {/* <TouchableOpacity
           onPress={() => navigation.navigate("Advanced Search")}
           style={[button]}
         >
           <Text style={styles.buttonText}>Advanced Search</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
+        <View
+          style={{
+            flexDirection: "row",
+            position: "absolute",
+            bottom: -60,
+            justifyContent: "space-between",
+          }}
+        >
+          <TouchableOpacity
+            onPress={() => {
+              setPage(page - 1);
+            }}
+            style={styles.buttonNavigate}
+          >
+            <Text style={styles.buttonText}>{`< Previous`}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Advanced Search")}
+            style={styles.buttonNavigate}
+          >
+            <Text style={styles.buttonText}>{`Page ${page}`}</Text>
+            {/* <Text style={styles.buttonText}>{`Showing results ${
+              1 + resultsPerPage * (page - 1)
+            }-${resultsPerPage * page}\nPage ${page}`}</Text> */}
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              setPage(page + 1);
+            }}
+            style={styles.buttonNavigate}
+          >
+            <Text style={styles.buttonText}>{`Next >`}</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       <View style={{ height: "10%" }}></View>
       <StatusBar style="auto" />
@@ -144,4 +176,39 @@ export const RecipeSearch = (props) => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  buttonRed: {
+    backgroundColor: "#953737",
+    width: "30%",
+    padding: 15,
+    borderRadius: 10,
+    alignItems: "center",
+    marginTop: 20,
+    marginBottom: 10,
+    margin: 5,
+  },
+  buttonGreen: {
+    backgroundColor: "#379540",
+    width: "30%",
+    padding: 15,
+    borderRadius: 10,
+    alignItems: "center",
+    marginTop: 20,
+    marginBottom: 10,
+    margin: 5,
+  },
+  buttonNavigate: {
+    width: "30%",
+    padding: 15,
+
+    alignItems: "center",
+    marginTop: 20,
+
+    margin: 5,
+  },
+  buttonText: {
+    fontWeight: "500",
+    fontSize: 14,
+    fontStyle: FontFamily.poppins,
+  },
+});

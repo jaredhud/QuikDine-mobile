@@ -112,12 +112,6 @@ export default function SendEmail(props) {
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity> */}
       <View style={{ flexDirection: "row" }}>
-        {/* <Button
-          style={styles.button}
-          title="Add Recipient"
-          onPress={addRecipient}
-        />
-        <Button title="Remove Recipient" onPress={removeRecipient} /> */}
         <TouchableOpacity onPress={removeRecipient} style={styles.buttonRed}>
           <Text style={styles.buttonText}>Remove Recipient</Text>
         </TouchableOpacity>
