@@ -116,9 +116,9 @@ export const RecipeSearch = (props) => {
         >
           <Text style={styles.buttonText}>Previous Page</Text>
         </TouchableOpacity>
-        <Text>{`Showing results ${1 + resultsPerPage * (page - 1)}-${
+        {/* <Text>{`Showing results ${1 + resultsPerPage * (page - 1)}-${
           resultsPerPage * page
-        }\nPage ${page}`}</Text>
+        }\nPage ${page}`}</Text> */}
         <TouchableOpacity
           onPress={() => {
             setPage(page + 1);
@@ -133,6 +133,28 @@ export const RecipeSearch = (props) => {
         >
           <Text style={styles.buttonText}>Advanced Search</Text>
         </TouchableOpacity>
+        <View style={{ flexDirection: "row" }}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Advanced Search")}
+            style={styles.buttonRed}
+          >
+            <Text style={styles.buttonText}>Previous</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Advanced Search")}
+            style={styles.buttonGreen}
+          >
+            <Text style={styles.buttonText}>{`Showing results ${
+              1 + resultsPerPage * (page - 1)
+            }-${resultsPerPage * page}\nPage ${page}`}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Advanced Search")}
+            style={styles.buttonGreen}
+          >
+            <Text style={styles.buttonText}>Next</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       <View style={{ height: "10%" }}></View>
       <StatusBar style="auto" />
@@ -140,4 +162,25 @@ export const RecipeSearch = (props) => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  buttonRed: {
+    backgroundColor: "#953737",
+    width: "30%",
+    padding: 15,
+    borderRadius: 10,
+    alignItems: "center",
+    marginTop: 20,
+    marginBottom: 10,
+    margin: 5,
+  },
+  buttonGreen: {
+    backgroundColor: "#379540",
+    width: "30%",
+    padding: 15,
+    borderRadius: 10,
+    alignItems: "center",
+    marginTop: 20,
+    marginBottom: 10,
+    margin: 5,
+  },
+});
