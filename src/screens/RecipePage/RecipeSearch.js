@@ -58,26 +58,35 @@ export const RecipeSearch = (props) => {
     }
     resultFetch();
   }, [page, ingredientList]);
-  useEffect(() => {
-    async function getData() {
-      const filterPacket = {
-        timeFilters,
-        weights,
-      };
-      const dataResponse = await fetch("/api/spoonacular/search", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(filterPacket),
-      });
-      const responseValue = await dataResponse.json();
-      setDataValue(responseValue);
-    }
-    if (weights.assault !== undefined && timeFilters.length > 0) {
-      getData();
-    }
-  }, [timeFilters, weights]);
+  // useEffect(() => {
+  //   async function getData() {
+  //     const searchCriteria = {
+  //       ingredientList,
+  //       cuisine,
+  //       mealType,
+  //       diet,
+  //       query,
+  //       page,
+  //       resultsPerPage,
+  //     };
+
+  //     console.log(searchCriteria);
+  //     const dataResponse = await fetch(
+  //       "http://192.168.1.78:5001/api/spoonacular/search",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-type": "application/json",
+  //         },
+  //         body: JSON.stringify(searchCriteria),
+  //       }
+  //     );
+  //     const responseValue = await dataResponse.json();
+  //     setSearchResults(responseValue);
+  //   }
+  //   getData();
+  //   console.log("searchresults", searchResults);
+  // }, [page, ingredientList]);
 
   return (
     <View style={[containerRecipe]}>
