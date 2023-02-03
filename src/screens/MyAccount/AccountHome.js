@@ -2,10 +2,11 @@ import React from "react";
 import { useNavigation } from "@react-navigation/core";
 import {
   StyleSheet,
+  ScrollView,
+  View,
   Text,
   Image,
   TouchableOpacity,
-  View,
   TextInput,
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -22,149 +23,58 @@ export const AccountHome = (props) => {
   const accountName = "Sophia";
 
   return (
-    <View style={styles.container}>
-      <View
-        style={{
-          width: "100%",
-          height: "100%",
-          backgroundColor: colors.lightgreen,
-        }}
-      >
+    <View>
+      <ScrollView>
         <View
           style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
             padding: 10,
+            width: "100%",
+            backgroundColor: "#000",
+            height: 150,
           }}
         >
-          {/* <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Ionicons
-              name="arrow-back-circle-outline"
-              style={{ fontSize: 35 }}
-            />
-          </TouchableOpacity> */}
-          <Text style={{ fontSize: 18, fontWeight: "bold" }}>Edit Profile</Text>
-          <TouchableOpacity
-            onPress={() => {
-              TostMessage();
-              navigation.goBack();
-            }}
-          >
-            {/* <Ionicons
-              name="checkmark"
-              style={{ fontSize: 35, color: "#3493D9" }}
-            /> */}
+          <TouchableOpacity>
+            <Image source={profile} style={{ width: 30, height: 30 }}></Image>
+            <View></View>
+            <View></View>
           </TouchableOpacity>
         </View>
-        <View style={{ padding: 20, alignItems: "center" }}>
+        <View style={{ alignItems: "center" }}>
           <Image
             source={profile}
-            style={{ width: 200, height: 200, borderRadius: 100 }}
-          />
-          {/* <Text
             style={{
-              color: "#3493D9",
+              width: 140,
+              height: 140,
+              borderRadius: 100,
+              marginTop: -70,
             }}
-          >
-            Change profile photo
-          </Text> */}
-        </View>
-        <View style={styles.add}>
-          <Ionicons
-            name="ios-add"
-            size={48}
-            color="#DFD8C8"
-            style={{ marginTop: 6, marginLeft: 2 }}
-          ></Ionicons>
-        </View>
-        <View style={{ padding: 10 }}>
-          <View>
-            <Text
-              style={{
-                opacity: 0.5,
-                fontSize: 18,
-              }}
-            >
-              Name
-            </Text>
-            <TextInput
-              placeholder="name"
-              defaultValue={name}
-              style={{
-                fontSize: 18,
-                borderBottomWidth: 1,
-                borderColor: "#CDCDCD",
-              }}
-            />
-          </View>
-          <View style={{ paddingVertical: 10 }}>
-            <Text
-              style={{
-                opacity: 0.5,
-                fontSize: 18,
-              }}
-            >
-              Username
-            </Text>
-            <TextInput
-              placeholder="accountname"
-              defaultValue={accountName}
-              style={{
-                fontSize: 18,
-                borderBottomWidth: 1,
-                borderColor: "#CDCDCD",
-              }}
-            />
-          </View>
-          <View style={{ paddingVertical: 10 }}>
-            <TextInput
-              placeholder="Website"
-              style={{
-                fontSize: 18,
-                borderBottomWidth: 1,
-                borderColor: "#CDCDCD",
-              }}
-            />
-          </View>
-          <View style={{ paddingVertical: 10 }}>
-            <TextInput
-              placeholder="Bio"
-              style={{
-                fontSize: 18,
-                borderBottomWidth: 1,
-                borderColor: "#CDCDCD",
-              }}
-            />
-          </View>
-        </View>
-        {/* <View>
-          <Text
-            style={{
-              marginVertical: 10,
-              padding: 10,
-              color: "#3493D9",
-              borderTopWidth: 1,
-              borderBottomWidth: 1,
-              borderColor: "#EFEFEF",
-            }}
-          >
-            Switch to Professional account
+          ></Image>
+          <Text style={{ fontSize: 25, fontWeight: "bold", padding: 10 }}>
+            Sophia
           </Text>
-          <Text
-            style={{
-              marginVertical: 10,
-              padding: 10,
-              color: "#3493D9",
-              borderTopWidth: 1,
-              borderBottomWidth: 1,
-              borderColor: "#EFEFEF",
-            }}
-          >
-            Personal information setting
+          <Text style={{ fontSize: 15, fontWeight: "bold", color: "grey" }}>
+            26, Female
           </Text>
-        </View> */}
-      </View>
+        </View>
+        <View
+          style={{
+            alignSelf: "center",
+            flexDirection: "row",
+            justifyContent: "center",
+            backgroundColor: "#fff",
+            width: "90%",
+            padding: 20,
+            paddingBottom: 22,
+            borderRadius: 10,
+            shadowOpacity: 80,
+            elevation: 15,
+            marginTop: 20,
+          }}
+        >
+          <Image source={profile} style={{ width: 20, height: 20 }}></Image>
+          <Text>Product Designer</Text>
+        </View>
+      </ScrollView>
     </View>
   );
 };
