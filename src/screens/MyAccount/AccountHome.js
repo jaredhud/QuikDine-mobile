@@ -14,13 +14,17 @@ import profile from "../../img/profile.png";
 
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import { auth } from "../../../firebase";
-import { button, colors } from "../../../GlobalStyles";
+import { button, colors, FontFamily } from "../../../GlobalStyles";
+
 // import Icon from "react-native-ico";
 
 export const AccountHome = (props) => {
   const navigation = useNavigation();
   const name = "Sophia";
   const accountName = "Sophia";
+  let jobIcon = "briefcase-outline";
+  let locationIcon = "location";
+  let favoritesIcon = "heart-sharp";
 
   return (
     <View>
@@ -29,15 +33,15 @@ export const AccountHome = (props) => {
           style={{
             padding: 10,
             width: "100%",
-            backgroundColor: "#000",
+            backgroundColor: "#379540",
             height: 150,
           }}
         >
-          <TouchableOpacity>
+          {/* <TouchableOpacity>
             <Image source={profile} style={{ width: 30, height: 30 }}></Image>
             <View></View>
             <View></View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
         <View style={{ alignItems: "center" }}>
           <Image
@@ -71,8 +75,65 @@ export const AccountHome = (props) => {
             marginTop: 20,
           }}
         >
-          <Image source={profile} style={{ width: 20, height: 20 }}></Image>
-          <Text>Product Designer</Text>
+          <Ionicons name={jobIcon} size={20} color="black" />
+          <Text>{`  Full Stack Developer`}</Text>
+        </View>
+        <View
+          style={{
+            alignSelf: "center",
+            flexDirection: "row",
+            justifyContent: "center",
+            backgroundColor: "#fff",
+            width: "90%",
+            padding: 20,
+            paddingBottom: 22,
+            borderRadius: 10,
+            shadowOpacity: 80,
+            elevation: 15,
+            marginTop: 20,
+          }}
+        >
+          <Ionicons name={locationIcon} size={20} color="black" />
+          <Text>{`  Calgary, Alberta`}</Text>
+        </View>
+        <View
+          style={{
+            alignSelf: "center",
+            flexDirection: "row",
+            justifyContent: "center",
+            backgroundColor: "#fff",
+            width: "90%",
+            padding: 20,
+            paddingBottom: 22,
+            borderRadius: 10,
+            shadowOpacity: 80,
+            elevation: 15,
+            marginTop: 20,
+          }}
+        >
+          <Ionicons name={favoritesIcon} size={20} color="black" />
+          <Text>{`  Bananas, Pies, Bacon, and Cheese`}</Text>
+        </View>
+        <View
+          style={{
+            alignSelf: "center",
+            flexDirection: "row",
+            justifyContent: "center",
+            backgroundColor: "#fff",
+            width: "90%",
+            padding: 20,
+            paddingBottom: 22,
+            borderRadius: 10,
+            shadowOpacity: 80,
+            elevation: 15,
+            marginTop: 20,
+            backgroundColor: "black",
+            marginBottom: 40,
+          }}
+        >
+          <Text
+            style={{ color: "white", fontWeight: "bold" }}
+          >{`  Logout`}</Text>
         </View>
       </ScrollView>
     </View>
