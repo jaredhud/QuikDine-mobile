@@ -139,8 +139,9 @@ export const RecipeSearch = (props) => {
           style={{
             flexDirection: "row",
             position: "absolute",
-            bottom: -60,
+            bottom: "-28%",
             justifyContent: "space-between",
+            marginLeft: "3%",
           }}
         >
           <TouchableOpacity
