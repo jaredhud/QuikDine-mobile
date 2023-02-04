@@ -78,8 +78,6 @@ export const RecipeSearch = (props) => {
         page,
         resultsPerPage,
       };
-
-      console.log(searchCriteria);
       const dataResponse = await fetch(
         `http://${serverIP}:5001/api/spoonacular/search`,
         {
@@ -94,7 +92,6 @@ export const RecipeSearch = (props) => {
       setSearchResults(responseValue);
     }
     getData();
-    console.log("searchresults", searchResults);
   }, [page, ingredientList]);
 
   return (
@@ -129,12 +126,12 @@ export const RecipeSearch = (props) => {
           resultsPerPage * page
         }\nPage ${page}`}</Text> */}
 
-        {/* <TouchableOpacity
+        <TouchableOpacity
           onPress={() => navigation.navigate("Advanced Search")}
           style={[button]}
         >
           <Text style={styles.buttonText}>Advanced Search</Text>
-        </TouchableOpacity> */}
+        </TouchableOpacity>
         <View
           style={{
             flexDirection: "row",

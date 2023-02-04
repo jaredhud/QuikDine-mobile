@@ -34,9 +34,13 @@ export default function RecipeNav(props) {
             selectedRecipeList={selectedRecipeList}
             setSelectedRecipeList={setSelectedRecipeList}
             cuisine={cuisine}
+            setCuisine={setCuisine}
             mealType={mealType}
+            setMealType={setMealType}
             query={query}
+            setQuery={setQuery}
             diet={diet}
+            setDiet={setDiet}
           />
         )}
       </Stack.Screen>
@@ -57,6 +61,14 @@ export default function RecipeNav(props) {
             pantryList={pantryList}
             ingredientList={ingredientList}
             setIngredientList={setIngredientList}
+            cuisine={cuisine}
+            setCuisine={setCuisine}
+            mealType={mealType}
+            setMealType={setMealType}
+            diet={diet}
+            setDiet={setDiet}
+            query={query}
+            setQuery={setQuery}
           />
         )}
       </Stack.Screen>
