@@ -12,7 +12,12 @@ import {
 import quikdine from "../../img/quik-dine.png";
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import { auth } from "../../../firebase";
-import { button, colors, FontFamily } from "../../../GlobalStyles";
+import {
+  button,
+  buttonBorder,
+  colors,
+  FontFamily,
+} from "../../../GlobalStyles";
 import fallveggie from "../../img/falling-veggies.png";
 import { SubInfo, SubInfo2, SubInfo3 } from "../../components/PlanMealText";
 // import Icon from "react-native-ico";
@@ -38,13 +43,13 @@ export const EventList = (props) => {
       </View>
       <TouchableOpacity
         onPress={() => navigation.navigate("New Event")}
-        style={styles.buttonNavigation}
+        style={[buttonBorder]}
       >
         <ImageBackground
           source={fallveggie}
           resizeMode="cover"
           style={styles.image}
-          borderRadius={20}
+          borderRadius={16}
         >
           <Text style={{ marginBottom: -5 }}>
             {" "}
@@ -54,13 +59,13 @@ export const EventList = (props) => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate("In-Progress Event")}
-        style={styles.buttonNavigation}
+        style={[buttonBorder]}
       >
         <ImageBackground
           source={fallveggie}
           resizeMode="cover"
           style={styles.image}
-          borderRadius={20}
+          borderRadius={16}
         >
           <Text style={{ marginBottom: -5 }}>
             {" "}
@@ -70,13 +75,13 @@ export const EventList = (props) => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate("Past Event")}
-        style={styles.buttonNavigation}
+        style={[buttonBorder]}
       >
         <ImageBackground
           source={fallveggie}
           resizeMode="cover"
           style={styles.image}
-          borderRadius={20}
+          borderRadius={16}
         >
           <Text style={{ marginBottom: -5 }}>
             {" "}

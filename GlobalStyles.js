@@ -23,3 +23,14 @@ export const buttonText = {
 export const containerRecipe = {
   margin: 10,
 };
+export const buttonBorder = {
+  width: "95%",
+  height: "18%",
+  margin: "2%",
+  borderWidth: 4,
+  borderRadius: 20,
+  borderColor: "#b2893a",
+};
+export const menuBorderRadius = {
+  borderRadius: 10,
+};

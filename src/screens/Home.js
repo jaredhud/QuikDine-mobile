@@ -10,7 +10,12 @@ import {
   ImageBackground,
 } from "react-native";
 import { auth } from "../../firebase";
-import { button, colors } from "../../GlobalStyles";
+import {
+  menuBorderRadius,
+  button,
+  buttonBorder,
+  colors,
+} from "../../GlobalStyles";
 import { FontFamily } from "../../GlobalStyles";
 import { SubInfo, SubInfo2, SubInfo3 } from "../components/DashBoardText";
 import fallveggie from "../img/falling-veggies.png";
@@ -62,13 +67,13 @@ export const Home = () => {
       </TouchableOpacity> */}
       <TouchableOpacity
         onPress={() => navigation.navigate("Plan Meal")}
-        style={styles.buttonNavigation}
+        style={[buttonBorder]}
       >
         <ImageBackground
           source={fallveggie}
           resizeMode="cover"
           style={styles.image}
-          borderRadius={20}
+          borderRadius={16}
         >
           <Text style={{ marginBottom: -5 }}>
             {" "}
@@ -78,13 +83,13 @@ export const Home = () => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate("Recipe")}
-        style={styles.buttonNavigation}
+        style={[buttonBorder]}
       >
         <ImageBackground
           source={fallveggie}
           resizeMode="cover"
           style={styles.image}
-          borderRadius={20}
+          borderRadius={16}
         >
           <Text style={{ marginBottom: -5 }}>
             {" "}
@@ -94,13 +99,13 @@ export const Home = () => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate("Pantry")}
-        style={styles.buttonNavigation}
+        style={[buttonBorder]}
       >
         <ImageBackground
           source={fallveggie}
           resizeMode="cover"
           style={styles.image}
-          borderRadius={20}
+          borderRadius={16}
         >
           <Text style={{ marginBottom: -5 }}>
             {" "}
