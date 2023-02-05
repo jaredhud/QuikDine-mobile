@@ -74,7 +74,7 @@ export const Home = () => {
             flex: 1,
             borderWidth: 2,
             borderRadius: 16,
-            borderColor: "#e5ae49",
+            borderColor: "#b2893a",
           }}
         >
           <ImageBackground

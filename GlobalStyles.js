@@ -27,9 +27,10 @@ export const buttonBorder = {
   width: "95%",
   height: "18%",
   margin: "2%",
-  borderWidth: 4,
+  borderWidth: 3.5,
   borderRadius: 20,
-  borderColor: "#b2893a",
+  borderColor: "#e5ae49",
+  // borderColor: "#b2893a",
   elevation: 10,
   shadowOpacity: 80,
 };
