@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RecipeSearch } from "../RecipePage/RecipeSearch";
 import { RecipeResult } from "../RecipePage/RecipeResult";
-import { TestResult } from "../TestPage/TestResult";
+import { TestResult } from "./TestResult";
 import { AdvancedSearch } from "../RecipePage/AdvancedSearch";
 import {
   StyleSheet,
@@ -14,7 +14,7 @@ import {
 } from "react-native";
 import LoginScreen from "../LoginScreen";
 import HomeScreen from "./HomeScreen";
-import TestPage from "../TestPage";
+import TestPage from "./TestPage";
 import CameraPage from "../MyPantry/CameraPage";
 import RegisterPage from "../RegisterPage";
 
