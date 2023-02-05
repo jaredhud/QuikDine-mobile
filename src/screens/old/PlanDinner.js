@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/core";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { button } from "../../GlobalStyles";
-import { colors } from "../../GlobalStyles";
+import { button } from "../../../GlobalStyles";
+import { colors } from "../../../GlobalStyles";
 
 const PlanDinner = () => {
   const navigation = useNavigation();

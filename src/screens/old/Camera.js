@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import { Camera, CameraType } from "expo-camera";
 import * as MediaLibrary from "expo-media-library";
-import Button from "../components/Button";
+import Button from "../../components/Button";
 
 function CameraApp() {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);

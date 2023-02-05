@@ -80,7 +80,7 @@ export default function App() {
         <Tab.Screen name="Home">{(props) => <Home {...props} />}</Tab.Screen>
 
         {/* Test */}
-        {/* <Tab.Screen name="Test">{(props) => <TestNav {...props} />}</Tab.Screen> */}
+        <Tab.Screen name="Test">{(props) => <TestNav {...props} />}</Tab.Screen>
         <Tab.Screen name="Recipe">
           {(props) => (
             <RecipeNav
