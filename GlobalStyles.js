@@ -30,7 +30,6 @@ export const buttonBorder = {
   borderWidth: 4,
   borderRadius: 20,
   borderColor: "#b2893a",
-};
-export const menuBorderRadius = {
-  borderRadius: 10,
+  elevation: 10,
+  shadowOpacity: 80,
 };

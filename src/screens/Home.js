@@ -69,17 +69,26 @@ export const Home = () => {
         onPress={() => navigation.navigate("Plan Meal")}
         style={[buttonBorder]}
       >
-        <ImageBackground
-          source={fallveggie}
-          resizeMode="cover"
-          style={styles.image}
-          borderRadius={16}
+        <View
+          style={{
+            flex: 1,
+            borderWidth: 2,
+            borderRadius: 16,
+            borderColor: "#e5ae49",
+          }}
         >
-          <Text style={{ marginBottom: -5 }}>
-            {" "}
-            <SubInfo />{" "}
-          </Text>
-        </ImageBackground>
+          <ImageBackground
+            source={fallveggie}
+            resizeMode="cover"
+            style={styles.image}
+            borderRadius={14}
+          >
+            <Text style={{ marginBottom: -5 }}>
+              {" "}
+              <SubInfo />{" "}
+            </Text>
+          </ImageBackground>
+        </View>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate("Recipe")}
