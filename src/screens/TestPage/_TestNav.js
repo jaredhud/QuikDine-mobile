@@ -13,7 +13,7 @@ import {
   SafeAreaView,
 } from "react-native";
 import LoginScreen from "../LoginScreen";
-import HomeScreen from "../HomeScreen";
+import HomeScreen from "./HomeScreen";
 import TestPage from "../TestPage";
 import CameraPage from "../MyPantry/CameraPage";
 import RegisterPage from "../RegisterPage";
