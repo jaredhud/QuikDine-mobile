@@ -1,17 +1,27 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/core";
+import { StatusBar } from "expo-status-bar";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import DateTimePicker from "@react-native-community/datetimepicker";
 import {
   StyleSheet,
   Text,
-  View,
-  Button,
-  Platform,
-  SafeAreaView,
   TouchableOpacity,
+  View,
+  Image,
+  Platform,
+  ImageBackground,
+  Button,
 } from "react-native";
-import DateTimePicker from "@react-native-community/datetimepicker";
-import { useNavigation } from "@react-navigation/core";
-import { button } from "../../../GlobalStyles";
+
+import {
+  menuBorderRadius,
+  button,
+  buttonBorder,
+  colors,
+  innerTabBorder,
+  FontFamily,
+} from "../../../GlobalStyles";
 
 export const NewEvent = (props) => {
   const navigation = useNavigation();
@@ -47,7 +57,26 @@ export const NewEvent = (props) => {
   };
 
   return (
-    <View style={StyleSheet.Container}>
+    <View style={styles.mainContainer}>
+      <View style={styles.backLocation}>
+        <Ionicons
+          name="arrow-back-circle"
+          size={32}
+          color="green"
+          onPress={() => navigation.navigate("Event List")}
+        />
+      </View>
+      <View
+        style={{
+          width: "95%",
+          height: "30%",
+          justifyContent: "center",
+          margin: "2%",
+        }}
+      >
+        <Text style={styles.title}>Make New Event</Text>
+        <Text style={styles.sectionTitle}>Pick your Date and Time</Text>
+      </View>
       <Text style={{ fontWeight: "bold", fontSize: 20 }}>{text}</Text>
       <View style={{ margin: 20 }}>
         <Button title="DatePicker" onPress={() => showMode("date")} />
@@ -102,5 +131,27 @@ const styles = StyleSheet.create({
     paddin: 3,
     marginBottom: 10,
     textAlign: "center",
+  },
+  mainContainer: {
+    flex: 1,
+    alignItems: "center",
+    backgroundColor: colors.lightgreen,
+  },
+  sectionTitle: {
+    fontSize: 24,
+    fontFamily: FontFamily.poppins,
+    marginLeft: 10,
+  },
+  title: {
+    marginLeft: 10,
+    fontSize: 44,
+    marginBottom: -5,
+    fontFamily: FontFamily.ubuntubold,
+    marginTop: 40,
+  },
+  backLocation: {
+    position: "absolute",
+    top: 40,
+    left: 15,
   },
 });

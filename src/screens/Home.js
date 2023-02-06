@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/core";
+import { auth } from "../../firebase";
 import {
   StyleSheet,
   Text,
@@ -9,16 +10,17 @@ import {
   Platform,
   ImageBackground,
 } from "react-native";
-import { auth } from "../../firebase";
+
 import {
   menuBorderRadius,
   button,
   buttonBorder,
   colors,
   innerTabBorder,
+  FontFamily,
 } from "../../GlobalStyles";
-import { FontFamily } from "../../GlobalStyles";
 import { SubInfo, SubInfo2, SubInfo3 } from "../components/DashBoardText";
+
 import fallveggie from "../img/falling-veggies.png";
 import quikdine from "../img/quik-dine.png";
 import pantrybg from "../img/pantry-bg.jpg";
@@ -153,7 +155,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: colors.lightgreen,
   },
-
   text: {
     fontSize: 26,
     color: "white",
