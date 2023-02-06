@@ -38,7 +38,7 @@ export const EventList = (props) => {
           margin: "2%",
         }}
       >
-        <Text style={styles.title}>Plan Meal</Text>
+        <Text style={styles.title}>Plan Meals</Text>
         <Text style={styles.sectionTitle}>More people, more fun!</Text>
       </View>
       <TouchableOpacity

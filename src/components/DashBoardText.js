@@ -7,7 +7,7 @@ export const DashBoardText = () => {
   return (
     <View style={styles.dashboardView}>
       <TextStroke stroke={2} color={"#379540"}>
-        <Text style={styles.textStrokeText}> Plan Meal </Text>
+        <Text style={styles.textStrokeText}> Plan Meals </Text>
       </TextStroke>
     </View>
   );

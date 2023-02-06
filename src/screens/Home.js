@@ -15,11 +15,14 @@ import {
   button,
   buttonBorder,
   colors,
+  innerTabBorder,
 } from "../../GlobalStyles";
 import { FontFamily } from "../../GlobalStyles";
 import { SubInfo, SubInfo2, SubInfo3 } from "../components/DashBoardText";
 import fallveggie from "../img/falling-veggies.png";
 import quikdine from "../img/quik-dine.png";
+import pantrybg from "../img/pantry-bg.jpg";
+import planmeals from "../img/planmeals.png";
 // import Icon from "react-native-ico";
 
 export const Home = () => {
@@ -27,6 +30,7 @@ export const Home = () => {
 
   return (
     <View style={styles.mainContainer}>
+      {/* Main */}
       <View
         style={{
           width: "95%",
@@ -65,31 +69,24 @@ export const Home = () => {
       {/* <TouchableOpacity onPress={handleSignOut} style={styles.button}>
         <Text style={styles.buttonText}>Sign out</Text>
       </TouchableOpacity> */}
+      {/* First Tab */}
       <TouchableOpacity
         onPress={() => navigation.navigate("Plan Meal")}
         style={[buttonBorder]}
       >
-        <View
-          style={{
-            flex: 1,
-            borderWidth: 2,
-            borderRadius: 16,
-            borderColor: "#b2893a",
-          }}
+        <ImageBackground
+          source={planmeals}
+          resizeMode="cover"
+          style={styles.image}
+          borderRadius={14}
         >
-          <ImageBackground
-            source={fallveggie}
-            resizeMode="cover"
-            style={styles.image}
-            borderRadius={14}
-          >
-            <Text style={{ marginBottom: -5 }}>
-              {" "}
-              <SubInfo />{" "}
-            </Text>
-          </ImageBackground>
-        </View>
+          <Text style={{ marginBottom: -5 }}>
+            {" "}
+            <SubInfo />{" "}
+          </Text>
+        </ImageBackground>
       </TouchableOpacity>
+      {/* Second Tab */}
       <TouchableOpacity
         onPress={() => navigation.navigate("Recipe")}
         style={[buttonBorder]}
@@ -98,7 +95,7 @@ export const Home = () => {
           source={fallveggie}
           resizeMode="cover"
           style={styles.image}
-          borderRadius={16}
+          borderRadius={14}
         >
           <Text style={{ marginBottom: -5 }}>
             {" "}
@@ -106,12 +103,13 @@ export const Home = () => {
           </Text>
         </ImageBackground>
       </TouchableOpacity>
+      {/* Third Tab */}
       <TouchableOpacity
         onPress={() => navigation.navigate("Pantry")}
         style={[buttonBorder]}
       >
         <ImageBackground
-          source={fallveggie}
+          source={pantrybg}
           resizeMode="cover"
           style={styles.image}
           borderRadius={16}

@@ -34,3 +34,9 @@ export const buttonBorder = {
   elevation: 10,
   shadowOpacity: 80,
 };
+export const innerTabBorder = {
+  flex: 1,
+  borderWidth: 2,
+  borderRadius: 16,
+  borderColor: "#b2893a",
+};
