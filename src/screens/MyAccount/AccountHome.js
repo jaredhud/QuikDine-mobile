@@ -109,6 +109,7 @@ export const AccountHome = (props) => {
             shadowOpacity: 80,
             elevation: 15,
             marginTop: 20,
+            marginBottom: 40,
           }}
         >
           <Ionicons name={favoritesIcon} size={20} color="black" />

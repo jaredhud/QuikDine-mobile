@@ -22,6 +22,7 @@ import {
   innerTabBorder,
   FontFamily,
 } from "../../../GlobalStyles";
+import { TextInput } from "react-native-paper";
 
 export const NewEvent = (props) => {
   const navigation = useNavigation();
@@ -77,16 +78,35 @@ export const NewEvent = (props) => {
         <Text style={styles.title}>Make New Event</Text>
         <Text style={styles.sectionTitle}>Pick your Date and Time</Text>
       </View>
-      <Text style={{ fontWeight: "bold", fontSize: 20 }}>{text}</Text>
-      <View style={{ margin: 20 }}>
-        <Button title="DatePicker" onPress={() => showMode("date")} />
+      <View style={styles.dateAndTime}>
+        {/* <Text style={{ fontWeight: "bold", fontSize: 20 }}>{text}</Text> */}
+        <Text
+          // placeholder="Date and Time"
+          style={{
+            fontWeight: "bold",
+            fontSize: 20,
+            backgroundColor: "white",
+          }}
+        >
+          {text}
+        </Text>
       </View>
-      <View style={StyleSheet.Container}>
+      <View style={{ margin: 20 }}>
+        {/* <Button
+          style={[button]}
+          title="DatePicker"
+          onPress={() => showMode("date")}
+        /> */}
+        <TouchableOpacity onPress={() => showMode("date")} style={[button]}>
+          <Text style={styles.buttonText}>Choose the Date</Text>
+        </TouchableOpacity>
+      </View>
+      {/* <View style={StyleSheet.Container}>
         <Button title="Pick Start Time" onPress={() => showMode("time")} />
       </View>
       <View style={StyleSheet.Container}>
         <Button title="Pick End Time" onPress={() => showMode("time")} />
-      </View>
+      </View> */}
 
       {show && (
         <DateTimePicker
@@ -100,7 +120,22 @@ export const NewEvent = (props) => {
       )}
 
       <StatusBar style="auto" />
-
+      <View style={{ flexDirection: "row" }}>
+        {/* <TouchableOpacity onPress={removeRecipient} style={styles.buttonRed}> */}
+        <TouchableOpacity
+          onPress={() => showMode("time")}
+          style={styles.buttonGreen}
+        >
+          <Text style={styles.buttonText}>Pick Start Time</Text>
+        </TouchableOpacity>
+        {/* <TouchableOpacity onPress={addRecipient} style={styles.buttonGreen}> */}
+        <TouchableOpacity
+          onPress={() => showMode("time")}
+          style={styles.buttonRed}
+        >
+          <Text style={styles.buttonText}>Pick End Time</Text>
+        </TouchableOpacity>
+      </View>
       <TouchableOpacity
         onPress={() => navigation.navigate("Send Email")}
         style={[button]}
@@ -124,7 +159,26 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
   },
-
+  buttonRed: {
+    backgroundColor: "darkorange",
+    width: "45%",
+    padding: 15,
+    borderRadius: 10,
+    alignItems: "center",
+    marginTop: 20,
+    marginBottom: 10,
+    margin: 5,
+  },
+  buttonGreen: {
+    backgroundColor: "#379540",
+    width: "45%",
+    padding: 15,
+    borderRadius: 10,
+    alignItems: "center",
+    marginTop: 20,
+    marginBottom: 10,
+    margin: 5,
+  },
   Text: {
     fontSize: 25,
     color: "red",
@@ -153,5 +207,13 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 40,
     left: 15,
+  },
+  dateAndTime: {
+    backgroundColor: "#ffffff",
+    width: "65%",
+    padding: 15,
+    borderRadius: 10,
+    alignItems: "center",
+    marginTop: 20,
   },
 });

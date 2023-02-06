@@ -79,7 +79,8 @@ export default function MyPantry(props) {
             ></Image>
           </View>
         </TouchableOpacity> */}
-        <TouchableOpacity
+        {/* Barcode Scanner */}
+        {/* <TouchableOpacity
           onPress={() => navigation.navigate("BarCodeScanner")}
           style={[{ justifyContent: "flex-end" }, { marginRight: 5 }]}
         >
@@ -96,7 +97,7 @@ export default function MyPantry(props) {
               }}
             ></Image>
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </KeyboardAvoidingView>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
