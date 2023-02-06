@@ -2,6 +2,8 @@ export const FontFamily = {
   poppins: "Poppins",
   ubuntu: "Ubuntu",
   ubuntubold: "UbuntuBold",
+  happymonkey: "HappyMonkey",
+  nunitosans: "NunitoSans",
 };
 export const button = {
   backgroundColor: "#379540",

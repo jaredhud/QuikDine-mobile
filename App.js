@@ -27,6 +27,8 @@ export default function App() {
     Poppins: require("./assets/fonts/Poppins-Regular.ttf"),
     UbuntuBold: require("./assets/fonts/Ubuntu-Bold.ttf"),
     Ubuntu: require("./assets/fonts/Ubuntu-Regular.ttf"),
+    HappyMonkey: require("./assets/fonts/HappyMonkey-Regular.ttf"),
+    NunitoSans: require("./assets/fonts/NunitoSans-Regular.ttf"),
   });
 
   if (!fontsLoaded) {

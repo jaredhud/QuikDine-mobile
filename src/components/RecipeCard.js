@@ -12,7 +12,14 @@ export const RecipeCard = (props) => {
   }
 
   return (
-    <Card onPress={() => pullUpRecipe(recipe.id)}>
+    <Card
+      onPress={() => pullUpRecipe(recipe.id)}
+      style={{
+        marginBottom: 10,
+        borderWidth: 2,
+        borderColor: "#e5ae49",
+      }}
+    >
       <Card.Content>
         <Text variant="titleLarge">{recipe.title}</Text>
       </Card.Content>
