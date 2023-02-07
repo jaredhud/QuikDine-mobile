@@ -8,9 +8,11 @@ import {
   Image,
   TouchableOpacity,
   TextInput,
+  ImageBackground,
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import profile from "../../img/profile.png";
+import profilebg from "../../img/profile-bg.jpg";
 
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import { auth } from "../../../firebase";
@@ -27,33 +29,47 @@ export const AccountHome = (props) => {
   let favoritesIcon = "heart-sharp";
 
   return (
-    <View>
-      <ScrollView>
-        <View
+    <View style={{ backgroundColor: colors.lightgreen }}>
+      <ScrollView style={{ height: "100%" }}>
+        <ImageBackground
+          source={profilebg}
           style={{
-            padding: 10,
             width: "100%",
-            backgroundColor: "#379540",
+            // backgroundColor: "#379540",
             height: 150,
           }}
-        >
-          {/* <TouchableOpacity>
-            <Image source={profile} style={{ width: 30, height: 30 }}></Image>
-            <View></View>
-            <View></View>
-          </TouchableOpacity> */}
-        </View>
+        ></ImageBackground>
+
         <View style={{ alignItems: "center" }}>
-          <Image
-            source={profile}
+          <View
+            source={profilebg}
             style={{
-              width: 140,
-              height: 140,
+              width: 146,
+              height: 146,
               borderRadius: 100,
               marginTop: -70,
+              borderWidth: 3,
+              borderColor: "#f2f2f2",
             }}
-          ></Image>
-          <Text style={{ fontSize: 25, fontWeight: "bold", padding: 10 }}>
+          >
+            <Image
+              flex={1}
+              source={profile}
+              style={{
+                width: 140,
+                height: 140,
+                borderRadius: 100,
+              }}
+            ></Image>
+          </View>
+          <Text
+            style={{
+              fontSize: 25,
+              fontFamily: FontFamily.happymonkey,
+              // fontWeight: "bold",
+              padding: 10,
+            }}
+          >
             Sophia
           </Text>
           <Text style={{ fontSize: 15, fontWeight: "bold", color: "grey" }}>
@@ -76,7 +92,7 @@ export const AccountHome = (props) => {
           }}
         >
           <Ionicons name={jobIcon} size={20} color="black" />
-          <Text>{`  Full Stack Developer`}</Text>
+          <Text style={styles.pText}>{`  Full Stack Developer`}</Text>
         </View>
         <View
           style={{
@@ -94,7 +110,7 @@ export const AccountHome = (props) => {
           }}
         >
           <Ionicons name={locationIcon} size={20} color="black" />
-          <Text>{`  Calgary, Alberta`}</Text>
+          <Text style={styles.pText}>{`  Calgary, Alberta`}</Text>
         </View>
         <View
           style={{
@@ -113,7 +129,9 @@ export const AccountHome = (props) => {
           }}
         >
           <Ionicons name={favoritesIcon} size={20} color="black" />
-          <Text>{`  Bananas, Pies, Bacon, and Cheese`}</Text>
+          <Text
+            style={styles.pText}
+          >{`  Bananas, Pies, Bacon, and Cheese`}</Text>
         </View>
         <View
           style={{
@@ -165,5 +183,8 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     alignItems: "center",
     justifyContent: "center",
+  },
+  pText: {
+    fontFamily: FontFamily.happymonkey,
   },
 });

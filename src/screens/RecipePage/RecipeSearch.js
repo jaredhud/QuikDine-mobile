@@ -22,7 +22,7 @@ import { RecipeCard } from "../../components/RecipeCard";
 
 export const RecipeSearch = (props) => {
   // your IP address, ipconfig in command prompt
-  const serverIP = "192.168.1.78";
+  const serverIP = "192.168.1.69";
 
   const navigation = useNavigation();
   const {
@@ -106,13 +106,14 @@ export const RecipeSearch = (props) => {
           />
           <TouchableOpacity
             onPress={() => navigation.navigate("Advanced Search")}
-            style={styles.buttonGreen}
+            // Style Array
+            style={[styles.buttonGreen, { alignItems: "center" }]}
           >
             <Text style={styles.buttonText}>Advanced Search</Text>
           </TouchableOpacity>
         </View>
-        <View style={{ height: "73%" }}>
-          <ScrollView style={{ height: "50%" }}>
+        <View style={{ height: "80.75%" }}>
+          <ScrollView>
             {searchResults.results && [
               searchResults.results.map((recipe) => {
                 return (
@@ -141,9 +142,11 @@ export const RecipeSearch = (props) => {
             style={{
               flexDirection: "row",
               position: "absolute",
-              bottom: "-45%",
+              bottom: "-10%",
               justifyContent: "space-between",
-              marginLeft: "3%",
+              marginRight: "-3%",
+              backgroundColor: "white",
+              borderRadius: 15,
             }}
           >
             <TouchableOpacity
@@ -204,10 +207,10 @@ const styles = StyleSheet.create({
   },
   buttonNavigate: {
     width: "30%",
-    padding: 15,
+    padding: 10,
 
     alignItems: "center",
-    marginTop: 20,
+    // marginTop: 20,
 
     margin: 5,
   },

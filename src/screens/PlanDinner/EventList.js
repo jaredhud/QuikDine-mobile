@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 24,
-    fontFamily: FontFamily.poppins,
+    fontFamily: FontFamily.happymonkey,
     marginLeft: 10,
   },
   title: {
