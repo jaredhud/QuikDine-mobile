@@ -22,7 +22,7 @@ import { RecipeCard } from "../../components/RecipeCard";
 
 export const RecipeSearch = (props) => {
   // your IP address, ipconfig in command prompt
-  const serverIP = "10.44.22.35";
+  const serverIP = "192.168.1.78";
 
   const navigation = useNavigation();
   const {
@@ -45,7 +45,7 @@ export const RecipeSearch = (props) => {
 
   useFocusEffect(
     useCallback(() => {
-      setIngredientList(pantryList);
+      setIngredientList([...pantryList]);
     }, [pantryList])
   );
 
