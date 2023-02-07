@@ -22,7 +22,7 @@ import { RecipeCard } from "../../components/RecipeCard";
 
 export const RecipeSearch = (props) => {
   // your IP address, ipconfig in command prompt
-  const serverIP = "10.44.22.41";
+  const serverIP = "192.168.1.69";
 
   const navigation = useNavigation();
   const {
@@ -113,7 +113,7 @@ export const RecipeSearch = (props) => {
           </TouchableOpacity>
         </View>
         <View style={{ height: "80.75%" }}>
-          <ScrollView style={{ height: "50%" }}>
+          <ScrollView>
             {searchResults.results && [
               searchResults.results.map((recipe) => {
                 return (
