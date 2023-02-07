@@ -62,7 +62,14 @@ export const AccountHome = (props) => {
               }}
             ></Image>
           </View>
-          <Text style={{ fontSize: 25, fontWeight: "bold", padding: 10 }}>
+          <Text
+            style={{
+              fontSize: 25,
+              fontFamily: FontFamily.happymonkey,
+              // fontWeight: "bold",
+              padding: 10,
+            }}
+          >
             Sophia
           </Text>
           <Text style={{ fontSize: 15, fontWeight: "bold", color: "grey" }}>
@@ -85,7 +92,7 @@ export const AccountHome = (props) => {
           }}
         >
           <Ionicons name={jobIcon} size={20} color="black" />
-          <Text>{`  Full Stack Developer`}</Text>
+          <Text style={styles.pText}>{`  Full Stack Developer`}</Text>
         </View>
         <View
           style={{
@@ -103,7 +110,7 @@ export const AccountHome = (props) => {
           }}
         >
           <Ionicons name={locationIcon} size={20} color="black" />
-          <Text>{`  Calgary, Alberta`}</Text>
+          <Text style={styles.pText}>{`  Calgary, Alberta`}</Text>
         </View>
         <View
           style={{
@@ -122,7 +129,9 @@ export const AccountHome = (props) => {
           }}
         >
           <Ionicons name={favoritesIcon} size={20} color="black" />
-          <Text>{`  Bananas, Pies, Bacon, and Cheese`}</Text>
+          <Text
+            style={styles.pText}
+          >{`  Bananas, Pies, Bacon, and Cheese`}</Text>
         </View>
         <View
           style={{
@@ -174,5 +183,8 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     alignItems: "center",
     justifyContent: "center",
+  },
+  pText: {
+    fontFamily: FontFamily.happymonkey,
   },
 });
