@@ -1,14 +1,17 @@
 import { StatusBar } from "expo-status-bar";
 import {
+  Alert,
+  Modal,
   ScrollView,
   StyleSheet,
   Text,
+  Pressable,
   View,
   TouchableOpacity,
 } from "react-native";
 
 import { useFocusEffect, useNavigation } from "@react-navigation/core";
-import { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import {
   button,
@@ -94,9 +97,35 @@ export const RecipeSearch = (props) => {
     }
     getData();
   }, [page, ingredientList]);
+  // useState Popup
+  const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <View style={{ backgroundColor: colors.lightgreen, height: "100%" }}>
+      {/* Help Popup - Start */}
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Help!</Text>
+            <Text style={styles.modalText}>MI = Missing Ingredient</Text>
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <Text style={styles.textStyle}>Close</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
+      {/* Help Popup - End */}
       <View style={{ backgroundColor: colors.lightgreen }}>
         <View style={[containerRecipe]}>
           {/* <Text style={styles.title}>Recipes</Text> */}
@@ -218,7 +247,7 @@ export const RecipeSearch = (props) => {
               }}
             >
               <TouchableOpacity
-                onPress={() => navigation.navigate("Advanced Search")}
+                onPress={() => setModalVisible(true)}
                 style={[
                   styles.buttonSend,
                   { alignItems: "center", width: "11.5%" },
@@ -304,5 +333,46 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 20,
     marginBottom: 10,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonOpen: {
+    backgroundColor: "#F194FF",
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
   },
 });

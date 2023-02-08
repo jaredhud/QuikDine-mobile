@@ -57,7 +57,7 @@ export const RecipeCard = (props) => {
             style={{
               height: 160,
               width: 250,
-              alignItems: "center",
+              alignItems: "flex-start",
               justifyContent: "flex-end",
               // backgroundColor: "white",
             }}
@@ -73,7 +73,7 @@ export const RecipeCard = (props) => {
                 paddingLeft: 15,
               }}
             >
-              Missing Ingredients: 3
+              MI 3
             </Text>
           </ImageBackground>
         </View>
