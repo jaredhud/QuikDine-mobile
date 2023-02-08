@@ -71,7 +71,6 @@ export const RecipeSearch = () => {
 
   useFocusEffect(
     useCallback(() => {
-      console.log("it fired search");
       async function getData() {
         const searchCriteria = {
           ingredientList,
@@ -166,18 +165,6 @@ export const RecipeSearch = () => {
                 }),
               ]}
             </ScrollView>
-            {/* <TouchableOpacity
-          onPress={() => {
-            setPage(page - 1);
-          }}
-          style={[button]}
-        >
-          <Text style={styles.buttonText}>Previous Page</Text>
-        </TouchableOpacity> */}
-            {/* <Text>{`Showing results ${1 + resultsPerPage * (page - 1)}-${
-          resultsPerPage * page
-        }\nPage ${page}`}</Text> */}
-
             <View
               style={{
                 flexDirection: "row",
@@ -219,14 +206,22 @@ export const RecipeSearch = () => {
                 ]}
               >
                 <Text style={styles.buttonTextBlack}>{`Page ${page}`}</Text>
-                {/* <Text style={styles.buttonText}>{`Showing results ${
-              1 + resultsPerPage * (page - 1)
-            }-${resultsPerPage * page}\nPage ${page}`}</Text> */}
               </TouchableOpacity>
+              {console.log(
+                searchResults.totalResults - resultsPerPage <
+                  page * resultsPerPage,
+                searchResults.totalResults,
+                page,
+                resultsPerPage
+              )}
               <TouchableOpacity
                 onPress={() => {
                   setPage(page + 1);
                 }}
+                disabled={
+                  searchResults.totalResults - resultsPerPage <
+                  page * resultsPerPage
+                }
                 style={[
                   styles.buttonNavigate,
                   {
