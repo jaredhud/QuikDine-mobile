@@ -24,6 +24,8 @@ export const buttonText = {
 };
 export const containerRecipe = {
   margin: 10,
+  alignItems: "center",
+  justifyContent: "center",
 };
 export const buttonBorder = {
   width: "95%",

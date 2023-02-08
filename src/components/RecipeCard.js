@@ -19,6 +19,8 @@ export const RecipeCard = (props) => {
         marginBottom: 10,
         borderWidth: 3,
         borderColor: "#e5ae49",
+        elevation: 10,
+        shadowOpacity: 80,
       }}
     >
       {/* <Card.Content>
