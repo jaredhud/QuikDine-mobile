@@ -65,9 +65,13 @@ export const RecipeSearch = () => {
   //   }
   //   resultFetch();
   // }, [page, ingredientList]);
+  useEffect(() => {
+    setPage(1);
+  }, [ingredientList]);
 
   useFocusEffect(
     useCallback(() => {
+      console.log("it fired search");
       async function getData() {
         const searchCriteria = {
           ingredientList,
@@ -190,6 +194,7 @@ export const RecipeSearch = () => {
                 onPress={() => {
                   setPage(page - 1);
                 }}
+                disabled={page === 1}
                 style={[
                   styles.buttonNavigate,
                   {
