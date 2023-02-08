@@ -19,6 +19,8 @@ export const RecipeCard = (props) => {
         marginBottom: 10,
         borderWidth: 3,
         borderColor: "#e5ae49",
+        elevation: 10,
+        shadowOpacity: 80,
       }}
     >
       {/* <Card.Content>
@@ -55,24 +57,68 @@ export const RecipeCard = (props) => {
             style={{
               height: 160,
               width: 250,
-              alignItems: "center",
-              justifyContent: "flex-end",
+              // alignItems: "flex-start",
+              // justifyContent: "flex-end",
               // backgroundColor: "white",
             }}
             resizeMode="cover"
             borderRadius={10}
           >
-            <Text
-              variant="titleMedium"
+            <View
               style={{
-                backgroundColor: "#fec252",
-                borderRadius: 10,
-                paddingRight: 15,
-                paddingLeft: 15,
+                alignItems: "flex-end",
               }}
             >
-              Missing Ingredients: 3
-            </Text>
+              <Text
+                variant="titleMedium"
+                style={{
+                  backgroundColor: "#fec252",
+                  borderRadius: 10,
+                  paddingRight: 15,
+                  paddingLeft: 15,
+                }}
+              >
+                Plus
+              </Text>
+            </View>
+            <View
+              flex={1}
+              style={{
+                alignItems: "flex-end",
+                flexDirection: "row",
+                top: 24,
+              }}
+            >
+              <Text
+                variant="titleMedium"
+                style={{
+                  backgroundColor: "#fec252",
+                  borderRadius: 10,
+                  paddingRight: 15,
+                  paddingLeft: 15,
+                }}
+              >
+                MI 3
+              </Text>
+            </View>
+            <View
+              style={{
+                alignItems: "flex-end",
+                flexDirection: "row-reverse",
+              }}
+            >
+              <Text
+                variant="titleMedium"
+                style={{
+                  backgroundColor: "#fec252",
+                  borderRadius: 10,
+                  paddingRight: 15,
+                  paddingLeft: 15,
+                }}
+              >
+                Favorites
+              </Text>
+            </View>
           </ImageBackground>
         </View>
       </View>
