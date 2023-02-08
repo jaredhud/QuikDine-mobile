@@ -25,9 +25,11 @@ let tempCuisine = "any";
 const mealTypes = ["any", "main course", "dessert", "side dish"];
 const cuisines = ["any", "Greek", "Italian", "German"];
 
-export const AdvancedSearch = (props) => {
+export const AdvancedSearch = () => {
   const navigation = useNavigation();
+
   const {
+    pantryList,
     ingredientList,
     setIngredientList,
     query,
@@ -38,16 +40,11 @@ export const AdvancedSearch = (props) => {
     setDiet,
     mealType,
     setMealType,
-  } = props;
-  const { pantryList } = useContext(AppContext);
-  [ingredientListChecked, setIngredientListChecked] = useState([]);
+    ingredientListChecked,
+    setIngredientListChecked,
+  } = useContext(AppContext);
 
-  useFocusEffect(
-    useCallback(() => {
-      setIngredientList([...pantryList]);
-      setIngredientListChecked(new Array(pantryList.length).fill(true));
-    }, [pantryList])
-  );
+  const tempPantry = [...pantryList];
   console.log("AdvancedPage", ingredientListChecked);
 
   tempSearchCriteria = {
@@ -80,7 +77,7 @@ export const AdvancedSearch = (props) => {
     let tempIngredientList = [];
     for (const i in ingredientListChecked) {
       if (ingredientListChecked[i] === true) {
-        tempIngredientList.push(pantryList[i]);
+        tempIngredientList.push(tempPantry[i]);
       }
     }
     console.log("Ingredient Search List: ", tempIngredientList);
@@ -93,8 +90,8 @@ export const AdvancedSearch = (props) => {
         <Appbar.Content title="Advanced Search" />
       </Appbar>
       <ScrollView style={{ height: "30%" }}>
-        {pantryList.length > 0 && [
-          pantryList.map((ingredient, index) => {
+        {tempPantry.length > 0 && [
+          tempPantry.map((ingredient, index) => {
             return (
               <IngredientSearchCard
                 key={ingredient}

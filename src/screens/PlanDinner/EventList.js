@@ -22,9 +22,8 @@ import fallveggie from "../../img/falling-veggies.png";
 import { SubInfo, SubInfo2, SubInfo3 } from "../../components/PlanMealText";
 // import Icon from "react-native-ico";
 
-export const EventList = (props) => {
+export const EventList = () => {
   const navigation = useNavigation();
-
   return (
     <View style={styles.mainContainer}>
       {/* <Appbar>

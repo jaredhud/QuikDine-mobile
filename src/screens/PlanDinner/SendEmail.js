@@ -14,7 +14,7 @@ import { colors, FontFamily } from "../../../GlobalStyles";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/core";
 
-export default function SendEmail(props) {
+export default function SendEmail() {
   const navigation = useNavigation();
   const [isAvailable, setIsAvailable] = useState(false);
   const [recipients, setRecipients] = useState([]);

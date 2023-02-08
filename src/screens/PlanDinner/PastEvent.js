@@ -8,7 +8,7 @@ import { button } from "../../../GlobalStyles";
 import { FontFamily } from "../../../GlobalStyles";
 // import Icon from "react-native-ico";
 
-export const PastEvent = (props) => {
+export const PastEvent = () => {
   const navigation = useNavigation();
 
   return (

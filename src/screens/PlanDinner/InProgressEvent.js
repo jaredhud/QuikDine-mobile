@@ -17,7 +17,7 @@ import { button } from "../../../GlobalStyles";
 import { FontFamily } from "../../../GlobalStyles";
 // import Icon from "react-native-ico";
 
-export const InProgressEvent = (props) => {
+export const InProgressEvent = () => {
   const navigation = useNavigation();
 
   const [modalVisible, setModalVisible] = useState(false);

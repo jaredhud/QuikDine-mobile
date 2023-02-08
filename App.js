@@ -33,7 +33,6 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-  console.log(stateVariables);
   return (
     <AppContext.Provider value={stateVariables}>
       <NavigationContainer>

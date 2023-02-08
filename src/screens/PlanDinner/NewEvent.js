@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigation } from "@react-navigation/core";
 import { StatusBar } from "expo-status-bar";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -23,10 +23,12 @@ import {
   FontFamily,
 } from "../../../GlobalStyles";
 import { TextInput } from "react-native-paper";
+import AppContext from "../../Context/AppContext";
 
-export const NewEvent = (props) => {
+export const NewEvent = () => {
   const navigation = useNavigation();
 
+  const { selectedRecipesList } = useContext(AppContext);
   const [date, setDate] = useState(new Date());
   const [time, setTime] = useState(new Date(Date.now()));
   const [datePicker, setDatePicker] = useState(false);
