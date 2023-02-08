@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -14,12 +14,12 @@ import { useNavigation } from "@react-navigation/core";
 import { colors, FontFamily } from "../../../GlobalStyles";
 import Ingredient from "../../components/Ingredient";
 import cameraPlus from "../../img/camera-plus.png";
-import barcodePlus from "../../img/barcode-plus.png";
 import plusWhite from "../../img/plus-white.png";
+import AppContext from "../../Context/AppContext";
 
-export default function MyPantry(props) {
+export default function MyPantry() {
   const navigation = useNavigation();
-  const { pantryList, setPantryList } = props;
+  const { pantryList, setPantryList } = useContext(AppContext);
   const [ingredient, setIngredient] = useState();
 
   const handleAddIngredient = () => {

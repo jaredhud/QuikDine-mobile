@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useFocusEffect, useNavigation } from "@react-navigation/core";
 import {
   ScrollView,
@@ -16,6 +16,7 @@ import Checkbox from "react-native-paper";
 import { auth } from "../../../firebase";
 import { button } from "../../../GlobalStyles";
 import { IngredientSearchCard } from "../../components/IngredientSearchCard";
+import AppContext from "../../Context/AppContext";
 // import Icon from "react-native-ico";
 
 let tempSearchCriteria;
@@ -37,9 +38,8 @@ export const AdvancedSearch = (props) => {
     setDiet,
     mealType,
     setMealType,
-    pantryList,
   } = props;
-
+  const { pantryList } = useContext(AppContext);
   [ingredientListChecked, setIngredientListChecked] = useState([]);
 
   useFocusEffect(

@@ -8,7 +8,7 @@ import {
 } from "react-native";
 
 import { useFocusEffect, useNavigation } from "@react-navigation/core";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useContext } from "react";
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import {
   button,
@@ -19,25 +19,22 @@ import {
 } from "../../../GlobalStyles";
 import { pantryRecipeSearch } from "../../components/RecipeSearchFunction";
 import { RecipeCard } from "../../components/RecipeCard";
+import AppContext from "../../Context/AppContext";
 
 export const RecipeSearch = (props) => {
   // your IP address, ipconfig in command prompt
-  const serverIP = "192.168.1.69";
+  const serverIP = "192.168.1.78";
 
   const navigation = useNavigation();
+  const { ingredientList, setIngredientList, cuisine, mealType, query, diet } =
+    props;
   const {
-    ingredientList,
-    setIngredientList,
     pantryList,
     selectedRecipeList,
     setSelectedRecipeList,
     recipeID,
     setRecipeID,
-    cuisine,
-    mealType,
-    query,
-    diet,
-  } = props;
+  } = useContext(AppContext);
 
   const [page, setPage] = useState(1);
   const [resultsPerPage, setResultsPerPage] = useState(10);

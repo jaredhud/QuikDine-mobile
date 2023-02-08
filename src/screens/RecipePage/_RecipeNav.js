@@ -6,14 +6,7 @@ import { AdvancedSearch } from "./AdvancedSearch";
 
 const Stack = createNativeStackNavigator();
 
-export default function RecipeNav(props) {
-  const {
-    pantryList,
-    selectedRecipeList,
-    setSelectedRecipeList,
-    recipeID,
-    setRecipeID,
-  } = props;
+export default function RecipeNav() {
   const [cuisine, setCuisine] = useState("");
   const [mealType, setMealType] = useState("");
   const [query, setQuery] = useState("");
@@ -28,11 +21,6 @@ export default function RecipeNav(props) {
             {...props}
             ingredientList={ingredientList}
             setIngredientList={setIngredientList}
-            pantryList={pantryList}
-            recipeID={recipeID}
-            setRecipeID={setRecipeID}
-            selectedRecipeList={selectedRecipeList}
-            setSelectedRecipeList={setSelectedRecipeList}
             cuisine={cuisine}
             setCuisine={setCuisine}
             mealType={mealType}
@@ -45,20 +33,12 @@ export default function RecipeNav(props) {
         )}
       </Stack.Screen>
       <Stack.Screen name="Recipe Result">
-        {(props) => (
-          <RecipeResult
-            {...props}
-            recipeID={recipeID}
-            selectedRecipeList={selectedRecipeList}
-            setSelectedRecipeList={setSelectedRecipeList}
-          />
-        )}
+        {(props) => <RecipeResult {...props} />}
       </Stack.Screen>
       <Stack.Screen name="Advanced Search">
         {(props) => (
           <AdvancedSearch
             {...props}
-            pantryList={pantryList}
             ingredientList={ingredientList}
             setIngredientList={setIngredientList}
             cuisine={cuisine}
