@@ -1,11 +1,28 @@
 import { useNavigation } from "@react-navigation/native";
-import * as React from "react";
-import { ImageBackground, View } from "react-native";
+import { useState } from "react";
+import { ImageBackground, TouchableOpacity, View } from "react-native";
 import { Avatar, Button, Card, Text } from "react-native-paper";
 
 export const RecipeCard = (props) => {
-  const { recipe, setRecipeID } = props;
+  const { recipe, setRecipeID, selectedRecipesList, setSelectedRecipesList } =
+    props;
   const navigation = useNavigation();
+  const [isInRecipeList, setIsInRecipeList] = useState(
+    selectedRecipesList.indexOf(recipe.id) != -1
+  );
+  console.log(selectedRecipesList);
+
+  function eventRecipeListHandler() {
+    if (isInRecipeList) {
+      let temp = [...selectedRecipesList];
+      temp.splice(selectedRecipesList.indexOf(recipe.id), 1);
+      setSelectedRecipesList(temp);
+    } else {
+      setSelectedRecipesList([...selectedRecipesList, recipe.id]);
+    }
+
+    setIsInRecipeList(!isInRecipeList);
+  }
 
   function pullUpRecipe(id) {
     setRecipeID(id);
@@ -69,18 +86,21 @@ export const RecipeCard = (props) => {
                 alignItems: "flex-end",
               }}
             >
-              <Text
-                variant="titleMedium"
-                style={{
-                  backgroundColor: "#fec252",
-                  borderRadius: 10,
-                  paddingRight: 15,
-                  paddingLeft: 15,
-                }}
-              >
-                Plus
-              </Text>
+              <TouchableOpacity onPress={eventRecipeListHandler}>
+                <Text
+                  variant="titleMedium"
+                  style={{
+                    backgroundColor: isInRecipeList ? "red" : "#fec252",
+                    borderRadius: 10,
+                    paddingRight: 15,
+                    paddingLeft: 15,
+                  }}
+                >
+                  Plus
+                </Text>
+              </TouchableOpacity>
             </View>
+
             <View
               flex={1}
               style={{
