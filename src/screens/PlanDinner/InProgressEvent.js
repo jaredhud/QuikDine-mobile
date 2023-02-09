@@ -15,6 +15,7 @@ import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import { auth } from "../../../firebase";
 import { button } from "../../../GlobalStyles";
 import { FontFamily } from "../../../GlobalStyles";
+import Ionicons from "@expo/vector-icons/Ionicons";
 // import Icon from "react-native-ico";
 
 export const InProgressEvent = () => {
@@ -74,36 +75,49 @@ export const InProgressEvent = () => {
       {/* <Appbar>
         <Appbar.Content title="In-Progress Event" />
       </Appbar> */}
+
       <View
         style={{
           width: "95%",
-          height: "30%",
+          height: "25%",
           justifyContent: "center",
           margin: "2%",
         }}
       >
+        <Ionicons
+          name="arrow-back-circle"
+          size={32}
+          color="green"
+          onPress={() => navigation.navigate("Event List")}
+        />
         <Text style={styles.title}>Current Meals</Text>
         <Text style={styles.sectionTitle}>Bon Appetit!</Text>
       </View>
-      <TouchableOpacity
-        onPress={() => setModalVisible(true)}
-        style={[[button], { alignItems: "center" }]}
+      <View
+        style={{
+          height: "60%",
+          // backgroundColor: "red"
+        }}
       >
-        <Text style={styles.buttonText}>View Vote Results</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => setModalVisible2(true)}
-        style={[[button], { alignItems: "center" }]}
-      >
-        <Text style={styles.buttonText}>View Participants</Text>
-      </TouchableOpacity>
-
-      {/* <TouchableOpacity
-        onPress={() => navigation.navigate("Event List")}
-        style={[button]}
-      >
-        <Text style={styles.buttonText}>View Participants</Text>
-      </TouchableOpacity> */}
+        <TouchableOpacity
+          onPress={() => setModalVisible(true)}
+          style={[[button], { alignItems: "center" }]}
+        >
+          <Text style={styles.buttonText}>View Vote Results</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => setModalVisible2(true)}
+          style={[[button], { alignItems: "center" }]}
+        >
+          <Text style={styles.buttonText}>View Participants</Text>
+        </TouchableOpacity>
+      </View>
+      <View
+        style={{
+          height: "10%",
+          // backgroundColor: "blue"
+        }}
+      ></View>
     </View>
   );
 };
