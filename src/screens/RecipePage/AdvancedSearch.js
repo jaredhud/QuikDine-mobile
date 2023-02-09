@@ -20,6 +20,7 @@ import AppContext from "../../Context/AppContext";
 // import Icon from "react-native-ico";
 
 let tempSearchCriteria;
+let tempDiet = "any";
 let tempMealType = "any";
 let tempCuisine = "any";
 const mealTypes = ["any", "main course", "dessert", "side dish"];
@@ -45,7 +46,6 @@ export const AdvancedSearch = () => {
   } = useContext(AppContext);
 
   const tempPantry = [...pantryList];
-  console.log("AdvancedPage", ingredientListChecked);
 
   tempSearchCriteria = {
     ingredientList: ingredientList,
@@ -55,13 +55,22 @@ export const AdvancedSearch = () => {
     mealtype: mealType,
   };
 
+  function querySetter() {}
+
+  function dietSetter() {
+    if (tempDiet === "any") {
+      setDiet("");
+    } else {
+      setDiet(tempDiet);
+    }
+  }
+
   function cuisineSetter() {
     if (tempCuisine === "any") {
       setCuisine("");
     } else {
       setCuisine(tempCuisine);
     }
-    console.log("cuisine: ", tempCuisine);
   }
 
   function mealTypeSetter() {
@@ -70,7 +79,6 @@ export const AdvancedSearch = () => {
     } else {
       setMealType(tempMealType);
     }
-    console.log("mealType: ", tempMealType);
   }
 
   function ingredientSetter() {
@@ -80,7 +88,6 @@ export const AdvancedSearch = () => {
         tempIngredientList.push(tempPantry[i]);
       }
     }
-    console.log("Ingredient Search List: ", tempIngredientList);
     setIngredientList(tempIngredientList);
   }
 
@@ -106,20 +113,28 @@ export const AdvancedSearch = () => {
       </ScrollView>
       <Text>Meal Type</Text>
       <SelectDropdown
+        data={diet}
+        defaultValue={tempDiet}
+        onSelect={(selectedItem, index) => {
+          tempDiet = selectedItem;
+        }}
+        buttonTextAfterSelection={(selectedItem, index) => {
+          return selectedItem;
+        }}
+        rowTextForSelection={(item, index) => {
+          return item;
+        }}
+      />
+      <SelectDropdown
         data={mealTypes}
         defaultValue={tempMealType}
         onSelect={(selectedItem, index) => {
           tempMealType = selectedItem;
-          console.log(selectedItem, index);
         }}
         buttonTextAfterSelection={(selectedItem, index) => {
-          // text represented after item is selected
-          // if data array is an array of objects then return selectedItem.property to render after item is selected
           return selectedItem;
         }}
         rowTextForSelection={(item, index) => {
-          // text represented for each item in dropdown
-          // if data array is an array of objects then return item.property to represent item in dropdown
           return item;
         }}
       />
@@ -129,21 +144,18 @@ export const AdvancedSearch = () => {
         defaultValue={tempCuisine}
         onSelect={(selectedItem, index) => {
           tempCuisine = selectedItem;
-          console.log(selectedItem, index);
         }}
         buttonTextAfterSelection={(selectedItem, index) => {
-          // text represented after item is selected
-          // if data array is an array of objects then return selectedItem.property to render after item is selected
           return selectedItem;
         }}
         rowTextForSelection={(item, index) => {
-          // text represented for each item in dropdown
-          // if data array is an array of objects then return item.property to represent item in dropdown
           return item;
         }}
       />
       <TouchableOpacity
         onPress={() => {
+          querySetter();
+          dietSetter();
           cuisineSetter();
           mealTypeSetter();
           ingredientSetter();

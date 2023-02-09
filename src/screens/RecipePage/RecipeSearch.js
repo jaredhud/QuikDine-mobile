@@ -12,7 +12,7 @@ import {
 
 import { useFocusEffect, useNavigation } from "@react-navigation/core";
 import { useState, useEffect, useCallback, useContext } from "react";
-import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
+import { Searchbar } from "react-native-paper";
 import {
   button,
   buttonText,
@@ -23,6 +23,7 @@ import {
 import { pantryRecipeSearch } from "../../components/RecipeSearchFunction";
 import { RecipeCard } from "../../components/RecipeCard";
 import AppContext from "../../Context/AppContext";
+<<<<<<< HEAD
 import Ionicons from "react-native-vector-icons/Ionicons";
 let trashDelete = "trash-outline";
 
@@ -32,6 +33,13 @@ export const RecipeSearch = () => {
   // your IP address, ipconfig in command prompt
   const serverIP = "10.44.22.41";
 
+=======
+let scanNum = 0;
+export const RecipeSearch = () => {
+  // your IP address, ipconfig in command prompt
+  const serverIP = "10.44.22.35";
+  scanNum += 1;
+>>>>>>> 511bef1ebe02423cb703daee394d9dfb3eee2806
   const navigation = useNavigation();
   const {
     pantryList,
@@ -44,17 +52,33 @@ export const RecipeSearch = () => {
     cuisine,
     mealType,
     query,
+    setQuery,
     diet,
   } = useContext(AppContext);
 
   const [page, setPage] = useState(1);
-  const [resultsPerPage, setResultsPerPage] = useState(10);
+  const [resultsPerPage, setResultsPerPage] = useState(2);
   const [searchResults, setSearchResults] = useState({});
+  const [tempQuery, setTempQuery] = useState("");
 
   useEffect(() => {
+    console.log("I fired 1 ", "Scan # ", scanNum, " query: ", query);
     setPage(1);
+    setQuery("");
+    setTempQuery("");
   }, [ingredientList]);
 
+  function searchHandler(text) {
+    setTempQuery(text);
+  }
+
+  function queryHandler() {
+    setQuery(tempQuery);
+    if (ingredientList.length > 0) {
+      setIngredientList([]);
+    }
+    console.log("I fired 2 ", "Scan # ", scanNum, " query: ", query);
+  }
   useFocusEffect(
     useCallback(() => {
       async function getData() {
@@ -80,11 +104,10 @@ export const RecipeSearch = () => {
         const responseValue = await dataResponse.json();
         setSearchResults(responseValue);
       }
-
+      console.log("I fired 3 ", "Scan # ", scanNum, " query: ", query);
       getData();
     }, [page, ingredientList])
   );
-
   // useState Popup
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -120,6 +143,21 @@ export const RecipeSearch = () => {
           <View
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
+<<<<<<< HEAD
+=======
+            <Searchbar
+              value={tempQuery}
+              onChangeText={searchHandler}
+              onSubmitEditing={queryHandler}
+              placeholder="Search Recipes"
+              style={{
+                width: "67%",
+                height: "60%",
+                marginTop: "5%",
+                marginRight: "2%",
+              }}
+            />
+>>>>>>> 511bef1ebe02423cb703daee394d9dfb3eee2806
             <TouchableOpacity
               onPress={() => navigation.navigate("Advanced Search")}
               // Style Array
