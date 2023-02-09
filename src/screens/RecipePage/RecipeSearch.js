@@ -23,23 +23,11 @@ import {
 import { pantryRecipeSearch } from "../../components/RecipeSearchFunction";
 import { RecipeCard } from "../../components/RecipeCard";
 import AppContext from "../../Context/AppContext";
-<<<<<<< HEAD
-import Ionicons from "react-native-vector-icons/Ionicons";
-let trashDelete = "trash-outline";
-
-function queryHandler() {}
-
-export const RecipeSearch = () => {
-  // your IP address, ipconfig in command prompt
-  const serverIP = "10.44.22.41";
-
-=======
 let scanNum = 0;
 export const RecipeSearch = () => {
   // your IP address, ipconfig in command prompt
-  const serverIP = "10.44.22.35";
+  const serverIP = "10.44.22.41";
   scanNum += 1;
->>>>>>> 511bef1ebe02423cb703daee394d9dfb3eee2806
   const navigation = useNavigation();
   const {
     pantryList,
@@ -143,29 +131,17 @@ export const RecipeSearch = () => {
           <View
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
-<<<<<<< HEAD
-=======
-            <Searchbar
-              value={tempQuery}
-              onChangeText={searchHandler}
-              onSubmitEditing={queryHandler}
-              placeholder="Search Recipes"
-              style={{
-                width: "67%",
-                height: "60%",
-                marginTop: "5%",
-                marginRight: "2%",
-              }}
-            />
->>>>>>> 511bef1ebe02423cb703daee394d9dfb3eee2806
             <TouchableOpacity
               onPress={() => navigation.navigate("Advanced Search")}
               // Style Array
               style={[styles.buttonGreen, { alignItems: "center" }]}
             >
-              <Text style={styles.buttonText}>Advanced Search</Text>
+              <Text style={styles.buttonText}>Advanced Options</Text>
             </TouchableOpacity>
             <Searchbar
+              value={tempQuery}
+              onChangeText={searchHandler}
+              onSubmitEditing={queryHandler}
               placeholder="Search Recipes"
               style={{
                 width: "67%",
