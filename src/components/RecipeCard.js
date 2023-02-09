@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
-import { Children, cloneElement, isValidElement } from "react";
+import React from "react";
+import { useState, Children, cloneElement, isValidElement } from "react";
 import {
   ImageBackground,
   TouchableOpacity,
@@ -12,6 +12,7 @@ import { FontFamily } from "../../GlobalStyles";
 import Ionicons from "react-native-vector-icons/Ionicons";
 let addIcon = "add";
 let heartoutlineIcon = "heart-outline";
+let removeIcon = "remove";
 
 export const RecipeCard = (props) => {
   const { recipe, setRecipeID, selectedRecipesList, setSelectedRecipesList } =
@@ -99,7 +100,7 @@ export const RecipeCard = (props) => {
                   paddingRight: 6,
                   paddingLeft: 6,
                 }}
-                name={isInRecipeList ? { addIcon } : "remove"}
+                name={isInRecipeList ? removeIcon : addIcon}
                 size={30}
                 color="#88001b"
               />
