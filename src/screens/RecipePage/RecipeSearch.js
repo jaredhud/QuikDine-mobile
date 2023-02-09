@@ -207,7 +207,7 @@ export const RecipeSearch = () => {
               >
                 <Text
                   style={styles.buttonTextBlack}
-                >{`Page ${page}\nof ${Math.floor(
+                >{`Page ${page} of ${Math.floor(
                   searchResults.totalResults / resultsPerPage
                 )}`}</Text>
               </TouchableOpacity>

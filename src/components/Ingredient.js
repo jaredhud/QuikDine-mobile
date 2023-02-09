@@ -1,6 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import deleteIcon from "../img/delete.png";
+import Ionicons from "react-native-vector-icons/Ionicons";
+let trashDelete = "trash-outline";
 
 const Ingredient = (props) => {
   return (
@@ -10,18 +12,7 @@ const Ingredient = (props) => {
         <Text style={styles.itemText}>{props.text}</Text>
       </View>
       {/* <View style={styles.circular}></View> */}
-      <Image
-        flex={1}
-        source={deleteIcon}
-        resizeMode="contain"
-        style={{
-          // marginTop: "-25%",
-          marginLeft: "20%",
-          width: "170%",
-          height: "170%",
-          flexDirection: "row-reverse",
-        }}
-      ></Image>
+      <Ionicons name={trashDelete} size={30} color="#88001b" />
       {/* <View style={styles.circular}></View> */}
     </View>
   );
@@ -29,7 +20,7 @@ const Ingredient = (props) => {
 
 const styles = StyleSheet.create({
   item: {
-    backgroundColor: "#fff",
+    backgroundColor: "#fefbf3",
     padding: 15,
     borderRadius: 10,
     flexDirection: "row",
@@ -45,8 +36,9 @@ const styles = StyleSheet.create({
   square: {
     width: 24,
     height: 24,
-    backgroundColor: "#55BCF6",
-    opacity: 0.4,
+    backgroundColor: "#ffbb00",
+    borderColor: "black",
+    opacity: 0.6,
     borderRadius: 5,
     marginRight: 15,
   },

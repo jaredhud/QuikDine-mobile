@@ -9,13 +9,16 @@ import {
   TouchableOpacity,
   View,
   Image,
+  ImageBackground,
 } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 import { colors, FontFamily } from "../../../GlobalStyles";
+import Ionicons from "react-native-vector-icons/Ionicons";
 import Ingredient from "../../components/Ingredient";
 import cameraPlus from "../../img/camera-plus.png";
 import plusWhite from "../../img/plus-white.png";
 import AppContext from "../../Context/AppContext";
+import fallveggie from "../../img/pantry-bg.jpg";
 
 export default function MyPantry() {
   const navigation = useNavigation();
@@ -35,7 +38,8 @@ export default function MyPantry() {
   };
 
   return (
-    <View style={styles.container}>
+    <ImageBackground style={{ flex: 1 }} source={fallveggie}>
+      {/* <View style={styles.container}> */}
       <View style={styles.ingredientsWrapper}>
         <Text style={styles.title}>My Pantry</Text>
         <Text style={styles.sectionTitle}>Ingredients List</Text>
@@ -140,7 +144,8 @@ export default function MyPantry() {
           </View>
         </TouchableOpacity>
       </KeyboardAvoidingView>
-    </View>
+      {/* </View> */}
+    </ImageBackground>
   );
 }
 
@@ -157,10 +162,12 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 24,
     fontFamily: FontFamily.poppins,
+    color: "#fefbf3",
   },
   title: {
     fontSize: 44,
     fontFamily: FontFamily.ubuntubold,
+    color: "#fefbf3",
   },
   items: {
     marginTop: 30,
@@ -178,12 +185,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     backgroundColor: "#FFF",
     borderRadius: 60,
-    borderColor: "#C0C0C0",
+    borderColor: "#c0c0c0",
     borderWidth: 1,
     fontSize: 18,
     width: 260,
     marginLeft: "5%",
     marginRight: "-15%",
+    backgroundColor: "#fff7e1",
   },
   addWrapper: {
     width: 60,
