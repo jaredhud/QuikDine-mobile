@@ -12,9 +12,16 @@ export default function initializeVariables() {
   const [ingredientListChecked, setIngredientListChecked] = useState([]);
   const [serverIP, setServerIP] = useState("10.44.22.35");
 
+  const [tempQuery, setTempQuery] = useState("");
+
   useEffect(() => {
     setIngredientList([...pantryList]);
     setIngredientListChecked(new Array(pantryList.length).fill(true));
+    setQuery("");
+    setMealType("");
+    setCuisine("");
+    setDiet("");
+    setTempQuery("");
   }, [pantryList]);
 
   const variables = {
@@ -37,6 +44,8 @@ export default function initializeVariables() {
     ingredientListChecked,
     setIngredientListChecked,
     serverIP,
+    tempQuery,
+    setTempQuery,
   };
 
   return variables;

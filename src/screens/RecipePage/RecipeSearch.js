@@ -38,34 +38,38 @@ export const RecipeSearch = () => {
     ingredientList,
     setIngredientList,
     cuisine,
+    setCuisine,
     mealType,
+    setMealType,
     query,
     setQuery,
     diet,
+    setDiet,
     serverIP,
+    tempQuery,
+    setTempQuery,
   } = useContext(AppContext);
 
   const [page, setPage] = useState(1);
   const [resultsPerPage, setResultsPerPage] = useState(2);
   const [searchResults, setSearchResults] = useState({});
-  const [tempQuery, setTempQuery] = useState("");
+  // useState Popup
+  const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     console.log("I fired 1 ", "Scan # ", scanNum, " query: ", query);
     setTempQuery(query);
   }, [ingredientList]);
 
-  function searchHandler(text) {
-    setTempQuery(text);
-  }
-
   function queryHandler() {
-    setQuery(tempQuery);
-
-    setIngredientList([]);
+    setCuisine("");
+    setDiet("");
+    setMealType("");
     setPage(1);
-    console.log("I fired 2 ", "Scan # ", scanNum, " query: ", query);
+    setQuery(tempQuery);
+    setIngredientList([]);
   }
+
   useFocusEffect(
     useCallback(() => {
       async function getData() {
@@ -95,8 +99,6 @@ export const RecipeSearch = () => {
       getData();
     }, [page, ingredientList])
   );
-  // useState Popup
-  const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <View style={{ backgroundColor: colors.lightgreen, height: "100%" }}>
@@ -139,7 +141,9 @@ export const RecipeSearch = () => {
             </TouchableOpacity>
             <Searchbar
               value={tempQuery}
-              onChangeText={searchHandler}
+              onChangeText={(text) => {
+                setTempQuery(text);
+              }}
               onSubmitEditing={queryHandler}
               placeholder="Search Recipes"
               style={{

@@ -25,11 +25,14 @@ let tempMealType = "any";
 let tempCuisine = "any";
 const mealTypes = ["any", "main course", "dessert", "side dish"];
 const cuisines = ["any", "Greek", "Italian", "German"];
+const diets = ["any", "vegetarian"];
 
 export const AdvancedSearch = () => {
   const navigation = useNavigation();
 
   const {
+    tempQuery,
+    setTempQuery,
     pantryList,
     ingredientList,
     setIngredientList,
@@ -55,7 +58,9 @@ export const AdvancedSearch = () => {
     mealtype: mealType,
   };
 
-  function querySetter() {}
+  function queryHandler() {
+    setQuery(tempQuery);
+  }
 
   function dietSetter() {
     if (tempDiet === "any") {
@@ -96,6 +101,20 @@ export const AdvancedSearch = () => {
       <Appbar>
         <Appbar.Content title="Advanced Search" />
       </Appbar>
+      <Searchbar
+        value={tempQuery}
+        onChangeText={(text) => {
+          setTempQuery(text);
+        }}
+        onSubmitEditing={queryHandler}
+        placeholder="query (optional)"
+        style={{
+          width: "67%",
+          height: "8%",
+          marginTop: "5%",
+          marginLeft: "2%",
+        }}
+      />
       <ScrollView style={{ height: "30%" }}>
         {tempPantry.length > 0 && [
           tempPantry.map((ingredient, index) => {
@@ -111,9 +130,9 @@ export const AdvancedSearch = () => {
           }),
         ]}
       </ScrollView>
-      <Text>Meal Type</Text>
+      <Text>Diet</Text>
       <SelectDropdown
-        data={diet}
+        data={diets}
         defaultValue={tempDiet}
         onSelect={(selectedItem, index) => {
           tempDiet = selectedItem;
@@ -125,6 +144,7 @@ export const AdvancedSearch = () => {
           return item;
         }}
       />
+      <Text>Meal Type</Text>
       <SelectDropdown
         data={mealTypes}
         defaultValue={tempMealType}
