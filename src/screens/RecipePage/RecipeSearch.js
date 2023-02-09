@@ -24,6 +24,8 @@ import { pantryRecipeSearch } from "../../components/RecipeSearchFunction";
 import { RecipeCard } from "../../components/RecipeCard";
 import AppContext from "../../Context/AppContext";
 
+function queryHandler() {}
+
 export const RecipeSearch = () => {
   // your IP address, ipconfig in command prompt
   const serverIP = "10.44.22.35";
@@ -47,24 +49,6 @@ export const RecipeSearch = () => {
   const [resultsPerPage, setResultsPerPage] = useState(10);
   const [searchResults, setSearchResults] = useState({});
 
-  // useEffect(() => {
-  //   let searchCriteria = {
-  //     ingredients: ingredientList,
-  //     cuisine: cuisine,
-  //     mealType: mealType,
-  //     diet: diet,
-  //     query: query,
-  //   };
-  //   async function resultFetch() {
-  //     const result = await pantryRecipeSearch(
-  //       searchCriteria,
-  //       page,
-  //       resultsPerPage
-  //     );
-  //     setSearchResults(result);
-  //   }
-  //   resultFetch();
-  // }, [page, ingredientList]);
   useEffect(() => {
     setPage(1);
   }, [ingredientList]);
@@ -205,15 +189,12 @@ export const RecipeSearch = () => {
                   },
                 ]}
               >
-                <Text style={styles.buttonTextBlack}>{`Page ${page}`}</Text>
+                <Text
+                  style={styles.buttonTextBlack}
+                >{`Page ${page}\nof ${Math.floor(
+                  searchResults.totalResults / resultsPerPage
+                )}`}</Text>
               </TouchableOpacity>
-              {console.log(
-                searchResults.totalResults - resultsPerPage <
-                  page * resultsPerPage,
-                searchResults.totalResults,
-                page,
-                resultsPerPage
-              )}
               <TouchableOpacity
                 onPress={() => {
                   setPage(page + 1);
@@ -255,7 +236,9 @@ export const RecipeSearch = () => {
                 <Text style={styles.buttonText}>?</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => navigation.navigate("New Event")}
+                onPress={() =>
+                  navigation.navigate("Plan Meal", { screen: "New Event" })
+                }
                 style={[
                   styles.buttonSend,
                   {

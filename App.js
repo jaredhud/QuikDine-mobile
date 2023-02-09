@@ -65,26 +65,12 @@ export default function App() {
             tabBarLabelStyle: { fontSize: 12, height: 25, marginTop: -10 },
           })}
         >
-          <Tab.Screen name="Profile">
-            {(props) => <AccountNav {...props} />}
-          </Tab.Screen>
-          <Tab.Screen name="Plan Meal">
-            {(props) => (
-              <PlanNav
-                {...props}
-                recipeList={selectedRecipesList}
-                recipeID={recipeID}
-                setRecipeID={setRecipeID}
-              />
-            )}
-          </Tab.Screen>
-          <Tab.Screen name="Home">{(props) => <Home {...props} />}</Tab.Screen>
-
+          <Tab.Screen name="Profile" component={AccountNav} />
+          <Tab.Screen name="Plan Meal" component={PlanNav} />
+          <Tab.Screen name="Home" component={Home} />
           {/* Test */}
           {/* <Tab.Screen name="Test">{(props) => <TestNav {...props} />}</Tab.Screen> */}
-          <Tab.Screen name="Recipe">
-            {(props) => <RecipeNav {...props} />}
-          </Tab.Screen>
+          <Tab.Screen name="Recipe" component={RecipeNav} />
           <Tab.Screen name="Pantry" component={PantryNav} />
         </Tab.Navigator>
       </NavigationContainer>
