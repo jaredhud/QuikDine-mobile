@@ -58,7 +58,7 @@ export const AdvancedSearch = () => {
     mealtype: mealType,
   };
 
-  function queryHandler() {
+  function querySetter() {
     setQuery(tempQuery);
   }
 
@@ -106,7 +106,7 @@ export const AdvancedSearch = () => {
         onChangeText={(text) => {
           setTempQuery(text);
         }}
-        onSubmitEditing={queryHandler}
+        onSubmitEditing={querySetter}
         placeholder="query (optional)"
         style={{
           width: "67%",
