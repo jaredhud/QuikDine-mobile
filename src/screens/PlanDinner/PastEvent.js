@@ -6,6 +6,7 @@ import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import { auth } from "../../../firebase";
 import { button } from "../../../GlobalStyles";
 import { FontFamily } from "../../../GlobalStyles";
+import Ionicons from "@expo/vector-icons/Ionicons";
 // import Icon from "react-native-ico";
 
 export const PastEvent = () => {
@@ -19,27 +20,33 @@ export const PastEvent = () => {
       <View
         style={{
           width: "95%",
-          height: "30%",
+          height: "25%",
           justifyContent: "center",
           margin: "2%",
+          // backgroundColor: "red",
         }}
       >
+        <Ionicons
+          name="arrow-back-circle"
+          size={32}
+          color="green"
+          onPress={() => navigation.navigate("Event List")}
+        />
         <Text style={styles.title}>Events List</Text>
         <Text style={styles.sectionTitle}>List of your past meals</Text>
       </View>
-      {/* <TouchableOpacity
-        onPress={() => navigation.navigate("Event List")}
-        style={[button]}
-      >
-        <Text style={styles.buttonText}>Event List</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Voting Page")}
-        style={[button]}
-      >
-        <Text style={styles.buttonText}>Voting Page</Text>
-      </TouchableOpacity> */}
+      <View
+        style={{
+          height: "60%",
+          // backgroundColor: "red"
+        }}
+      ></View>
+      <View
+        style={{
+          height: "10%",
+          // backgroundColor: "blue"
+        }}
+      ></View>
     </View>
   );
 };
