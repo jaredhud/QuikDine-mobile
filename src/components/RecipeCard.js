@@ -21,7 +21,6 @@ export const RecipeCard = (props) => {
   const [isInRecipeList, setIsInRecipeList] = useState(
     selectedRecipesList.indexOf(recipe.id) != -1
   );
-  console.log(selectedRecipesList);
 
   function eventRecipeListHandler() {
     if (isInRecipeList) {
