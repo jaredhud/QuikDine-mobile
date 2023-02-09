@@ -31,8 +31,8 @@ export const RecipeSearch = () => {
   const navigation = useNavigation();
   const {
     pantryList,
-    selectedRecipeList,
-    setSelectedRecipeList,
+    selectedRecipesList,
+    setSelectedRecipesList,
     recipeID,
     setRecipeID,
     ingredientList,
@@ -51,9 +51,9 @@ export const RecipeSearch = () => {
 
   useEffect(() => {
     console.log("I fired 1 ", "Scan # ", scanNum, " query: ", query);
-    setPage(1);
-    setQuery("");
-    setTempQuery("");
+    setTempQuery(query);
+    if (ingredientList.length > 0) {
+    }
   }, [ingredientList]);
 
   function searchHandler(text) {
@@ -62,9 +62,9 @@ export const RecipeSearch = () => {
 
   function queryHandler() {
     setQuery(tempQuery);
-    if (ingredientList.length > 0) {
-      setIngredientList([]);
-    }
+
+    setIngredientList([]);
+    setPage(1);
     console.log("I fired 2 ", "Scan # ", scanNum, " query: ", query);
   }
   useFocusEffect(
@@ -160,6 +160,8 @@ export const RecipeSearch = () => {
                       key={recipe.id}
                       recipe={recipe}
                       setRecipeID={setRecipeID}
+                      setSelectedRecipesList={setSelectedRecipesList}
+                      selectedRecipesList={selectedRecipesList}
                     />
                   );
                 }),
