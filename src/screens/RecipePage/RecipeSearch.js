@@ -28,7 +28,7 @@ function queryHandler() {}
 
 export const RecipeSearch = () => {
   // your IP address, ipconfig in command prompt
-  const serverIP = "10.44.22.35";
+  const serverIP = "192.168.1.76";
 
   const navigation = useNavigation();
   const {
@@ -191,7 +191,7 @@ export const RecipeSearch = () => {
               >
                 <Text
                   style={styles.buttonTextBlack}
-                >{`Page ${page}\nof ${Math.floor(
+                >{`Page ${page} of ${Math.floor(
                   searchResults.totalResults / resultsPerPage
                 )}`}</Text>
               </TouchableOpacity>
