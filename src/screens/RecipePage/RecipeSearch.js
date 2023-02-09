@@ -23,12 +23,14 @@ import {
 import { pantryRecipeSearch } from "../../components/RecipeSearchFunction";
 import { RecipeCard } from "../../components/RecipeCard";
 import AppContext from "../../Context/AppContext";
+import Ionicons from "react-native-vector-icons/Ionicons";
+let trashDelete = "trash-outline";
 
 function queryHandler() {}
 
 export const RecipeSearch = () => {
   // your IP address, ipconfig in command prompt
-  const serverIP = "192.168.1.76";
+  const serverIP = "10.44.22.41";
 
   const navigation = useNavigation();
   const {
@@ -113,20 +115,11 @@ export const RecipeSearch = () => {
       </Modal>
       {/* Help Popup - End */}
       <View style={{ backgroundColor: colors.lightgreen }}>
-        <View style={[containerRecipe]}>
+        <View style={[containerRecipe, { marginTop: 40 }]}>
           {/* <Text style={styles.title}>Recipes</Text> */}
           <View
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
-            <Searchbar
-              placeholder="Search Recipes"
-              style={{
-                width: "67%",
-                height: "60%",
-                marginTop: "5%",
-                marginRight: "2%",
-              }}
-            />
             <TouchableOpacity
               onPress={() => navigation.navigate("Advanced Search")}
               // Style Array
@@ -134,8 +127,17 @@ export const RecipeSearch = () => {
             >
               <Text style={styles.buttonText}>Advanced Search</Text>
             </TouchableOpacity>
+            <Searchbar
+              placeholder="Search Recipes"
+              style={{
+                width: "67%",
+                height: "60%",
+                marginTop: "5%",
+                marginLeft: "2%",
+              }}
+            />
           </View>
-          <View style={{ height: "78%" }}>
+          <View style={{ height: "87%" }}>
             <ScrollView>
               {searchResults.results && [
                 searchResults.results.map((recipe) => {
@@ -151,107 +153,111 @@ export const RecipeSearch = () => {
             </ScrollView>
             <View
               style={{
-                flexDirection: "row",
-                position: "absolute",
-                bottom: "-10%",
-                justifyContent: "space-between",
-                backgroundColor: "#fbffd8",
-                borderRadius: 15,
-                alignItems: "center",
-                width: "94.5%",
+                marginTop: 10,
+                marginBottom: -10,
               }}
             >
-              <TouchableOpacity
-                onPress={() => {
-                  setPage(page - 1);
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  backgroundColor: "#fbffd8",
+                  borderRadius: 15,
+                  alignItems: "center",
+                  width: "97.5%",
+                  marginBottom: -10,
                 }}
-                disabled={page === 1}
-                style={[
-                  styles.buttonNavigate,
-                  {
-                    backgroundColor: "#fbffd8",
-                    borderTopStartRadius: 15,
-                    borderBottomStartRadius: 15,
-                    borderWidth: 2,
-                    borderColor: "#e5ae49",
-                  },
-                ]}
               >
-                <Text style={styles.buttonTextBlack}>{`< Previous`}</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={[
-                  styles.buttonNavigate,
-                  {
-                    borderTopWidth: 2,
-                    borderBottomWidth: 2,
-                    borderColor: "#e5ae49",
-                  },
-                ]}
-              >
-                <Text
-                  style={styles.buttonTextBlack}
-                >{`Page ${page} of ${Math.floor(
-                  searchResults.totalResults / resultsPerPage
-                )}`}</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => {
-                  setPage(page + 1);
+                <TouchableOpacity
+                  onPress={() => {
+                    setPage(page - 1);
+                  }}
+                  disabled={page === 1}
+                  style={[
+                    styles.buttonNavigate,
+                    {
+                      backgroundColor: "#fbffd8",
+                      borderTopStartRadius: 15,
+                      borderBottomStartRadius: 15,
+                      borderWidth: 2,
+                      borderColor: "#e5ae49",
+                    },
+                  ]}
+                >
+                  <Text style={styles.buttonTextBlack}>{`< Previous`}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={[
+                    styles.buttonNavigate,
+                    {
+                      borderTopWidth: 2,
+                      borderBottomWidth: 2,
+                      borderColor: "#e5ae49",
+                    },
+                  ]}
+                >
+                  <Text
+                    style={styles.buttonTextBlack}
+                  >{`Page ${page} of ${Math.floor(
+                    searchResults.totalResults / resultsPerPage
+                  )}`}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    setPage(page + 1);
+                  }}
+                  disabled={
+                    searchResults.totalResults - resultsPerPage <
+                    page * resultsPerPage
+                  }
+                  style={[
+                    styles.buttonNavigate,
+                    {
+                      backgroundColor: "#fbffd8",
+                      borderTopEndRadius: 15,
+                      borderBottomEndRadius: 15,
+                      borderWidth: 2,
+                      borderColor: "#e5ae49",
+                    },
+                  ]}
+                >
+                  <Text style={styles.buttonTextBlack}>{`Next >`}</Text>
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  alignContent: "center",
                 }}
-                disabled={
-                  searchResults.totalResults - resultsPerPage <
-                  page * resultsPerPage
-                }
-                style={[
-                  styles.buttonNavigate,
-                  {
-                    backgroundColor: "#fbffd8",
-                    borderTopEndRadius: 15,
-                    borderBottomEndRadius: 15,
-                    borderWidth: 2,
-                    borderColor: "#e5ae49",
-                  },
-                ]}
               >
-                <Text style={styles.buttonTextBlack}>{`Next >`}</Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                flexDirection: "row",
-                position: "absolute",
-                bottom: "-22%",
-                justifyContent: "space-between",
-                alignContent: "center",
-              }}
-            >
-              <TouchableOpacity
-                onPress={() => setModalVisible(true)}
-                style={[
-                  styles.buttonSend,
-                  { alignItems: "center", width: "11.5%" },
-                ]}
-              >
-                <Text style={styles.buttonText}>?</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate("Plan Meal", { screen: "New Event" })
-                }
-                style={[
-                  styles.buttonSend,
-                  {
-                    alignItems: "center",
-                    width: "86%",
-                    // height: "60%",
-                  },
-                ]}
-              >
-                <Text style={[styles.buttonText, { alignItems: "center" }]}>
-                  Go to Event
-                </Text>
-              </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => setModalVisible(true)}
+                  style={[
+                    styles.buttonSend,
+                    { alignItems: "center", width: "11.5%" },
+                  ]}
+                >
+                  <Text style={styles.buttonText}>?</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate("Plan Meal", { screen: "New Event" })
+                  }
+                  style={[
+                    styles.buttonSend,
+                    {
+                      alignItems: "center",
+                      width: "86%",
+                      // height: "60%",
+                    },
+                  ]}
+                >
+                  <Text style={[styles.buttonText, { alignItems: "center" }]}>
+                    Go to Event
+                  </Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
           <View style={{ height: "10%" }}></View>
