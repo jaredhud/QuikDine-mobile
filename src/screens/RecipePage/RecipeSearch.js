@@ -26,7 +26,7 @@ import AppContext from "../../Context/AppContext";
 let scanNum = 0;
 export const RecipeSearch = () => {
   // your IP address, ipconfig in command prompt
-  const serverIP = "10.44.22.41";
+
   scanNum += 1;
   const navigation = useNavigation();
   const {
@@ -42,6 +42,7 @@ export const RecipeSearch = () => {
     query,
     setQuery,
     diet,
+    serverIP,
   } = useContext(AppContext);
 
   const [page, setPage] = useState(1);
@@ -52,8 +53,6 @@ export const RecipeSearch = () => {
   useEffect(() => {
     console.log("I fired 1 ", "Scan # ", scanNum, " query: ", query);
     setTempQuery(query);
-    if (ingredientList.length > 0) {
-    }
   }, [ingredientList]);
 
   function searchHandler(text) {

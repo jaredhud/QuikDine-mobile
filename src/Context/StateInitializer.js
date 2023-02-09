@@ -10,6 +10,7 @@ export default function initializeVariables() {
   const [diet, setDiet] = useState("");
   const [ingredientList, setIngredientList] = useState([]);
   const [ingredientListChecked, setIngredientListChecked] = useState([]);
+  const [serverIP, setServerIP] = useState("10.44.22.35");
 
   useEffect(() => {
     setIngredientList([...pantryList]);
@@ -35,6 +36,7 @@ export default function initializeVariables() {
     setIngredientList,
     ingredientListChecked,
     setIngredientListChecked,
+    serverIP,
   };
 
   return variables;

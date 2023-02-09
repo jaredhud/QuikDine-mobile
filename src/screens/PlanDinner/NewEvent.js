@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { useNavigation } from "@react-navigation/core";
+import React, { useCallback, useContext, useState } from "react";
+import { useFocusEffect, useNavigation } from "@react-navigation/core";
 import { StatusBar } from "expo-status-bar";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -12,6 +12,7 @@ import {
   Platform,
   ImageBackground,
   Button,
+  ScrollView,
 } from "react-native";
 
 import {
@@ -24,11 +25,19 @@ import {
 } from "../../../GlobalStyles";
 import { TextInput } from "react-native-paper";
 import AppContext from "../../Context/AppContext";
+import { RecipeCard } from "../../components/RecipeCard";
 
 export const NewEvent = () => {
   const navigation = useNavigation();
 
-  const { selectedRecipesList } = useContext(AppContext);
+  const {
+    selectedRecipesList,
+    setSelectedRecipesList,
+    serverIP,
+    recipe,
+    setRecipeID,
+  } = useContext(AppContext);
+
   const [date, setDate] = useState(new Date());
   const [time, setTime] = useState(new Date(Date.now()));
   const [datePicker, setDatePicker] = useState(false);
@@ -36,6 +45,31 @@ export const NewEvent = () => {
   const [mode, setMode] = useState("date");
   const [show, setShow] = useState(false);
   const [text, setText] = useState("");
+  const [selectedRecipes, setSelectedRecipes] = useState({});
+
+  useFocusEffect(
+    useCallback(() => {
+      async function getData() {
+        const recipeList = {
+          selectedRecipesList,
+        };
+        const dataResponse = await fetch(
+          `http://${serverIP}:5001/api/spoonacular/recipebulk`,
+          {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify(recipeList),
+          }
+        );
+        const responseValue = await dataResponse.json();
+        console.log(responseValue);
+        setSelectedRecipes(responseValue);
+      }
+      getData();
+    }, [selectedRecipesList])
+  );
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
@@ -137,6 +171,23 @@ export const NewEvent = () => {
         >
           <Text style={styles.buttonText}>Pick End Time</Text>
         </TouchableOpacity>
+      </View>
+      <View style={{ height: "30%" }}>
+        <ScrollView>
+          {selectedRecipes.length > 0 && [
+            selectedRecipes.map((recipe) => {
+              return (
+                <RecipeCard
+                  key={recipe.id}
+                  recipe={recipe}
+                  setRecipeID={setRecipeID}
+                  setSelectedRecipesList={setSelectedRecipesList}
+                  selectedRecipesList={selectedRecipesList}
+                />
+              );
+            }),
+          ]}
+        </ScrollView>
       </View>
       <TouchableOpacity
         onPress={() => navigation.navigate("Send Email")}

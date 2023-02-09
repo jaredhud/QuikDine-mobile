@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState, Children, cloneElement, isValidElement } from "react";
 import {
   ImageBackground,
@@ -21,7 +21,7 @@ export const RecipeCard = (props) => {
   const [isInRecipeList, setIsInRecipeList] = useState(
     selectedRecipesList.indexOf(recipe.id) != -1
   );
-
+  console.log(selectedRecipesList);
   function eventRecipeListHandler() {
     if (isInRecipeList) {
       let temp = [...selectedRecipesList];
@@ -30,9 +30,11 @@ export const RecipeCard = (props) => {
     } else {
       setSelectedRecipesList([...selectedRecipesList, recipe.id]);
     }
-
-    setIsInRecipeList(!isInRecipeList);
   }
+
+  useEffect(() => {
+    setIsInRecipeList(selectedRecipesList.indexOf(recipe.id) != -1);
+  }, [selectedRecipesList]);
 
   function pullUpRecipe(id) {
     setRecipeID(id);
