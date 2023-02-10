@@ -29,7 +29,7 @@ export const AccountHome = (props) => {
   let favoritesIcon = "heart-sharp";
 
   return (
-    <View style={{ backgroundColor: colors.lightgreen }}>
+    <View style={{ backgroundColor: "#ebfefe" }}>
       <ScrollView style={{ height: "100%" }}>
         <ImageBackground
           source={profilebg}
@@ -49,7 +49,7 @@ export const AccountHome = (props) => {
               borderRadius: 100,
               marginTop: -70,
               borderWidth: 3,
-              borderColor: "#f2f2f2",
+              borderColor: "#ebfefe",
             }}
           >
             <Image
@@ -65,7 +65,7 @@ export const AccountHome = (props) => {
           <Text
             style={{
               fontSize: 25,
-              fontFamily: FontFamily.happymonkey,
+              fontWeight: "bold",
               // fontWeight: "bold",
               padding: 10,
             }}
@@ -146,7 +146,7 @@ export const AccountHome = (props) => {
             shadowOpacity: 80,
             elevation: 15,
             marginTop: 20,
-            backgroundColor: "black",
+            backgroundColor: "#035779",
             marginBottom: 40,
           }}
         >
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.lightgreen,
+    backgroundColor: "#f2f2f2",
   },
   buttonText: {
     color: "white",

@@ -95,7 +95,8 @@ export const RecipeCard = (props) => {
               </Text> */}
               <Ionicons
                 style={{
-                  backgroundColor: isInRecipeList ? "red" : "#fec252",
+                  backgroundColor: isInRecipeList ? "#88001b" : "#379540",
+                  color: isInRecipeList ? "#ffffff" : "#ffffff",
                   borderRadius: 7,
                   padding: 2,
                   paddingRight: 6,
@@ -122,10 +123,11 @@ export const RecipeCard = (props) => {
             <Text
               variant="titleMedium"
               style={{
-                backgroundColor: "#fec252",
+                backgroundColor: "#953737",
                 borderRadius: 10,
                 paddingRight: 15,
                 paddingLeft: 15,
+                color: "white",
               }}
             >
               MI 3
