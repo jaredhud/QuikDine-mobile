@@ -55,7 +55,6 @@ export const RecipeSearch = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
-    console.log("I fired 1 ", "Scan # ", scanNum, " query: ", query);
     setTempQuery(query);
   }, [ingredientList]);
 
@@ -93,7 +92,6 @@ export const RecipeSearch = () => {
         const responseValue = await dataResponse.json();
         setSearchResults(responseValue);
       }
-      console.log("I fired 3 ", "Scan # ", scanNum, " query: ", query);
       getData();
     }, [page, ingredientList])
   );

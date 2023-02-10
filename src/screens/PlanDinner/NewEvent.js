@@ -64,7 +64,6 @@ export const NewEvent = () => {
           }
         );
         const responseValue = await dataResponse.json();
-        console.log(responseValue);
         setSelectedRecipes(responseValue);
       }
       getData();
@@ -85,7 +84,6 @@ export const NewEvent = () => {
       tempDate.getFullYear();
     let fTime = tempDate.getHours() + ":" + tempDate.getMinutes();
     setText(fDate + "\n" + fTime);
-    console.log(fDate + " / " + fTime);
   };
 
   const showMode = (currentMode) => {
@@ -191,11 +189,18 @@ export const NewEvent = () => {
         </ScrollView>
       </View>
       <TouchableOpacity
+        onPress={() => navigation.navigate("Recipe", { screen: "RecipePage" })}
+        style={[button]}
+      >
+        <Text style={styles.buttonText}>Add Recipes</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
         onPress={() => navigation.navigate("Send Email")}
         style={[button]}
       >
         <Text style={styles.buttonText}>Invite Recepients</Text>
       </TouchableOpacity>
+
       <View
         style={{
           height: "10%",

@@ -22,12 +22,10 @@ const TimeSlots = () => {
     setTimeSlot(createTimeSlots("09:00", "18:00"));
   }, []);
 
-  console.log(timeSlot);
   return (
     <ScrollView style={styles.container}>
       <View>
         {timeSlot.map((item, index) => {
-          console.log(typeof item);
           return (
             <View key={index}>
               <Text>{item.toString()}</Text>

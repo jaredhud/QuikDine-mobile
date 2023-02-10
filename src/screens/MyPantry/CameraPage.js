@@ -51,12 +51,8 @@ const CameraPage = () => {
           body: JSON.stringify(visReqObj),
         }
       );
-      console.log(dataResponse.status);
       const responseValue = await dataResponse.json();
       setIdObj(responseValue.responses[0].localizedObjectAnnotations[0].name);
-      console.log(
-        responseValue.responses[0].localizedObjectAnnotations[0].name
-      );
     }
 
     if (visReqObj.requests !== undefined) {
@@ -88,7 +84,6 @@ const CameraPage = () => {
   }
 
   async function takePic() {
-    console.log("SNAP");
     const options = {
       quality: 1,
       base64: true,

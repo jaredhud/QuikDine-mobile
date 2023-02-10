@@ -1,7 +1,6 @@
 const spoonAPIKey = "332d07c641fd4c11af3cf76f666e3666";
 
 export async function pantryRecipeSearch(searchCriteria, page, resultsPerPage) {
-  console.log("searchCriteria: ", searchCriteria);
   const query = searchCriteria.query;
   const ingredients = searchCriteria.ingredients;
   const mealType = searchCriteria.mealType;
@@ -32,7 +31,6 @@ export async function pantryRecipeSearch(searchCriteria, page, resultsPerPage) {
   }
   const offset = (page - 1) * resultsPerPage;
   const fetchString = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${spoonAPIKey}${queryString}${ingredientString}&sort=max-used-ingredients&addRecipeInformation=true&addRecipeNutrition=false&fillIngredients=true${typeString}${cuisineString}${dietString}&offset=${offset}&number=${resultsPerPage}`;
-  console.log(fetchString);
   const response = await fetch(fetchString);
   const recipes = await response.json();
   return recipes;

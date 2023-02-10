@@ -55,7 +55,6 @@ export default function SendEmail() {
   };
 
   const removeRecipient = () => {
-    console.log("Recepients removed");
     setRecipients("");
   };
 

@@ -21,7 +21,6 @@ export default function BarCodeScan() {
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
     setText(data);
-    console.log("Type: " + type + "\nData: " + data);
   };
 
   if (hasPermission === null) {
