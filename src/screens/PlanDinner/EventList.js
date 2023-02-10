@@ -19,6 +19,9 @@ import {
   FontFamily,
 } from "../../../GlobalStyles";
 import fallveggie from "../../img/falling-veggies.png";
+import newevent from "../../img/new-event.jpg";
+import ipevent from "../../img/ip-event.png";
+import pastevent from "../../img/past-event.jpg";
 import { SubInfo, SubInfo2, SubInfo3 } from "../../components/PlanMealText";
 // import Icon from "react-native-ico";
 
@@ -45,7 +48,7 @@ export const EventList = () => {
         style={[buttonBorder]}
       >
         <ImageBackground
-          source={fallveggie}
+          source={newevent}
           resizeMode="cover"
           style={styles.image}
           borderRadius={16}
@@ -61,7 +64,7 @@ export const EventList = () => {
         style={[buttonBorder]}
       >
         <ImageBackground
-          source={fallveggie}
+          source={ipevent}
           resizeMode="cover"
           style={styles.image}
           borderRadius={16}
@@ -77,7 +80,7 @@ export const EventList = () => {
         style={[buttonBorder]}
       >
         <ImageBackground
-          source={fallveggie}
+          source={pastevent}
           resizeMode="cover"
           style={styles.image}
           borderRadius={16}
