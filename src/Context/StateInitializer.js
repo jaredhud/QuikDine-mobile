@@ -11,7 +11,7 @@ export default function initializeVariables() {
   const [ingredientList, setIngredientList] = useState([]);
   const [ingredientListChecked, setIngredientListChecked] = useState([]);
   // your IP address, ipconfig in command prompt
-  const [serverIP, setServerIP] = useState("10.44.22.35");
+  const [serverIP, setServerIP] = useState("10.44.22.41");
 
   const [tempQuery, setTempQuery] = useState("");
 
