@@ -25,8 +25,6 @@ import { RecipeCard } from "../../components/RecipeCard";
 import AppContext from "../../Context/AppContext";
 let scanNum = 0;
 export const RecipeSearch = () => {
-  // your IP address, ipconfig in command prompt
-
   scanNum += 1;
   const navigation = useNavigation();
   const {
