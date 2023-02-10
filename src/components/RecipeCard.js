@@ -15,8 +15,13 @@ let heartoutlineIcon = "heart-outline";
 let removeIcon = "remove";
 
 export const RecipeCard = (props) => {
-  const { recipe, setRecipeID, selectedRecipesList, setSelectedRecipesList } =
-    props;
+  const {
+    recipe,
+    setRecipeID,
+    selectedRecipesList,
+    setSelectedRecipesList,
+    cardHeight,
+  } = props;
   const navigation = useNavigation();
   const [isInRecipeList, setIsInRecipeList] = useState(
     selectedRecipesList.indexOf(recipe.id) != -1
@@ -50,16 +55,17 @@ export const RecipeCard = (props) => {
         borderColor: "#e5ae49",
         elevation: 10,
         shadowOpacity: 80,
+        height: cardHeight,
       }}
     >
       {/* <Card.Content>
         <Text variant="titleLarge">{recipe.title}</Text>
       </Card.Content> */}
-
+      {/* Card Height */}
       <ImageBackground
         source={{ uri: recipe.image }}
         style={{
-          height: 160,
+          height: "100%",
           width: "100%",
           // alignItems: "flex-start",
           // justifyContent: "flex-end",
@@ -139,17 +145,6 @@ export const RecipeCard = (props) => {
               flexDirection: "row-reverse",
             }}
           >
-            {/* <Text
-              variant="titleMedium"
-              style={{
-                backgroundColor: "#fec252",
-                borderRadius: 10,
-                paddingRight: 15,
-                paddingLeft: 15,
-              }}
-            >
-              Favorites
-            </Text> */}
             <Ionicons
               style={{
                 backgroundColor: "#fec252",

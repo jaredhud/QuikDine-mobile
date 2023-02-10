@@ -18,8 +18,10 @@ export default function SendEmail() {
   const navigation = useNavigation();
   const [isAvailable, setIsAvailable] = useState(false);
   const [recipients, setRecipients] = useState([]);
-  const [subject, setSubject] = useState(undefined);
-  const [body, setBody] = useState(undefined);
+  const [subject, setSubject] = useState("QuikDine Event");
+  const [body, setBody] = useState(
+    "You are invited to my QuikDine Event. Please click on the link to vote."
+  );
   const [email, setEmail] = useState(undefined);
 
   useEffect(() => {
@@ -37,7 +39,7 @@ export default function SendEmail() {
     });
 
     MailComposer.composeAsync({
-      subject: "QuikDine Event",
+      subject: subject,
       body: body,
       recipients: recipients,
       attachments: [uri],
@@ -86,13 +88,13 @@ export default function SendEmail() {
           onChangeText={setSubject}
           style={styles.input}
         />
-        <TextInput
+        {/* <TextInput
           placeholder="Body"
           value={body}
           onChangeText={setBody}
           style={styles.input}
           // secureTextEntry
-        />
+        /> */}
         <TextInput
           placeholder="Email"
           value={email}

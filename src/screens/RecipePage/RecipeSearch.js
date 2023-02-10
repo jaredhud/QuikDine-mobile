@@ -163,6 +163,7 @@ export const RecipeSearch = () => {
                       setRecipeID={setRecipeID}
                       setSelectedRecipesList={setSelectedRecipesList}
                       selectedRecipesList={selectedRecipesList}
+                      cardHeight={160}
                     />
                   );
                 }),
