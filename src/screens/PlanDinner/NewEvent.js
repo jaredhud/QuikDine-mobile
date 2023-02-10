@@ -160,7 +160,7 @@ export const NewEvent = () => {
         {/* <TouchableOpacity onPress={removeRecipient} style={styles.buttonRed}> */}
         <TouchableOpacity
           onPress={() => showMode("time")}
-          style={styles.buttonRed}
+          style={styles.buttonGreen}
         >
           <Text style={styles.buttonText}>Pick Start Time</Text>
         </TouchableOpacity>
@@ -183,21 +183,12 @@ export const NewEvent = () => {
                   setRecipeID={setRecipeID}
                   setSelectedRecipesList={setSelectedRecipesList}
                   selectedRecipesList={selectedRecipesList}
-                  cardHeight={100}
                 />
               );
             }),
           ]}
         </ScrollView>
       </View>
-      <TouchableOpacity
-        onPress={() =>
-          navigation.navigate("Recipe", { screen: "RecipeSearch" })
-        }
-        style={[button]}
-      >
-        <Text style={styles.buttonText}>Add Recipes</Text>
-      </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate("Send Email")}
         style={[button]}
