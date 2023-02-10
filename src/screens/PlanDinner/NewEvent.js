@@ -106,7 +106,7 @@ export const NewEvent = () => {
       <View
         style={{
           width: "95%",
-          height: "30%",
+          height: "25%",
           justifyContent: "center",
           margin: "2%",
         }}
@@ -172,7 +172,7 @@ export const NewEvent = () => {
           <Text style={styles.buttonText}>Pick End Time</Text>
         </TouchableOpacity>
       </View>
-      <View style={{ height: "30%" }}>
+      <View style={{ height: "20%" }}>
         <ScrollView>
           {selectedRecipes.length > 0 && [
             selectedRecipes.map((recipe) => {
@@ -195,6 +195,12 @@ export const NewEvent = () => {
       >
         <Text style={styles.buttonText}>Invite Recepients</Text>
       </TouchableOpacity>
+      <View
+        style={{
+          height: "10%",
+          // backgroundColor: "blue"
+        }}
+      ></View>
     </View>
   );
 };
