@@ -39,6 +39,7 @@ export const InProgressEvent = () => {
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Vote Results:</Text>
             <Text style={styles.modalText}>Steak and Cheese: 3</Text>
+            <Text style={styles.modalText}>Garlic Butter Steak: 1</Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}

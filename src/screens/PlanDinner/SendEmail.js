@@ -40,7 +40,7 @@ export default function SendEmail() {
 
     MailComposer.composeAsync({
       subject: subject,
-      body: body,
+      body: "http://localhost:3000",
       recipients: recipients,
       attachments: [uri],
     });

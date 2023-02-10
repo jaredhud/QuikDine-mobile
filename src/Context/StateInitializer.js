@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { setIP } from "./IPAddress";
+import { setIP } from "./IPAddress.js";
 
 export default function initializeVariables() {
   const [pantryList, setPantryList] = useState([]);
@@ -12,8 +12,7 @@ export default function initializeVariables() {
   const [ingredientList, setIngredientList] = useState([]);
   const [ingredientListChecked, setIngredientListChecked] = useState([]);
   const [tempQuery, setTempQuery] = useState("");
-
-  setIP();
+  const { serverIP, setServerIP } = setIP();
 
   useEffect(() => {
     setIngredientList([...pantryList]);
