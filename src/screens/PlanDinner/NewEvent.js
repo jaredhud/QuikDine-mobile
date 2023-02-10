@@ -183,6 +183,7 @@ export const NewEvent = () => {
                   setRecipeID={setRecipeID}
                   setSelectedRecipesList={setSelectedRecipesList}
                   selectedRecipesList={selectedRecipesList}
+                  cardHeight={100}
                 />
               );
             }),
