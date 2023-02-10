@@ -9,6 +9,6 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
-src/Context/IPAddress
+src/Context/IPAddress.js
 # macOS
 .DS_Store
