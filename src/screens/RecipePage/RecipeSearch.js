@@ -23,6 +23,9 @@ import {
 import { pantryRecipeSearch } from "../../components/RecipeSearchFunction";
 import { RecipeCard } from "../../components/RecipeCard";
 import AppContext from "../../Context/AppContext";
+import Ionicons from "react-native-vector-icons/Ionicons";
+
+let questionMark = "help-circle-outline";
 let scanNum = 0;
 export const RecipeSearch = () => {
   scanNum += 1;
@@ -251,10 +254,10 @@ export const RecipeSearch = () => {
                   onPress={() => setModalVisible(true)}
                   style={[
                     styles.buttonSend,
-                    { alignItems: "center", width: "11.5%" },
+                    { alignItems: "center", width: "15.5%" },
                   ]}
                 >
-                  <Text style={styles.buttonText}>?</Text>
+                  <Ionicons name={questionMark} size={30} color="#ffffff" />
                 </TouchableOpacity>
                 <TouchableOpacity
                   onPress={() =>
@@ -264,8 +267,9 @@ export const RecipeSearch = () => {
                     styles.buttonSend,
                     {
                       alignItems: "center",
-                      width: "86%",
+                      width: "82%",
                       // height: "60%",
+                      justifyContent: "center",
                     },
                   ]}
                 >
@@ -333,7 +337,7 @@ const styles = StyleSheet.create({
   },
   buttonSend: {
     backgroundColor: "#379540",
-    padding: 15,
+    padding: 7,
     borderRadius: 10,
     marginTop: 20,
     marginBottom: 10,
