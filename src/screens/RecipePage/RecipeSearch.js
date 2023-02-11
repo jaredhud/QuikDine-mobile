@@ -8,6 +8,7 @@ import {
   Pressable,
   View,
   TouchableOpacity,
+  ImageBackground,
 } from "react-native";
 
 import { useFocusEffect, useNavigation } from "@react-navigation/core";
@@ -24,6 +25,7 @@ import { pantryRecipeSearch } from "../../components/RecipeSearchFunction";
 import { RecipeCard } from "../../components/RecipeCard";
 import AppContext from "../../Context/AppContext";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import menu from "../../img/menu.png";
 
 let questionMark = "help-circle-outline";
 let scanNum = 0;
@@ -112,7 +114,11 @@ export const RecipeSearch = () => {
         }}
       >
         <View style={styles.centeredView}>
-          <View style={styles.modalView}>
+          <ImageBackground
+            source={menu}
+            resizeMode="cover"
+            style={styles.modalImageView}
+          >
             <Text style={styles.modalText}>Help!</Text>
             <Text style={styles.modalText}>MI = Missing Ingredient</Text>
             <Pressable
@@ -121,7 +127,7 @@ export const RecipeSearch = () => {
             >
               <Text style={styles.textStyle}>Close</Text>
             </Pressable>
-          </View>
+          </ImageBackground>
         </View>
       </Modal>
       {/* Help Popup - End */}
@@ -352,6 +358,22 @@ const styles = StyleSheet.create({
     margin: 20,
     backgroundColor: "white",
     borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalImageView: {
+    margin: 20,
+    borderRadius: 20,
+    height: 400,
+    width: 255,
     padding: 35,
     alignItems: "center",
     shadowColor: "#000",
