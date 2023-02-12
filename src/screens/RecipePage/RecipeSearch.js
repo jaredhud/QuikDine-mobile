@@ -159,7 +159,7 @@ export const RecipeSearch = () => {
               }}
             />
           </View>
-          <View style={{ height: "87%" }}>
+          <View style={{ height: "85%" }}>
             <ScrollView>
               {searchResults.results && [
                 searchResults.results.map((recipe) => {

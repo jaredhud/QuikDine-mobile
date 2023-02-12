@@ -93,7 +93,7 @@ export const NewEvent = () => {
 
   return (
     <View style={styles.mainContainer}>
-      <View style={styles.backLocation}>
+      <View style={[styles.backLocation, { height: "5%" }]}>
         <Ionicons
           name="arrow-back-circle"
           size={32}
@@ -104,7 +104,7 @@ export const NewEvent = () => {
       <View
         style={{
           width: "95%",
-          height: "25%",
+          height: "15%",
           justifyContent: "center",
           margin: "2%",
         }}
@@ -125,7 +125,7 @@ export const NewEvent = () => {
           {text}
         </Text>
       </View>
-      <View style={{ margin: 20 }}>
+      <View style={{ margin: -10 }}>
         {/* <Button
           style={[button]}
           title="DatePicker"
@@ -170,7 +170,14 @@ export const NewEvent = () => {
           <Text style={styles.buttonText}>Pick End Time</Text>
         </TouchableOpacity>
       </View>
-      <View style={{ height: "20%" }}>
+      <View
+        style={{
+          height: "22%",
+          width: "92%",
+          borderRadius: 12,
+          backgroundColor: "white",
+        }}
+      >
         <ScrollView>
           {selectedRecipes.length > 0 && [
             selectedRecipes.map((recipe) => {
@@ -263,15 +270,14 @@ const styles = StyleSheet.create({
   },
   title: {
     marginLeft: 10,
-    fontSize: 44,
+    fontSize: 42,
     marginBottom: -5,
     fontFamily: FontFamily.ubuntubold,
     marginTop: 40,
   },
   backLocation: {
-    position: "absolute",
     top: 40,
-    left: 15,
+    right: "42%",
   },
   dateAndTime: {
     backgroundColor: "#ffffff",
