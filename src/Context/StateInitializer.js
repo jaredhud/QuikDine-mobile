@@ -2,7 +2,17 @@ import { useEffect, useState } from "react";
 import { setIP } from "./IPAddress.js";
 
 export default function initializeVariables() {
-  const [pantryList, setPantryList] = useState([]);
+  const [user, setUser] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [pantryList, setPantryList] = useState([
+    "salmon",
+    "cheese",
+    "beef",
+    "egg",
+    "tomato",
+    "flour",
+    "milk",
+  ]);
   const [selectedRecipesList, setSelectedRecipesList] = useState([]);
   const [recipeID, setRecipeID] = useState();
   const [cuisine, setCuisine] = useState("");
@@ -12,6 +22,7 @@ export default function initializeVariables() {
   const [ingredientList, setIngredientList] = useState([]);
   const [ingredientListChecked, setIngredientListChecked] = useState([]);
   const [tempQuery, setTempQuery] = useState("");
+  const [favoritesList, setFavoritesList] = useState([]);
   const { serverIP, setServerIP } = setIP();
 
   useEffect(() => {
@@ -25,6 +36,10 @@ export default function initializeVariables() {
   }, [pantryList]);
 
   const variables = {
+    user,
+    setUser,
+    isLoggedIn,
+    setIsLoggedIn,
     pantryList,
     setPantryList,
     selectedRecipesList,
@@ -43,6 +58,8 @@ export default function initializeVariables() {
     setIngredientList,
     ingredientListChecked,
     setIngredientListChecked,
+    favoritesList,
+    setFavoritesList,
     serverIP,
     tempQuery,
     setTempQuery,
