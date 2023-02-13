@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useFocusEffect, useNavigation } from "@react-navigation/core";
 import {
+  FlatList,
   ScrollView,
   StyleSheet,
   Text,
@@ -128,19 +129,29 @@ export const AdvancedSearch = () => {
       </View>
       <View style={{ height: "55%" }}>
         <ScrollView>
-          {tempPantry.length > 0 && [
-            tempPantry.map((ingredient, index) => {
-              return (
-                <IngredientSearchCard
-                  key={ingredient}
-                  ingredient={ingredient}
-                  setIngredientListChecked={setIngredientListChecked}
-                  ingredientListChecked={ingredientListChecked}
-                  index={index}
-                />
-              );
-            }),
-          ]}
+          <View
+            style={{
+              flexDirection: "row",
+              width: 400,
+              backgroundColor: "red",
+              alignItems: "flex-start",
+              flexWrap: "wrap",
+            }}
+          >
+            {tempPantry.length > 0 && [
+              tempPantry.map((ingredient, index) => {
+                return (
+                  <IngredientSearchCard
+                    key={ingredient}
+                    ingredient={ingredient}
+                    setIngredientListChecked={setIngredientListChecked}
+                    ingredientListChecked={ingredientListChecked}
+                    index={index}
+                  />
+                );
+              }),
+            ]}
+          </View>
         </ScrollView>
       </View>
       <View
