@@ -54,7 +54,7 @@ export const RecipeSearch = () => {
   } = useContext(AppContext);
 
   const [page, setPage] = useState(1);
-  const [resultsPerPage, setResultsPerPage] = useState(2);
+  const [resultsPerPage, setResultsPerPage] = useState(10);
   const [searchResults, setSearchResults] = useState({});
   // useState Popup
   const [modalVisible, setModalVisible] = useState(false);
