@@ -30,13 +30,7 @@ import { RecipeCard } from "../../components/RecipeCard";
 export const NewEvent = () => {
   const navigation = useNavigation();
 
-  const {
-    selectedRecipesList,
-    setSelectedRecipesList,
-    serverIP,
-    recipe,
-    setRecipeID,
-  } = useContext(AppContext);
+  const { selectedRecipesList, serverIP } = useContext(AppContext);
 
   const [date, setDate] = useState(new Date());
   const [time, setTime] = useState(new Date(Date.now()));
@@ -198,7 +192,7 @@ export const NewEvent = () => {
         onPress={() => navigation.navigate("Send Email")}
         style={[button]}
       >
-        <Text style={styles.buttonText}>Invite Recepients</Text>
+        <Text style={styles.buttonText}>Invite Recipients</Text>
       </TouchableOpacity>
 
       <View
