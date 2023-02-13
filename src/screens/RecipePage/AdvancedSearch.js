@@ -127,13 +127,34 @@ export const AdvancedSearch = () => {
           }}
         />
       </View>
-      <View style={{ height: "55%" }}>
+      <View
+        style={{
+          height: "51%",
+          width: "95%",
+          backgroundColor: "blue",
+          marginBottom: 20,
+          marginTop: 20,
+          borderRadius: 15,
+          backgroundColor: colors.lightblue,
+          borderColor: colors.darkblue,
+          borderWidth: 3,
+        }}
+      >
         <ScrollView>
+          <Text
+            style={{
+              textAlign: "center",
+              marginTop: 5,
+              fontSize: 14,
+              fontWeight: "600",
+            }}
+          >
+            Current Ingredients
+          </Text>
           <View
             style={{
               flexDirection: "row",
-              width: 400,
-              backgroundColor: "red",
+              width: "124%",
               alignItems: "flex-start",
               flexWrap: "wrap",
             }}
@@ -159,10 +180,10 @@ export const AdvancedSearch = () => {
           flexDirection: "row",
           justifyContent: "center",
           backgroundColor: colors.lightorange,
-          borderRadius: 15,
-          padding: 10,
           borderColor: colors.darkorange,
           borderWidth: 3,
+          borderRadius: 15,
+          padding: 10,
           width: "95%",
         }}
       >
