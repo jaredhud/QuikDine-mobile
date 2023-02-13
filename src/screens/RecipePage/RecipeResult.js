@@ -1,6 +1,13 @@
 import React, { useCallback, useContext, useState } from "react";
 import { useFocusEffect, useNavigation } from "@react-navigation/core";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import { auth } from "../../../firebase";
@@ -40,9 +47,16 @@ export const RecipeResult = () => {
   console.log(selectedRecipe);
   return (
     <View style={styles.container}>
-      <Appbar>
+      {/* <Appbar>
         <Appbar.Content title="Recipe Result" />
-      </Appbar>
+      </Appbar> */}
+      {/* Source: server > placeholderRecipes.js > selectedRecipes - look at Figma for guide */}
+      <Text>{selectedRecipe.title}</Text>
+      <ImageBackground
+        source={{ uri: selectedRecipe.image }}
+        style={{ height: "100%", width: "100%" }}
+        resizeMode="cover"
+      />
       <TouchableOpacity
         onPress={() => navigation.navigate("Recipe Search")}
         style={[button]}
