@@ -100,7 +100,7 @@ export const AdvancedSearch = () => {
 
   return (
     <View style={styles.container}>
-      <View style={[styles.backLocation, { height: "5%" }]}>
+      <View style={[styles.backLocation, { height: "10%", marginTop: 50 }]}>
         <Ionicons
           name="arrow-back-circle"
           size={32}
@@ -111,21 +111,22 @@ export const AdvancedSearch = () => {
       {/* <Appbar>
         <Appbar.Content title="Advanced Search" />
       </Appbar> */}
-      <Searchbar
-        value={tempQuery}
-        onChangeText={(text) => {
-          setTempQuery(text);
-        }}
-        onSubmitEditing={querySetter}
-        placeholder="query (optional)"
-        style={{
-          width: "67%",
-          height: "8%",
-          marginTop: "5%",
-          marginLeft: "2%",
-        }}
-      />
-      <View style={{ height: "60%" }}>
+      <View style={{ height: "10%" }}>
+        <Searchbar
+          value={tempQuery}
+          onChangeText={(text) => {
+            setTempQuery(text);
+          }}
+          onSubmitEditing={querySetter}
+          placeholder="query (optional)"
+          style={{
+            width: "67%",
+            marginTop: "5%",
+            marginLeft: "2%",
+          }}
+        />
+      </View>
+      <View style={{ height: "55%" }}>
         <ScrollView>
           {tempPantry.length > 0 && [
             tempPantry.map((ingredient, index) => {
@@ -145,13 +146,13 @@ export const AdvancedSearch = () => {
       <View
         style={{
           flexDirection: "row",
-          justifyContent: "space-between",
+          justifyContent: "center",
           backgroundColor: colors.lightorange,
           borderRadius: 15,
-          alignItems: "center",
           padding: 10,
           borderColor: colors.darkorange,
           borderWidth: 3,
+          width: "95%",
         }}
       >
         <View
@@ -274,7 +275,7 @@ export const AdvancedSearch = () => {
         }}
       >
         <TouchableOpacity
-          style={[[button], { alignItems: "center", width: "15.5%" }]}
+          style={[[button], { alignItems: "center", width: "20.5%" }]}
         >
           <Text style={styles.buttonText}>Reset</Text>
         </TouchableOpacity>
@@ -291,7 +292,7 @@ export const AdvancedSearch = () => {
             [button],
             {
               alignItems: "center",
-              width: "72%",
+              width: "67%",
               // height: "60%",
               justifyContent: "center",
               marginLeft: 15,
@@ -323,7 +324,7 @@ const styles = StyleSheet.create({
     right: "42%",
   },
   selection: {
-    width: "30%",
+    width: "35%",
   },
   dropdown: {
     width: "90%",
@@ -343,7 +344,7 @@ const styles = StyleSheet.create({
   },
   selectionTitle: {
     fontWeight: "600",
-    fontSize: 18,
+    fontSize: 12,
   },
   dropdown1RowTxtStyle: { color: "#444", textAlign: "center" },
 });

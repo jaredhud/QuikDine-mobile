@@ -119,14 +119,24 @@ export const RecipeSearch = () => {
             resizeMode="cover"
             style={styles.modalImageView}
           >
-            <Text style={styles.modalText}>Help!</Text>
-            <Text style={styles.modalText}>MI = Missing Ingredient</Text>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}
+            <View
+              style={{
+                alignItems: "center",
+                flexDirection: "column",
+                marginTop: "20%",
+              }}
             >
-              <Text style={styles.textStyle}>Close</Text>
-            </Pressable>
+              <Text style={[styles.modalText, { fontWeight: "800" }]}>
+                Help!
+              </Text>
+              <Text style={styles.modalText}>MI = Missing Ingredient</Text>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible(!modalVisible)}
+              >
+                <Text style={styles.textStyle}>Close</Text>
+              </Pressable>
+            </View>
           </ImageBackground>
         </View>
       </Modal>

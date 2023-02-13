@@ -158,7 +158,7 @@ export const NewEvent = () => {
         {/* <TouchableOpacity onPress={removeRecipient} style={styles.buttonRed}> */}
         <TouchableOpacity
           onPress={() => showMode("time")}
-          style={styles.buttonGreen}
+          style={styles.buttonRed}
         >
           <Text style={styles.buttonText}>Pick Start Time</Text>
         </TouchableOpacity>
@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   buttonRed: {
-    backgroundColor: "darkorange",
+    backgroundColor: "#953737",
     width: "45%",
     padding: 15,
     borderRadius: 10,

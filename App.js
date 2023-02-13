@@ -69,7 +69,7 @@ export default function App() {
           <Tab.Screen name="Plan Meal" component={PlanNav} />
           <Tab.Screen name="Home" component={Home} />
           {/* Test */}
-          <Tab.Screen name="Test" component={TestNav} />
+          {/* <Tab.Screen name="Test" component={TestNav} /> */}
           <Tab.Screen name="Recipe" component={RecipeNav} />
           <Tab.Screen name="Pantry" component={PantryNav} />
         </Tab.Navigator>

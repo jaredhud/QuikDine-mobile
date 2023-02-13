@@ -9,6 +9,7 @@ import {
   Pressable,
   View,
   TouchableOpacity,
+  ImageBackground,
 } from "react-native";
 
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
@@ -16,6 +17,7 @@ import { auth } from "../../../firebase";
 import { button } from "../../../GlobalStyles";
 import { FontFamily } from "../../../GlobalStyles";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import menu from "../../img/menu.png";
 // import Icon from "react-native-ico";
 
 export const InProgressEvent = () => {
@@ -36,17 +38,31 @@ export const InProgressEvent = () => {
         }}
       >
         <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Vote Results:</Text>
-            <Text style={styles.modalText}>Steak and Cheese: 3</Text>
-            <Text style={styles.modalText}>Garlic Butter Steak: 1</Text>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}
+          <ImageBackground
+            source={menu}
+            resizeMode="cover"
+            style={styles.modalImageView}
+          >
+            <View
+              style={{
+                alignItems: "center",
+                flexDirection: "column",
+                marginTop: "20%",
+              }}
             >
-              <Text style={styles.textStyle}>Close</Text>
-            </Pressable>
-          </View>
+              <Text style={[styles.modalText, { fontWeight: "800" }]}>
+                Vote Results
+              </Text>
+              <Text style={styles.modalText}>Steak and Cheese: 3</Text>
+              <Text style={styles.modalText}>Garlic Butter Steak: 1</Text>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible(!modalVisible)}
+              >
+                <Text style={styles.textStyle}>Close</Text>
+              </Pressable>
+            </View>
+          </ImageBackground>
         </View>
       </Modal>
       <Modal
@@ -59,18 +75,32 @@ export const InProgressEvent = () => {
         }}
       >
         <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Participants:</Text>
-            <Text style={styles.modalText}>Romell</Text>
-            <Text style={styles.modalText}>Tija</Text>
-            <Text style={styles.modalText}>Jared</Text>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible2(!modalVisible2)}
+          <ImageBackground
+            source={menu}
+            resizeMode="cover"
+            style={styles.modalImageView}
+          >
+            <View
+              style={{
+                alignItems: "center",
+                flexDirection: "column",
+                marginTop: "20%",
+              }}
             >
-              <Text style={styles.textStyle}>Close</Text>
-            </Pressable>
-          </View>
+              <Text style={[styles.modalText, { fontWeight: "800" }]}>
+                Participants
+              </Text>
+              <Text style={styles.modalText}>Romell</Text>
+              <Text style={styles.modalText}>Tija</Text>
+              <Text style={styles.modalText}>Jared</Text>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible2(!modalVisible2)}
+              >
+                <Text style={styles.textStyle}>Close</Text>
+              </Pressable>
+            </View>
+          </ImageBackground>
         </View>
       </Modal>
       {/* <Appbar>
@@ -164,6 +194,22 @@ const styles = StyleSheet.create({
     margin: 20,
     backgroundColor: "white",
     borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalImageView: {
+    margin: 20,
+    borderRadius: 20,
+    height: 400,
+    width: 255,
     padding: 35,
     alignItems: "center",
     shadowColor: "#000",
