@@ -61,6 +61,30 @@ export const AdvancedSearch = () => {
     mealtype: mealType,
   };
 
+  useEffect(() => {
+    if (mealType === "") {
+      tempMealType = "any";
+    } else {
+      tempMealType = mealType;
+    }
+  }, [mealType]);
+
+  useEffect(() => {
+    if (diet === "") {
+      tempDiet = "any";
+    } else {
+      tempDiet = diet;
+    }
+  }, [diet]);
+
+  useEffect(() => {
+    if (cuisine === "") {
+      cuisine = "any";
+    } else {
+      tempCuisine = cuisine;
+    }
+  }, [cuisine]);
+
   function querySetter() {
     setQuery(tempQuery);
   }
