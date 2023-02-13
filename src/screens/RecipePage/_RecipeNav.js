@@ -15,7 +15,11 @@ export default function RecipeNav() {
         options={{ headerShown: false }}
       />
       <Stack.Screen name="Recipe Result" component={RecipeResult} />
-      <Stack.Screen name="Advanced Search" component={AdvancedSearch} />
+      <Stack.Screen
+        name="Advanced Search"
+        component={AdvancedSearch}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 }

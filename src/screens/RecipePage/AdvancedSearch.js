@@ -17,6 +17,7 @@ import { auth } from "../../../firebase";
 import { button } from "../../../GlobalStyles";
 import { IngredientSearchCard } from "../../components/IngredientSearchCard";
 import AppContext from "../../Context/AppContext";
+import Ionicons from "@expo/vector-icons/Ionicons";
 // import Icon from "react-native-ico";
 
 let tempSearchCriteria;
@@ -98,9 +99,17 @@ export const AdvancedSearch = () => {
 
   return (
     <View style={styles.container}>
-      <Appbar>
+      <View style={[styles.backLocation, { height: "5%" }]}>
+        <Ionicons
+          name="arrow-back-circle"
+          size={32}
+          color="green"
+          onPress={() => navigation.navigate("Recipe Search")}
+        />
+      </View>
+      {/* <Appbar>
         <Appbar.Content title="Advanced Search" />
-      </Appbar>
+      </Appbar> */}
       <Searchbar
         value={tempQuery}
         onChangeText={(text) => {
@@ -130,48 +139,70 @@ export const AdvancedSearch = () => {
           }),
         ]}
       </ScrollView>
-      <Text>Diet</Text>
-      <SelectDropdown
-        data={diets}
-        defaultValue={tempDiet}
-        onSelect={(selectedItem, index) => {
-          tempDiet = selectedItem;
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+          backgroundColor: "#fbffd8",
+          borderRadius: 15,
+          alignItems: "center",
         }}
-        buttonTextAfterSelection={(selectedItem, index) => {
-          return selectedItem;
-        }}
-        rowTextForSelection={(item, index) => {
-          return item;
-        }}
-      />
-      <Text>Meal Type</Text>
-      <SelectDropdown
-        data={mealTypes}
-        defaultValue={tempMealType}
-        onSelect={(selectedItem, index) => {
-          tempMealType = selectedItem;
-        }}
-        buttonTextAfterSelection={(selectedItem, index) => {
-          return selectedItem;
-        }}
-        rowTextForSelection={(item, index) => {
-          return item;
-        }}
-      />
-      <Text>Cuisine Select</Text>
-      <SelectDropdown
-        data={cuisines}
-        defaultValue={tempCuisine}
-        onSelect={(selectedItem, index) => {
-          tempCuisine = selectedItem;
-        }}
-        buttonTextAfterSelection={(selectedItem, index) => {
-          return selectedItem;
-        }}
-        rowTextForSelection={(item, index) => {
-          return item;
-        }}
-      />
+      >
+        <View style={styles.selection}>
+          <Text>Diet</Text>
+          <View style={styles.dropdown}>
+            <SelectDropdown
+              data={diets}
+              defaultValue={tempDiet}
+              onSelect={(selectedItem, index) => {
+                tempDiet = selectedItem;
+              }}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                return selectedItem;
+              }}
+              rowTextForSelection={(item, index) => {
+                return item;
+              }}
+            />
+          </View>
+        </View>
+        <View style={styles.selection}>
+          <Text>Meal Type</Text>
+          <View style={styles.dropdown}>
+            <SelectDropdown
+              data={mealTypes}
+              defaultValue={tempMealType}
+              onSelect={(selectedItem, index) => {
+                tempMealType = selectedItem;
+              }}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                return selectedItem;
+              }}
+              rowTextForSelection={(item, index) => {
+                return item;
+              }}
+            />
+          </View>
+        </View>
+        <View style={styles.selection}>
+          <Text>Cuisine Select</Text>
+          <View style={styles.dropdown}>
+            <SelectDropdown
+              data={cuisines}
+              defaultValue={tempCuisine}
+              onSelect={(selectedItem, index) => {
+                tempCuisine = selectedItem;
+              }}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                return selectedItem;
+              }}
+              rowTextForSelection={(item, index) => {
+                return item;
+              }}
+            />
+          </View>
+        </View>
+      </View>
       <TouchableOpacity
         onPress={() => {
           querySetter();
@@ -200,5 +231,17 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "700",
     fontSize: 16,
+  },
+  backLocation: {
+    top: 40,
+    right: "42%",
+  },
+  selection: {
+    width: "30%",
+  },
+  dropdown: {
+    width: 100,
+    height: 100,
+    backgroundColor: "blue",
   },
 });
