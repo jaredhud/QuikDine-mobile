@@ -163,6 +163,7 @@ export const AdvancedSearch = () => {
               rowTextForSelection={(item, index) => {
                 return item;
               }}
+              dropdownStyle={styles.dropdown1DropdownStyle}
             />
           </View>
         </View>
@@ -244,4 +245,5 @@ const styles = StyleSheet.create({
     height: 100,
     backgroundColor: "blue",
   },
+  dropdown1DropdownStyle: { width: 150, borderRadius: 10 },
 });
