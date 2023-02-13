@@ -17,6 +17,8 @@ export const colors = {
   lightgreen: "#D3FAD9",
   darkgreen: "#379540",
   darkred: "#953737",
+  darkorange: "#e5ae49",
+  lightorange: "#faf6d3",
 };
 export const buttonText = {
   color: "white",

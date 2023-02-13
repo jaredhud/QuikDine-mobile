@@ -10,11 +10,12 @@ import {
 
 import SelectDropdown from "react-native-select-dropdown";
 
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import Checkbox from "react-native-paper";
 // import Checkbox from "expo-checkbox";
 import { auth } from "../../../firebase";
-import { button } from "../../../GlobalStyles";
+import { button, colors, FontFamily } from "../../../GlobalStyles";
 import { IngredientSearchCard } from "../../components/IngredientSearchCard";
 import AppContext from "../../Context/AppContext";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -124,33 +125,43 @@ export const AdvancedSearch = () => {
           marginLeft: "2%",
         }}
       />
-      <ScrollView style={{ height: "30%" }}>
-        {tempPantry.length > 0 && [
-          tempPantry.map((ingredient, index) => {
-            return (
-              <IngredientSearchCard
-                key={ingredient}
-                ingredient={ingredient}
-                setIngredientListChecked={setIngredientListChecked}
-                ingredientListChecked={ingredientListChecked}
-                index={index}
-              />
-            );
-          }),
-        ]}
-      </ScrollView>
+      <View style={{ height: "60%" }}>
+        <ScrollView>
+          {tempPantry.length > 0 && [
+            tempPantry.map((ingredient, index) => {
+              return (
+                <IngredientSearchCard
+                  key={ingredient}
+                  ingredient={ingredient}
+                  setIngredientListChecked={setIngredientListChecked}
+                  ingredientListChecked={ingredientListChecked}
+                  index={index}
+                />
+              );
+            }),
+          ]}
+        </ScrollView>
+      </View>
       <View
         style={{
           flexDirection: "row",
           justifyContent: "space-between",
-          backgroundColor: "#fbffd8",
+          backgroundColor: colors.lightorange,
           borderRadius: 15,
           alignItems: "center",
+          padding: 10,
+          borderColor: colors.darkorange,
+          borderWidth: 3,
         }}
       >
-        <View style={styles.selection}>
-          <Text>Diet</Text>
-          <View style={styles.dropdown}>
+        <View
+          style={[
+            styles.selection,
+            { alignItems: "center", justifyContent: "center" },
+          ]}
+        >
+          <Text style={[styles.selectionTitle]}>Diet</Text>
+          <View style={[styles.dropdown]}>
             <SelectDropdown
               data={diets}
               defaultValue={tempDiet}
@@ -163,12 +174,30 @@ export const AdvancedSearch = () => {
               rowTextForSelection={(item, index) => {
                 return item;
               }}
-              dropdownStyle={styles.dropdown1DropdownStyle}
+              dropdownStyle={styles.dropdownDropdownStyle}
+              buttonStyle={styles.dropdownBtnStyle}
+              renderDropdownIcon={(isOpened) => {
+                return (
+                  <FontAwesome
+                    name={isOpened ? "chevron-up" : "chevron-down"}
+                    color={"#444"}
+                    size={18}
+                  />
+                );
+              }}
+              dropdownIconPosition={"right"}
+              rowStyle={styles.dropdown1RowStyle}
+              rowTextStyle={styles.dropdown1RowTxtStyle}
             />
           </View>
         </View>
-        <View style={styles.selection}>
-          <Text>Meal Type</Text>
+        <View
+          style={[
+            styles.selection,
+            { alignItems: "center", justifyContent: "center" },
+          ]}
+        >
+          <Text style={[styles.selectionTitle]}>Meal Type</Text>
           <View style={styles.dropdown}>
             <SelectDropdown
               data={mealTypes}
@@ -182,11 +211,30 @@ export const AdvancedSearch = () => {
               rowTextForSelection={(item, index) => {
                 return item;
               }}
+              dropdownStyle={styles.dropdownDropdownStyle}
+              buttonStyle={styles.dropdownBtnStyle}
+              renderDropdownIcon={(isOpened) => {
+                return (
+                  <FontAwesome
+                    name={isOpened ? "chevron-up" : "chevron-down"}
+                    color={"#444"}
+                    size={18}
+                  />
+                );
+              }}
+              dropdownIconPosition={"right"}
+              rowStyle={styles.dropdown1RowStyle}
+              rowTextStyle={styles.dropdown1RowTxtStyle}
             />
           </View>
         </View>
-        <View style={styles.selection}>
-          <Text>Cuisine Select</Text>
+        <View
+          style={[
+            styles.selection,
+            { alignItems: "center", justifyContent: "center" },
+          ]}
+        >
+          <Text style={[styles.selectionTitle]}>Cuisine Select</Text>
           <View style={styles.dropdown}>
             <SelectDropdown
               data={cuisines}
@@ -200,23 +248,60 @@ export const AdvancedSearch = () => {
               rowTextForSelection={(item, index) => {
                 return item;
               }}
+              dropdownStyle={styles.dropdownDropdownStyle}
+              buttonStyle={styles.dropdownBtnStyle}
+              renderDropdownIcon={(isOpened) => {
+                return (
+                  <FontAwesome
+                    name={isOpened ? "chevron-up" : "chevron-down"}
+                    color={"#444"}
+                    size={18}
+                  />
+                );
+              }}
+              dropdownIconPosition={"right"}
+              rowStyle={styles.dropdown1RowStyle}
+              rowTextStyle={styles.dropdown1RowTxtStyle}
             />
           </View>
         </View>
       </View>
-      <TouchableOpacity
-        onPress={() => {
-          querySetter();
-          dietSetter();
-          cuisineSetter();
-          mealTypeSetter();
-          ingredientSetter();
-          navigation.navigate("Recipe Search");
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignContent: "center",
         }}
-        style={[button]}
       >
-        <Text style={styles.buttonText}>Search</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={[[button], { alignItems: "center", width: "15.5%" }]}
+        >
+          <Text style={styles.buttonText}>Reset</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            querySetter();
+            dietSetter();
+            cuisineSetter();
+            mealTypeSetter();
+            ingredientSetter();
+            navigation.navigate("Recipe Search");
+          }}
+          style={[
+            [button],
+            {
+              alignItems: "center",
+              width: "72%",
+              // height: "60%",
+              justifyContent: "center",
+              marginLeft: 15,
+            },
+          ]}
+        >
+          <Text style={styles.buttonText}>Search</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={{ height: "10%" }}></View>
     </View>
   );
 };
@@ -241,9 +326,24 @@ const styles = StyleSheet.create({
     width: "30%",
   },
   dropdown: {
-    width: 100,
-    height: 100,
-    backgroundColor: "blue",
+    width: "90%",
   },
-  dropdown1DropdownStyle: { width: 150, borderRadius: 10 },
+  dropdownDropdownStyle: { width: 150, borderRadius: 10 },
+  dropdownBtnStyle: {
+    width: "100%",
+    height: 50,
+    backgroundColor: "#FFF",
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: "#444",
+  },
+  dropdown1RowStyle: {
+    backgroundColor: "#EFEFEF",
+    borderBottomColor: "#C5C5C5",
+  },
+  selectionTitle: {
+    fontWeight: "600",
+    fontSize: 18,
+  },
+  dropdown1RowTxtStyle: { color: "#444", textAlign: "center" },
 });
