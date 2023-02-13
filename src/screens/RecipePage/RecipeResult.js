@@ -11,7 +11,7 @@ import AppContext from "../../Context/AppContext";
 
 export const RecipeResult = () => {
   const navigation = useNavigation();
-  const { selectedRecipeList, setSelectedRecipeList, recipeID } =
+  const { selectedRecipeList, setSelectedRecipeList, recipeID, serverIP } =
     useContext(AppContext);
 
   const [selectedRecipe, setSelectedRecipe] = useState({});
@@ -19,7 +19,19 @@ export const RecipeResult = () => {
   useFocusEffect(
     useCallback(() => {
       async function recipeFetch() {
-        const result = await idRecipeSearch(recipeID);
+        console.log(recipeID);
+        const id = { id: recipeID };
+        const dataResponse = await fetch(
+          `http://${serverIP}:5001/api/spoonacular/recipe`,
+          {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify(id),
+          }
+        );
+        const result = await dataResponse.json();
         setSelectedRecipe(result);
       }
 
