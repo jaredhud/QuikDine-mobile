@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { View } from "react-native";
 import { Checkbox, Card, Text } from "react-native-paper";
 
 let curCheckArray = [];
@@ -13,17 +14,21 @@ export function IngredientSearchCard(props) {
   }, [ingredientListChecked]);
 
   return (
-    <Card>
-      <Text>{ingredient}</Text>
-      <Checkbox
-        status={checked ? "checked" : "unchecked"}
-        onPress={() => {
-          curCheckArray = [...ingredientListChecked];
-          curCheckArray[index] = !curCheckArray[index];
-          setChecked(!checked);
-          setIngredientListChecked(curCheckArray);
-        }}
-      />
+    <Card style={{ margin: 10 }}>
+      <View
+        style={{ flexDirection: "row", justifyContent: "center", margin: 10 }}
+      >
+        <Text>{ingredient}</Text>
+        <Checkbox
+          status={checked ? "checked" : "unchecked"}
+          onPress={() => {
+            curCheckArray = [...ingredientListChecked];
+            curCheckArray[index] = !curCheckArray[index];
+            setChecked(!checked);
+            setIngredientListChecked(curCheckArray);
+          }}
+        />
+      </View>
     </Card>
   );
 }
