@@ -7,17 +7,18 @@ import {
   Button,
   View,
 } from "react-native";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import * as MailComposer from "expo-mail-composer";
 import * as Print from "expo-print";
 import { colors, FontFamily } from "../../../GlobalStyles";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/core";
+import AppContext from "../../Context/AppContext";
 
 export default function SendEmail() {
   const navigation = useNavigation();
+  const { recipients, setRecipients } = useContext(AppContext);
   const [isAvailable, setIsAvailable] = useState(false);
-  const [recipients, setRecipients] = useState([]);
   const [subject, setSubject] = useState("QuikDine Event");
   const [body, setBody] = useState(
     "You are invited to my QuikDine Event. Please click on the link to vote."

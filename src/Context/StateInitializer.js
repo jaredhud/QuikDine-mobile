@@ -23,6 +23,7 @@ export default function initializeVariables() {
   const [ingredientListChecked, setIngredientListChecked] = useState([]);
   const [tempQuery, setTempQuery] = useState("");
   const [favoritesList, setFavoritesList] = useState([]);
+  const [recipients, setRecipients] = useState([]);
   const { serverIP, setServerIP } = setIP();
 
   useEffect(() => {
@@ -60,6 +61,8 @@ export default function initializeVariables() {
     setIngredientListChecked,
     favoritesList,
     setFavoritesList,
+    recipients,
+    setRecipients,
     serverIP,
     tempQuery,
     setTempQuery,
