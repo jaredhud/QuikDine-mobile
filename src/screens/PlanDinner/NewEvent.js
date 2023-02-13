@@ -182,14 +182,7 @@ export const NewEvent = () => {
           {selectedRecipes.length > 0 && [
             selectedRecipes.map((recipe) => {
               return (
-                <RecipeCard
-                  key={recipe.id}
-                  recipe={recipe}
-                  setRecipeID={setRecipeID}
-                  setSelectedRecipesList={setSelectedRecipesList}
-                  selectedRecipesList={selectedRecipesList}
-                  cardHeight={100}
-                />
+                <RecipeCard key={recipe.id} recipe={recipe} cardHeight={100} />
               );
             }),
           ]}

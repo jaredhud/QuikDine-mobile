@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useState, Children, cloneElement, isValidElement } from "react";
 import {
   ImageBackground,
@@ -10,20 +10,27 @@ import {
 import { Avatar, Button, Card, Text } from "react-native-paper";
 import { FontFamily } from "../../GlobalStyles";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import AppContext from "../Context/AppContext";
 let addIcon = "add";
 let heartoutlineIcon = "heart-outline";
+let heartFillIcon = "heart";
 let removeIcon = "remove";
 
 export const RecipeCard = (props) => {
+  const { recipe, cardHeight } = props;
   const {
-    recipe,
-    setRecipeID,
+    favoritesList,
+    setFavoritesList,
     selectedRecipesList,
     setSelectedRecipesList,
-    cardHeight,
-  } = props;
+    setRecipeID,
+  } = useContext(AppContext);
+
   const navigation = useNavigation();
   const [isInRecipeList, setIsInRecipeList] = useState(
+    selectedRecipesList.indexOf(recipe.id) != -1
+  );
+  const [isInFavoritesList, setIsInFavoritesList] = useState(
     selectedRecipesList.indexOf(recipe.id) != -1
   );
 
@@ -37,9 +44,23 @@ export const RecipeCard = (props) => {
     }
   }
 
+  function favoritesHandler() {
+    if (isInFavoritesList) {
+      let temp = [...favoritesList];
+      temp.splice(favoritesList.indexOf(recipe.id), 1);
+      setFavoritesList(temp);
+    } else {
+      setFavoritesList([...favoritesList, recipe.id]);
+    }
+  }
+
   useEffect(() => {
     setIsInRecipeList(selectedRecipesList.indexOf(recipe.id) != -1);
   }, [selectedRecipesList]);
+
+  useEffect(() => {
+    setIsInFavoritesList(favoritesList.indexOf(recipe.id) != -1);
+  }, [favoritesList]);
 
   function pullUpRecipe(id) {
     setRecipeID(id);
@@ -145,18 +166,20 @@ export const RecipeCard = (props) => {
               flexDirection: "row-reverse",
             }}
           >
-            <Ionicons
-              style={{
-                backgroundColor: "#fec252",
-                borderRadius: 8,
-                padding: 2,
-                paddingRight: 6,
-                paddingLeft: 6,
-              }}
-              name={heartoutlineIcon}
-              size={30}
-              color="#88001b"
-            />
+            <TouchableOpacity onPress={favoritesHandler}>
+              <Ionicons
+                style={{
+                  backgroundColor: "#fec252",
+                  borderRadius: 8,
+                  padding: 2,
+                  paddingRight: 6,
+                  paddingLeft: 6,
+                }}
+                name={isInFavoritesList ? heartFillIcon : heartoutlineIcon}
+                size={30}
+                color="#88001b"
+              />
+            </TouchableOpacity>
           </View>
         </View>
       </ImageBackground>

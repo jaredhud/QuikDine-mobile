@@ -176,9 +176,6 @@ export const RecipeSearch = () => {
                     <RecipeCard
                       key={recipe.id}
                       recipe={recipe}
-                      setRecipeID={setRecipeID}
-                      setSelectedRecipesList={setSelectedRecipesList}
-                      selectedRecipesList={selectedRecipesList}
                       cardHeight={160}
                     />
                   );
