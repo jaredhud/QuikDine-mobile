@@ -5,7 +5,6 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import { auth } from "../../../firebase";
 import { button } from "../../../GlobalStyles";
-import { idRecipeSearch } from "../../components/RecipeSearchFunction";
 import AppContext from "../../Context/AppContext";
 // import Icon from "react-native-ico";
 
