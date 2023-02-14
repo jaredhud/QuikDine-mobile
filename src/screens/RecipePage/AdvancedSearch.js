@@ -87,13 +87,13 @@ export const AdvancedSearch = () => {
     }
   }, [diet]);
 
-  // useEffect(() => {
-  //   if (cuisine === "") {
-  //     cuisine = "any";
-  //   } else {
-  //     tempCuisine = cuisine;
-  //   }
-  // }, [cuisine]);
+  useEffect(() => {
+    if (cuisine === "") {
+      cuisine = "any";
+    } else {
+      tempCuisine = cuisine;
+    }
+  }, [cuisine]);
 
   function querySetter() {
     setQuery(tempQuery);
