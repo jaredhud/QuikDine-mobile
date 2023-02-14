@@ -13,17 +13,25 @@ import * as Print from "expo-print";
 import { colors, FontFamily } from "../../../GlobalStyles";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/core";
-import email from 'react-native-email';
+import email from "react-native-email";
 import AppContext from "../../Context/AppContext";
-import { collection, doc,addDoc, getDoc, getDocs, query, where } from "firebase/firestore/lite";
+import {
+  collection,
+  doc,
+  addDoc,
+  getDoc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore/lite";
 import { db } from "../../../firebase";
 
-let userIds
-let eventID
+let userIds;
+let eventID;
 
-export default function SendEmail() {  
+export default function SendEmail() {
   const navigation = useNavigation();
-  const { recipients, setRecipients } = useContext(AppContext);
+  const { recipients, setRecipients, serverIP } = useContext(AppContext);
   const [isAvailable, setIsAvailable] = useState(false);
   const [subject, setSubject] = useState("QuikDine Event");
   const [body, setBody] = useState(
@@ -41,64 +49,65 @@ export default function SendEmail() {
   }, []);
 
   //const sendMail = async () => {
-   // const { uri } = await Print.printToFileAsync({
-      //html: "<h1>Your file</h1>",
-   // });
+  // const { uri } = await Print.printToFileAsync({
+  //html: "<h1>Your file</h1>",
+  // });
 
-    //MailComposer.composeAsync({
-     // subject: subject,
-     // body: "Please click here to vote : http://localhost:3000",
-     // recipients: recipients,
-     // attachments: [uri],
-   // });
- // };
+  //MailComposer.composeAsync({
+  // subject: subject,
+  // body: "Please click here to vote : http://localhost:3000",
+  // recipients: recipients,
+  // attachments: [uri],
+  // });
+  // };
 
   const sendMail = () => {
-// userid from firestore
-getDocs(query(collection(db, "Users"),where ('User UID', '==', '2ONojiVSWSbKBbEjvoecpqOJrhP2'))).then(docSnap => {
-  let Users = [];
-  docSnap.forEach((doc) => {
-    Users.push({...doc.data(), id:doc.id})
-  });
-  console.log("Document Data:", Users);
-  
-  // if (docSnap.exists()){
-  //   console.log("Document Data:", Users);
-  // }
-  // else{
-  //   addDoc(collection(db, "Users"),{
-  //     Identifier: emailid,
-  //     UserUID: UserUID
-  //   })
-  // }
-  });
-                                                                                                                  //eventid from firestore
-  sendEmails()
-   }
+    // userid from firestore
+    getDocs(
+      query(
+        collection(db, "Users"),
+        where("UserID", "==", "2ONojiVSWSbKBbEjvoecpqOJrhP2")
+      )
+    ).then((docSnap) => {
+      let Users = [];
+      docSnap.forEach((doc) => {
+        Users.push({ ...doc.data(), id: doc.EmailID });
+      });
+      console.log("Document Data:", Users);
 
+      // if (docSnap.exists()){
+      //   console.log("Document Data:", Users);
+      // }
+      // else{
+      //   addDoc(collection(db, "Users"),{
+      //     Identifier: emailid,
+      //     UserUID: UserUID
+      //   })
+      // }
+    });
+    //eventid from firestore
+    sendEmails();
+  };
 
-
-    async function sendEmails() {
-      const emaildata = {
-        recipients,
-        userIds,
-        eventID
-      };
-      const dataResponse = await fetch(
-        `http://${serverIP}:5001/api/recepients`,
-        {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify(emaildata),
-        }
-      );
-      const responseValue = await dataResponse.json();
-      setSearchResults(responseValue);
-    }
-    
-
+  async function sendEmails() {
+    const emaildata = {
+      recipients,
+      userIds,
+      eventID,
+    };
+    const dataResponse = await fetch(
+      `http://${serverIP}:5001/api/email/recipients`,
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(emaildata),
+      }
+    );
+    const responseValue = await dataResponse.json();
+    setSearchResults(responseValue);
+  }
 
   const addRecipient = () => {
     let newRecipients = [...recipients];
