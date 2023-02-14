@@ -13,8 +13,9 @@ import * as Print from "expo-print";
 import { colors, FontFamily } from "../../../GlobalStyles";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/core";
+import email from 'react-native-email';
 
-export default function SendEmail() {
+export default function SendEmail() {  
   const navigation = useNavigation();
   const [isAvailable, setIsAvailable] = useState(false);
   const [recipients, setRecipients] = useState([]);
@@ -22,7 +23,7 @@ export default function SendEmail() {
   const [body, setBody] = useState(
     "You are invited to my QuikDine Event. Please click on the link to vote."
   );
-  const [email, setEmail] = useState(undefined);
+  const [emailaddress, setEmailaddress] = useState(undefined);
 
   useEffect(() => {
     async function checkAvailability() {
@@ -33,25 +34,35 @@ export default function SendEmail() {
     checkAvailability();
   }, []);
 
-  const sendMail = async () => {
-    const { uri } = await Print.printToFileAsync({
-      html: "<h1>Your file</h1>",
-    });
+  //const sendMail = async () => {
+   // const { uri } = await Print.printToFileAsync({
+      //html: "<h1>Your file</h1>",
+   // });
 
-    MailComposer.composeAsync({
-      subject: subject,
-      body: "http://localhost:3000",
-      recipients: recipients,
-      attachments: [uri],
-    });
-  };
+    //MailComposer.composeAsync({
+     // subject: subject,
+     // body: "Please click here to vote : http://localhost:3000",
+     // recipients: recipients,
+     // attachments: [uri],
+   // });
+ // };
+
+  const sendMail = () => {
+    const to = recipients 
+        email(to, {
+        subject: subject,
+        body: "Please click here to vote : http://localhost:3000",
+        checkCanOpen: false // Call Linking.canOpenURL prior to Linking.openURL
+    }).catch(console.error)
+};
+
 
   const addRecipient = () => {
     let newRecipients = [...recipients];
-    newRecipients.push(email);
+    newRecipients.push(emailaddress);
 
     setRecipients(newRecipients);
-    setEmail(undefined);
+    setEmailaddress(undefined);
   };
 
   const removeRecipient = () => {
@@ -97,7 +108,7 @@ export default function SendEmail() {
         <TextInput
           placeholder="Email"
           value={email}
-          onChangeText={setEmail}
+          onChangeText={setEmailaddress}
           style={styles.input}
           // secureTextEntry
         />
