@@ -14,7 +14,11 @@ export default function RecipeNav() {
         component={RecipeSearch}
         options={{ headerShown: false }}
       />
-      <Stack.Screen name="Recipe Result" component={RecipeResult} />
+      <Stack.Screen
+        name="Recipe Result"
+        component={RecipeResult}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="Advanced Search"
         component={AdvancedSearch}
