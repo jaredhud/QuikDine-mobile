@@ -1,7 +1,6 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useFocusEffect, useNavigation } from "@react-navigation/core";
 import {
-  FlatList,
   ScrollView,
   StyleSheet,
   Text,
