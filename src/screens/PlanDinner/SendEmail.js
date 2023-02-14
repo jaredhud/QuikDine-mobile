@@ -15,6 +15,11 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/core";
 import email from 'react-native-email';
 import AppContext from "../../Context/AppContext";
+import { collection, doc,addDoc, getDoc, getDocs, query, where } from "firebase/firestore/lite";
+import { db } from "../../../firebase";
+
+let userIds
+let eventID
 
 export default function SendEmail() {  
   const navigation = useNavigation();
@@ -49,13 +54,50 @@ export default function SendEmail() {
  // };
 
   const sendMail = () => {
-    const to = recipients 
-        email(to, {
-        subject: subject,
-        body: "Please click here to vote : http://localhost:3000",
-        checkCanOpen: false // Call Linking.canOpenURL prior to Linking.openURL
-    }).catch(console.error)
-};
+// userid from firestore
+getDocs(query(collection(db, "Users"),where ('User UID', '==', '2ONojiVSWSbKBbEjvoecpqOJrhP2'))).then(docSnap => {
+  let Users = [];
+  docSnap.forEach((doc) => {
+    Users.push({...doc.data(), id:doc.id})
+  });
+  console.log("Document Data:", Users);
+  
+  // if (docSnap.exists()){
+  //   console.log("Document Data:", Users);
+  // }
+  // else{
+  //   addDoc(collection(db, "Users"),{
+  //     Identifier: emailid,
+  //     UserUID: UserUID
+  //   })
+  // }
+  });
+                                                                                                                  //eventid from firestore
+  sendEmails()
+   }
+
+
+
+    async function sendEmails() {
+      const emaildata = {
+        recipients,
+        userIds,
+        eventID
+      };
+      const dataResponse = await fetch(
+        `http://${serverIP}:5001/api/recepients`,
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(emaildata),
+        }
+      );
+      const responseValue = await dataResponse.json();
+      setSearchResults(responseValue);
+    }
+    
 
 
   const addRecipient = () => {

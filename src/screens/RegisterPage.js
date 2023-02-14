@@ -8,9 +8,11 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { auth } from "../../firebase";
+//import { auth, } from "../../firebase";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { FontFamily } from "../../GlobalStyles";
 
+const auth = getAuth();
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,8 +30,8 @@ const RegisterPage = () => {
   // }, []);
 
   const handleSignUp = () => {
-    auth
-      .createUserWithEmailAndPassword(email, password)
+    
+      createUserWithEmailAndPassword(auth, email, password)
       .then((userCredentials) => {
         const user = userCredentials.user;
       })

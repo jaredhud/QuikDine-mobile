@@ -9,11 +9,17 @@ import {
   View,
   Image,
 } from "react-native";
-import { auth } from "../../firebase";
+//import { auth } from "../../firebase";
 import { processFontFamily } from "expo-font";
 import { colors, FontFamily } from "../../GlobalStyles";
 import chefGreg from "../img/chef-greg.png";
 import chefGreg2 from "../img/chef-greg2.png";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+
+const auth = getAuth();
+
+
+
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -31,9 +37,10 @@ const LoginScreen = () => {
   //   return unsubscribe;
   // }, []);
 
+
   const handleLogin = () => {
-    auth
-      .signInWithEmailAndPassword(email, password)
+    
+    signInWithEmailAndPassword(auth, email, password)
       .then((userCredentials) => {
         const user = userCredentials.user;
       })
