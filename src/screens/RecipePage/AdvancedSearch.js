@@ -45,6 +45,7 @@ export const AdvancedSearch = () => {
     tempQuery,
     setTempQuery,
     pantryList,
+    setPantryList,
     ingredientList,
     setIngredientList,
     query,
@@ -92,6 +93,10 @@ export const AdvancedSearch = () => {
       setTempCuisine(cuisine);
     }
   }, [cuisine]);
+
+  function resetSearch() {
+    setPantryList([...pantryList]);
+  }
 
   function querySetter() {
     setQuery(tempQuery);
@@ -415,6 +420,7 @@ export const AdvancedSearch = () => {
         }}
       >
         <TouchableOpacity
+          onPress={resetSearch}
           style={[[button], { alignItems: "center", width: "20.5%" }]}
         >
           <View

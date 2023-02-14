@@ -66,7 +66,6 @@ export const RecipeSearch = () => {
     setCuisine("");
     setDiet("");
     setMealType("");
-    setPage(1);
     setQuery(tempQuery);
     setIngredientList([]);
   }
@@ -99,6 +98,10 @@ export const RecipeSearch = () => {
       getData();
     }, [page, ingredientList])
   );
+
+  useEffect(() => {
+    setPage(1);
+  }, [query, cuisine, diet, mealType, ingredientList]);
 
   return (
     <View style={{ backgroundColor: colors.lightgreen, height: "100%" }}>
