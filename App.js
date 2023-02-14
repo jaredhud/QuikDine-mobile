@@ -14,7 +14,7 @@ import PantryNav from "./src/screens/MyPantry/_PantryNav";
 import PlanNav from "./src/screens/PlanDinner/_PlanNav";
 import { Home } from "./src/screens/Home";
 // Test
-import TestNav from "./src/screens/TestPage/_TestNav";
+// import TestNav from "./src/screens/TestPage/_TestNav";
 import initializeVariables from "./src/Context/StateInitializer";
 
 const Tab = createBottomTabNavigator();

@@ -10,10 +10,11 @@ import {
 } from "react-native";
 //import { auth, } from "../../firebase";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { FontFamily } from "../../GlobalStyles";
+import { FontFamily } from "../../../GlobalStyles.js";
 
 const auth = getAuth();
-const RegisterPage = () => {
+
+export const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -30,8 +31,7 @@ const RegisterPage = () => {
   // }, []);
 
   const handleSignUp = () => {
-    
-      createUserWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, password)
       .then((userCredentials) => {
         const user = userCredentials.user;
       })
@@ -93,7 +93,7 @@ const RegisterPage = () => {
           <Text>
             <Text>Already have an account? </Text>
             <Text
-              onPress={() => navigation.navigate("LoginScreen")}
+              onPress={() => navigation.navigate("Login")}
               style={{ fontFamily: FontFamily.ubuntubold, color: "#46ADA1" }}
             >
               Sign In
@@ -104,8 +104,6 @@ const RegisterPage = () => {
     </KeyboardAvoidingView>
   );
 };
-
-export default RegisterPage;
 
 const styles = StyleSheet.create({
   parentView: {

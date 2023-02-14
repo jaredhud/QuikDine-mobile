@@ -20,7 +20,7 @@ import { button, colors, FontFamily } from "../../../GlobalStyles";
 
 // import Icon from "react-native-ico";
 
-export const AccountHome = () => {
+export const ProfilePage = () => {
   const navigation = useNavigation();
   const name = "Sophia";
   const accountName = "Sophia";
