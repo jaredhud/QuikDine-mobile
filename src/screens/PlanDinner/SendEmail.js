@@ -8,12 +8,12 @@ import {
   View,
 } from "react-native";
 import { useContext, useEffect, useState } from "react";
-import * as MailComposer from "expo-mail-composer";
-import * as Print from "expo-print";
+// import * as MailComposer from "expo-mail-composer";
+// import * as Print from "expo-print";
 import { colors, FontFamily } from "../../../GlobalStyles";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/core";
-import email from "react-native-email";
+// import email from "react-native-email";
 import AppContext from "../../Context/AppContext";
 import {
   collection,
@@ -26,8 +26,8 @@ import {
 } from "firebase/firestore/lite";
 import { db } from "../../../firebase";
 
-let userIds;
-let eventID;
+let userIds = [2];
+let eventID = [15];
 
 export default function SendEmail() {
   const navigation = useNavigation();
@@ -39,14 +39,14 @@ export default function SendEmail() {
   );
   const [emailaddress, setEmailaddress] = useState(undefined);
 
-  useEffect(() => {
-    async function checkAvailability() {
-      const isMailAvailable = await MailComposer.isAvailableAsync();
-      setIsAvailable(isMailAvailable);
-    }
+  // useEffect(() => {
+  //   async function checkAvailability() {
+  //     const isMailAvailable = await MailComposer.isAvailableAsync();
+  //     setIsAvailable(isMailAvailable);
+  //   }
 
-    checkAvailability();
-  }, []);
+  //   checkAvailability();
+  // }, []);
 
   //const sendMail = async () => {
   // const { uri } = await Print.printToFileAsync({
@@ -60,6 +60,25 @@ export default function SendEmail() {
   // attachments: [uri],
   // });
   // };
+  async function sendEmails() {
+    const emaildata = {
+      recipients,
+      userIds,
+      eventID,
+    };
+    const dataResponse = await fetch(
+      `http://${serverIP}:5001/api/email/recipients`,
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(emaildata),
+      }
+    );
+    const responseValue = await dataResponse.json();
+    console.log(responseValue);
+  }
 
   const sendMail = () => {
     // userid from firestore
@@ -88,26 +107,6 @@ export default function SendEmail() {
     //eventid from firestore
     sendEmails();
   };
-
-  async function sendEmails() {
-    const emaildata = {
-      recipients,
-      userIds,
-      eventID,
-    };
-    const dataResponse = await fetch(
-      `http://${serverIP}:5001/api/email/recipients`,
-      {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(emaildata),
-      }
-    );
-    const responseValue = await dataResponse.json();
-    setSearchResults(responseValue);
-  }
 
   const addRecipient = () => {
     let newRecipients = [...recipients];
@@ -159,7 +158,7 @@ export default function SendEmail() {
         /> */}
         <TextInput
           placeholder="Email"
-          value={email}
+          value={emailaddress}
           onChangeText={setEmailaddress}
           style={styles.input}
           // secureTextEntry
@@ -184,14 +183,11 @@ export default function SendEmail() {
         </TouchableOpacity>
       </View>
       <View style={styles.inputRecepient}>{showRecipients()}</View>
-      {isAvailable ? (
-        // <Button style={{ fontSize: 20 }} title="Send Mail" onPress={sendMail} />
-        <TouchableOpacity onPress={sendMail} style={styles.buttonSend}>
-          <Text style={styles.buttonText}>Send Mail</Text>
-        </TouchableOpacity>
-      ) : (
-        <Text>Email not available</Text>
-      )}
+
+      <TouchableOpacity onPress={sendMail} style={styles.buttonSend}>
+        <Text style={styles.buttonText}>Send Mail</Text>
+      </TouchableOpacity>
+
       <StatusBar style="auto" />
     </View>
   );
