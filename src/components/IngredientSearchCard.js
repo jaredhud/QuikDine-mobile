@@ -7,7 +7,7 @@ let curCheckArray = [];
 export function IngredientSearchCard(props) {
   const { ingredient, setIngredientListChecked, ingredientListChecked, index } =
     props;
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState(ingredientListChecked[index]);
 
   useEffect(() => {
     setChecked(ingredientListChecked[index]);

@@ -28,13 +28,20 @@ export default function initializeVariables() {
 
   useEffect(() => {
     setIngredientList([...pantryList]);
-    setIngredientListChecked(new Array(pantryList.length).fill(true));
     setQuery("");
     setMealType("");
     setCuisine("");
     setDiet("");
     setTempQuery("");
   }, [pantryList]);
+
+  useEffect(() => {
+    let tempIngredientChecked = [];
+    for (const i in pantryList) {
+      tempIngredientChecked[i] = ingredientList.indexOf(pantryList[i]) != -1;
+    }
+    setIngredientListChecked(tempIngredientChecked);
+  }, [ingredientList]);
 
   const variables = {
     user,
