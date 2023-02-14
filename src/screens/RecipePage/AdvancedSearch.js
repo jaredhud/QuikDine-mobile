@@ -29,9 +29,6 @@ let questionMark = "help-circle-outline";
 let searchIcon = "search";
 
 let tempSearchCriteria;
-let tempDiet = "any";
-let tempMealType = "any";
-let tempCuisine = "any";
 const mealTypes = ["any", "main course", "dessert", "side dish"];
 const cuisines = ["any", "Greek", "Italian", "German"];
 const diets = ["any", "vegetarian"];
@@ -39,7 +36,9 @@ const diets = ["any", "vegetarian"];
 export const AdvancedSearch = () => {
   // useState Popup
   const [modalVisible, setModalVisible] = useState(false);
-
+  const [tempCuisine, setTempCuisine] = useState("any");
+  const [tempDiet, setTempDiet] = useState("any");
+  const [tempMealType, setTempMealType] = useState("any");
   const navigation = useNavigation();
 
   const {
@@ -72,25 +71,25 @@ export const AdvancedSearch = () => {
 
   useEffect(() => {
     if (mealType === "") {
-      tempMealType = "any";
+      setTempMealType("any");
     } else {
-      tempMealType = mealType;
+      setTempMealType(mealType);
     }
   }, [mealType]);
 
   useEffect(() => {
     if (diet === "") {
-      tempDiet = "any";
+      setTempDiet("any");
     } else {
-      tempDiet = diet;
+      setTempDiet(diet);
     }
   }, [diet]);
 
   useEffect(() => {
     if (cuisine === "") {
-      cuisine = "any";
+      setTempCuisine("any");
     } else {
-      tempCuisine = cuisine;
+      setTempCuisine(cuisine);
     }
   }, [cuisine]);
 
@@ -307,7 +306,7 @@ export const AdvancedSearch = () => {
               data={diets}
               defaultValue={tempDiet}
               onSelect={(selectedItem, index) => {
-                tempDiet = selectedItem;
+                setTempDiet(selectedItem);
               }}
               buttonTextAfterSelection={(selectedItem, index) => {
                 return selectedItem;
@@ -344,7 +343,7 @@ export const AdvancedSearch = () => {
               data={mealTypes}
               defaultValue={tempMealType}
               onSelect={(selectedItem, index) => {
-                tempMealType = selectedItem;
+                setTempMealType(selectedItem);
               }}
               buttonTextAfterSelection={(selectedItem, index) => {
                 return selectedItem;
@@ -381,7 +380,7 @@ export const AdvancedSearch = () => {
               data={cuisines}
               defaultValue={tempCuisine}
               onSelect={(selectedItem, index) => {
-                tempCuisine = selectedItem;
+                setTempCuisine(selectedItem);
               }}
               buttonTextAfterSelection={(selectedItem, index) => {
                 return selectedItem;
