@@ -43,7 +43,7 @@ export default function MyPantry() {
       <View style={styles.ingredientsWrapper}>
         <Text style={styles.title}>My Pantry</Text>
         <Text style={styles.sectionTitle}>Ingredients List</Text>
-        <ScrollView style={styles.items}>
+        <ScrollView style={[styles.items, { height: "85%", marginTop: 20 }]}>
           {pantryList.map((item, index) => {
             return (
               <TouchableOpacity

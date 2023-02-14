@@ -1,11 +1,18 @@
 import React, { useCallback, useContext, useState } from "react";
 import { useFocusEffect, useNavigation } from "@react-navigation/core";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import { auth } from "../../../firebase";
 import { button } from "../../../GlobalStyles";
-import { idRecipeSearch } from "../../components/RecipeSearchFunction";
 import AppContext from "../../Context/AppContext";
 // import Icon from "react-native-ico";
 
@@ -41,15 +48,45 @@ export const RecipeResult = () => {
   console.log(selectedRecipe);
   return (
     <View style={styles.container}>
-      <Appbar>
+      <View style={{ height: "10%" }}></View>
+      <View style={[styles.backLocation, { height: "5%" }]}>
+        <Ionicons
+          name="arrow-back-circle"
+          size={32}
+          color="green"
+          onPress={() => navigation.navigate("Event List")}
+        />
+      </View>
+      {/* <Appbar>
         <Appbar.Content title="Recipe Result" />
-      </Appbar>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Recipe Search")}
-        style={[button]}
-      >
-        <Text style={styles.buttonText}>Recipe Search</Text>
-      </TouchableOpacity>
+      </Appbar> */}
+      {/* Source: server > placeholderRecipes.js > selectedRecipes - look at Figma for guide */}
+      <View style={{ backgroundColor: "red", marginBottom: 10 }}>
+        <Text>{selectedRecipe.title}</Text>
+      </View>
+      <View style={{ height: "20%", backgroundColor: "red", marginBottom: 10 }}>
+        {/* <ImageBackground
+          source={{ uri: selectedRecipe.image }}
+          style={{ height: "50%", width: "50%", flex: 1 }}
+          resizeMode="cover"
+        /> */}
+        <Text>Test</Text>
+      </View>
+      <View style={{ height: "20%", backgroundColor: "red", marginBottom: 10 }}>
+        <Text>Hello</Text>
+      </View>
+      <View style={{ height: "30%", backgroundColor: "red", marginBottom: 10 }}>
+        <Text>Hello</Text>
+      </View>
+      <View style={{ height: "10%", backgroundColor: "red" }}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Recipe Search")}
+          style={[button]}
+        >
+          <Text style={styles.buttonText}>Add Recipe to Event</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={{ height: "10%" }}></View>
     </View>
   );
 };
@@ -65,5 +102,8 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "700",
     fontSize: 16,
+  },
+  backLocation: {
+    right: "42%",
   },
 });

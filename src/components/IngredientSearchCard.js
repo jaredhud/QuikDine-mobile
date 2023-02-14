@@ -14,9 +14,15 @@ export function IngredientSearchCard(props) {
   }, [ingredientListChecked]);
 
   return (
-    <Card style={{ margin: 10 }}>
+    <Card style={{ margin: 8, width: "23.45%" }}>
       <View
-        style={{ flexDirection: "row", justifyContent: "center", margin: 10 }}
+        style={{
+          flexDirection: "row",
+          justifyContent: "center",
+          alignContent: "center",
+          alignItems: "center",
+          margin: 10,
+        }}
       >
         <Text>{ingredient}</Text>
         <Checkbox

@@ -21,7 +21,6 @@ import {
   containerRecipe,
   FontFamily,
 } from "../../../GlobalStyles";
-import { pantryRecipeSearch } from "../../components/RecipeSearchFunction";
 import { RecipeCard } from "../../components/RecipeCard";
 import AppContext from "../../Context/AppContext";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -177,9 +176,6 @@ export const RecipeSearch = () => {
                     <RecipeCard
                       key={recipe.id}
                       recipe={recipe}
-                      setRecipeID={setRecipeID}
-                      setSelectedRecipesList={setSelectedRecipesList}
-                      selectedRecipesList={selectedRecipesList}
                       cardHeight={160}
                     />
                   );
