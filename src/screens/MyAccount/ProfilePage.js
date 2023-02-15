@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigation } from "@react-navigation/core";
 import {
   StyleSheet,
@@ -17,10 +17,11 @@ import profilebg from "../../img/profile-bg.jpg";
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import { auth } from "../../../firebase";
 import { button, colors, FontFamily } from "../../../GlobalStyles";
-
+import AppContext from "../../Context/AppContext";
 // import Icon from "react-native-ico";
 
 export const ProfilePage = () => {
+  const { email, setIsLoggedIn, setEmail, setUser } = useContext(AppContext);
   const navigation = useNavigation();
   const name = "Sophia";
   const accountName = "Sophia";
@@ -28,6 +29,12 @@ export const ProfilePage = () => {
   let locationIcon = "location";
   let favoritesIcon = "heart-sharp";
 
+  function logout() {
+    setIsLoggedIn(false);
+    setUser("");
+    setEmail("");
+    navigation.navigate("Login");
+  }
   return (
     <View style={{ backgroundColor: "#ebfefe" }}>
       <ScrollView style={{ height: "100%" }}>
@@ -70,7 +77,7 @@ export const ProfilePage = () => {
               padding: 10,
             }}
           >
-            Sophia
+            Sophia {email}
           </Text>
           <Text style={{ fontSize: 15, fontWeight: "bold", color: "grey" }}>
             26, Female
@@ -150,9 +157,11 @@ export const ProfilePage = () => {
             marginBottom: 40,
           }}
         >
-          <Text
-            style={{ color: "white", fontWeight: "bold" }}
-          >{`  Logout`}</Text>
+          <TouchableOpacity onPress={logout}>
+            <Text
+              style={{ color: "white", fontWeight: "bold" }}
+            >{`  Logout`}</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>

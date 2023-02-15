@@ -43,13 +43,13 @@ export const RecipeSearch = () => {
     setCuisine,
     mealType,
     setMealType,
-    query,
-    setQuery,
+    searchQuery,
+    setSearchQuery,
     diet,
     setDiet,
     serverIP,
-    tempQuery,
-    setTempQuery,
+    tempSearchQuery,
+    setTempSearchQuery,
   } = useContext(AppContext);
 
   const [page, setPage] = useState(1);
@@ -59,14 +59,14 @@ export const RecipeSearch = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
-    setTempQuery(query);
+    setTempSearchQuery(searchQuery);
   }, [ingredientList]);
 
-  function queryHandler() {
+  function searchQueryHandler() {
     setCuisine("");
     setDiet("");
     setMealType("");
-    setQuery(tempQuery);
+    setSearchQuery(tempSearchQuery);
     setIngredientList([]);
   }
 
@@ -78,7 +78,7 @@ export const RecipeSearch = () => {
           cuisine,
           mealType,
           diet,
-          query,
+          searchQuery,
           page,
           resultsPerPage,
         };
@@ -101,7 +101,7 @@ export const RecipeSearch = () => {
 
   useEffect(() => {
     setPage(1);
-  }, [query, cuisine, diet, mealType, ingredientList]);
+  }, [searchQuery, cuisine, diet, mealType, ingredientList]);
 
   return (
     <View style={{ backgroundColor: colors.lightgreen, height: "100%" }}>
@@ -162,11 +162,11 @@ export const RecipeSearch = () => {
               <Text style={styles.buttonText}>Advanced Options</Text>
             </TouchableOpacity>
             <Searchbar
-              value={tempQuery}
+              value={tempSearchQuery}
               onChangeText={(text) => {
-                setTempQuery(text);
+                setTempSearchQuery(text);
               }}
-              onSubmitEditing={queryHandler}
+              onSubmitEditing={searchQueryHandler}
               placeholder="Search Recipes"
               style={{
                 width: "67%",

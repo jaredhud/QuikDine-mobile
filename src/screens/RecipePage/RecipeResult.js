@@ -23,16 +23,25 @@ import { button, colors, FontFamily } from "../../../GlobalStyles";
 import AppContext from "../../Context/AppContext";
 import planmeals from "../../img/planmeals.png";
 import { TextStroke } from "../../components/RecipeCard";
+import {
+  collection,
+  doc,
+  addDoc,
+  getDoc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore/lite";
+import { db } from "../../../firebase";
 // import Icon from "react-native-ico";
 
 export const RecipeResult = () => {
   const navigation = useNavigation();
   const {
-    selectedRecipeList,
-    setSelectedRecipeList,
+    selectedRecipesList,
+    setSelectedRecipesList,
     recipeID,
     serverIP,
-    pantryList,
     ingUsed,
   } = useContext(AppContext);
 
@@ -58,6 +67,14 @@ export const RecipeResult = () => {
       recipeFetch();
     }, [recipeID])
   );
+
+  function addToRecipeListHandler() {
+    if (selectedRecipesList.indexOf(selectedRecipe.id) === -1) {
+      setSelectedRecipesList([...selectedRecipesList, selectedRecipe.id]);
+    }
+    navigation.navigate("Recipe Search");
+  }
+
   return selectedRecipe.extendedIngredients ? (
     <View style={styles.container}>
       <View style={{ height: "10%" }}></View>
@@ -134,7 +151,7 @@ export const RecipeResult = () => {
           {/* <Text>{selectedRecipe.ingredients}</Text> */}
           {selectedRecipe.extendedIngredients.map((ingredients, index) => (
             <Text
-              key={`${recipeID}.${ingredients.id}.${index}`}
+              key={index}
               style={
                 ingUsed.indexOf(ingredients.id) === -1
                   ? { color: "red" }
@@ -190,7 +207,7 @@ export const RecipeResult = () => {
         }}
       >
         <TouchableOpacity
-          onPress={() => navigation.navigate("Recipe Search")}
+          onPress={addToRecipeListHandler}
           style={[button, { marginTop: 0, marginBottom: 0 }]}
         >
           <Text style={styles.buttonText}>Add Recipe to Event</Text>

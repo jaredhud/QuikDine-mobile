@@ -11,7 +11,7 @@ export function IngredientSearchCard(props) {
     ingredientListChecked,
     index,
     numIngUsed,
-    tempQuery,
+    tempSearchQuery,
   } = props;
   const [checked, setChecked] = useState(ingredientListChecked[index]);
 
@@ -32,7 +32,7 @@ export function IngredientSearchCard(props) {
       >
         <Text>{ingredient}</Text>
         <Checkbox
-          disabled={numIngUsed >= 3 && tempQuery != "" && !checked}
+          disabled={numIngUsed >= 3 && tempSearchQuery != "" && !checked}
           status={checked ? "checked" : "unchecked"}
           onPress={() => {
             curCheckArray = [...ingredientListChecked];

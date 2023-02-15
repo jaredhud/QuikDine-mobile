@@ -25,6 +25,7 @@ import {
   where,
 } from "firebase/firestore/lite";
 import { db } from "../../../firebase";
+import { createDBEvent } from "../../Context/globalFunctions";
 
 let userIds = [2];
 let eventID = [15];
@@ -106,6 +107,7 @@ export default function SendEmail() {
     });
     //eventid from firestore
     sendEmails();
+    createDBEvent();
   };
 
   const addRecipient = () => {

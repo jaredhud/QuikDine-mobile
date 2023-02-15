@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/core";
 import {
   KeyboardAvoidingView,
@@ -11,42 +11,29 @@ import {
 //import { auth, } from "../../firebase";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { FontFamily } from "../../../GlobalStyles.js";
+import { createDBEvent, createDBUser } from "../../Context/globalFunctions.js";
+import AppContext from "../../Context/AppContext.js";
 
 const auth = getAuth();
 
 export const RegisterPage = () => {
-  const [email, setEmail] = useState("");
+  const [tempEmail, setTempEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const { setEmail, setUser, setIsLoggedIn } = useContext(AppContext);
   const navigation = useNavigation();
 
-  // useEffect(() => {
-  //   const unsubscribe = auth.onAuthStateChanged((user) => {
-  //     if (user) {
-  //       navigation.replace("Home");
-  //     }
-  //   });
-
-  //   return unsubscribe;
-  // }, []);
-
   const handleSignUp = () => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredentials) => {
-        const user = userCredentials.user;
+    createUserWithEmailAndPassword(auth, tempEmail, password)
+      .then(async (userCredentials) => {
+        setEmail(userCredentials.user.email);
+        setUser(userCredentials.user.uid);
+        setIsLoggedIn(true);
+        await createDBUser();
+        await createDBEvent();
+        navigation.navigate("Profile Page");
       })
       .catch((error) => alert(error.message));
   };
-
-  // const handleLogin = () => {
-  //   auth
-  //     .signInWithEmailAndPassword(email, password)
-  //     .then((userCredentials) => {
-  //       const user = userCredentials.user;
-  //       console.log("Logged in with:", user.email);
-  //     })
-  //     .catch((error) => alert(error.message));
-  // };
 
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
@@ -69,8 +56,8 @@ export const RegisterPage = () => {
         </View>
         <TextInput
           placeholder="Email ID"
-          value={email}
-          onChangeText={(text) => setEmail(text)}
+          value={tempEmail}
+          onChangeText={(text) => setTempEmail(text)}
           style={styles.input}
         />
         <TextInput

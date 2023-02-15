@@ -1,8 +1,11 @@
+import { doc, updateDoc } from "firebase/firestore/lite";
 import { useEffect, useState } from "react";
+import { db } from "../../firebase.js";
 import { setIP } from "./IPAddress.js";
 
 export default function initializeVariables() {
   const [user, setUser] = useState("");
+  const [email, setEmail] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [pantryList, setPantryList] = useState([
     "salmon",
@@ -17,23 +20,23 @@ export default function initializeVariables() {
   const [recipeID, setRecipeID] = useState();
   const [cuisine, setCuisine] = useState("");
   const [mealType, setMealType] = useState("");
-  const [query, setQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [diet, setDiet] = useState("");
   const [ingredientList, setIngredientList] = useState([]);
   const [ingredientListChecked, setIngredientListChecked] = useState([]);
   const [ingUsed, setIngUsed] = useState([]);
-  const [tempQuery, setTempQuery] = useState("");
+  const [tempSearchQuery, setTempSearchQuery] = useState("");
   const [favoritesList, setFavoritesList] = useState([]);
   const [recipients, setRecipients] = useState([]);
   const { serverIP } = setIP();
 
   useEffect(() => {
     setIngredientList([...pantryList]);
-    setQuery("");
+    setSearchQuery("");
     setMealType("");
     setCuisine("");
     setDiet("");
-    setTempQuery("");
+    setTempSearchQuery("");
   }, [pantryList]);
 
   useEffect(() => {
@@ -44,9 +47,25 @@ export default function initializeVariables() {
     setIngredientListChecked(tempIngredientChecked);
   }, [ingredientList]);
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      updateDoc(doc(db, "Events", "12345"), {
+        AddedRecipes: selectedRecipesList,
+      })
+        .then(() => {
+          console.log("Event Data added");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [selectedRecipesList]);
+
   const variables = {
     user,
     setUser,
+    email,
+    setEmail,
     isLoggedIn,
     setIsLoggedIn,
     pantryList,
@@ -59,8 +78,8 @@ export default function initializeVariables() {
     setCuisine,
     mealType,
     setMealType,
-    query,
-    setQuery,
+    searchQuery,
+    setSearchQuery,
     diet,
     setDiet,
     ingredientList,
@@ -74,8 +93,8 @@ export default function initializeVariables() {
     recipients,
     setRecipients,
     serverIP,
-    tempQuery,
-    setTempQuery,
+    tempSearchQuery,
+    setTempSearchQuery,
   };
 
   return variables;

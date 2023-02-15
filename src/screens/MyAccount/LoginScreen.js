@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/core";
 import {
   KeyboardAvoidingView,
@@ -19,29 +19,25 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import AppContext from "../../Context/AppContext.js";
+import { createDBEvent } from "../../Context/globalFunctions.js";
 
 const auth = getAuth();
 
 const LoginScreen = () => {
-  const [email, setEmail] = useState("");
+  const [tempEmail, setTempEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigation = useNavigation();
-
-  // useEffect(() => {
-  //   const unsubscribe = auth.onAuthStateChanged((user) => {
-  //     if (user) {
-  //       navigation.replace("Home");
-  //     }
-  //   });
-
-  //   return unsubscribe;
-  // }, []);
+  const { setEmail, setUser, setIsLoggedIn } = useContext(AppContext);
 
   const handleLogin = () => {
-    signInWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, tempEmail, password)
       .then((userCredentials) => {
-        const user = userCredentials.user;
+        setUser(userCredentials.user.uid);
+        setEmail(userCredentials.user.email);
+        setIsLoggedIn(true);
+        navigation.navigate("Profile Page");
       })
       .catch((error) => alert(error.message));
   };
@@ -68,8 +64,8 @@ const LoginScreen = () => {
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Email ID"
-          value={email}
-          onChangeText={(text) => setEmail(text)}
+          value={tempEmail}
+          onChangeText={(text) => setTempEmail(text)}
           style={styles.input}
         />
         <TextInput

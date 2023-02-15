@@ -42,14 +42,14 @@ export const AdvancedSearch = () => {
   const navigation = useNavigation();
 
   const {
-    tempQuery,
-    setTempQuery,
+    tempSearchQuery,
+    setTempSearchQuery,
     pantryList,
     setPantryList,
     ingredientList,
     setIngredientList,
-    query,
-    setQuery,
+    searchQuery,
+    setSearchQuery,
     cuisine,
     setCuisine,
     diet,
@@ -65,7 +65,7 @@ export const AdvancedSearch = () => {
 
   tempSearchCriteria = {
     ingredientList: ingredientList,
-    query: query,
+    searchQuery: searchQuery,
     cuisine: cuisine,
     diet: diet,
     mealtype: mealType,
@@ -105,8 +105,8 @@ export const AdvancedSearch = () => {
     );
   }
 
-  function querySetter() {
-    setQuery(tempQuery);
+  function searchQuerySetter() {
+    setSearchQuery(tempSearchQuery);
   }
 
   function dietSetter() {
@@ -255,7 +255,7 @@ export const AdvancedSearch = () => {
                     setIngredientListChecked={setIngredientListChecked}
                     ingredientListChecked={ingredientListChecked}
                     index={index}
-                    tempQuery={tempQuery}
+                    tempSearchQuery={tempSearchQuery}
                     numIngUsed={numIngUsed}
                   />
                 );
@@ -285,11 +285,11 @@ export const AdvancedSearch = () => {
           />
         </TouchableOpacity>
         <Searchbar
-          value={tempQuery}
+          value={tempSearchQuery}
           onChangeText={(text) => {
-            setTempQuery(text);
+            setTempSearchQuery(text);
           }}
-          onSubmitEditing={querySetter}
+          onSubmitEditing={searchQuerySetter}
           placeholder={
             numIngUsed > 3
               ? "There must be 3 or less ingredients selected to include a query"
@@ -451,9 +451,9 @@ export const AdvancedSearch = () => {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
-          disabled={numIngUsed > 3 && tempQuery != ""}
+          disabled={numIngUsed > 3 && tempSearchQuery != ""}
           onPress={() => {
-            querySetter();
+            searchQuerySetter();
             dietSetter();
             cuisineSetter();
             mealTypeSetter();
