@@ -141,9 +141,6 @@ export const RecipeResult = () => {
                   : { color: "black" }
               }
             >
-              {console.log(index + 1, ingredients.id)}
-              {console.log(ingUsed)}
-              {console.log(ingUsed.indexOf(ingredients.id))}
               {index + 1}. {ingredients.name} -{" "}
               {ingredients.measures.metric.amount}{" "}
               {ingredients.measures.metric.unitLong}
