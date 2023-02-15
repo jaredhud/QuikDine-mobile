@@ -21,6 +21,7 @@ export default function initializeVariables() {
   const [diet, setDiet] = useState("");
   const [ingredientList, setIngredientList] = useState([]);
   const [ingredientListChecked, setIngredientListChecked] = useState([]);
+  const [ingUsed, setIngUsed] = useState([]);
   const [tempQuery, setTempQuery] = useState("");
   const [favoritesList, setFavoritesList] = useState([]);
   const [recipients, setRecipients] = useState([]);
@@ -66,6 +67,8 @@ export default function initializeVariables() {
     setIngredientList,
     ingredientListChecked,
     setIngredientListChecked,
+    ingUsed,
+    setIngUsed,
     favoritesList,
     setFavoritesList,
     recipients,

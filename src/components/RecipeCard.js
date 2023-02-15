@@ -24,6 +24,7 @@ export const RecipeCard = (props) => {
     selectedRecipesList,
     setSelectedRecipesList,
     setRecipeID,
+    setIngUsed,
   } = useContext(AppContext);
 
   const navigation = useNavigation();
@@ -62,14 +63,19 @@ export const RecipeCard = (props) => {
     setIsInFavoritesList(favoritesList.indexOf(recipe.id) != -1);
   }, [favoritesList]);
 
-  function pullUpRecipe(id) {
-    setRecipeID(id);
+  function pullUpRecipe(recipe) {
+    let tempIngUsed = [];
+    for (const i in recipe.usedIngredients) {
+      tempIngUsed.push(recipe.usedIngredients[i].id);
+    }
+    setIngUsed(tempIngUsed);
+    setRecipeID(recipe.id);
     navigation.navigate("Recipe Result");
   }
 
   return (
     <Card
-      onPress={() => pullUpRecipe(recipe.id)}
+      onPress={() => pullUpRecipe(recipe)}
       style={{
         marginBottom: 10,
         borderWidth: 3,

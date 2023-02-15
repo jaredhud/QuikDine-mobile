@@ -27,8 +27,14 @@ import { TextStroke } from "../../components/RecipeCard";
 
 export const RecipeResult = () => {
   const navigation = useNavigation();
-  const { selectedRecipeList, setSelectedRecipeList, recipeID, serverIP } =
-    useContext(AppContext);
+  const {
+    selectedRecipeList,
+    setSelectedRecipeList,
+    recipeID,
+    serverIP,
+    pantryList,
+    ingUsed,
+  } = useContext(AppContext);
 
   const [selectedRecipe, setSelectedRecipe] = useState({});
   useFocusEffect(
@@ -127,7 +133,17 @@ export const RecipeResult = () => {
           <Text style={{ fontWeight: "800", fontSize: 16 }}>Ingredients</Text>
           {/* <Text>{selectedRecipe.ingredients}</Text> */}
           {selectedRecipe.extendedIngredients.map((ingredients, index) => (
-            <Text>
+            <Text
+              key={`${recipeID}.${ingredients.id}.${index}`}
+              style={
+                ingUsed.indexOf(ingredients.id) === -1
+                  ? { color: "red" }
+                  : { color: "black" }
+              }
+            >
+              {console.log(index + 1, ingredients.id)}
+              {console.log(ingUsed)}
+              {console.log(ingUsed.indexOf(ingredients.id))}
               {index + 1}. {ingredients.name} -{" "}
               {ingredients.measures.metric.amount}{" "}
               {ingredients.measures.metric.unitLong}
