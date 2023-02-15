@@ -12,18 +12,16 @@ import {
 } from "react-native";
 
 import SelectDropdown from "react-native-select-dropdown";
-
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import Checkbox from "react-native-paper";
-// import Checkbox from "expo-checkbox";
 import { auth } from "../../../firebase";
+import Ionicons from "@expo/vector-icons/Ionicons";
+
 import { button, colors, FontFamily } from "../../../GlobalStyles";
 import { IngredientSearchCard } from "../../components/IngredientSearchCard";
 import AppContext from "../../Context/AppContext";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import menu from "../../img/menu.png";
-// import Icon from "react-native-ico";
 
 let questionMark = "help-circle-outline";
 let searchIcon = "search";
@@ -175,7 +173,7 @@ export const AdvancedSearch = () => {
               <Text style={styles.modalText}>
                 Select all the ingredients in the Current Ingredients to find
                 cuisines.{"\n"} {"\n"}
-                When using query search, you are limited to 3 Current
+                To use the query search, you are limited to 3 Current
                 Ingredients from the blue box above.{"\n"} {"\n"}
                 Use the filters at the yellow box to target your search.
               </Text>
@@ -235,8 +233,20 @@ export const AdvancedSearch = () => {
           >
             Current Ingredients
           </Text>
-          <TouchableOpacity onPress={noIngSelect}>
-            <Text>Deselect All</Text>
+          <TouchableOpacity
+            style={{
+              backgroundColor: colors.darkblue,
+              width: "25%",
+              padding: 5,
+              borderRadius: 10,
+              alignItems: "center",
+              margin: 5,
+            }}
+            onPress={noIngSelect}
+          >
+            <Text style={{ color: "white", fontWeight: "600" }}>
+              Deselect All
+            </Text>
           </TouchableOpacity>
           <View
             style={{

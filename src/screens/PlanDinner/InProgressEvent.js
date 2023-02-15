@@ -14,9 +14,10 @@ import {
 
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import { auth } from "../../../firebase";
+import Ionicons from "@expo/vector-icons/Ionicons";
+
 import { button } from "../../../GlobalStyles";
 import { FontFamily } from "../../../GlobalStyles";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import menu from "../../img/menu.png";
 // import Icon from "react-native-ico";
 
@@ -103,9 +104,6 @@ export const InProgressEvent = () => {
           </ImageBackground>
         </View>
       </Modal>
-      {/* <Appbar>
-        <Appbar.Content title="In-Progress Event" />
-      </Appbar> */}
 
       <View
         style={{
@@ -127,7 +125,7 @@ export const InProgressEvent = () => {
       <View
         style={{
           height: "60%",
-          // backgroundColor: "red"
+          alignItems: "center",
         }}
       >
         <TouchableOpacity
@@ -146,7 +144,6 @@ export const InProgressEvent = () => {
       <View
         style={{
           height: "10%",
-          // backgroundColor: "blue"
         }}
       ></View>
     </View>

@@ -7,7 +7,6 @@ import { auth } from "../../../firebase";
 import { button } from "../../../GlobalStyles";
 import { FontFamily } from "../../../GlobalStyles";
 import Ionicons from "@expo/vector-icons/Ionicons";
-// import Icon from "react-native-ico";
 
 export const PastEvent = () => {
   const navigation = useNavigation();

@@ -13,7 +13,6 @@ export default function PantryNav() {
         component={MyPantry}
         options={{ headerShown: false }}
       />
-
       <Stack.Screen name="Camera" options={{ headerShown: false }}>
         {() => <CameraPage />}
       </Stack.Screen>

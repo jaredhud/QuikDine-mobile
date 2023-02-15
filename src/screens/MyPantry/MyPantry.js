@@ -14,6 +14,7 @@ import {
 import { useNavigation } from "@react-navigation/core";
 import { colors, FontFamily } from "../../../GlobalStyles";
 import Ionicons from "react-native-vector-icons/Ionicons";
+
 import Ingredient from "../../components/Ingredient";
 import cameraPlus from "../../img/camera-plus.png";
 import plusWhite from "../../img/plus-white.png";

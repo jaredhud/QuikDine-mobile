@@ -9,10 +9,11 @@ import {
   View,
   Image,
 } from "react-native";
-import cameraWhite from "../../img/camera.png";
-import cameraFlipWhite from "../../img/camera-flip-white.png";
 import { useNavigation } from "@react-navigation/native";
 import Ionicons from "react-native-vector-icons/Ionicons";
+
+import cameraWhite from "../../img/camera.png";
+import cameraFlipWhite from "../../img/camera-flip-white.png";
 
 const CameraPage = () => {
   const { height, width } = Dimensions.get("window");

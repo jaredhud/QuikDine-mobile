@@ -61,9 +61,7 @@ export const Demo1 = () => {
             data={countries}
             // defaultValueByIndex={1} // use default value by index or default value
             // defaultValue={'Canada'} // use default value by index or default value
-            onSelect={(selectedItem, index) => {
-              console.log(selectedItem, index);
-            }}
+            onSelect={(selectedItem, index) => {}}
             buttonTextAfterSelection={(selectedItem, index) => {
               return selectedItem;
             }}
@@ -76,9 +74,7 @@ export const Demo1 = () => {
             data={countries}
             // defaultValueByIndex={1}
             // defaultValue={'Egypt'}
-            onSelect={(selectedItem, index) => {
-              console.log(selectedItem, index);
-            }}
+            onSelect={(selectedItem, index) => {}}
             defaultButtonText={"Select country"}
             buttonTextAfterSelection={(selectedItem, index) => {
               return selectedItem;
@@ -107,9 +103,7 @@ export const Demo1 = () => {
             data={countries}
             // defaultValueByIndex={1}
             // defaultValue={'England'}
-            onSelect={(selectedItem, index) => {
-              console.log(selectedItem, index);
-            }}
+            onSelect={(selectedItem, index) => {}}
             defaultButtonText={"Select country"}
             buttonTextAfterSelection={(selectedItem, index) => {
               return selectedItem;
@@ -141,9 +135,7 @@ export const Demo1 = () => {
             //   title: 'England',
             //   image: require('./Images/England.jpg'),
             // }}
-            onSelect={(selectedItem, index) => {
-              console.log(selectedItem, index);
-            }}
+            onSelect={(selectedItem, index) => {}}
             buttonStyle={styles.dropdown3BtnStyle}
             renderCustomizedButtonChild={(selectedItem, index) => {
               return (
@@ -179,9 +171,7 @@ export const Demo1 = () => {
             data={countriesWithFlags}
             // defaultValueByIndex={1}
             // defaultValue={'India'}
-            onSelect={(selectedItem, index) => {
-              console.log(selectedItem, index);
-            }}
+            onSelect={(selectedItem, index) => {}}
             defaultButtonText={"Select country"}
             buttonTextAfterSelection={(selectedItem, index) => {
               return selectedItem.title;
