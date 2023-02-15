@@ -12,18 +12,16 @@ import {
 } from "react-native";
 
 import SelectDropdown from "react-native-select-dropdown";
-
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import Checkbox from "react-native-paper";
-// import Checkbox from "expo-checkbox";
 import { auth } from "../../../firebase";
+import Ionicons from "@expo/vector-icons/Ionicons";
+
 import { button, colors, FontFamily } from "../../../GlobalStyles";
 import { IngredientSearchCard } from "../../components/IngredientSearchCard";
 import AppContext from "../../Context/AppContext";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import menu from "../../img/menu.png";
-// import Icon from "react-native-ico";
 
 let questionMark = "help-circle-outline";
 let searchIcon = "search";

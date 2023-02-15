@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import AppContext from "./src/Context/AppContext";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts } from "expo-font";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -13,7 +10,6 @@ import RecipeNav from "./src/screens/RecipePage/_RecipeNav";
 import PantryNav from "./src/screens/MyPantry/_PantryNav";
 import PlanNav from "./src/screens/PlanDinner/_PlanNav";
 import { Home } from "./src/screens/Home";
-// Test
 // import TestNav from "./src/screens/TestPage/_TestNav";
 import initializeVariables from "./src/Context/StateInitializer";
 
@@ -68,7 +64,6 @@ export default function App() {
           <Tab.Screen name="Profile" component={AccountNav} />
           <Tab.Screen name="Plan Meal" component={PlanNav} />
           <Tab.Screen name="Home" component={Home} />
-          {/* Test */}
           {/* <Tab.Screen name="Test" component={TestNav} /> */}
           <Tab.Screen name="Recipe" component={RecipeNav} />
           <Tab.Screen name="Pantry" component={PantryNav} />

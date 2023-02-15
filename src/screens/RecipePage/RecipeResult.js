@@ -19,6 +19,7 @@ import {
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Appbar, Searchbar, Card, Text } from "react-native-paper";
 import { auth } from "../../../firebase";
+
 import { button, colors, FontFamily } from "../../../GlobalStyles";
 import AppContext from "../../Context/AppContext";
 import planmeals from "../../img/planmeals.png";
@@ -78,11 +79,6 @@ export const RecipeResult = () => {
           borderRadius: 16,
         }}
       >
-        {/* <ImageBackground
-          source={{ uri: selectedRecipe.image }}
-          style={{ height: "50%", width: "50%", flex: 1 }}
-          resizeMode="cover"
-        /> */}
         <ImageBackground
           source={{ uri: selectedRecipe.image }}
           style={{
@@ -92,9 +88,6 @@ export const RecipeResult = () => {
             borderColor: colors.darkorange,
             borderWidth: 3,
             borderRadius: 15,
-            // alignItems: "flex-start",
-            // justifyContent: "flex-end",
-            // backgroundColor: "white",
           }}
           resizeMode="cover"
           borderRadius={10}
@@ -126,12 +119,10 @@ export const RecipeResult = () => {
         <ScrollView
           style={{
             width: "95%",
-            // backgroundColor: "red",
             height: "100%",
           }}
         >
           <Text style={{ fontWeight: "800", fontSize: 16 }}>Ingredients</Text>
-          {/* <Text>{selectedRecipe.ingredients}</Text> */}
           {selectedRecipe.extendedIngredients.map((ingredients, index) => (
             <Text
               key={`${recipeID}.${ingredients.id}.${index}`}
@@ -164,14 +155,10 @@ export const RecipeResult = () => {
         <ScrollView
           style={{
             width: "95%",
-            // backgroundColor: "red",
             height: "100%",
           }}
         >
           <Text style={{ fontWeight: "800", fontSize: 16 }}>Instructions</Text>
-          {/* <Text>
-            {selectedRecipe.instructions}
-          </Text> */}
           {selectedRecipe.analyzedInstructions[0].steps.map(
             (instructions, index) => (
               <>

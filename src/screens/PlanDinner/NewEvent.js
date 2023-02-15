@@ -14,6 +14,9 @@ import {
   Button,
   ScrollView,
 } from "react-native";
+import { TextInput } from "react-native-paper";
+import AppContext from "../../Context/AppContext";
+import { RecipeCard } from "../../components/RecipeCard";
 
 import {
   menuBorderRadius,
@@ -23,9 +26,6 @@ import {
   innerTabBorder,
   FontFamily,
 } from "../../../GlobalStyles";
-import { TextInput } from "react-native-paper";
-import AppContext from "../../Context/AppContext";
-import { RecipeCard } from "../../components/RecipeCard";
 
 export const NewEvent = () => {
   const navigation = useNavigation();
@@ -104,9 +104,7 @@ export const NewEvent = () => {
       ampm = " PM";
       hours = hours - 12;
     }
-    console.log("Hello");
     let result = hours + ":" + minutes.toString().padStart(2, "0") + ampm;
-    console.log(result);
     return result;
   }
 

@@ -47,7 +47,14 @@ const LoginScreen = () => {
   };
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
-      <View style={{ alignItems: "center", width: "90%", height: "90%" }}>
+      <View
+        style={{
+          alignItems: "center",
+          width: "90%",
+          height: "90%",
+          marginBottom: 20,
+        }}
+      >
         <Text style={styles.titleHome}>Welcome Back!</Text>
         <Image
           source={chefGreg2}

@@ -8,10 +8,10 @@ import {
   ImageBackground,
   Image,
 } from "react-native";
-
-import quikdine from "../../img/quik-dine.png";
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import { auth } from "../../../firebase";
+
+import quikdine from "../../img/quik-dine.png";
 import {
   button,
   buttonBorder,

@@ -14,6 +14,7 @@ import {
 import { useFocusEffect, useNavigation } from "@react-navigation/core";
 import { useState, useEffect, useCallback, useContext } from "react";
 import { Searchbar } from "react-native-paper";
+
 import {
   button,
   buttonText,
@@ -288,7 +289,6 @@ export const RecipeSearch = () => {
                     {
                       alignItems: "center",
                       width: "82%",
-                      // height: "60%",
                       justifyContent: "center",
                     },
                   ]}

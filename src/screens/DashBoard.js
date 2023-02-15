@@ -10,6 +10,7 @@ import {
   ImageBackground,
 } from "react-native";
 import { useFonts } from "expo-font";
+
 import { SubInfo, SubInfo2, SubInfo3 } from "../components/DashBoardText";
 import { FontFamily } from "../../GlobalStyles";
 import fallveggie from "../img/falling-veggies.png";
@@ -117,7 +118,6 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === "ios" ? 20 : 0,
     backgroundColor: "#D3FAD9",
   },
-
   text: {
     fontSize: 26,
     color: "white",

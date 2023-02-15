@@ -19,7 +19,6 @@ const LandingPage = () => {
           borderColor: "#379540",
           borderRadius: 30,
           borderWidth: 10,
-          // borderStartWidth: 10,
           marginTop: "30%",
           padding: 0,
         }}
