@@ -96,7 +96,7 @@ export const AdvancedSearch = () => {
   }, [cuisine]);
 
   function resetSearch() {
-    setPantryList(...pantryList);
+    setPantryList([...pantryList]);
   }
 
   function noIngSelect() {
