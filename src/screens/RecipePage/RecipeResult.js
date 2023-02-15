@@ -31,11 +31,9 @@ export const RecipeResult = () => {
     useContext(AppContext);
 
   const [selectedRecipe, setSelectedRecipe] = useState({});
-
   useFocusEffect(
     useCallback(() => {
       async function recipeFetch() {
-        console.log(recipeID);
         const id = { id: recipeID };
         const dataResponse = await fetch(
           `http://${serverIP}:5001/api/spoonacular/recipe`,
@@ -54,8 +52,7 @@ export const RecipeResult = () => {
       recipeFetch();
     }, [recipeID])
   );
-  console.log(selectedRecipe);
-  return (
+  return selectedRecipe.extendedIngredients ? (
     <View style={styles.container}>
       <View style={{ height: "10%" }}></View>
       <View style={[styles.backLocation, { height: "5%" }]}>
@@ -66,13 +63,6 @@ export const RecipeResult = () => {
           onPress={() => navigation.navigate("Recipe Search")}
         />
       </View>
-      {/* <Appbar>
-        <Appbar.Content title="Recipe Result" />
-      </Appbar> */}
-      {/* Source: server > placeholderRecipes.js > selectedRecipes - look at Figma for guide */}
-      {/* <View style={{ backgroundColor: "red", marginBottom: 10 }}>
-        <Text>{selectedRecipe.title}</Text>
-      </View> */}
       <Card
         style={{
           height: "20%",
@@ -135,14 +125,14 @@ export const RecipeResult = () => {
           }}
         >
           <Text style={{ fontWeight: "800", fontSize: 16 }}>Ingredients</Text>
-          <Text>{selectedRecipe.ingredients}</Text>
-          {/* <Text>{selectedRecipe.extendedIngredients.map((ingredients, index) => (
-              <p>
-                {index + 1}. {ingredients.name} -{" "}
-                {ingredients.measures.metric.amount}{" "}
-                {ingredients.measures.metric.unitLong}
-              </p>
-            ))}</Text> */}
+          {/* <Text>{selectedRecipe.ingredients}</Text> */}
+          {selectedRecipe.extendedIngredients.map((ingredients, index) => (
+            <Text>
+              {index + 1}. {ingredients.name} -{" "}
+              {ingredients.measures.metric.amount}{" "}
+              {ingredients.measures.metric.unitLong}
+            </Text>
+          ))}
         </ScrollView>
       </View>
       <View
@@ -166,19 +156,18 @@ export const RecipeResult = () => {
           }}
         >
           <Text style={{ fontWeight: "800", fontSize: 16 }}>Instructions</Text>
-          <Text>
-            {" "}
-            {/* {selectedRecipe.analyzedInstructions[0].steps.map(
-              (instructions, index) => (
-                <>
-                  <p>
-                    {index + 1}. {instructions.step}
-                  </p>
-                </>
-              )
-            )} */}
+          {/* <Text>
             {selectedRecipe.instructions}
-          </Text>
+          </Text> */}
+          {selectedRecipe.analyzedInstructions[0].steps.map(
+            (instructions, index) => (
+              <>
+                <Text>
+                  {index + 1}. {instructions.step}
+                </Text>
+              </>
+            )
+          )}
         </ScrollView>
       </View>
       <View
@@ -196,6 +185,8 @@ export const RecipeResult = () => {
       </View>
       <View style={{ height: "10%" }}></View>
     </View>
+  ) : (
+    []
   );
 };
 
