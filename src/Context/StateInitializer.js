@@ -24,7 +24,7 @@ export default function initializeVariables() {
   const [tempQuery, setTempQuery] = useState("");
   const [favoritesList, setFavoritesList] = useState([]);
   const [recipients, setRecipients] = useState([]);
-  const { serverIP, setServerIP } = setIP();
+  const { serverIP } = setIP();
 
   useEffect(() => {
     setIngredientList([...pantryList]);
