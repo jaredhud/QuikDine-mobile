@@ -157,7 +157,7 @@ export const RecipeCard = (props) => {
                 color: "white",
               }}
             >
-              MI 3
+              MI {recipe.missedIngredientCount}
             </Text>
           </View>
           <View
