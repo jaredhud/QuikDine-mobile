@@ -34,11 +34,13 @@ export const NewEvent = () => {
 
   const [date, setDate] = useState(new Date());
   const [time, setTime] = useState(new Date(Date.now()));
+  const [endTime, setEndTime] = useState(new Date(Date.now()));
   const [datePicker, setDatePicker] = useState(false);
   const [timePicker, setTimePicker] = useState(false);
   const [mode, setMode] = useState("date");
   const [show, setShow] = useState(false);
   const [text, setText] = useState("");
+  const [endText, setEndText] = useState("");
   const [selectedRecipes, setSelectedRecipes] = useState({});
 
   useFocusEffect(
@@ -76,9 +78,35 @@ export const NewEvent = () => {
       (tempDate.getMonth() + 1) +
       "/" +
       tempDate.getFullYear();
-    let fTime = tempDate.getHours() + ":" + tempDate.getMinutes();
-    setText(fDate + "\n" + fTime);
+    if (mode === "time") {
+      let fTime = formatTime(tempDate);
+      console.log(fTime);
+      setText(fDate + "\n" + fTime);
+    } else {
+      let fEndTime = formatTime(tempDate);
+      setEndText(fEndTime);
+    }
   };
+
+  function formatTime(time) {
+    let hours = time.getHours();
+    let minutes = time.getMinutes();
+    let ampm;
+
+    if (hours === 0) {
+      hours = 12;
+      ampm = "AM";
+    } else if (hours < 12) {
+      ampm = "AM";
+    } else {
+      ampm = "PM";
+      hours = hours - 12;
+    }
+    console.log("Hello");
+    let result = hours + ":" + minutes.toString().padStart(2, "0") + ampm;
+    console.log(result);
+    return result;
+  }
 
   const showMode = (currentMode) => {
     setShow(true);
@@ -116,7 +144,7 @@ export const NewEvent = () => {
             backgroundColor: "white",
           }}
         >
-          {text}
+          {text} {endText}
         </Text>
       </View>
       <View style={{ margin: -10 }}>
@@ -129,18 +157,12 @@ export const NewEvent = () => {
           <Text style={styles.buttonText}>Choose the Date</Text>
         </TouchableOpacity>
       </View>
-      {/* <View style={StyleSheet.Container}>
-        <Button title="Pick Start Time" onPress={() => showMode("time")} />
-      </View>
-      <View style={StyleSheet.Container}>
-        <Button title="Pick End Time" onPress={() => showMode("time")} />
-      </View> */}
 
       {show && (
         <DateTimePicker
           testID="dateTimePicker"
           value={date}
-          mode={mode}
+          mode={mode === "time" || mode === "endTime" ? "time" : "date"}
           is24Hour={true}
           display="default"
           onChange={onChange}
@@ -158,7 +180,7 @@ export const NewEvent = () => {
         </TouchableOpacity>
         {/* <TouchableOpacity onPress={addRecipient} style={styles.buttonGreen}> */}
         <TouchableOpacity
-          onPress={() => showMode("time")}
+          onPress={() => showMode("endTime")}
           style={styles.buttonRed}
         >
           <Text style={styles.buttonText}>Pick End Time</Text>
