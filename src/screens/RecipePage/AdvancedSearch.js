@@ -175,7 +175,7 @@ export const AdvancedSearch = () => {
               <Text style={styles.modalText}>
                 Select all the ingredients in the Current Ingredients to find
                 cuisines.{"\n"} {"\n"}
-                When using query search, you are limited to 3 Current
+                To use the query search, you are limited to 3 Current
                 Ingredients from the blue box above.{"\n"} {"\n"}
                 Use the filters at the yellow box to target your search.
               </Text>
@@ -235,8 +235,20 @@ export const AdvancedSearch = () => {
           >
             Current Ingredients
           </Text>
-          <TouchableOpacity onPress={noIngSelect}>
-            <Text>Deselect All</Text>
+          <TouchableOpacity
+            style={{
+              backgroundColor: colors.darkblue,
+              width: "25%",
+              padding: 5,
+              borderRadius: 10,
+              alignItems: "center",
+              margin: 5,
+            }}
+            onPress={noIngSelect}
+          >
+            <Text style={{ color: "white", fontWeight: "600" }}>
+              Deselect All
+            </Text>
           </TouchableOpacity>
           <View
             style={{

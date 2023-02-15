@@ -40,6 +40,7 @@ export const NewEvent = () => {
   const [mode, setMode] = useState("date");
   const [show, setShow] = useState(false);
   const [text, setText] = useState("");
+  const [startText, setStartText] = useState("");
   const [endText, setEndText] = useState("");
   const [selectedRecipes, setSelectedRecipes] = useState({});
 
@@ -78,13 +79,14 @@ export const NewEvent = () => {
       (tempDate.getMonth() + 1) +
       "/" +
       tempDate.getFullYear();
-    if (mode === "time") {
-      let fTime = formatTime(tempDate);
-      console.log(fTime);
-      setText(fDate + "\n" + fTime);
+    if (mode === "date") {
+      setText("Event Date: " + fDate);
+    } else if (mode === "startTime") {
+      let fStartTime = formatTime(tempDate);
+      setStartText("Start Time: " + fStartTime);
     } else {
       let fEndTime = formatTime(tempDate);
-      setEndText(fEndTime);
+      setEndText("End Time: " + fEndTime);
     }
   };
 
@@ -95,11 +97,11 @@ export const NewEvent = () => {
 
     if (hours === 0) {
       hours = 12;
-      ampm = "AM";
+      ampm = " AM";
     } else if (hours < 12) {
-      ampm = "AM";
+      ampm = " AM";
     } else {
-      ampm = "PM";
+      ampm = " PM";
       hours = hours - 12;
     }
     console.log("Hello");
@@ -144,25 +146,26 @@ export const NewEvent = () => {
             backgroundColor: "white",
           }}
         >
-          {text} {endText}
+          {text}
         </Text>
-      </View>
-      <View style={{ margin: -10 }}>
-        {/* <Button
-          style={[button]}
-          title="DatePicker"
-          onPress={() => showMode("date")}
-        /> */}
-        <TouchableOpacity onPress={() => showMode("date")} style={[button]}>
-          <Text style={styles.buttonText}>Choose the Date</Text>
-        </TouchableOpacity>
+        <Text
+          // placeholder="Date and Time"
+          style={{
+            fontWeight: "bold",
+            fontSize: 15,
+            backgroundColor: "white",
+          }}
+        >
+          {startText} {`    `}
+          {endText}
+        </Text>
       </View>
 
       {show && (
         <DateTimePicker
           testID="dateTimePicker"
           value={date}
-          mode={mode === "time" || mode === "endTime" ? "time" : "date"}
+          mode={mode === "startTime" || mode === "endTime" ? "time" : "date"}
           is24Hour={true}
           display="default"
           onChange={onChange}
@@ -170,25 +173,32 @@ export const NewEvent = () => {
       )}
 
       <StatusBar style="auto" />
-      <View style={{ flexDirection: "row" }}>
+
+      <View style={{ flexDirection: "row", marginTop: 8, marginBottom: 15 }}>
         {/* <TouchableOpacity onPress={removeRecipient} style={styles.buttonRed}> */}
         <TouchableOpacity
-          onPress={() => showMode("time")}
+          onPress={() => showMode("date")}
+          style={styles.buttonGreen}
+        >
+          <Text style={styles.buttonTimeText}>Choose Date</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => showMode("startTime")}
           style={styles.buttonRed}
         >
-          <Text style={styles.buttonText}>Pick Start Time</Text>
+          <Text style={styles.buttonTimeText}>Pick Start Time</Text>
         </TouchableOpacity>
         {/* <TouchableOpacity onPress={addRecipient} style={styles.buttonGreen}> */}
         <TouchableOpacity
           onPress={() => showMode("endTime")}
           style={styles.buttonRed}
         >
-          <Text style={styles.buttonText}>Pick End Time</Text>
+          <Text style={styles.buttonTimeText}>Pick End Time</Text>
         </TouchableOpacity>
       </View>
       <View
         style={{
-          height: "22%",
+          height: "32%",
           width: "92%",
           borderRadius: 12,
           backgroundColor: "white",
@@ -240,24 +250,29 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
   },
+  buttonTimeText: {
+    color: "white",
+    fontWeight: "700",
+    fontSize: 14,
+    marginTop: 5,
+  },
   buttonRed: {
     backgroundColor: "#953737",
-    width: "45%",
-    padding: 15,
+    width: "30%",
+    padding: 5,
     borderRadius: 10,
     alignItems: "center",
-    marginTop: 20,
-    marginBottom: 10,
+    height: "90%",
     margin: 5,
   },
   buttonGreen: {
     backgroundColor: "#379540",
-    width: "45%",
-    padding: 15,
+    width: "28%",
+    padding: 5,
     borderRadius: 10,
     alignItems: "center",
-    marginTop: 20,
-    marginBottom: 10,
+    alignContent: "center",
+    height: "90%",
     margin: 5,
   },
   Text: {
@@ -290,7 +305,7 @@ const styles = StyleSheet.create({
   },
   dateAndTime: {
     backgroundColor: "#ffffff",
-    width: "65%",
+    width: "95%",
     padding: 15,
     borderRadius: 10,
     alignItems: "center",
