@@ -10,6 +10,7 @@ import { useFocusEffect, useNavigation } from "@react-navigation/core";
 import {
   Image,
   ImageBackground,
+  ScrollView,
   StyleSheet,
   TouchableOpacity,
   View,
@@ -75,9 +76,10 @@ export const RecipeResult = () => {
       <Card
         style={{
           height: "20%",
-          width: "90%",
-          backgroundColor: "red",
+          width: "95%",
+          // backgroundColor: "red",
           marginBottom: 10,
+          borderRadius: 16,
         }}
       >
         {/* <ImageBackground
@@ -90,6 +92,10 @@ export const RecipeResult = () => {
           style={{
             height: "100%",
             width: "100%",
+            backgroundColor: colors.lightorange,
+            borderColor: colors.darkorange,
+            borderWidth: 3,
+            borderRadius: 15,
             // alignItems: "flex-start",
             // justifyContent: "flex-end",
             // backgroundColor: "white",
@@ -118,29 +124,72 @@ export const RecipeResult = () => {
           borderColor: colors.darkblue,
           borderWidth: 3,
           marginBottom: 10,
+          alignItems: "center",
         }}
       >
-        <Text>Ingredients</Text>
+        <ScrollView
+          style={{
+            width: "95%",
+            // backgroundColor: "red",
+            height: "100%",
+          }}
+        >
+          <Text style={{ fontWeight: "800", fontSize: 16 }}>Ingredients</Text>
+          <Text>{selectedRecipe.ingredients}</Text>
+          {/* <Text>{selectedRecipe.extendedIngredients.map((ingredients, index) => (
+              <p>
+                {index + 1}. {ingredients.name} -{" "}
+                {ingredients.measures.metric.amount}{" "}
+                {ingredients.measures.metric.unitLong}
+              </p>
+            ))}</Text> */}
+        </ScrollView>
       </View>
       <View
         style={{
-          height: "30%",
+          height: "38%",
           width: "95%",
           backgroundColor: "blue",
-
           borderRadius: 15,
           backgroundColor: colors.lightblue,
           borderColor: colors.darkblue,
           borderWidth: 3,
           marginBottom: 10,
+          alignItems: "center",
         }}
       >
-        <Text>Instruction</Text>
+        <ScrollView
+          style={{
+            width: "95%",
+            // backgroundColor: "red",
+            height: "100%",
+          }}
+        >
+          <Text style={{ fontWeight: "800", fontSize: 16 }}>Instructions</Text>
+          <Text>
+            {" "}
+            {/* {selectedRecipe.analyzedInstructions[0].steps.map(
+              (instructions, index) => (
+                <>
+                  <p>
+                    {index + 1}. {instructions.step}
+                  </p>
+                </>
+              )
+            )} */}
+            {selectedRecipe.instructions}
+          </Text>
+        </ScrollView>
       </View>
-      <View style={{ height: "10%", backgroundColor: "red" }}>
+      <View
+        style={{
+          height: "8%",
+          justifyContent: "center",
+        }}
+      >
         <TouchableOpacity
           onPress={() => navigation.navigate("Recipe Search")}
-          style={[button]}
+          style={[button, { marginTop: 0, marginBottom: 0 }]}
         >
           <Text style={styles.buttonText}>Add Recipe to Event</Text>
         </TouchableOpacity>
