@@ -5,8 +5,14 @@ import { Checkbox, Card, Text } from "react-native-paper";
 let curCheckArray = [];
 
 export function IngredientSearchCard(props) {
-  const { ingredient, setIngredientListChecked, ingredientListChecked, index } =
-    props;
+  const {
+    ingredient,
+    setIngredientListChecked,
+    ingredientListChecked,
+    index,
+    numIngUsed,
+    tempQuery,
+  } = props;
   const [checked, setChecked] = useState(ingredientListChecked[index]);
 
   useEffect(() => {
@@ -26,6 +32,7 @@ export function IngredientSearchCard(props) {
       >
         <Text>{ingredient}</Text>
         <Checkbox
+          disabled={numIngUsed >= 3 && tempQuery != "" && !checked}
           status={checked ? "checked" : "unchecked"}
           onPress={() => {
             curCheckArray = [...ingredientListChecked];

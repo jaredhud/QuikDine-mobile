@@ -61,6 +61,7 @@ export const AdvancedSearch = () => {
   } = useContext(AppContext);
 
   const tempPantry = [...pantryList];
+  const numIngUsed = ingredientListChecked.reduce((a, b) => a + b, 0);
 
   tempSearchCriteria = {
     ingredientList: ingredientList,
@@ -95,7 +96,13 @@ export const AdvancedSearch = () => {
   }, [cuisine]);
 
   function resetSearch() {
-    setPantryList([...pantryList]);
+    setPantryList(...pantryList);
+  }
+
+  function noIngSelect() {
+    setIngredientListChecked(
+      new Array(ingredientListChecked.length).fill(false)
+    );
   }
 
   function querySetter() {
@@ -228,6 +235,9 @@ export const AdvancedSearch = () => {
           >
             Current Ingredients
           </Text>
+          <TouchableOpacity onPress={noIngSelect}>
+            <Text>Deselect All</Text>
+          </TouchableOpacity>
           <View
             style={{
               flexDirection: "row",
@@ -245,6 +255,8 @@ export const AdvancedSearch = () => {
                     setIngredientListChecked={setIngredientListChecked}
                     ingredientListChecked={ingredientListChecked}
                     index={index}
+                    tempQuery={tempQuery}
+                    numIngUsed={numIngUsed}
                   />
                 );
               }),
@@ -278,7 +290,11 @@ export const AdvancedSearch = () => {
             setTempQuery(text);
           }}
           onSubmitEditing={querySetter}
-          placeholder="query (optional)"
+          placeholder={
+            numIngUsed > 3
+              ? "There must be 3 or less ingredients selected to include a query"
+              : "query (optional)"
+          }
           style={{
             width: "67%",
             marginTop: "5%",
@@ -435,6 +451,7 @@ export const AdvancedSearch = () => {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
+          disabled={numIngUsed > 3 && tempQuery != ""}
           onPress={() => {
             querySetter();
             dietSetter();
