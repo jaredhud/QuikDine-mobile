@@ -166,7 +166,7 @@ export const AdvancedSearch = () => {
               style={{
                 alignItems: "center",
                 flexDirection: "column",
-                marginTop: "20%",
+                marginTop: "10%",
               }}
             >
               <Text style={[styles.modalText, { fontWeight: "800" }]}>
@@ -584,6 +584,10 @@ const styles = StyleSheet.create({
   textStyle: {
     color: "white",
     fontWeight: "bold",
+    textAlign: "center",
+  },
+  modalText: {
+    marginBottom: 15,
     textAlign: "center",
   },
 });

@@ -131,7 +131,12 @@ export const RecipeSearch = () => {
               <Text style={[styles.modalText, { fontWeight: "800" }]}>
                 Help!
               </Text>
-              <Text style={styles.modalText}>MI = Missing Ingredient</Text>
+              <Text style={styles.modalText}>
+                MI = Missing Ingredient{"\n"} {"\n"}
+                Click on the photo to view recipe deatils.{"\n"} {"\n"}To
+                customize your search according to diet, meal type, and cuisine
+                select, go to Advanced Options.
+              </Text>
               <Pressable
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => setModalVisible(!modalVisible)}

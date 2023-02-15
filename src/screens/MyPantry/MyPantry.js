@@ -122,7 +122,7 @@ export default function MyPantry() {
               style={{
                 // marginTop: "-25%",
                 // marginLeft: "-15%",
-                width: "60%",
+                width: "70%",
                 height: "120%",
               }}
             ></Image>
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
     borderColor: "#c0c0c0",
     borderWidth: 1,
     fontSize: 18,
-    width: 260,
+    width: 280,
     marginLeft: "5%",
     marginRight: "-15%",
     backgroundColor: "#fff7e1",
