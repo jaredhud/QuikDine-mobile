@@ -31,16 +31,28 @@ const LoginScreen = () => {
   const navigation = useNavigation();
   const { setEmail, setUser, setIsLoggedIn } = useContext(AppContext);
 
-  const handleLogin = () => {
-    signInWithEmailAndPassword(auth, tempEmail, password)
-      .then((userCredentials) => {
-        setUser(userCredentials.user.uid);
-        setEmail(userCredentials.user.email);
-        setIsLoggedIn(true);
-        navigation.navigate("Profile Page");
-      })
-      .catch((error) => alert(error.message));
-  };
+  async function handleLogin() {
+    try {
+      const data = await signInWithEmailAndPassword(auth, tempEmail, password);
+      setUser(data.user.uid);
+      setEmail(data.user.email);
+
+      const docRef = doc(db, "Users", user);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+
+      setIsLoggedIn(true);
+      navigation.navigate("Profile Page");
+    } catch (error) {
+      alert(error.message);
+    }
+  }
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <View

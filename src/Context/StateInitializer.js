@@ -28,6 +28,7 @@ export default function initializeVariables() {
   const [tempSearchQuery, setTempSearchQuery] = useState("");
   const [favoritesList, setFavoritesList] = useState([]);
   const [recipients, setRecipients] = useState([]);
+  const [eventID, setEventID] = useState("");
   const { serverIP } = setIP();
 
   useEffect(() => {
@@ -49,7 +50,7 @@ export default function initializeVariables() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      updateDoc(doc(db, "Events", "12345"), {
+      updateDoc(doc(db, "Events", eventID), {
         AddedRecipes: selectedRecipesList,
       })
         .then(() => {
@@ -68,6 +69,8 @@ export default function initializeVariables() {
     setEmail,
     isLoggedIn,
     setIsLoggedIn,
+    eventID,
+    setEventID,
     pantryList,
     setPantryList,
     selectedRecipesList,

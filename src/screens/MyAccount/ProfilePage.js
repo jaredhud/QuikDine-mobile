@@ -140,29 +140,29 @@ export const ProfilePage = () => {
             style={styles.pText}
           >{`  Bananas, Pies, Bacon, and Cheese`}</Text>
         </View>
-        <View
-          style={{
-            alignSelf: "center",
-            flexDirection: "row",
-            justifyContent: "center",
-            backgroundColor: "#fff",
-            width: "90%",
-            padding: 20,
-            paddingBottom: 22,
-            borderRadius: 10,
-            shadowOpacity: 80,
-            elevation: 15,
-            marginTop: 20,
-            backgroundColor: "#035779",
-            marginBottom: 40,
-          }}
-        >
-          <TouchableOpacity onPress={logout}>
+        <TouchableOpacity onPress={logout}>
+          <View
+            style={{
+              alignSelf: "center",
+              flexDirection: "row",
+              justifyContent: "center",
+              backgroundColor: "#fff",
+              width: "90%",
+              padding: 20,
+              paddingBottom: 22,
+              borderRadius: 10,
+              shadowOpacity: 80,
+              elevation: 15,
+              marginTop: 20,
+              backgroundColor: "#035779",
+              marginBottom: 40,
+            }}
+          >
             <Text
               style={{ color: "white", fontWeight: "bold" }}
             >{`  Logout`}</Text>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );

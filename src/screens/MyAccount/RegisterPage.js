@@ -13,27 +13,61 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { FontFamily } from "../../../GlobalStyles.js";
 import { createDBEvent, createDBUser } from "../../Context/globalFunctions.js";
 import AppContext from "../../Context/AppContext.js";
+import {
+  addDoc,
+  collection,
+  doc,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore/lite";
+import { db } from "../../../firebase.js";
 
 const auth = getAuth();
 
 export const RegisterPage = () => {
   const [tempEmail, setTempEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setEmail, setUser, setIsLoggedIn } = useContext(AppContext);
+  const { email, setEmail, user, setUser, setIsLoggedIn, pantryList } =
+    useContext(AppContext);
   const navigation = useNavigation();
 
-  const handleSignUp = () => {
-    createUserWithEmailAndPassword(auth, tempEmail, password)
-      .then(async (userCredentials) => {
-        setEmail(userCredentials.user.email);
-        setUser(userCredentials.user.uid);
-        setIsLoggedIn(true);
-        await createDBUser();
-        await createDBEvent();
-        navigation.navigate("Profile Page");
-      })
-      .catch((error) => alert(error.message));
-  };
+  async function handleSignUp() {
+    try {
+      const data = await createUserWithEmailAndPassword(
+        auth,
+        tempEmail,
+        password
+      );
+      setEmail(data.user.email);
+      setUser(data.user.uid);
+      setIsLoggedIn(true);
+      console.log("before User firebase");
+      await setDoc(doc(db, "Users", user), {
+        Events: [],
+        FavRecipes: [],
+        EmailId: email,
+        Pantry: pantryList,
+      });
+
+      console.log("After User firebase");
+      console.log("before Event firebase");
+      const tempEventID = await addDoc(doc(db, "Events"), {
+        AddedRecipes: [],
+        Votes: [],
+        UserID: [],
+      });
+      setEventID(tempEventID);
+      console.log("before User event field update");
+      console.log(eventID);
+      updateDoc(doc(db, "Users", user), { Events: eventID });
+
+      // await createDBEvent();
+      console.log("got to the end");
+      // navigation.navigate("Profile Page");
+    } catch (error) {
+      alert(error.message);
+    }
+  }
 
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
