@@ -110,12 +110,9 @@ export const RecipeResult = () => {
           borderRadius={10}
         >
           <Card.Content>
-            <TextStroke stroke={2} color={"#953737"}>
-              <Text style={styles.textStrokeText}>
-                {" "}
-                {selectedRecipe.title}{" "}
-              </Text>
-            </TextStroke>
+            {/* <TextStroke stroke={2} color={"#953737"}> */}
+            <Text style={styles.textStrokeText}> {selectedRecipe.title} </Text>
+            {/* </TextStroke> */}
           </Card.Content>
         </ImageBackground>
       </Card>
