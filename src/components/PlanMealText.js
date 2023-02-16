@@ -6,9 +6,9 @@ import { FontFamily } from "../../GlobalStyles";
 export const PlanMealText = () => {
   return (
     <View style={styles.dashboardView}>
-      <TextStroke stroke={2} color={"#379540"}>
-        <Text style={styles.textStrokeText}> Create New Event </Text>
-      </TextStroke>
+      {/* <TextStroke stroke={2} color={"#379540"}> */}
+      <Text style={styles.textStrokeText}> Create New Event </Text>
+      {/* </TextStroke> */}
     </View>
   );
 };
@@ -23,9 +23,9 @@ export const SubInfo = () => {
 export const PlanMealText2 = () => {
   return (
     <View style={styles.dashboardView}>
-      <TextStroke stroke={2} color={"#379540"}>
-        <Text style={styles.textStrokeText}> In-Progress Events </Text>
-      </TextStroke>
+      {/* <TextStroke stroke={2} color={"#379540"}> */}
+      <Text style={styles.textStrokeText}> In-Progress Events </Text>
+      {/* </TextStroke> */}
     </View>
   );
 };
@@ -40,9 +40,9 @@ export const SubInfo2 = () => {
 export const PlanMealText3 = () => {
   return (
     <View style={styles.dashboardView}>
-      <TextStroke stroke={2} color={"#379540"}>
-        <Text style={styles.textStrokeText}> Past Events </Text>
-      </TextStroke>
+      {/* <TextStroke stroke={2} color={"#379540"}> */}
+      <Text style={styles.textStrokeText}> Past Events </Text>
+      {/* </TextStroke> */}
     </View>
   );
 };

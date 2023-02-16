@@ -55,12 +55,12 @@ export function LoginScreen() {
     }
   }
   return (
-    <KeyboardAvoidingView style={styles.container} behavior="padding">
+    <View style={styles.container}>
       <View
         style={{
           alignItems: "center",
           width: "90%",
-          height: "90%",
+          height: 650,
           marginBottom: 20,
         }}
       >
@@ -69,13 +69,13 @@ export function LoginScreen() {
           source={chefGreg2}
           resizeMode="cover"
           style={{
-            width: "80%",
-            height: "40%",
+            width: 300,
+            height: 260,
             borderColor: "#379540",
             borderRadius: 30,
             borderWidth: 10,
             // borderStartWidth: 10,
-            marginTop: "10%",
+            marginTop: 30,
 
             padding: 0,
           }}
@@ -132,7 +132,7 @@ export function LoginScreen() {
           <Text style={styles.buttonOutlineText}>Registers</Text>
         </TouchableOpacity> */}
       </View>
-    </KeyboardAvoidingView>
+    </View>
   );
 }
 

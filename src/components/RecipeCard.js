@@ -116,9 +116,9 @@ export const RecipeCard = (props) => {
         <View style={{ justifyContent: "space-between", flexDirection: "row" }}>
           <View style={{ width: "80%" }}>
             <Card.Content>
-              <TextStroke stroke={2} color={"#953737"}>
-                <Text style={styles.textStrokeText}> {recipe.title} </Text>
-              </TextStroke>
+              {/* <TextStroke stroke={2} color={"#953737"}> */}
+              <Text style={styles.textStrokeText}> {recipe.title} </Text>
+              {/* </TextStroke> */}
             </Card.Content>
           </View>
           <View
