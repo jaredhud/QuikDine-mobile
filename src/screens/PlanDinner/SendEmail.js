@@ -30,6 +30,8 @@ import { createDBEvent } from "../../Context/globalFunctions";
 let userIds = [2];
 let eventID = [15];
 
+let mailIcon = "mail-outline";
+
 export default function SendEmail() {
   const navigation = useNavigation();
   const { recipients, setRecipients, serverIP } = useContext(AppContext);
@@ -186,8 +188,25 @@ export default function SendEmail() {
       </View>
       <View style={styles.inputRecepient}>{showRecipients()}</View>
 
-      <TouchableOpacity onPress={sendMail} style={styles.buttonSend}>
-        <Text style={styles.buttonText}>Send Mail</Text>
+      <TouchableOpacity
+        onPress={sendMail}
+        style={[
+          styles.buttonSend,
+          {
+            flexDirection: "row",
+            alignContent: "center",
+            alignItems: "center",
+            justifyContent: "center",
+          },
+        ]}
+      >
+        <Text style={styles.buttonText}>{`Send Mail  `}</Text>
+        <Ionicons
+          name={mailIcon}
+          size={30}
+          color="#ffffff"
+          style={{ marginTop: -10, marginBottom: -10 }}
+        />
       </TouchableOpacity>
 
       <StatusBar style="auto" />
