@@ -52,6 +52,7 @@ export default function initializeVariables() {
     if (isLoggedIn) {
       updateDoc(doc(db, "Events", eventID), {
         AddedRecipes: selectedRecipesList,
+        Votes: new Array(selectedRecipesList.length).fill(0),
       })
         .then(() => {
           console.log("Event Data added");
