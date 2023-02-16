@@ -15,6 +15,7 @@ import { createDBEvent, createDBUser } from "../../Context/globalFunctions.js";
 import AppContext from "../../Context/AppContext.js";
 import {
   addDoc,
+  arrayUnion,
   collection,
   doc,
   setDoc,
@@ -27,8 +28,16 @@ const auth = getAuth();
 export const RegisterPage = () => {
   const [tempEmail, setTempEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { email, setEmail, user, setUser, setIsLoggedIn, pantryList } =
-    useContext(AppContext);
+  const {
+    email,
+    setEmail,
+    user,
+    setUser,
+    setIsLoggedIn,
+    pantryList,
+    setEventID,
+    eventID,
+  } = useContext(AppContext);
   const navigation = useNavigation();
 
   async function handleSignUp() {
@@ -48,22 +57,20 @@ export const RegisterPage = () => {
         EmailId: email,
         Pantry: pantryList,
       });
-
-      console.log("After User firebase");
-      console.log("before Event firebase");
-      const tempEventID = await addDoc(doc(db, "Events"), {
+      const tempEventID = await addDoc(collection(db, "Events"), {
         AddedRecipes: [],
         Votes: [],
         UserID: [],
       });
-      setEventID(tempEventID);
-      console.log("before User event field update");
+      console.log(tempEventID);
+      setEventID(tempEventID.id);
       console.log(eventID);
-      updateDoc(doc(db, "Users", user), { Events: eventID });
+      await updateDoc(doc(db, "Users", user), {
+        Events: arrayUnion(eventID),
+      });
 
-      // await createDBEvent();
       console.log("got to the end");
-      // navigation.navigate("Profile Page");
+      navigation.navigate("Profile Page");
     } catch (error) {
       alert(error.message);
     }

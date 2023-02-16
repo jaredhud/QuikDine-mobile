@@ -24,7 +24,7 @@ import { createDBEvent } from "../../Context/globalFunctions.js";
 
 const auth = getAuth();
 
-const LoginScreen = () => {
+export function LoginScreen() {
   const [tempEmail, setTempEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -133,9 +133,7 @@ const LoginScreen = () => {
       </View>
     </KeyboardAvoidingView>
   );
-};
-
-export default LoginScreen;
+}
 
 const styles = StyleSheet.create({
   parentView: {
