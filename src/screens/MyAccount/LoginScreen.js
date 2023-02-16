@@ -103,8 +103,8 @@ export function LoginScreen() {
           style={{
             fontFamily: FontFamily.ubuntubold,
             color: "#46ADA1",
-            marginTop: "5%",
-            marginBottom: "-5%",
+            marginTop: 10,
+            marginBottom: -30,
           }}
         >
           Forgot Password?
@@ -150,9 +150,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.lightgreen,
   },
   inputContainer: {
-    marginTop: "-85%",
+    marginTop: -350,
     marginBottom: "0%",
-    width: "80%",
+    width: 325,
   },
   input: {
     backgroundColor: "white",
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
   titleHome: {
     fontSize: 20,
     fontWeight: "bold",
-    marginBottom: "-5%",
+    marginBottom: -20,
     fontFamily: FontFamily.ubuntu,
     textAlign: "center",
   },

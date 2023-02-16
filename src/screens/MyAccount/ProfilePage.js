@@ -77,7 +77,8 @@ export const ProfilePage = () => {
               padding: 10,
             }}
           >
-            Sophia {email}
+            Sophia
+            {/* {email} */}
           </Text>
           <Text style={{ fontSize: 15, fontWeight: "bold", color: "grey" }}>
             26, Female
