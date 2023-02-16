@@ -117,12 +117,9 @@ export default function MyPantry() {
         <TouchableOpacity onPress={() => handleAddIngredient()}>
           <View style={styles.addWrapper}>
             <Image
-              // flex={1}
               source={plusWhite}
               resizeMode="contain"
               style={{
-                // marginTop: "-25%",
-                // marginLeft: "-15%",
                 width: "70%",
                 height: "120%",
               }}
@@ -136,8 +133,6 @@ export default function MyPantry() {
               source={cameraPlus}
               resizeMode="contain"
               style={{
-                // marginTop: "-25%",
-                // marginLeft: "-15%",
                 width: "120%",
                 height: "120%",
               }}
@@ -189,7 +184,7 @@ const styles = StyleSheet.create({
     borderColor: "#c0c0c0",
     borderWidth: 1,
     fontSize: 18,
-    width: 280,
+    width: 260,
     marginLeft: "5%",
     marginRight: "-15%",
     backgroundColor: "#fff7e1",
