@@ -120,14 +120,14 @@ export const RecipeResult = () => {
         style={{
           height: "20%",
           width: "95%",
-          backgroundColor: "blue",
+          // backgroundColor: "blue",
 
-          borderRadius: 15,
-          backgroundColor: colors.lightblue,
-          borderColor: colors.darkblue,
-          borderWidth: 3,
-          marginBottom: 10,
-          alignItems: "center",
+          // borderRadius: 15,
+          // backgroundColor: colors.lightblue,
+          // borderColor: colors.darkblue,
+          // borderWidth: 3,
+          // marginBottom: 10,
+          // alignItems: "center",
         }}
       >
         <ScrollView
@@ -157,13 +157,13 @@ export const RecipeResult = () => {
         style={{
           height: "38%",
           width: "95%",
-          backgroundColor: "blue",
-          borderRadius: 15,
-          backgroundColor: colors.lightblue,
-          borderColor: colors.darkblue,
-          borderWidth: 3,
-          marginBottom: 10,
-          alignItems: "center",
+          // backgroundColor: "blue",
+          // borderRadius: 15,
+          // backgroundColor: colors.lightblue,
+          // borderColor: colors.darkblue,
+          // borderWidth: 3,
+          // marginBottom: 10,
+          // alignItems: "center",
         }}
       >
         <ScrollView

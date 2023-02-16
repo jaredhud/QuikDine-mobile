@@ -41,7 +41,7 @@ export const Home = () => {
           margin: "2%",
         }}
       >
-        <Text
+        {/* <Text
           style={{
             fontSize: 23,
             color: "#379540",
@@ -54,8 +54,36 @@ export const Home = () => {
         >
           {" "}
           Welcome to{" "}
+        </Text> */}
+        <Text
+          style={{
+            fontSize: 23,
+            color: "#379540",
+            textAlign: "left",
+            marginTop: "17%",
+            marginBottom: "-5%",
+            fontFamily: FontFamily.ubuntubold,
+            fontStyle: "italic",
+          }}
+        >
+          {" "}
+          Welcome to{" "}
         </Text>
-        <Image
+        <Text
+          style={{
+            fontSize: 50,
+            color: "#379540",
+            textAlign: "left",
+            marginBottom: "7%",
+
+            fontFamily: FontFamily.ubuntubold,
+            fontStyle: "italic",
+          }}
+        >
+          {" "}
+          QuikDine{" "}
+        </Text>
+        {/* <Image
           flex={1}
           source={quikdine}
           resizeMode="contain"
@@ -65,7 +93,7 @@ export const Home = () => {
             width: "70%",
             height: "30%",
           }}
-        ></Image>
+        ></Image> */}
       </View>
       {/* <Text>Email: {auth.currentUser?.email}</Text> */}
       {/* <TouchableOpacity onPress={handleSignOut} style={styles.button}>
