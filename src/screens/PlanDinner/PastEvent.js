@@ -1,12 +1,21 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/core";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import { auth } from "../../../firebase";
 import { button } from "../../../GlobalStyles";
 import { FontFamily } from "../../../GlobalStyles";
 import Ionicons from "@expo/vector-icons/Ionicons";
+
+import Event from "../../components/Event";
+let trashDelete = "trash-outline";
 
 export const PastEvent = () => {
   const navigation = useNavigation();
@@ -36,16 +45,56 @@ export const PastEvent = () => {
       </View>
       <View
         style={{
-          height: "60%",
+          height: "5%",
           // backgroundColor: "red"
         }}
       ></View>
       <View
         style={{
+          height: "50%",
+          // backgroundColor: "red"
+        }}
+      >
+        <ScrollView>
+          <TouchableOpacity>
+            <Event text="Event 1" textProgress="In-Progress" />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Event text="Event 1" textProgress="In-Progress" />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Event text="Event 1" textProgress="In-Progress" />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Event text="Event 1" textProgress="In-Progress" />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Event text="Event 1" textProgress="In-Progress" />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Event text="Event 1" textProgress="In-Progress" />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Event text="Event 1" textProgress="In-Progress" />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Event text="Event 1" textProgress="In-Progress" />
+          </TouchableOpacity>
+        </ScrollView>
+      </View>
+      <View
+        style={{
           height: "10%",
           // backgroundColor: "blue"
         }}
-      ></View>
+      >
+        <TouchableOpacity
+          onPress={() => navigation.navigate("New Event")}
+          style={[button]}
+        >
+          <Text style={styles.buttonText}>Create New Event</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
