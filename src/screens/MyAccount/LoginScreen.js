@@ -22,6 +22,7 @@ import {
 import AppContext from "../../Context/AppContext.js";
 import { createDBEvent } from "../../Context/globalFunctions.js";
 import { doc, getDoc } from "firebase/firestore/lite";
+import { db } from "../../../firebase.js";
 
 const auth = getAuth();
 
