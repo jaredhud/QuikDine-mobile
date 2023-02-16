@@ -21,6 +21,7 @@ import {
 } from "firebase/auth";
 import AppContext from "../../Context/AppContext.js";
 import { createDBEvent } from "../../Context/globalFunctions.js";
+import { doc, getDoc } from "firebase/firestore/lite";
 
 const auth = getAuth();
 
@@ -37,7 +38,7 @@ export function LoginScreen() {
       setUser(data.user.uid);
       setEmail(data.user.email);
 
-      const docRef = doc(db, "Users", user);
+      const docRef = doc(db, "Users", data.user.uid);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
