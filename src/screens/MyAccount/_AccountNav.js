@@ -8,7 +8,6 @@ import AppContext from "../../Context/AppContext";
 const Stack = createNativeStackNavigator();
 export default function AccountNav() {
   const { isLoggedIn } = useContext(AppContext);
-
   return (
     <Stack.Navigator id="Account Nav">
       {console.log(isLoggedIn)}

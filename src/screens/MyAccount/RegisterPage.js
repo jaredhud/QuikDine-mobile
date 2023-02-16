@@ -37,6 +37,8 @@ export const RegisterPage = () => {
     pantryList,
     setEventID,
     eventID,
+    isLoading,
+    setIsLoading,
   } = useContext(AppContext);
   const navigation = useNavigation();
 
@@ -49,12 +51,10 @@ export const RegisterPage = () => {
       );
       setEmail(data.user.email);
       setUser(data.user.uid);
-      setIsLoggedIn(true);
-      console.log("before User firebase");
-      await setDoc(doc(db, "Users", user), {
+      await setDoc(doc(db, "Users", data.user.uid), {
         Events: [],
         FavRecipes: [],
-        EmailId: email,
+        EmailId: data.user.email,
         Pantry: pantryList,
       });
       const tempEventID = await addDoc(collection(db, "Events"), {
@@ -62,14 +62,11 @@ export const RegisterPage = () => {
         Votes: [],
         UserID: [],
       });
-      console.log(tempEventID);
       setEventID(tempEventID.id);
-      console.log(eventID);
-      await updateDoc(doc(db, "Users", user), {
-        Events: arrayUnion(eventID),
+      await updateDoc(doc(db, "Users", data.user.uid), {
+        Events: arrayUnion(tempEventID.id),
       });
-
-      console.log("got to the end");
+      setIsLoggedIn(true);
       navigation.navigate("Profile Page");
     } catch (error) {
       alert(error.message);
