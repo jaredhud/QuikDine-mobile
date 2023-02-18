@@ -31,26 +31,53 @@ export function LoginScreen() {
   const [password, setPassword] = useState("");
 
   const navigation = useNavigation();
-  const { setEmail, setUser, setIsLoggedIn } = useContext(AppContext);
+  const {
+    setEmail,
+    setUser,
+    setEventID,
+    eventID,
+    setIsLoggedIn,
+    setPantryList,
+    selectedRecipesList,
+    setSelectedRecipesList,
+    setRecipients,
+    setInviteUserIds,
+    recipients,
+  } = useContext(AppContext);
 
   async function handleLogin() {
     try {
       const data = await signInWithEmailAndPassword(auth, tempEmail, password);
-      setUser(data.user.uid);
       setEmail(data.user.email);
 
-      const docRef = doc(db, "Users", data.user.uid);
-      const docSnap = await getDoc(docRef);
+      console.log("UserId", data.user.uid);
+      const userdb = await getDoc(doc(db, "Users", data.user.email));
 
-      if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
+      console.log("User Document data:", userdb.data());
+      const tempEventID = userdb.data().Events[userdb.data().Events.length - 1];
+      console.log("EventID", tempEventID);
+      setEventID(tempEventID);
+
+      const eventdb = await getDoc(doc(db, "Events", tempEventID));
+      console.log("Event Doc Data", eventdb.data());
+      setIsLoggedIn(true);
+
+      console.log(
+        "Event RecipeArray length",
+        eventdb.data().AddedRecipes.length
+      );
+      if (eventdb.data().AddedRecipes.length > 0) {
+        setSelectedRecipesList(eventdb.data().AddedRecipes);
       } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
+        setSelectedRecipesList([...selectedRecipesList]);
       }
 
-      setIsLoggedIn(true);
-      navigation.navigate("Profile Page");
+      console.log("Event UserID length", eventdb.data().Emails);
+      setInviteUserIds(eventdb.data().UserIDs);
+      setRecipients(eventdb.data().Emails);
+
+      console.log("PantryList", userdb.data().Pantry);
+      setPantryList(userdb.data().Pantry);
     } catch (error) {
       alert(error.message);
     }

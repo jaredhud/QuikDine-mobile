@@ -29,6 +29,7 @@ export default function initializeVariables() {
   const [favoritesList, setFavoritesList] = useState([]);
   const [recipients, setRecipients] = useState([]);
   const [eventID, setEventID] = useState("");
+  const [inviteUserIds, setInviteUserIds] = useState([]);
   const { serverIP } = setIP();
 
   useEffect(() => {
@@ -62,6 +63,35 @@ export default function initializeVariables() {
         });
     }
   }, [selectedRecipesList]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      updateDoc(doc(db, "Events", eventID), {
+        Emails: recipients,
+        UserIDs: inviteUserIds,
+      })
+        .then(() => {
+          console.log("Event Data added");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [recipients]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      updateDoc(doc(db, "Users", email), {
+        Pantry: pantryList,
+      })
+        .then(() => {
+          console.log("Pantry Updated");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [pantryList]);
 
   const variables = {
     user,
@@ -99,6 +129,8 @@ export default function initializeVariables() {
     serverIP,
     tempSearchQuery,
     setTempSearchQuery,
+    inviteUserIds,
+    setInviteUserIds,
   };
 
   return variables;

@@ -23,6 +23,7 @@ import {
   getDocs,
   query,
   where,
+  setDoc,
 } from "firebase/firestore/lite";
 import { db } from "../../../firebase";
 import { createDBEvent } from "../../Context/globalFunctions";
@@ -34,7 +35,14 @@ let mailIcon = "mail-outline";
 
 export default function SendEmail() {
   const navigation = useNavigation();
-  const { recipients, setRecipients, serverIP } = useContext(AppContext);
+  const {
+    inviteUserIds,
+    setInviteUserIds,
+    recipients,
+    setRecipients,
+    serverIP,
+    email,
+  } = useContext(AppContext);
   const [isAvailable, setIsAvailable] = useState(false);
   const [subject, setSubject] = useState("QuikDine Event");
   const [body, setBody] = useState(
@@ -112,25 +120,64 @@ export default function SendEmail() {
     createDBEvent();
   };
 
-  const addRecipient = () => {
-    let newRecipients = [...recipients];
-    newRecipients.push(emailaddress);
+  const addRecipient = async () => {
+    let tempRecipients = [...recipients];
+    let tempInviteUserIds = [...inviteUserIds];
+    let tempInviteUserId = "";
+    let tempEmail = emailaddress.toLowerCase();
 
-    setRecipients(newRecipients);
+    if (tempRecipients.indexOf(tempEmail) === -1) {
+      tempRecipients.push(tempEmail);
+
+      const userdb = await getDoc(doc(db, "Users", tempEmail));
+
+      if (userdb.exists()) {
+        tempInviteUserId = userdb.data().UserId;
+      } else {
+        tempInviteUserId = Math.floor(Math.random() * Date.now());
+        await setDoc(doc(db, "Users", tempEmail), {
+          Events: [],
+          FavRecipes: [],
+          UserId: tempInviteUserId,
+          Pantry: [],
+        });
+      }
+      tempInviteUserIds.push(tempInviteUserId);
+      setInviteUserIds(tempInviteUserIds);
+      setRecipients(tempRecipients);
+    }
     setEmailaddress(undefined);
   };
+  function removeRecipient(index) {
+    let tempRecipients = [...recipients];
+    let tempInviteUserIds = [...inviteUserIds];
+    tempRecipients.splice(index, 1);
+    tempInviteUserIds.splice(index, 1);
+    setInviteUserIds(tempInviteUserIds);
+    setRecipients(tempRecipients);
+  }
 
-  const removeRecipient = () => {
-    setRecipients("");
+  const removeRecipients = () => {
+    setRecipients([email]);
   };
 
   const showRecipients = () => {
     if (recipients.length === 0) {
       return <Text>No recipients added</Text>;
     }
-
     return recipients.map((recipient, index) => {
-      return <Text key={index}>{recipient}</Text>;
+      return (
+        <View key={index} flexDirection="row">
+          <View alignItems="flex-start">
+            <Text>{recipient}</Text>
+          </View>
+          <View alignItems="flex-end">
+            <TouchableOpacity onPress={() => removeRecipient(index)}>
+              <Text>X</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      );
     });
   };
 
@@ -179,8 +226,8 @@ export default function SendEmail() {
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity> */}
       <View style={{ flexDirection: "row" }}>
-        <TouchableOpacity onPress={removeRecipient} style={styles.buttonRed}>
-          <Text style={styles.buttonText}>Remove Recipient</Text>
+        <TouchableOpacity onPress={removeRecipients} style={styles.buttonRed}>
+          <Text style={styles.buttonText}>Remove Recipients</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={addRecipient} style={styles.buttonGreen}>
           <Text style={styles.buttonText}>Add Recipient</Text>

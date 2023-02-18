@@ -1,5 +1,5 @@
 import { Camera, CameraType } from "expo-camera";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import {
   Button,
   StyleSheet,
@@ -14,6 +14,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 
 import cameraWhite from "../../img/camera.png";
 import cameraFlipWhite from "../../img/camera-flip-white.png";
+import AppContext from "../../Context/AppContext";
 
 const CameraPage = () => {
   const { height, width } = Dimensions.get("window");
@@ -25,8 +26,9 @@ const CameraPage = () => {
     (height - (width / 9) * 16) / 2
   );
   const [visReqObj, setVisReqObj] = useState({});
-  const [idObj, setIdObj] = useState("");
+  const [idObj, setIdObj] = useState([]);
   const navigation = useNavigation();
+  const { pantryList, setPantryList } = useContext(AppContext);
   let iconName = "fast-food";
   let cameraIcon = "camera";
   let cameraIconReverse = "camera-reverse-outline";
@@ -53,7 +55,8 @@ const CameraPage = () => {
         }
       );
       const responseValue = await dataResponse.json();
-      setIdObj(responseValue.responses[0].localizedObjectAnnotations[0].name);
+      console.log(responseValue.responses[0].localizedObjectAnnotations);
+      setIdObj(responseValue.responses[0].localizedObjectAnnotations);
     }
 
     if (visReqObj.requests !== undefined) {
@@ -84,6 +87,12 @@ const CameraPage = () => {
     );
   }
 
+  function addToPantry(obj) {
+    setPantryList([...pantryList, obj.name]);
+    setIdObj([]);
+    navigation.navigate("My Pantry");
+  }
+
   async function takePic() {
     const options = {
       quality: 1,
@@ -95,7 +104,7 @@ const CameraPage = () => {
       requests: [
         {
           image: { content: photo.base64 },
-          features: [{ type: "OBJECT_LOCALIZATION", maxResults: 1 }],
+          features: [{ type: "OBJECT_LOCALIZATION", maxResults: 5 }],
         },
       ],
     });
@@ -113,7 +122,15 @@ const CameraPage = () => {
         ref={ref}
       >
         <View style={styles.result}>
-          <Text style={styles.text}>{idObj}</Text>
+          {idObj.map((obj, index) => {
+            return (
+              <TouchableOpacity onPress={() => addToPantry(obj)}>
+                <View key={index}>
+                  <Text style={styles.text}>{obj.name}</Text>
+                </View>
+              </TouchableOpacity>
+            );
+          })}
         </View>
       </Camera>
       <View style={styles.buttonContainer}>
@@ -145,7 +162,7 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
   },
   camera: { flex: 1 },
-  result: { flexDirection: "row", justifyContent: "flex-end" },
+  result: { flexDirection: "column", justifyContent: "flex-end" },
   buttonContainer: {
     flexDirection: "row",
     backgroundColor: "transparent",

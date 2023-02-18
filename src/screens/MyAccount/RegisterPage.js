@@ -18,6 +18,7 @@ import {
   arrayUnion,
   collection,
   doc,
+  getDoc,
   setDoc,
   updateDoc,
 } from "firebase/firestore/lite";
@@ -36,12 +37,13 @@ export const RegisterPage = () => {
     setIsLoggedIn,
     pantryList,
     setEventID,
+    recipients,
+    setRecipients,
+    inviteUserIds,
+    setInviteUserIds,
     eventID,
-    isLoading,
-    setIsLoading,
   } = useContext(AppContext);
   const navigation = useNavigation();
-
   async function handleSignUp() {
     try {
       const data = await createUserWithEmailAndPassword(
@@ -49,25 +51,40 @@ export const RegisterPage = () => {
         tempEmail,
         password
       );
+
+      let tempUserID = Math.floor(Math.random() * Date.now());
+      console.log(tempUserID);
+
       setEmail(data.user.email);
-      setUser(data.user.uid);
-      await setDoc(doc(db, "Users", data.user.uid), {
+
+      const userdb = await getDoc(doc(db, "Users", data.user.email));
+      if (userdb.exists()) {
+        tempUserID = userdb.data().UserId;
+      }
+
+      setUser(tempUserID);
+
+      await setDoc(doc(db, "Users", data.user.email), {
         Events: [],
         FavRecipes: [],
-        EmailId: data.user.email,
+        UserId: tempUserID,
         Pantry: pantryList,
       });
+
       const tempEventID = await addDoc(collection(db, "Events"), {
         AddedRecipes: [],
         Votes: [],
-        UserID: [],
+        UserIDs: [],
+        Emails: [],
       });
       setEventID(tempEventID.id);
-      await updateDoc(doc(db, "Users", data.user.uid), {
+      await updateDoc(doc(db, "Users", data.user.email), {
         Events: arrayUnion(tempEventID.id),
       });
+
       setIsLoggedIn(true);
-      navigation.navigate("Profile Page");
+      setInviteUserIds([tempUserID]);
+      setRecipients([data.user.email]);
     } catch (error) {
       alert(error.message);
     }
