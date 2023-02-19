@@ -10,13 +10,13 @@ import { db } from "../../firebase";
 import AppContext from "./AppContext";
 
 export async function createDBEvent() {
-  const tempEventID = await addDoc(collection(db, "Events"), {
+  const tempEventId = await addDoc(collection(db, "Events"), {
     AddedRecipes: [],
     Votes: [],
-    UserID: [],
+    UserId: [],
   });
-  setEventID(tempEventID);
-  updateDoc(doc(db, "Users", user), { Events: eventID });
+  setEventId(tempEventId);
+  updateDoc(doc(db, "Users", user), { Events: eventId });
 }
 
 export async function createDBUser() {

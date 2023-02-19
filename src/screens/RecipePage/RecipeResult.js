@@ -41,7 +41,7 @@ export const RecipeResult = () => {
   const {
     selectedRecipesList,
     setSelectedRecipesList,
-    recipeID,
+    recipeId,
     serverIP,
     ingUsed,
   } = useContext(AppContext);
@@ -50,7 +50,7 @@ export const RecipeResult = () => {
   useFocusEffect(
     useCallback(() => {
       async function recipeFetch() {
-        const id = { id: recipeID };
+        const id = { id: recipeId };
         const dataResponse = await fetch(
           `http://${serverIP}:5001/api/spoonacular/recipe`,
           {
@@ -66,7 +66,7 @@ export const RecipeResult = () => {
       }
 
       recipeFetch();
-    }, [recipeID])
+    }, [recipeId])
   );
 
   function addToRecipeListHandler() {

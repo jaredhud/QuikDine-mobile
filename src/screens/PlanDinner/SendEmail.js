@@ -28,9 +28,6 @@ import {
 import { db } from "../../../firebase";
 import { createDBEvent } from "../../Context/globalFunctions";
 
-let userIds = [2];
-let eventID = [15];
-
 let mailIcon = "mail-outline";
 
 export default function SendEmail() {
@@ -42,6 +39,7 @@ export default function SendEmail() {
     setRecipients,
     serverIP,
     email,
+    eventId,
   } = useContext(AppContext);
   const [isAvailable, setIsAvailable] = useState(false);
   const [subject, setSubject] = useState("QuikDine Event");
@@ -75,7 +73,7 @@ export default function SendEmail() {
     const emaildata = {
       recipients,
       userIds,
-      eventID,
+      eventId,
     };
     const dataResponse = await fetch(
       `http://${serverIP}:5001/api/email/recipients`,
@@ -96,12 +94,12 @@ export default function SendEmail() {
     getDocs(
       query(
         collection(db, "Users"),
-        where("UserID", "==", "2ONojiVSWSbKBbEjvoecpqOJrhP2")
+        where("UserId", "==", "2ONojiVSWSbKBbEjvoecpqOJrhP2")
       )
     ).then((docSnap) => {
       let Users = [];
       docSnap.forEach((doc) => {
-        Users.push({ ...doc.data(), id: doc.EmailID });
+        Users.push({ ...doc.data(), id: doc.EmailId });
       });
       console.log("Document Data:", Users);
 
@@ -117,7 +115,6 @@ export default function SendEmail() {
     });
     //eventid from firestore
     sendEmails();
-    createDBEvent();
   };
 
   const addRecipient = async () => {

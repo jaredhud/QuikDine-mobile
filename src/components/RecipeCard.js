@@ -35,7 +35,7 @@ export const RecipeCard = (props) => {
     setFavoritesList,
     selectedRecipesList,
     setSelectedRecipesList,
-    setRecipeID,
+    setRecipeId,
     setIngUsed,
   } = useContext(AppContext);
 

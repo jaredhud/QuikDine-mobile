@@ -34,50 +34,48 @@ export function LoginScreen() {
   const {
     setEmail,
     setUser,
-    setEventID,
-    eventID,
+    setEventId,
+    eventId,
     setIsLoggedIn,
     setPantryList,
     selectedRecipesList,
     setSelectedRecipesList,
     setRecipients,
     setInviteUserIds,
+    serverIP,
     recipients,
   } = useContext(AppContext);
 
   async function handleLogin() {
     try {
-      const data = await signInWithEmailAndPassword(auth, tempEmail, password);
-      setEmail(data.user.email);
+      const packet = { email: tempEmail, password };
+      const dataResponse = await fetch(
+        `http://${serverIP}:5001/api/firebase/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(packet),
+        }
+      );
+      const responseValue = await dataResponse.json();
+      console.log("chatted to server", responseValue);
+      setEmail(responseValue.email);
+      setEventId(responseValue.eventId);
 
-      console.log("UserId", data.user.uid);
-      const userdb = await getDoc(doc(db, "Users", data.user.email));
-
-      console.log("User Document data:", userdb.data());
-      const tempEventID = userdb.data().Events[userdb.data().Events.length - 1];
-      console.log("EventID", tempEventID);
-      setEventID(tempEventID);
-
-      const eventdb = await getDoc(doc(db, "Events", tempEventID));
-      console.log("Event Doc Data", eventdb.data());
       setIsLoggedIn(true);
 
-      console.log(
-        "Event RecipeArray length",
-        eventdb.data().AddedRecipes.length
-      );
-      if (eventdb.data().AddedRecipes.length > 0) {
-        setSelectedRecipesList(eventdb.data().AddedRecipes);
+      if (responseValue.selectedRecipesList.length > 0) {
+        setSelectedRecipesList(responseValue.selectedRecipesList);
       } else {
-        setSelectedRecipesList([...selectedRecipesList]);
+        setSelectedRecipesList(...selectedRecipesList);
       }
 
-      console.log("Event UserID length", eventdb.data().Emails);
-      setInviteUserIds(eventdb.data().UserIDs);
-      setRecipients(eventdb.data().Emails);
-
-      console.log("PantryList", userdb.data().Pantry);
-      setPantryList(userdb.data().Pantry);
+      setInviteUserIds(responseValue.inviteUserIds);
+      setRecipients(responseValue.recipients);
+      setPantryList(responseValue.pantryList);
+      alert(responseValue.msg);
     } catch (error) {
       alert(error.message);
     }

@@ -17,7 +17,7 @@ export default function initializeVariables() {
     "milk",
   ]);
   const [selectedRecipesList, setSelectedRecipesList] = useState([]);
-  const [recipeID, setRecipeID] = useState();
+  const [recipeId, setRecipeId] = useState();
   const [cuisine, setCuisine] = useState("");
   const [mealType, setMealType] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
@@ -28,7 +28,7 @@ export default function initializeVariables() {
   const [tempSearchQuery, setTempSearchQuery] = useState("");
   const [favoritesList, setFavoritesList] = useState([]);
   const [recipients, setRecipients] = useState([]);
-  const [eventID, setEventID] = useState("");
+  const [eventId, setEventId] = useState("");
   const [inviteUserIds, setInviteUserIds] = useState([]);
   const { serverIP } = setIP();
 
@@ -51,7 +51,7 @@ export default function initializeVariables() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      updateDoc(doc(db, "Events", eventID), {
+      updateDoc(doc(db, "Events", eventId), {
         AddedRecipes: selectedRecipesList,
         Votes: new Array(selectedRecipesList.length).fill(0),
       })
@@ -66,9 +66,9 @@ export default function initializeVariables() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      updateDoc(doc(db, "Events", eventID), {
+      updateDoc(doc(db, "Events", eventId), {
         Emails: recipients,
-        UserIDs: inviteUserIds,
+        UserIds: inviteUserIds,
       })
         .then(() => {
           console.log("Event Data added");
@@ -100,14 +100,14 @@ export default function initializeVariables() {
     setEmail,
     isLoggedIn,
     setIsLoggedIn,
-    eventID,
-    setEventID,
+    eventId,
+    setEventId,
     pantryList,
     setPantryList,
     selectedRecipesList,
     setSelectedRecipesList,
-    recipeID,
-    setRecipeID,
+    recipeId,
+    setRecipeId,
     cuisine,
     setCuisine,
     mealType,

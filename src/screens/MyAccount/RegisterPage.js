@@ -36,12 +36,12 @@ export const RegisterPage = () => {
     setUser,
     setIsLoggedIn,
     pantryList,
-    setEventID,
+    setEventId,
     recipients,
     setRecipients,
     inviteUserIds,
     setInviteUserIds,
-    eventID,
+    eventId,
   } = useContext(AppContext);
   const navigation = useNavigation();
   async function handleSignUp() {
@@ -52,38 +52,38 @@ export const RegisterPage = () => {
         password
       );
 
-      let tempUserID = Math.floor(Math.random() * Date.now());
-      console.log(tempUserID);
+      let tempUserId = Math.floor(Math.random() * Date.now());
+      console.log(tempUserId);
 
       setEmail(data.user.email);
 
       const userdb = await getDoc(doc(db, "Users", data.user.email));
       if (userdb.exists()) {
-        tempUserID = userdb.data().UserId;
+        tempUserId = userdb.data().UserId;
       }
 
-      setUser(tempUserID);
+      setUser(tempUserId);
 
       await setDoc(doc(db, "Users", data.user.email), {
         Events: [],
         FavRecipes: [],
-        UserId: tempUserID,
+        UserId: tempUserId,
         Pantry: pantryList,
       });
 
-      const tempEventID = await addDoc(collection(db, "Events"), {
+      const tempEventId = await addDoc(collection(db, "Events"), {
         AddedRecipes: [],
         Votes: [],
-        UserIDs: [],
+        UserIds: [],
         Emails: [],
       });
-      setEventID(tempEventID.id);
+      setEventId(tempEventId.id);
       await updateDoc(doc(db, "Users", data.user.email), {
-        Events: arrayUnion(tempEventID.id),
+        Events: arrayUnion(tempEventId.id),
       });
 
       setIsLoggedIn(true);
-      setInviteUserIds([tempUserID]);
+      setInviteUserIds([tempUserId]);
       setRecipients([data.user.email]);
     } catch (error) {
       alert(error.message);
