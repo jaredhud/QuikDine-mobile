@@ -33,9 +33,7 @@ export function LoginScreen() {
   const navigation = useNavigation();
   const {
     setEmail,
-    setUser,
     setEventId,
-    eventId,
     setIsLoggedIn,
     setPantryList,
     selectedRecipesList,
@@ -43,7 +41,6 @@ export function LoginScreen() {
     setRecipients,
     setInviteUserIds,
     serverIP,
-    recipients,
   } = useContext(AppContext);
 
   async function handleLogin() {
@@ -61,6 +58,8 @@ export function LoginScreen() {
       );
       const responseValue = await dataResponse.json();
       console.log("chatted to server", responseValue);
+
+      alert(responseValue.msg);
       setEmail(responseValue.email);
       setEventId(responseValue.eventId);
 
@@ -75,7 +74,6 @@ export function LoginScreen() {
       setInviteUserIds(responseValue.inviteUserIds);
       setRecipients(responseValue.recipients);
       setPantryList(responseValue.pantryList);
-      alert(responseValue.msg);
     } catch (error) {
       alert(error.message);
     }

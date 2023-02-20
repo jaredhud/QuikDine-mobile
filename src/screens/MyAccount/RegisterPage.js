@@ -30,61 +30,44 @@ export const RegisterPage = () => {
   const [tempEmail, setTempEmail] = useState("");
   const [password, setPassword] = useState("");
   const {
-    email,
     setEmail,
-    user,
-    setUser,
     setIsLoggedIn,
     pantryList,
     setEventId,
-    recipients,
     setRecipients,
-    inviteUserIds,
     setInviteUserIds,
-    eventId,
+    selectedRecipesList,
+    serverIP,
   } = useContext(AppContext);
   const navigation = useNavigation();
+
   async function handleSignUp() {
     try {
-      const data = await createUserWithEmailAndPassword(
-        auth,
-        tempEmail,
-        password
+      const packet = {
+        email: tempEmail,
+        password,
+        pantryList,
+        selectedRecipesList,
+      };
+      const dataResponse = await fetch(
+        `http://${serverIP}:5001/api/firebase/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(packet),
+        }
       );
+      const responseValue = await dataResponse.json();
+      console.log("chatted to server", responseValue);
 
-      let tempUserId = Math.floor(Math.random() * Date.now());
-      console.log(tempUserId);
-
-      setEmail(data.user.email);
-
-      const userdb = await getDoc(doc(db, "Users", data.user.email));
-      if (userdb.exists()) {
-        tempUserId = userdb.data().UserId;
-      }
-
-      setUser(tempUserId);
-
-      await setDoc(doc(db, "Users", data.user.email), {
-        Events: [],
-        FavRecipes: [],
-        UserId: tempUserId,
-        Pantry: pantryList,
-      });
-
-      const tempEventId = await addDoc(collection(db, "Events"), {
-        AddedRecipes: [],
-        Votes: [],
-        UserIds: [],
-        Emails: [],
-      });
-      setEventId(tempEventId.id);
-      await updateDoc(doc(db, "Users", data.user.email), {
-        Events: arrayUnion(tempEventId.id),
-      });
-
+      alert(responseValue.msg);
+      setEmail(responseValue.email);
+      setEventId(responseValue.eventId);
+      setInviteUserIds(responseValue.inviteUserIds);
+      setRecipients(responseValue.recipients);
       setIsLoggedIn(true);
-      setInviteUserIds([tempUserId]);
-      setRecipients([data.user.email]);
     } catch (error) {
       alert(error.message);
     }
