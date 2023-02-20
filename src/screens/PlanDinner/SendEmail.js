@@ -35,11 +35,13 @@ export default function SendEmail() {
   const {
     inviteUserIds,
     setInviteUserIds,
+    setSelectedRecipesList,
     recipients,
     setRecipients,
     serverIP,
     email,
     eventId,
+    setEventId,
   } = useContext(AppContext);
   const [isAvailable, setIsAvailable] = useState(false);
   const [subject, setSubject] = useState("QuikDine Event");
@@ -69,14 +71,13 @@ export default function SendEmail() {
   // attachments: [uri],
   // });
   // };
-  async function sendEmails() {
+
+  async function sendMail() {
     const emaildata = {
-      recipients,
-      userIds,
       eventId,
     };
     const dataResponse = await fetch(
-      `http://${serverIP}:5001/api/email/recipients`,
+      `http://${serverIP}:5001/api/email/sendmail`,
       {
         method: "POST",
         headers: {
@@ -87,35 +88,15 @@ export default function SendEmail() {
     );
     const responseValue = await dataResponse.json();
     console.log(responseValue);
+
+    setEventId(responseValue.newEventId);
+    setSelectedRecipesList([]);
+    setInviteUserIds(responseValue.inviteUserIds);
+    setRecipients(responseValue.recipients);
+    console.log(responseValue.msg);
+    alert("Invites sent");
+    navigation.navigate("Event List");
   }
-
-  const sendMail = () => {
-    // userid from firestore
-    getDocs(
-      query(
-        collection(db, "Users"),
-        where("UserId", "==", "2ONojiVSWSbKBbEjvoecpqOJrhP2")
-      )
-    ).then((docSnap) => {
-      let Users = [];
-      docSnap.forEach((doc) => {
-        Users.push({ ...doc.data(), id: doc.EmailId });
-      });
-      console.log("Document Data:", Users);
-
-      // if (docSnap.exists()){
-      //   console.log("Document Data:", Users);
-      // }
-      // else{
-      //   addDoc(collection(db, "Users"),{
-      //     Identifier: emailid,
-      //     UserUID: UserUID
-      //   })
-      // }
-    });
-    //eventid from firestore
-    sendEmails();
-  };
 
   function addRecipient() {
     const tempEmail = emailaddress.toLowerCase();
