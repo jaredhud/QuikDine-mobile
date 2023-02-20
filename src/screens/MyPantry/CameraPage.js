@@ -55,7 +55,10 @@ const CameraPage = () => {
         }
       );
       const responseValue = await dataResponse.json();
-      console.log(responseValue.responses[0].localizedObjectAnnotations);
+      console.log(
+        "camerapage",
+        responseValue.responses[0].localizedObjectAnnotations
+      );
       setIdObj(responseValue.responses[0].localizedObjectAnnotations);
     }
 

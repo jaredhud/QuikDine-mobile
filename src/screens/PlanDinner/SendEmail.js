@@ -117,34 +117,14 @@ export default function SendEmail() {
     sendEmails();
   };
 
-  const addRecipient = async () => {
-    let tempRecipients = [...recipients];
-    let tempInviteUserIds = [...inviteUserIds];
-    let tempInviteUserId = "";
-    let tempEmail = emailaddress.toLowerCase();
-
-    if (tempRecipients.indexOf(tempEmail) === -1) {
-      tempRecipients.push(tempEmail);
-
-      const userdb = await getDoc(doc(db, "Users", tempEmail));
-
-      if (userdb.exists()) {
-        tempInviteUserId = userdb.data().UserId;
-      } else {
-        tempInviteUserId = Math.floor(Math.random() * Date.now());
-        await setDoc(doc(db, "Users", tempEmail), {
-          Events: [],
-          FavRecipes: [],
-          UserId: tempInviteUserId,
-          Pantry: [],
-        });
-      }
-      tempInviteUserIds.push(tempInviteUserId);
-      setInviteUserIds(tempInviteUserIds);
-      setRecipients(tempRecipients);
+  function addRecipient() {
+    const tempEmail = emailaddress.toLowerCase();
+    if (recipients.indexOf(tempEmail) === -1) {
+      setRecipients([...recipients, tempEmail]);
     }
     setEmailaddress(undefined);
-  };
+  }
+
   function removeRecipient(index) {
     let tempRecipients = [...recipients];
     let tempInviteUserIds = [...inviteUserIds];
@@ -155,6 +135,7 @@ export default function SendEmail() {
   }
 
   const removeRecipients = () => {
+    setInviteUserIds([inviteUserIds[0]]);
     setRecipients([email]);
   };
 
@@ -169,8 +150,11 @@ export default function SendEmail() {
             <Text>{recipient}</Text>
           </View>
           <View alignItems="flex-end">
-            <TouchableOpacity onPress={() => removeRecipient(index)}>
-              <Text>X</Text>
+            <TouchableOpacity
+              disabled={index === 0}
+              onPress={() => removeRecipient(index)}
+            >
+              {index === 0 ? <Text> </Text> : <Text> X</Text>}
             </TouchableOpacity>
           </View>
         </View>

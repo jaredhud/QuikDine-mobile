@@ -57,7 +57,7 @@ export function LoginScreen() {
         }
       );
       const responseValue = await dataResponse.json();
-      console.log("chatted to server", responseValue);
+      console.log("login server", responseValue);
 
       alert(responseValue.msg);
       setEmail(responseValue.email);

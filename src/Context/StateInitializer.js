@@ -7,15 +7,7 @@ export default function initializeVariables() {
   const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [pantryList, setPantryList] = useState([
-    "salmon",
-    "cheese",
-    "beef",
-    "egg",
-    "tomato",
-    "flour",
-    "milk",
-  ]);
+  const [pantryList, setPantryList] = useState([]);
   const [selectedRecipesList, setSelectedRecipesList] = useState([]);
   const [recipeId, setRecipeId] = useState();
   const [cuisine, setCuisine] = useState("");
@@ -32,6 +24,69 @@ export default function initializeVariables() {
   const [inviteUserIds, setInviteUserIds] = useState([]);
   const { serverIP } = setIP();
 
+  async function addRecipe() {
+    try {
+      const packet = { selectedRecipesList, eventId };
+      const dataResponse = await fetch(
+        `http://${serverIP}:5001/api/firebase/addRecipe`,
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(packet),
+        }
+      );
+      const responseValue = await dataResponse.json();
+      console.log(responseValue.msg);
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
+  async function updatePantry() {
+    try {
+      const packet = { pantryList, email };
+      const dataResponse = await fetch(
+        `http://${serverIP}:5001/api/firebase/addPantry`,
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(packet),
+        }
+      );
+      const responseValue = await dataResponse.json();
+      console.log(responseValue.msg);
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+  async function updateRecipients() {
+    try {
+      const packet = { recipients, inviteUserIds, eventId };
+      const dataResponse = await fetch(
+        `http://${serverIP}:5001/api/firebase/addRecipients`,
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(packet),
+        }
+      );
+      const responseValue = await dataResponse.json();
+      if (recipients.length != inviteUserIds.length) {
+        setInviteUserIds(responseValue.inviteUserIds);
+      }
+      console.log(responseValue.msg);
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
+  // reset search values
   useEffect(() => {
     setIngredientList([...pantryList]);
     setSearchQuery("");
@@ -41,6 +96,7 @@ export default function initializeVariables() {
     setTempSearchQuery("");
   }, [pantryList]);
 
+  // set check boxes of advanced search
   useEffect(() => {
     let tempIngredientChecked = [];
     for (const i in pantryList) {
@@ -49,50 +105,28 @@ export default function initializeVariables() {
     setIngredientListChecked(tempIngredientChecked);
   }, [ingredientList]);
 
+  // server call to update recipes in event
   useEffect(() => {
     if (isLoggedIn) {
-      updateDoc(doc(db, "Events", eventId), {
-        AddedRecipes: selectedRecipesList,
-        Votes: new Array(selectedRecipesList.length).fill(0),
-      })
-        .then(() => {
-          console.log("Event Data added");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      addRecipe();
     }
   }, [selectedRecipesList]);
 
+  // server call to update pantry
   useEffect(() => {
     if (isLoggedIn) {
-      updateDoc(doc(db, "Events", eventId), {
-        Emails: recipients,
-        UserIds: inviteUserIds,
-      })
-        .then(() => {
-          console.log("Event Data added");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  }, [recipients]);
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      updateDoc(doc(db, "Users", email), {
-        Pantry: pantryList,
-      })
-        .then(() => {
-          console.log("Pantry Updated");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      updatePantry();
     }
   }, [pantryList]);
 
+  //server call to update recipients of event
+  useEffect(() => {
+    if (isLoggedIn) {
+      updateRecipients();
+    }
+  }, [recipients]);
+
+  //put states in object for export
   const variables = {
     user,
     setUser,
@@ -133,5 +167,6 @@ export default function initializeVariables() {
     setInviteUserIds,
   };
 
+  // export states
   return variables;
 }

@@ -60,7 +60,6 @@ export const RegisterPage = () => {
         }
       );
       const responseValue = await dataResponse.json();
-      console.log("chatted to server", responseValue);
 
       alert(responseValue.msg);
       setEmail(responseValue.email);
