@@ -81,7 +81,7 @@ export const RecipeCard = (props) => {
       tempIngUsed.push(recipe.usedIngredients[i].id);
     }
     setIngUsed(tempIngUsed);
-    setRecipeID(recipe.id);
+    setRecipeId(recipe.id);
     navigation.navigate("Recipe Result");
   }
 
