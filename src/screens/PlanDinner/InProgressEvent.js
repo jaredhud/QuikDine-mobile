@@ -65,7 +65,6 @@ export const InProgressEvent = () => {
             }
           );
           const recipeValue = await recipeResponse.json();
-          // console.log(recipeValue);
           setRecipes(recipeValue);
         } catch (error) {
           alert(error.message);
@@ -102,13 +101,14 @@ export const InProgressEvent = () => {
               <Text style={[styles.modalText, { fontWeight: "800" }]}>
                 Vote Results
               </Text>
-              {recipes.map((recipe, index) => {
-                return (
-                  <Text style={styles.modalText} key={index}>
-                    {recipe.title}: {votes[index]}
-                  </Text>
-                );
-              })}
+              {recipes.length > 0 &&
+                recipes.map((recipe, index) => {
+                  return (
+                    <Text style={styles.modalText} key={index}>
+                      {recipe.title}: {votes[index]}
+                    </Text>
+                  );
+                })}
               <Pressable
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => setModalVisible(!modalVisible)}
@@ -145,7 +145,11 @@ export const InProgressEvent = () => {
                 Participants
               </Text>
               {participants.map((email, index) => {
-                return <Text style={styles.modalText}>{email}</Text>;
+                return (
+                  <Text style={styles.modalText} key={index}>
+                    {email}
+                  </Text>
+                );
               })}
               <Pressable
                 style={[styles.button, styles.buttonClose]}

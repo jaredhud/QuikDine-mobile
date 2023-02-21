@@ -65,11 +65,10 @@ export function LoginScreen() {
       setEventId(responseValue.eventId);
 
       setIsLoggedIn(true);
-
       if (responseValue.selectedRecipesList.length > 0) {
         setSelectedRecipesList(responseValue.selectedRecipesList);
       } else {
-        setSelectedRecipesList(...selectedRecipesList);
+        setSelectedRecipesList([...selectedRecipesList]);
       }
 
       setInviteUserIds(responseValue.inviteUserIds);
