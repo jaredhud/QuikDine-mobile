@@ -38,6 +38,7 @@ export function LoginScreen() {
     setPantryList,
     selectedRecipesList,
     setSelectedRecipesList,
+    setFavoritesList,
     setRecipients,
     setInviteUserIds,
     serverIP,
@@ -74,6 +75,7 @@ export function LoginScreen() {
       setInviteUserIds(responseValue.inviteUserIds);
       setRecipients(responseValue.recipients);
       setPantryList(responseValue.pantryList);
+      setFavoritesList(responseValue.favoritesList);
     } catch (error) {
       alert(error.message);
     }
