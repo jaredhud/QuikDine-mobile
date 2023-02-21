@@ -197,7 +197,7 @@ export const RecipeSearch = () => {
                 marginBottom: -10,
               }}
             >
-              {/* <View
+              <View
                 style={{
                   flexDirection: "row",
                   justifyContent: "space-between",
@@ -263,7 +263,7 @@ export const RecipeSearch = () => {
                 >
                   <Text style={styles.buttonTextBlack}>{`Next >`}</Text>
                 </TouchableOpacity>
-              </View> */}
+              </View>
               <View
                 style={{
                   flexDirection: "row",

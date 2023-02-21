@@ -65,6 +65,25 @@ export default function initializeVariables() {
       alert(error.message);
     }
   }
+  async function updateFavorites() {
+    try {
+      const packet = { favoritesList, email };
+      const dataResponse = await fetch(
+        `http://${serverIP}:5001/api/firebase/addFavorites`,
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(packet),
+        }
+      );
+      const responseValue = await dataResponse.json();
+      console.log(responseValue.msg);
+    } catch (error) {
+      alert(error.message);
+    }
+  }
   async function updateRecipients() {
     try {
       const packet = { recipients, inviteUserIds, eventId };
@@ -120,6 +139,13 @@ export default function initializeVariables() {
       updatePantry();
     }
   }, [pantryList]);
+
+  // server call to update favorites
+  useEffect(() => {
+    if (isLoggedIn) {
+      updateFavorites();
+    }
+  }, [favoritesList]);
 
   //server call to update recipients of event
   useEffect(() => {

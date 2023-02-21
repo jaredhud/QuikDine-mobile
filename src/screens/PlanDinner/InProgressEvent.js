@@ -104,7 +104,7 @@ export const InProgressEvent = () => {
               </Text>
               {recipes.map((recipe, index) => {
                 return (
-                  <Text style={styles.modalText}>
+                  <Text style={styles.modalText} key={index}>
                     {recipe.title}: {votes[index]}
                   </Text>
                 );
