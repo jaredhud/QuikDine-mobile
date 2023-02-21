@@ -6,9 +6,9 @@ import { FontFamily } from "../../GlobalStyles";
 export const DashBoardText = () => {
   return (
     <View style={styles.dashboardView}>
-      {/* <TextStroke stroke={2} color={"#379540"}> */}
-      <Text style={styles.textStrokeText}> Plan Meals </Text>
-      {/* </TextStroke> */}
+      <TextStroke stroke={2} color={"#379540"}>
+        <Text style={styles.textStrokeText}> Plan Meals </Text>
+      </TextStroke>
     </View>
   );
 };
@@ -23,9 +23,9 @@ export const SubInfo = () => {
 export const DashBoardText2 = () => {
   return (
     <View style={styles.dashboardView}>
-      {/* <TextStroke stroke={2} color={"#379540"}> */}
-      <Text style={styles.textStrokeText}> Suggested Recipes </Text>
-      {/* </TextStroke> */}
+      <TextStroke stroke={2} color={"#379540"}>
+        <Text style={styles.textStrokeText}> Suggested Recipes </Text>
+      </TextStroke>
     </View>
   );
 };
@@ -40,9 +40,9 @@ export const SubInfo2 = () => {
 export const DashBoardText3 = () => {
   return (
     <View style={styles.dashboardView}>
-      {/* <TextStroke stroke={2} color={"#379540"}> */}
-      <Text style={styles.textStrokeText}> My Pantry </Text>
-      {/* </TextStroke> */}
+      <TextStroke stroke={2} color={"#379540"}>
+        <Text style={styles.textStrokeText}> My Pantry </Text>
+      </TextStroke>
     </View>
   );
 };

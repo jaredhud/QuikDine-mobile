@@ -158,13 +158,14 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 24,
     fontFamily: FontFamily.poppins,
-    color: "#000000",
+    // color: "#000000",
+    color: "#fefbf3",
   },
   title: {
     fontSize: 44,
     fontFamily: FontFamily.ubuntubold,
-    // color: "#fefbf3",
-    color: "#000000",
+    color: "#fefbf3",
+    // color: "#000000",
   },
   items: {
     marginTop: 30,

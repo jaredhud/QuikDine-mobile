@@ -214,12 +214,12 @@ export const AdvancedSearch = () => {
         style={{
           height: "51%",
           width: "95%",
-          // backgroundColor: "blue",
-          // marginTop: 20,
-          // borderRadius: 15,
-          // backgroundColor: colors.lightblue,
-          // borderColor: colors.darkblue,
-          // borderWidth: 3,
+          backgroundColor: "blue",
+          marginTop: 20,
+          borderRadius: 15,
+          backgroundColor: colors.lightblue,
+          borderColor: colors.darkblue,
+          borderWidth: 3,
         }}
       >
         <ScrollView>
@@ -317,10 +317,10 @@ export const AdvancedSearch = () => {
         style={{
           flexDirection: "row",
           justifyContent: "center",
-          // backgroundColor: colors.lightorange,
-          // borderColor: colors.darkorange,
-          // borderWidth: 3,
-          // borderRadius: 15,
+          backgroundColor: colors.lightorange,
+          borderColor: colors.darkorange,
+          borderWidth: 3,
+          borderRadius: 15,
           padding: 10,
           width: "95%",
         }}

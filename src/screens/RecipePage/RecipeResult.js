@@ -91,7 +91,7 @@ export const RecipeResult = () => {
         style={{
           height: "20%",
           width: "95%",
-          // backgroundColor: "red",
+          backgroundColor: "red",
           marginBottom: 10,
           borderRadius: 16,
         }}
@@ -110,9 +110,12 @@ export const RecipeResult = () => {
           borderRadius={10}
         >
           <Card.Content>
-            {/* <TextStroke stroke={2} color={"#953737"}> */}
-            <Text style={styles.textStrokeText}> {selectedRecipe.title} </Text>
-            {/* </TextStroke> */}
+            <TextStroke stroke={2} color={"#953737"}>
+              <Text style={styles.textStrokeText}>
+                {" "}
+                {selectedRecipe.title}{" "}
+              </Text>
+            </TextStroke>
           </Card.Content>
         </ImageBackground>
       </Card>
@@ -120,14 +123,13 @@ export const RecipeResult = () => {
         style={{
           height: "20%",
           width: "95%",
-          // backgroundColor: "blue",
-
-          // borderRadius: 15,
-          // backgroundColor: colors.lightblue,
-          // borderColor: colors.darkblue,
-          // borderWidth: 3,
-          // marginBottom: 10,
-          // alignItems: "center",
+          backgroundColor: "blue",
+          borderRadius: 15,
+          backgroundColor: colors.lightblue,
+          borderColor: colors.darkblue,
+          borderWidth: 3,
+          marginBottom: 10,
+          alignItems: "center",
         }}
       >
         <ScrollView
@@ -157,13 +159,13 @@ export const RecipeResult = () => {
         style={{
           height: "38%",
           width: "95%",
-          // backgroundColor: "blue",
-          // borderRadius: 15,
-          // backgroundColor: colors.lightblue,
-          // borderColor: colors.darkblue,
-          // borderWidth: 3,
-          // marginBottom: 10,
-          // alignItems: "center",
+          backgroundColor: "blue",
+          borderRadius: 15,
+          backgroundColor: colors.lightblue,
+          borderColor: colors.darkblue,
+          borderWidth: 3,
+          marginBottom: 10,
+          alignItems: "center",
         }}
       >
         <ScrollView

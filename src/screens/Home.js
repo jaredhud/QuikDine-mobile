@@ -69,7 +69,7 @@ export const Home = () => {
           {" "}
           Welcome to{" "}
         </Text>
-        <Text
+        {/* <Text
           style={{
             fontSize: 50,
             color: "#379540",
@@ -82,18 +82,18 @@ export const Home = () => {
         >
           {" "}
           QuikDine{" "}
-        </Text>
-        {/* <Image
+        </Text> */}
+        <Image
           flex={1}
           source={quikdine}
           resizeMode="contain"
           style={{
-            marginTop: "-20%",
+            marginTop: "-10%",
             textAlign: "right",
             width: "70%",
             height: "30%",
           }}
-        ></Image> */}
+        ></Image>
       </View>
       {/* <Text>Email: {auth.currentUser?.email}</Text> */}
       {/* <TouchableOpacity onPress={handleSignOut} style={styles.button}>
