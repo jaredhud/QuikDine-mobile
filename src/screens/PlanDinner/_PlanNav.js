@@ -3,9 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { EventList } from "./EventList";
 import { NewEvent } from "./NewEvent";
-import { PastEvent } from "./PastEvent";
 import { InProgressEvent } from "./InProgressEvent";
-import { VotingPage } from "./VotingPage";
 import SendEmail from "./SendEmail";
 import AppContext from "../../Context/AppContext";
 import { LoginScreen } from "../MyAccount/LoginScreen";
@@ -21,14 +19,8 @@ export default function PlanNav() {
       <Stack.Screen name="New Event" options={{ headerShown: false }}>
         {isLoggedIn ? () => <NewEvent /> : () => <LoginScreen />}
       </Stack.Screen>
-      <Stack.Screen name="Past Event" options={{ headerShown: false }}>
-        {isLoggedIn ? () => <PastEvent /> : () => <LoginScreen />}
-      </Stack.Screen>
       <Stack.Screen name="In-Progress Event" options={{ headerShown: false }}>
         {isLoggedIn ? () => <InProgressEvent /> : () => <LoginScreen />}
-      </Stack.Screen>
-      <Stack.Screen name="Voting Page">
-        {isLoggedIn ? () => <VotingPage /> : () => <LoginScreen />}
       </Stack.Screen>
       <Stack.Screen name="Send Email" options={{ headerShown: false }}>
         {isLoggedIn ? () => <SendEmail /> : () => <LoginScreen />}

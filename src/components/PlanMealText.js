@@ -7,7 +7,7 @@ export const PlanMealText = () => {
   return (
     <View style={styles.dashboardView}>
       {/* <TextStroke stroke={2} color={"#379540"}> */}
-      <Text style={styles.textStrokeText}> Create New Event </Text>
+      <Text style={styles.textStrokeText}> Event In-Planning </Text>
       {/* </TextStroke> */}
     </View>
   );
@@ -20,23 +20,43 @@ export const SubInfo = () => {
     </View>
   );
 };
-export const PlanMealText2 = () => {
+// export const PlanMealText2 = () => {
+//   return (   <View style={styles.dashboardView}>
+{
+  /* <TextStroke stroke={2} color={"#379540"}> */
+}
+// <Text style={styles.textStrokeText}> In-Progress Events </Text>
+{
+  /* </TextStroke> */
+}
+// </View>
+
+//   );
+// };
+
+// export const SubInfo2 = () => {
+//   return (
+//     <View style={styles.dashboardView}>
+//       {/* <TextStroke stroke={2} color={"#379540"}> */}
+//       <Text style={styles.textStrokeText}>
+//         <PlanMealText2 />{" "}
+//       </Text>
+//       {/* </TextStroke> */}
+//     </View>
+//   );
+// };
+
+export const SubInfo2 = (props) => {
+  const { title } = props;
   return (
     <View style={styles.dashboardView}>
       {/* <TextStroke stroke={2} color={"#379540"}> */}
-      <Text style={styles.textStrokeText}> In-Progress Events </Text>
+      <Text style={styles.textStrokeText}> Event {title} </Text>
       {/* </TextStroke> */}
     </View>
   );
 };
 
-export const SubInfo2 = () => {
-  return (
-    <View>
-      <PlanMealText2 />
-    </View>
-  );
-};
 export const PlanMealText3 = () => {
   return (
     <View style={styles.dashboardView}>

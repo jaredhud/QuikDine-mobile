@@ -20,8 +20,10 @@ export default function initializeVariables() {
   const [tempSearchQuery, setTempSearchQuery] = useState("");
   const [favoritesList, setFavoritesList] = useState([]);
   const [recipients, setRecipients] = useState([]);
-  const [eventId, setEventId] = useState("");
   const [inviteUserIds, setInviteUserIds] = useState([]);
+  const [eventId, setEventId] = useState("");
+  const [eventList, setEventList] = useState([]);
+  const [eventToView, setEventToView] = useState("");
   const { serverIP } = setIP();
 
   async function addRecipe() {
@@ -160,11 +162,15 @@ export default function initializeVariables() {
     setFavoritesList,
     recipients,
     setRecipients,
-    serverIP,
     tempSearchQuery,
     setTempSearchQuery,
     inviteUserIds,
     setInviteUserIds,
+    eventToView,
+    setEventToView,
+    eventList,
+    setEventList,
+    serverIP,
   };
 
   // export states

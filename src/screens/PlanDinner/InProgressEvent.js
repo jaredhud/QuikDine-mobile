@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { useNavigation } from "@react-navigation/core";
+import React, { useState, useEffect, useCallback, useContext } from "react";
+import { useFocusEffect, useNavigation } from "@react-navigation/core";
 import {
   Alert,
   Modal,
@@ -19,6 +19,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { button } from "../../../GlobalStyles";
 import { FontFamily } from "../../../GlobalStyles";
 import menu from "../../img/menu.png";
+import AppContext from "../../Context/AppContext";
 // import Icon from "react-native-ico";
 
 export const InProgressEvent = () => {
@@ -26,6 +27,53 @@ export const InProgressEvent = () => {
 
   const [modalVisible, setModalVisible] = useState(false);
   const [modalVisible2, setModalVisible2] = useState(false);
+  const { eventToView, serverIP } = useContext(AppContext);
+  const [participants, setParticipants] = useState([]);
+  const [recipes, setRecipes] = useState([]);
+  const [votes, setVotes] = useState([]);
+
+  useFocusEffect(
+    useCallback(() => {
+      async function getEvent() {
+        try {
+          const packet = { eventToView };
+          const dataResponse = await fetch(
+            `http://${serverIP}:5001/api/firebase/getEvent`,
+            {
+              method: "POST",
+              headers: {
+                "Content-type": "application/json",
+              },
+              body: JSON.stringify(packet),
+            }
+          );
+          const responseValue = await dataResponse.json();
+          console.log(responseValue);
+          setParticipants(responseValue.participants);
+          setVotes(responseValue.votes);
+
+          const recipeResponse = await fetch(
+            `http://${serverIP}:5001/api/spoonacular/recipebulk`,
+            {
+              method: "POST",
+              headers: {
+                "Content-type": "application/json",
+              },
+              body: JSON.stringify({
+                selectedRecipesList: responseValue.recipes,
+              }),
+            }
+          );
+          const recipeValue = await recipeResponse.json();
+          // console.log(recipeValue);
+          setRecipes(recipeValue);
+        } catch (error) {
+          alert(error.message);
+        }
+      }
+      getEvent();
+    }, [eventToView])
+  );
 
   return (
     <View style={styles.container}>
@@ -54,8 +102,13 @@ export const InProgressEvent = () => {
               <Text style={[styles.modalText, { fontWeight: "800" }]}>
                 Vote Results
               </Text>
-              <Text style={styles.modalText}>Steak and Cheese: 3</Text>
-              <Text style={styles.modalText}>Garlic Butter Steak: 1</Text>
+              {recipes.map((recipe, index) => {
+                return (
+                  <Text style={styles.modalText}>
+                    {recipe.title}: {votes[index]}
+                  </Text>
+                );
+              })}
               <Pressable
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => setModalVisible(!modalVisible)}
@@ -91,9 +144,9 @@ export const InProgressEvent = () => {
               <Text style={[styles.modalText, { fontWeight: "800" }]}>
                 Participants
               </Text>
-              <Text style={styles.modalText}>Romell</Text>
-              <Text style={styles.modalText}>Tija</Text>
-              <Text style={styles.modalText}>Jared</Text>
+              {participants.map((email, index) => {
+                return <Text style={styles.modalText}>{email}</Text>;
+              })}
               <Pressable
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => setModalVisible2(!modalVisible2)}

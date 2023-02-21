@@ -1,5 +1,5 @@
-import React from "react";
-import { useNavigation } from "@react-navigation/core";
+import React, { useCallback, useContext } from "react";
+import { useFocusEffect, useNavigation } from "@react-navigation/core";
 import {
   StyleSheet,
   Text,
@@ -7,6 +7,7 @@ import {
   View,
   ImageBackground,
   Image,
+  ScrollView,
 } from "react-native";
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import { auth } from "../../../firebase";
@@ -23,10 +24,48 @@ import newevent from "../../img/new-event.jpg";
 import ipevent from "../../img/ip-event.png";
 import pastevent from "../../img/past-event.jpg";
 import { SubInfo, SubInfo2, SubInfo3 } from "../../components/PlanMealText";
+import AppContext from "../../Context/AppContext";
 // import Icon from "react-native-ico";
 
 export const EventList = () => {
+  const {
+    serverIP,
+    email,
+    eventList,
+    setEventList,
+    setEventToView,
+    eventId,
+    isLoggedIn,
+  } = useContext(AppContext);
   const navigation = useNavigation();
+
+  useFocusEffect(
+    useCallback(() => {
+      async function getEvents() {
+        try {
+          const packet = { email };
+          const dataResponse = await fetch(
+            `http://${serverIP}:5001/api/firebase/getEvents`,
+            {
+              method: "POST",
+              headers: {
+                "Content-type": "application/json",
+              },
+              body: JSON.stringify(packet),
+            }
+          );
+          const responseValue = await dataResponse.json();
+          console.log(responseValue);
+          const tempEventList = responseValue.eventList;
+          tempEventList.shift();
+          setEventList(tempEventList);
+        } catch (error) {
+          alert(error.message);
+        }
+      }
+      getEvents();
+    }, [eventId, isLoggedIn])
+  );
   return (
     <View style={styles.mainContainer}>
       {/* <Appbar>
@@ -43,55 +82,48 @@ export const EventList = () => {
         <Text style={styles.title}>Plan Meals</Text>
         <Text style={styles.sectionTitle}>More people, more fun!</Text>
       </View>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("New Event")}
-        style={[buttonBorder]}
-      >
-        <ImageBackground
-          source={newevent}
-          resizeMode="cover"
-          style={styles.image}
-          borderRadius={16}
+      <ScrollView>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("New Event")}
+          style={[buttonBorder]}
         >
-          <Text style={{ marginBottom: -5 }}>
-            {" "}
-            <SubInfo />{" "}
-          </Text>
-        </ImageBackground>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("In-Progress Event")}
-        style={[buttonBorder]}
-      >
-        <ImageBackground
-          source={ipevent}
-          resizeMode="cover"
-          style={styles.image}
-          borderRadius={16}
-        >
-          <Text style={{ marginBottom: -5 }}>
-            {" "}
-            <SubInfo2 />{" "}
-          </Text>
-        </ImageBackground>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Past Event")}
-        style={[buttonBorder]}
-      >
-        <ImageBackground
-          source={pastevent}
-          resizeMode="cover"
-          style={styles.image}
-          borderRadius={16}
-        >
-          <Text style={{ marginBottom: -5 }}>
-            {" "}
-            <SubInfo3 />{" "}
-          </Text>
-        </ImageBackground>
-      </TouchableOpacity>
-      {/* <TouchableOpacity
+          <ImageBackground
+            source={newevent}
+            resizeMode="cover"
+            style={styles.image}
+            borderRadius={16}
+          >
+            <Text style={{ marginBottom: -5 }}>
+              {" "}
+              <SubInfo />{" "}
+            </Text>
+          </ImageBackground>
+        </TouchableOpacity>
+        {eventList.map((event, index) => {
+          return (
+            <TouchableOpacity
+              key={index}
+              onPress={() => {
+                setEventToView(event);
+                navigation.navigate("In-Progress Event");
+              }}
+              style={[buttonBorder]}
+            >
+              <ImageBackground
+                source={ipevent}
+                resizeMode="cover"
+                style={styles.image}
+                borderRadius={16}
+              >
+                <Text style={{ marginBottom: -5 }}>
+                  <SubInfo2 title={eventList.length - index} />
+                </Text>
+              </ImageBackground>
+            </TouchableOpacity>
+          );
+        })}
+
+        {/* <TouchableOpacity
         onPress={() => navigation.navigate("New Event")}
         style={[button]}
       >
@@ -109,6 +141,7 @@ export const EventList = () => {
       >
         <Text style={styles.buttonText}>Past Event</Text>
       </TouchableOpacity> */}
+      </ScrollView>
     </View>
   );
 };
