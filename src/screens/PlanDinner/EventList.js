@@ -10,7 +10,6 @@ import {
   ScrollView,
 } from "react-native";
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
-import { auth } from "../../../firebase";
 
 import quikdine from "../../img/quik-dine.png";
 import {

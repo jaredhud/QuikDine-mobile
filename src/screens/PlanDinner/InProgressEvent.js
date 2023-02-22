@@ -13,7 +13,6 @@ import {
 } from "react-native";
 
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
-import { auth } from "../../../firebase";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { button } from "../../../GlobalStyles";

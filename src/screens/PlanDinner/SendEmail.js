@@ -15,18 +15,6 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/core";
 // import email from "react-native-email";
 import AppContext from "../../Context/AppContext";
-import {
-  collection,
-  doc,
-  addDoc,
-  getDoc,
-  getDocs,
-  query,
-  where,
-  setDoc,
-} from "firebase/firestore/lite";
-import { db } from "../../../firebase";
-import { createDBEvent } from "../../Context/globalFunctions";
 
 let mailIcon = "mail-outline";
 

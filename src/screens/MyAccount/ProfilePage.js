@@ -15,7 +15,6 @@ import profile from "../../img/profile.png";
 import profilebg from "../../img/profile-bg.jpg";
 
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
-import { auth } from "../../../firebase";
 import { button, colors, FontFamily } from "../../../GlobalStyles";
 import AppContext from "../../Context/AppContext";
 // import Icon from "react-native-ico";

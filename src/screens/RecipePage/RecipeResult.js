@@ -18,22 +18,11 @@ import {
 
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Appbar, Searchbar, Card, Text } from "react-native-paper";
-import { auth } from "../../../firebase";
 
 import { button, colors, FontFamily } from "../../../GlobalStyles";
 import AppContext from "../../Context/AppContext";
 import planmeals from "../../img/planmeals.png";
 import { TextStroke } from "../../components/RecipeCard";
-import {
-  collection,
-  doc,
-  addDoc,
-  getDoc,
-  getDocs,
-  query,
-  where,
-} from "firebase/firestore/lite";
-import { db } from "../../../firebase";
 // import Icon from "react-native-ico";
 
 export const RecipeResult = () => {

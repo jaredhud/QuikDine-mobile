@@ -8,23 +8,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-//import { auth, } from "../../firebase";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { FontFamily } from "../../../GlobalStyles.js";
-import { createDBEvent, createDBUser } from "../../Context/globalFunctions.js";
 import AppContext from "../../Context/AppContext.js";
-import {
-  addDoc,
-  arrayUnion,
-  collection,
-  doc,
-  getDoc,
-  setDoc,
-  updateDoc,
-} from "firebase/firestore/lite";
-import { db } from "../../../firebase.js";
-
-const auth = getAuth();
 
 export const RegisterPage = () => {
   const [tempEmail, setTempEmail] = useState("");

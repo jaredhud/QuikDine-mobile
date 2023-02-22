@@ -14,17 +14,7 @@ import { processFontFamily } from "expo-font";
 import { colors, FontFamily } from "../../../GlobalStyles.js";
 import chefGreg from "../../img/chef-greg.png";
 import chefGreg2 from "../../img/chef-greg2.png";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
 import AppContext from "../../Context/AppContext.js";
-import { createDBEvent } from "../../Context/globalFunctions.js";
-import { doc, getDoc } from "firebase/firestore/lite";
-import { db } from "../../../firebase.js";
-
-const auth = getAuth();
 
 export function LoginScreen() {
   const [tempEmail, setTempEmail] = useState("");

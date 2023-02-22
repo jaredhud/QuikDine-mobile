@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/core";
-import { auth } from "../../firebase";
 import {
   StyleSheet,
   Text,

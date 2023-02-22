@@ -3,7 +3,6 @@ import { useNavigation } from "@react-navigation/core";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
-import { auth } from "../../../firebase";
 import { button } from "../../../GlobalStyles";
 // import Icon from "react-native-ico";
 
