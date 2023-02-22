@@ -259,7 +259,7 @@ export const AdvancedSearch = () => {
               tempPantry.map((ingredient, index) => {
                 return (
                   <IngredientSearchCard
-                    key={ingredient}
+                    key={index}
                     ingredient={ingredient}
                     setIngredientListChecked={setIngredientListChecked}
                     ingredientListChecked={ingredientListChecked}
