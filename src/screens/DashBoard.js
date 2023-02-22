@@ -15,6 +15,7 @@ import { SubInfo, SubInfo2, SubInfo3 } from "../components/DashBoardText";
 import { FontFamily } from "../../GlobalStyles";
 import fallveggie from "../img/falling-veggies.png";
 import quikdine from "../img/quik-dine.png";
+import pantrybg from "../img/pantry-bg.jpg";
 
 export default function DashBoard() {
   const navigation = useNavigation();
@@ -96,7 +97,7 @@ export default function DashBoard() {
         style={styles.buttonNavigation}
       >
         <ImageBackground
-          source={fallveggie}
+          source={pantrybg}
           resizeMode="cover"
           style={styles.image}
           borderRadius={20}

@@ -139,8 +139,8 @@ export const Home = () => {
         style={[buttonBorder]}
       >
         <ImageBackground
-          // source={pantrybg}
-          source={fallveggie}
+          source={pantrybg}
+          // source={fallveggie}
           resizeMode="cover"
           style={styles.image}
           borderRadius={16}

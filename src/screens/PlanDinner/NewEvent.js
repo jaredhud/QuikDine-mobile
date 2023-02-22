@@ -83,7 +83,7 @@ export const NewEvent = () => {
       setText("Event Date: " + fDate);
     } else if (mode === "startTime") {
       let fStartTime = formatTime(tempDate);
-      setStartText("Start Time: " + fStartTime);
+      setStartText("Meal Time: " + fStartTime);
     } else {
       let fEndTime = formatTime(tempDate);
       setEndText("End Time: " + fEndTime);
@@ -184,15 +184,15 @@ export const NewEvent = () => {
           onPress={() => showMode("startTime")}
           style={styles.buttonRed}
         >
-          <Text style={styles.buttonTimeText}>Pick Start Time</Text>
+          <Text style={styles.buttonTimeText}>Pick Meal Time</Text>
         </TouchableOpacity>
-        {/* <TouchableOpacity onPress={addRecipient} style={styles.buttonGreen}> */}
-        <TouchableOpacity
+
+        {/* <TouchableOpacity
           onPress={() => showMode("endTime")}
           style={styles.buttonRed}
         >
           <Text style={styles.buttonTimeText}>Pick End Time</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
       <View
         style={{
