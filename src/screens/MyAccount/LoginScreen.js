@@ -36,8 +36,8 @@ export function LoginScreen() {
 
   async function handleLogin() {
     try {
-      tempEmail = tempEmail.trim();
-      const packet = { email: tempEmail, password };
+      let trimmedEmail = tempEmail.trim();
+      const packet = { email: trimmedEmail, password };
       const dataResponse = await fetch(
         `http://${serverIP}:5001/api/firebase/login`,
         {

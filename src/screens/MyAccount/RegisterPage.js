@@ -28,8 +28,8 @@ export const RegisterPage = () => {
 
   async function handleSignUp() {
     try {
-      tempEmail = tempEmail.trim();
-      console.log(tempEmail);
+      let trimmedEmail = tempEmail.trim();
+      console.log(trimmedEmail);
       const packet = {
         email: tempEmail,
         password,
