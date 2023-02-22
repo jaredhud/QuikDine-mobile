@@ -11,17 +11,6 @@ import { Avatar, Button, Card, Text } from "react-native-paper";
 import { FontFamily } from "../../GlobalStyles";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AppContext from "../Context/AppContext";
-import {
-  collection,
-  doc,
-  addDoc,
-  getDoc,
-  getDocs,
-  query,
-  where,
-  updateDoc,
-} from "firebase/firestore/lite";
-import { db } from "../../firebase";
 
 let addIcon = "add";
 let heartoutlineIcon = "heart-outline";

@@ -1,6 +1,4 @@
-import { doc, updateDoc } from "firebase/firestore/lite";
 import { useEffect, useState } from "react";
-import { db } from "../../firebase.js";
 import { setIP } from "./IPAddress.js";
 
 export default function initializeVariables() {
