@@ -20,6 +20,7 @@ import cameraPlus from "../../img/camera-plus.png";
 import plusWhite from "../../img/plus-white.png";
 import AppContext from "../../Context/AppContext";
 import fallveggie from "../../img/pantry-bg.jpg";
+import animatedbg from "../../img/animated-bg.gif";
 
 export default function MyPantry() {
   const navigation = useNavigation();
@@ -39,7 +40,8 @@ export default function MyPantry() {
   };
 
   return (
-    <ImageBackground style={{ flex: 1 }} source={fallveggie}>
+    <ImageBackground style={{ flex: 1 }} source={animatedbg}>
+      {/* <ImageBackground style={{ flex: 1 }} source={fallveggie}> */}
       {/* <View style={styles.container}> */}
       <View style={styles.ingredientsWrapper}>
         <Text style={styles.title}>My Pantry</Text>
