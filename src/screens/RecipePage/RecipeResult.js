@@ -178,7 +178,7 @@ export const RecipeResult = () => {
           {selectedRecipe.analyzedInstructions[0].steps.map(
             (instructions, index) => (
               <>
-                <Text>
+                <Text key={index}>
                   {index + 1}. {instructions.step}
                 </Text>
               </>
