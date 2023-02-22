@@ -87,7 +87,7 @@ export default function SendEmail() {
   }
 
   function addRecipient() {
-    const tempEmail = emailaddress.toLowerCase();
+    const tempEmail = emailaddress.toLowerCase().trim();
     if (recipients.indexOf(tempEmail) === -1) {
       setRecipients([...recipients, tempEmail]);
     }
