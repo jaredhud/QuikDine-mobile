@@ -82,10 +82,10 @@ export const EventList = () => {
         <Text style={styles.title}>Plan Meals</Text>
         <Text style={styles.sectionTitle}>More people, more fun!</Text>
       </View>
-      <ScrollView>
+      <ScrollView style={{ width: 400 }}>
         <TouchableOpacity
           onPress={() => navigation.navigate("New Event")}
-          style={[buttonBorder]}
+          style={[buttonBorder, { height: 170 }]}
         >
           <ImageBackground
             source={newevent}
@@ -107,7 +107,7 @@ export const EventList = () => {
                 setEventToView(event);
                 navigation.navigate("In-Progress Event");
               }}
-              style={[buttonBorder]}
+              style={[buttonBorder, { height: 100 }]}
             >
               <ImageBackground
                 source={ipevent}

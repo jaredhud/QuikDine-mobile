@@ -30,7 +30,7 @@ export function IngredientSearchCard(props) {
           margin: 10,
         }}
       >
-        <Text>{ingredient}</Text>
+        <Text style={{ fontSize: 12, marginLeft: 10 }}>{ingredient}</Text>
         <Checkbox
           disabled={numIngUsed >= 3 && tempSearchQuery != "" && !checked}
           status={checked ? "checked" : "unchecked"}
