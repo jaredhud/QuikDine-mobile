@@ -55,11 +55,8 @@ const CameraPage = () => {
         }
       );
       const responseValue = await dataResponse.json();
-      console.log(
-        "camerapage",
-        responseValue.responses[0].localizedObjectAnnotations
-      );
-      setIdObj(responseValue.responses[0].localizedObjectAnnotations);
+      console.log("camerapage", responseValue.responses[0].labelAnnotations);
+      setIdObj(responseValue.responses[0].labelAnnotations);
     }
 
     if (visReqObj.requests !== undefined) {
@@ -91,7 +88,7 @@ const CameraPage = () => {
   }
 
   function addToPantry(obj) {
-    setPantryList([...pantryList, obj.name]);
+    setPantryList([...pantryList, obj.description]);
     setIdObj([]);
     navigation.navigate("My Pantry");
   }
@@ -107,7 +104,7 @@ const CameraPage = () => {
       requests: [
         {
           image: { content: photo.base64 },
-          features: [{ type: "OBJECT_LOCALIZATION", maxResults: 5 }],
+          features: [{ type: "LABEL_DETECTION", maxResults: 5 }],
         },
       ],
     });
@@ -129,7 +126,7 @@ const CameraPage = () => {
             return (
               <TouchableOpacity onPress={() => addToPantry(obj)} key={index}>
                 <View>
-                  <Text style={styles.text}>{obj.name}</Text>
+                  <Text style={styles.text}>{obj.description}</Text>
                 </View>
               </TouchableOpacity>
             );
