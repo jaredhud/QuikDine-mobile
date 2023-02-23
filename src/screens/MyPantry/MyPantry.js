@@ -40,8 +40,8 @@ export default function MyPantry() {
   };
 
   return (
-    <ImageBackground style={{ flex: 1 }} source={animatedbg}>
-      {/* <ImageBackground style={{ flex: 1 }} source={fallveggie}> */}
+    // <ImageBackground style={{ flex: 1 }} source={animatedbg}>
+    <ImageBackground style={{ flex: 1 }} source={fallveggie}>
       {/* <View style={styles.container}> */}
       <View style={styles.ingredientsWrapper}>
         <Text style={styles.title}>My Pantry</Text>

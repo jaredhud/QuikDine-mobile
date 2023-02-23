@@ -7,7 +7,7 @@ export const PlanMealText = () => {
   return (
     <View style={styles.dashboardView}>
       <TextStroke stroke={2} color={"#379540"}>
-        <Text style={styles.textStrokeText}> Event In-Planning </Text>
+        <Text style={styles.textStrokeText}> Create New Event </Text>
       </TextStroke>
     </View>
   );

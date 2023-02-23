@@ -81,7 +81,7 @@ export const EventList = () => {
         <Text style={styles.title}>Plan Meals</Text>
         <Text style={styles.sectionTitle}>More people, more fun!</Text>
       </View>
-      <ScrollView style={{ width: 400 }}>
+      <ScrollView style={{ width: "98%" }}>
         <TouchableOpacity
           onPress={() => navigation.navigate("New Event")}
           style={[buttonBorder, { height: 170 }]}
