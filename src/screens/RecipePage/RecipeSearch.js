@@ -51,9 +51,10 @@ export const RecipeSearch = () => {
     serverIP,
     tempSearchQuery,
     setTempSearchQuery,
+    page,
+    setPage,
   } = useContext(AppContext);
 
-  const [page, setPage] = useState(1);
   const [resultsPerPage, setResultsPerPage] = useState(10);
   const [searchResults, setSearchResults] = useState({});
   // useState Popup

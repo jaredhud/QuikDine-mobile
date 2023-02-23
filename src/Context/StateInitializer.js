@@ -22,6 +22,7 @@ export default function initializeVariables() {
   const [eventId, setEventId] = useState("");
   const [eventList, setEventList] = useState([]);
   const [eventToView, setEventToView] = useState("");
+  const [page, setPage] = useState(1);
   const { serverIP } = setIP();
 
   async function addRecipe() {
@@ -194,6 +195,8 @@ export default function initializeVariables() {
     setEventToView,
     eventList,
     setEventList,
+    page,
+    setPage,
     serverIP,
   };
 
