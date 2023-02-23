@@ -26,9 +26,61 @@ let questionMark = "help-circle-outline";
 let searchIcon = "search";
 
 let tempSearchCriteria;
-const mealTypes = ["any", "main course", "dessert", "side dish"];
-const cuisines = ["any", "Greek", "Italian", "German"];
-const diets = ["any", "vegetarian"];
+const mealTypes = [
+  "any",
+  "main course",
+  "side dish",
+  "dessert",
+  "appetizer",
+  "salad",
+  "bread",
+  "breakfast",
+  "soup",
+  "beverage",
+  "sauce",
+  "marinade",
+  "fingerfood",
+  "snack",
+  "drink",
+];
+const cuisines = [
+  "any",
+  "African",
+  "American",
+  "British",
+  "Cajun",
+  "Caribbean",
+  "Chinese",
+  "Eastern European",
+  "European",
+  "French",
+  "German",
+  "Greek",
+  "Indian",
+  "Irish",
+  "Italian",
+  "Japanese",
+  "Jewish",
+  "Korean",
+  "Latin American",
+  "Mediterranean",
+  "Mexican",
+  "Middle Eastern",
+  "Nordic",
+  "Southern",
+  "Spanish",
+  "Thai",
+  "Vietnamese",
+];
+const diets = [
+  "any",
+  "vegetarian",
+  "vegan",
+  "pescetarian",
+  "paleo",
+  "ketogenic",
+  "gluten free",
+];
 
 export const AdvancedSearch = () => {
   // useState Popup
