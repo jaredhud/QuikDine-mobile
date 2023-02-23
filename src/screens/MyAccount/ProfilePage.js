@@ -20,7 +20,17 @@ import AppContext from "../../Context/AppContext";
 // import Icon from "react-native-ico";
 
 export const ProfilePage = () => {
-  const { email, setIsLoggedIn, setEmail, setUser } = useContext(AppContext);
+  const {
+    email,
+    setIsLoggedIn,
+    setEmail,
+    setUser,
+    setPantryList,
+    setSelectedRecipesList,
+    setFavoritesList,
+    setRecipients,
+    setEventId,
+  } = useContext(AppContext);
   const navigation = useNavigation();
   const name = "Sophia";
   const accountName = "Sophia";
@@ -32,6 +42,11 @@ export const ProfilePage = () => {
     setIsLoggedIn(false);
     setUser("");
     setEmail("");
+    setEventId("");
+    setPantryList([]);
+    setSelectedRecipesList([]);
+    setFavoritesList([]);
+    setRecipients([]);
     navigation.navigate("Login");
   }
   return (
