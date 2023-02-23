@@ -127,8 +127,8 @@ const CameraPage = () => {
         <View style={styles.result}>
           {idObj.map((obj, index) => {
             return (
-              <TouchableOpacity onPress={() => addToPantry(obj)}>
-                <View key={index}>
+              <TouchableOpacity onPress={() => addToPantry(obj)} key={index}>
+                <View>
                   <Text style={styles.text}>{obj.name}</Text>
                 </View>
               </TouchableOpacity>

@@ -166,11 +166,9 @@ export const RecipeResult = () => {
           <Text style={{ fontWeight: "800", fontSize: 16 }}>Instructions</Text>
           {selectedRecipe.analyzedInstructions[0].steps.map(
             (instructions, index) => (
-              <>
-                <Text key={index}>
-                  {index + 1}. {instructions.step}
-                </Text>
-              </>
+              <Text key={index}>
+                {index + 1}. {instructions.step}
+              </Text>
             )
           )}
         </ScrollView>
