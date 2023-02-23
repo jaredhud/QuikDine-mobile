@@ -107,6 +107,7 @@ export const AdvancedSearch = () => {
     setMealType,
     ingredientListChecked,
     setIngredientListChecked,
+    setPage,
   } = useContext(AppContext);
 
   const tempPantry = [...pantryList];
@@ -519,6 +520,7 @@ export const AdvancedSearch = () => {
             cuisineSetter();
             mealTypeSetter();
             ingredientSetter();
+            setPage(1);
             navigation.navigate("Recipe Search");
           }}
           style={[
