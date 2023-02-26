@@ -19,6 +19,8 @@ import { button } from "../../../GlobalStyles";
 import { FontFamily } from "../../../GlobalStyles";
 import menu from "../../img/menu.png";
 import AppContext from "../../Context/AppContext";
+import fallveggie from "../../img/falling-veggies.png";
+import { SubInfo, SubInfo2, SubInfo3 } from "../../components/DashBoardText";
 // import Icon from "react-native-ico";
 
 export const InProgressEvent = () => {
@@ -197,6 +199,22 @@ export const InProgressEvent = () => {
           <Text style={styles.buttonText}>View Participants</Text>
         </TouchableOpacity>
       </View>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("SuggestedRecipes")}
+        style={styles.buttonNavigation}
+      >
+        <ImageBackground
+          source={fallveggie}
+          resizeMode="cover"
+          style={styles.image}
+          borderRadius={20}
+        >
+          <Text style={styles.text}>
+            {" "}
+            <SubInfo />{" "}
+          </Text>
+        </ImageBackground>
+      </TouchableOpacity>
       <View
         style={{
           height: "10%",
