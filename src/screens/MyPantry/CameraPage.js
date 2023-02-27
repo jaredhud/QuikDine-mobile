@@ -7,13 +7,9 @@ import {
   Dimensions,
   TouchableOpacity,
   View,
-  Image,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Ionicons from "react-native-vector-icons/Ionicons";
-
-import cameraWhite from "../../img/camera.png";
-import cameraFlipWhite from "../../img/camera-flip-white.png";
 import AppContext from "../../Context/AppContext";
 
 const CameraPage = () => {
@@ -25,14 +21,15 @@ const CameraPage = () => {
   const [cameraPadding, setCameraPadding] = useState(
     (height - (width / 9) * 16) / 2
   );
-  const [visReqObj, setVisReqObj] = useState({});
   const [idObj, setIdObj] = useState([]);
   const navigation = useNavigation();
-  const { pantryList, setPantryList } = useContext(AppContext);
+  const { pantryList, setPantryList, serverIP } = useContext(AppContext);
+
   let iconName = "fast-food";
   let cameraIcon = "camera";
   let cameraIconReverse = "camera-reverse-outline";
-  // Removes Tab Navigation - Start
+
+  // Removes Tab Navigation
   useEffect(() => {
     navigation.getParent()?.setOptions({
       tabBarStyle: {
@@ -44,25 +41,6 @@ const CameraPage = () => {
         tabBarStyle: { backgroundColor: "#333333", height: 70 },
       });
   }, [navigation]);
-  // Removes Tab Navigation - End
-  useEffect(() => {
-    async function getData() {
-      const dataResponse = await fetch(
-        "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyDwTU8anUs3wdIJqVoPy82vBp9uidntoyI",
-        {
-          method: "POST",
-          body: JSON.stringify(visReqObj),
-        }
-      );
-      const responseValue = await dataResponse.json();
-      console.log("camerapage", responseValue.responses[0].labelAnnotations);
-      setIdObj(responseValue.responses[0].labelAnnotations);
-    }
-
-    if (visReqObj.requests !== undefined) {
-      getData();
-    }
-  }, [visReqObj]);
 
   if (!permission) {
     // Camera permissions are still loading
@@ -90,24 +68,39 @@ const CameraPage = () => {
   function addToPantry(obj) {
     setPantryList([...pantryList, obj.description]);
     setIdObj([]);
-    navigation.navigate("My Pantry");
+    alert("Added to pantry");
+    // navigation.navigate("My Pantry");
   }
-
+  // quality compresses image to reduce size, value of 0-1
   async function takePic() {
     const options = {
-      quality: 1,
+      quality: 0.25,
       base64: true,
       exif: false,
     };
     const photo = await ref.current.takePictureAsync(options);
-    setVisReqObj({
+
+    const visionRequest = {
       requests: [
         {
           image: { content: photo.base64 },
-          features: [{ type: "LABEL_DETECTION", maxResults: 5 }],
+          features: [{ type: "LABEL_DETECTION", maxResults: 10 }],
         },
       ],
-    });
+    };
+    const dataResponse = await fetch(
+      `http://${serverIP}:5001/api/googlevision/`,
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({ visionRequest }),
+      }
+    );
+    const responseValue = await dataResponse.json();
+    console.log("camerapage", responseValue.responses[0].labelAnnotations);
+    setIdObj(responseValue.responses[0].labelAnnotations);
   }
 
   return (
