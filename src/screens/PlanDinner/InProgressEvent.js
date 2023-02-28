@@ -16,7 +16,8 @@ import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { button } from "../../../GlobalStyles";
-import { FontFamily } from "../../../GlobalStyles";
+import { buttonBorder, colors, FontFamily } from "../../../GlobalStyles";
+import newevent from "../../img/new-event.jpg";
 import menu from "../../img/menu.png";
 import AppContext from "../../Context/AppContext";
 import fallveggie from "../../img/falling-veggies.png";
@@ -184,8 +185,25 @@ export const InProgressEvent = () => {
         style={{
           height: "60%",
           alignItems: "center",
+          width: "95%",
         }}
       >
+        <TouchableOpacity
+          onPress={() => navigation.navigate("New Event")}
+          style={[buttonBorder, { height: 170 }]}
+        >
+          <ImageBackground
+            source={newevent}
+            resizeMode="cover"
+            style={styles.image}
+            borderRadius={16}
+          >
+            <Text style={{ marginBottom: -5 }}>
+              {" "}
+              <SubInfo />{" "}
+            </Text>
+          </ImageBackground>
+        </TouchableOpacity>
         <TouchableOpacity
           onPress={() => setModalVisible(true)}
           style={[[button], { alignItems: "center" }]}
@@ -201,7 +219,7 @@ export const InProgressEvent = () => {
       </View>
       <TouchableOpacity
         onPress={() => navigation.navigate("SuggestedRecipes")}
-        style={styles.buttonNavigation}
+        style={[styles.buttonNavigation, { width: 400 }]}
       >
         <ImageBackground
           source={fallveggie}
