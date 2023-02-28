@@ -22,6 +22,7 @@ import menu from "../../img/menu.png";
 import AppContext from "../../Context/AppContext";
 import fallveggie from "../../img/falling-veggies.png";
 import { SubInfo, SubInfo2, SubInfo3 } from "../../components/DashBoardText";
+import { TextStroke } from "../../components/RecipeCard";
 // import Icon from "react-native-ico";
 
 export const InProgressEvent = () => {
@@ -189,7 +190,7 @@ export const InProgressEvent = () => {
         }}
       >
         <TouchableOpacity
-          onPress={() => navigation.navigate("New Event")}
+          onPress={() => setModalVisible(true)}
           style={[buttonBorder, { height: 170 }]}
         >
           <ImageBackground
@@ -198,13 +199,35 @@ export const InProgressEvent = () => {
             style={styles.image}
             borderRadius={16}
           >
-            <Text style={{ marginBottom: -5 }}>
+            {/* <Text style={{ marginBottom: -5 }}>
               {" "}
               <SubInfo />{" "}
-            </Text>
+            </Text> */}
+            <TextStroke stroke={2} color={colors.darkgreen}>
+              <Text style={styles.textStrokeText}> {"View Vote Results"} </Text>
+            </TextStroke>
           </ImageBackground>
         </TouchableOpacity>
         <TouchableOpacity
+          onPress={() => setModalVisible2(true)}
+          style={[buttonBorder, { height: 170 }]}
+        >
+          <ImageBackground
+            source={newevent}
+            resizeMode="cover"
+            style={styles.image}
+            borderRadius={16}
+          >
+            {/* <Text style={{ marginBottom: -5 }}>
+              {" "}
+              <SubInfo />{" "}
+            </Text> */}
+            <TextStroke stroke={2} color={colors.darkgreen}>
+              <Text style={styles.textStrokeText}> {"View Participants"} </Text>
+            </TextStroke>
+          </ImageBackground>
+        </TouchableOpacity>
+        {/* <TouchableOpacity
           onPress={() => setModalVisible(true)}
           style={[[button], { alignItems: "center" }]}
         >
@@ -215,7 +238,7 @@ export const InProgressEvent = () => {
           style={[[button], { alignItems: "center" }]}
         >
           <Text style={styles.buttonText}>View Participants</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
       <TouchableOpacity
         onPress={() => navigation.navigate("SuggestedRecipes")}
@@ -329,5 +352,17 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 15,
     textAlign: "center",
+  },
+  image: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
+  },
+  textStrokeText: {
+    fontSize: 25,
+    color: "#FFFFFF",
+    fontFamily: FontFamily.poppins,
+    marginTop: 5,
+    marginRight: 5,
   },
 });
