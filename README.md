@@ -1,4 +1,4 @@
-<div style="width:200px ; height:40px" align="center">
+<div style="height:40px" align="center">
 <img src="https://github.com/jaredhud/QuikDine-mobile/blob/main/src/img/quik-dine.png?raw=true" alt="Sublime's custom image"/>
 </div>
 <!-- <h1 align="center">QuikDine-mobile</h1> -->
