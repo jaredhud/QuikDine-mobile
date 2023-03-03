@@ -1,6 +1,6 @@
 <div style="width:60px ; height:200px" align="center">
 ![quikdine logo](src/img/quik-dine.png)
-<div>
+</div>
 <!-- <h1 align="center">QuikDine-mobile</h1> -->
 <h3 align="center">Recipe made Easy!</h3>
 
