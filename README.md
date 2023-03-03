@@ -1,5 +1,5 @@
-<div style="height:40px" align="center">
-<img src="https://github.com/jaredhud/QuikDine-mobile/blob/main/src/img/quik-dine.png?raw=true" alt="Sublime's custom image"/>
+<div align="center">
+<img src="https://github.com/jaredhud/QuikDine-mobile/blob/main/src/img/quik-dine.png?raw=true" alt="QuikDine logo" style="height:40px" />
 </div>
 <!-- <h1 align="center">QuikDine-mobile</h1> -->
 <h3 align="center">Recipe made Easy!</h3>
