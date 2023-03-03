@@ -1,5 +1,6 @@
+<div style="width:60px ; height:200px" align="center">
 ![quikdine logo](src/img/quik-dine.png)
-
+<div>
 <!-- <h1 align="center">QuikDine-mobile</h1> -->
 <h3 align="center">Recipe made Easy!</h3>
 
@@ -28,10 +29,10 @@ This project is divided into 3 parts: mobile, server, and website. This repo, mo
 
 ## Installation
 
-1. install Expo CLI - https://expo.dev
-2. git clone https://github.com/jaredhud/QuikDine-mobile.git
-3. git clone https://github.com/jaredhud/Quikdine-server.git
-4. git clone https://github.com/Kshitija118/QuikDineWebPage.git
+1. Install Expo CLI - https://expo.dev
+2. Git clone https://github.com/jaredhud/QuikDine-mobile.git
+3. Git clone https://github.com/jaredhud/Quikdine-server.git
+4. Git clone https://github.com/Kshitija118/QuikDineWebPage.git
 5. npm i or npm install all the repos above
 6. npm run start
 
