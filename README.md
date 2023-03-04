@@ -1,11 +1,13 @@
 &nbsp;
 
-<div align="center" style="margin-bottom:-20px">
+<div align="center">
 <img src="https://github.com/jaredhud/QuikDine-mobile/blob/main/src/img/quik-dine.png?raw=true" alt="QuikDine logo" style="height:80px" />
 <br>
 Recipe made Easy!
-<br>
-<img src="https://github.com/jaredhud/QuikDine-mobile/blob/main/src/img/architecture.jpg?raw=true" alt="QuikDine logo" style="widtht:100%">
+</div>
+&nbsp;
+<div align="center">
+<img src="https://github.com/jaredhud/QuikDine-mobile/blob/main/src/img/architecture.jpg?raw=true" alt="QuikDine logo" style="width:100%">
 </div>
 <!-- <h1 align="center">QuikDine-mobile</h1> -->
 
