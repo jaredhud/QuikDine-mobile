@@ -5,7 +5,7 @@
 <br>
 Recipe made Easy!
 <br>
-<img src="https://github.com/jaredhud/QuikDine-mobile/blob/main/src/img/architecture.jpg?raw=true" alt="QuikDine logo" style="widtht:100%"
+<img src="https://github.com/jaredhud/QuikDine-mobile/blob/main/src/img/architecture.jpg?raw=true" alt="QuikDine logo" style="widtht:100%">
 </div>
 <!-- <h1 align="center">QuikDine-mobile</h1> -->
 
