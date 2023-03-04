@@ -22,6 +22,8 @@ Our mobile app allows you to scan items in your pantry and suggest recipes based
 
 This project is divided into 3 parts: mobile, server, and website. This repo, mobile, has the code of our mobile app. The server repo is the one that contacts Spoonacular API. The website repo allows people to vote for people's favorite recipe.
 
+We hope that you have fun and enjoy our app!
+
 ## Key Features
 
     + Item Quikshot - Add items on your pantry through your camera or text.
@@ -57,7 +59,8 @@ This project is divided into 3 parts: mobile, server, and website. This repo, mo
 
 - Context is used to transfer data from page to page
 - Firebase was used to store data
+- SendGrid is used for handling email functionality
 - Navigation is handled 2 ways: Screen and Tab
-- \_RecipeNav handles the Tab Navigation part
-- Modal is used to create pop-ups(useful for help)
-- When creating pagelayout, use percentages to divide sections. ie. 10% 10% 30%
+- \_RecipeNav and similar folders handles the Tab Navigation part
+- Modal is used to create pop-ups (useful for creating help notes)
+- When creating page layout, use percentages to divide sections. ie. 10% 10% 30%
