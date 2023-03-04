@@ -14,7 +14,7 @@ Recipe made Easy!
 - [Installation](#installation)
 - [Technologies Used](#technologies-used)
 - [Eggroll Team Members](#eggroll-team-members)
-- [Program Basics](#program-basics)
+- [Developer Notes](#developer-notes)
 
 ## Introduction
 
