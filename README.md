@@ -3,7 +3,7 @@
 <div align="center">
 <img src="https://github.com/jaredhud/QuikDine-mobile/blob/main/src/img/quik-dine.png?raw=true" alt="QuikDine logo" style="height:80px" />
 <br>
-Recipe made Easy!
+Recipe made Easy! - Mobile Edition
 </div>
 &nbsp;
 <div align="center">
