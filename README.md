@@ -8,8 +8,8 @@ Recipe made Easy!
 &nbsp;
 <div align="center">
 <img src="https://badge.fury.io/js/npm.svg"> <img src="https://img.shields.io/badge/compatible-iOS%20%26%20android-blue" > 
-<a href="https://spoonacular.com/food-api"> <img src="https://img.shields.io/badge/API-Spoonacular-darkblue"> </a>
-<a href="https://cloud.google.com/vision/"> <img src="https://img.shields.io/badge/API-Google%20Vision-darkblue"> </a>
+<a href="https://spoonacular.com/food-api"> <img src="https://img.shields.io/badge/API-Spoonacular-orange"> </a>
+<a href="https://cloud.google.com/vision/"> <img src="https://img.shields.io/badge/API-Google%20Vision-orange"> </a>
 </div>
 
 &nbsp;
@@ -26,6 +26,7 @@ Recipe made Easy!
 - [Technologies Used](#technologies-used)
 - [Eggroll Team Members](#eggroll-team-members)
 - [Developer Notes](#developer-notes)
+- [Credits](#credits)
 
 ## Introduction
 
@@ -49,8 +50,8 @@ We hope that you have fun and enjoy our app!
 2. Git clone https://github.com/jaredhud/QuikDine-mobile.git
 3. Git clone https://github.com/jaredhud/Quikdine-server.git
 4. Git clone https://github.com/Kshitija118/QuikDineWebPage.git
-5. npm i or npm install all the repos above
-6. npm run start
+5. npm install all the repos above
+6. npm run start all the repos above
 
 ## Technologies Used
 
@@ -61,17 +62,22 @@ We hope that you have fun and enjoy our app!
 
 ## Eggroll Team Members
 
-- Kshitija Shirsathe
-- Romell Bermundo
-- Jared Huddleston
-- Chris Desmarais - Scrum Master
+- [Kshitija Shirsathe](https://www.linkedin.com/in/kshitija-shirsathe-095a2197/)
+- [Romell Bermundo](https://www.linkedin.com/in/romellbermundo/)
+- [Jared Huddleston](https://www.linkedin.com/in/jared-huddleston-715101219/)
+- [Chris Desmarais](https://www.linkedin.com/in/chris-desmarais-543207/) - Scrum Master
 
 ## Developer Notes
 
 - Context is used to transfer data from page to page
-- Firebase was used to store data
+- Firebase is used to store data
 - SendGrid is used for handling email functionality
-- Navigation is handled 2 ways: Screen and Tab
+- Navigation is handled 2 ways: Screen and Tab navigation
 - \_RecipeNav and similar folders handles the Tab Navigation part
 - Modal is used to create pop-ups (useful for creating help notes)
 - When creating page layout, use percentages to divide sections. ie. 10% 10% 30%
+
+## Credits
+
++ [Node.js](https://nodejs.org/)
++ Base logo vector made by [Freepik](https://www.freepik.com/) from [Flaticon](www.flaticon.com).
