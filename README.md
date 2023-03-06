@@ -62,10 +62,10 @@ We hope that you have fun and enjoy our app!
 
 ## Eggroll Team Members
 
-- [Kshitija Shirsathe](https://www.linkedin.com/in/kshitija-shirsathe-095a2197/)
-- [Romell Bermundo](https://www.linkedin.com/in/romellbermundo/)
-- [Jared Huddleston](https://www.linkedin.com/in/jared-huddleston-715101219/)
-- [Chris Desmarais](https://www.linkedin.com/in/chris-desmarais-543207/) - Scrum Master
+- Kshitija Shirsathe - [GitHub](https://github.com/Kshitija118) - [LinkedIn](https://www.linkedin.com/in/kshitija-shirsathe-095a2197/)
+- Romell Bermundo - [GitHub](https://github.com/steakncheese) - [LinkedIn](https://www.linkedin.com/in/romellbermundo/)
+- Jared Huddleston - [GitHub](https://github.com/jaredhud) - [LinkedIn](https://www.linkedin.com/in/jared-huddleston-715101219/)
+- Chris Desmarais - [LinkedIn](https://www.linkedin.com/in/chris-desmarais-543207/) - Scrum Master
 
 ## Developer Notes
 
