@@ -8,8 +8,8 @@ Recipe made Easy!
 &nbsp;
 <div align="center">
 <img src="https://badge.fury.io/js/npm.svg"> <img src="https://img.shields.io/badge/compatible-iOS%20%26%20android-blue" > 
-<a href="https://spoonacular.com/food-api"> <img src="https://img.shields.io/badge/API-Spoonacular-green"> </a>
-<a href="https://cloud.google.com/vision/"> <img src="https://img.shields.io/badge/API-Google%20Vision-green"> </a>
+<a href="https://spoonacular.com/food-api"> <img src="https://img.shields.io/badge/API-Spoonacular-darkblue"> </a>
+<a href="https://cloud.google.com/vision/"> <img src="https://img.shields.io/badge/API-Google%20Vision-darkblue"> </a>
 </div>
 
 &nbsp;
