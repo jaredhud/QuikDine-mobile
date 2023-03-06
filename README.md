@@ -6,6 +6,10 @@
 Recipe made Easy!
 </div>
 &nbsp;
+<div align="center">        <img src="https://badge.fury.io/js/npm.svg" alt="Gitter"> <img src="https://img.shields.io/badge/compatible-iOS%20%26%20android-blue" alt="Gitter">
+</div>
+
+&nbsp;
 <div align="center">
 <img src="https://github.com/jaredhud/QuikDine-mobile/blob/main/src/img/architecture.jpg?raw=true" alt="QuikDine logo" style="width:100%">
 </div>
