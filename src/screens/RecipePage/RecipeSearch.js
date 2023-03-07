@@ -1,30 +1,24 @@
 import { StatusBar } from "expo-status-bar";
 import {
   Alert,
+  ImageBackground,
   Modal,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
-  Pressable,
-  View,
   TouchableOpacity,
-  ImageBackground,
+  View,
 } from "react-native";
 
 import { useFocusEffect, useNavigation } from "@react-navigation/core";
-import { useState, useEffect, useCallback, useContext } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { Searchbar } from "react-native-paper";
 
-import {
-  button,
-  buttonText,
-  colors,
-  containerRecipe,
-  FontFamily,
-} from "../../../GlobalStyles";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import { colors, containerRecipe, FontFamily } from "../../../GlobalStyles";
 import { RecipeCard } from "../../components/RecipeCard";
 import AppContext from "../../Context/AppContext";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import menu from "../../img/menu.png";
 
 let questionMark = "help-circle-outline";

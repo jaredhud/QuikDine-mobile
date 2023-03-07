@@ -1,21 +1,20 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/core";
 import {
+  Image,
+  ImageBackground,
+  Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  Image,
-  Platform,
-  ImageBackground,
 } from "react-native";
-import { useFonts } from "expo-font";
 
-import { SubInfo, SubInfo2, SubInfo3 } from "../components/DashBoardText";
 import { FontFamily } from "../../GlobalStyles";
+import { SubInfo, SubInfo2, SubInfo3 } from "../components/DashBoardText";
 import fallveggie from "../img/falling-veggies.png";
-import quikdine from "../img/quik-dine.png";
 import pantrybg from "../img/pantry-bg.jpg";
+import quikdine from "../img/quik-dine.png";
 
 export default function DashBoard() {
   const navigation = useNavigation();

@@ -1,29 +1,19 @@
 import React, { useCallback, useContext } from "react";
 import { useFocusEffect, useNavigation } from "@react-navigation/core";
 import {
+  ImageBackground,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  ImageBackground,
-  Image,
-  ScrollView,
 } from "react-native";
-import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 
-import quikdine from "../../img/quik-dine.png";
-import {
-  button,
-  buttonBorder,
-  colors,
-  FontFamily,
-} from "../../../GlobalStyles";
-import fallveggie from "../../img/falling-veggies.png";
-import newevent from "../../img/new-event.jpg";
-import ipevent from "../../img/ip-event.png";
-import pastevent from "../../img/past-event.jpg";
-import { SubInfo, SubInfo2, SubInfo3 } from "../../components/PlanMealText";
+import { buttonBorder, colors, FontFamily } from "../../../GlobalStyles";
+import { SubInfo, SubInfo2 } from "../../components/PlanMealText";
 import AppContext from "../../Context/AppContext";
+import ipevent from "../../img/ip-event.png";
+import newevent from "../../img/new-event.jpg";
 // import Icon from "react-native-ico";
 
 export const EventList = () => {

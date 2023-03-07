@@ -1,23 +1,20 @@
 import React, { useContext } from "react";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/core";
 import {
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
   Image,
-  TouchableOpacity,
-  TextInput,
   ImageBackground,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import profile from "../../img/profile.png";
 import profilebg from "../../img/profile-bg.jpg";
+import profile from "../../img/profile.png";
 
-import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
-import { button, colors, FontFamily } from "../../../GlobalStyles";
+import { FontFamily } from "../../../GlobalStyles";
 import AppContext from "../../Context/AppContext";
-// import Icon from "react-native-ico";
 
 export const ProfilePage = () => {
   const {

@@ -1,19 +1,15 @@
+import { useContext, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  Button,
   View,
 } from "react-native";
-import { useContext, useEffect, useState } from "react";
-// import * as MailComposer from "expo-mail-composer";
-// import * as Print from "expo-print";
-import { colors, FontFamily } from "../../../GlobalStyles";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/core";
-// import email from "react-native-email";
+import { colors, FontFamily } from "../../../GlobalStyles";
 import AppContext from "../../Context/AppContext";
 
 let mailIcon = "mail-outline";

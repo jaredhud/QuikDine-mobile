@@ -1,23 +1,22 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
-import { useFocusEffect, useNavigation } from "@react-navigation/core";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigation } from "@react-navigation/core";
 import {
+  ImageBackground,
+  Modal,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  Modal,
-  ImageBackground,
-  Pressable,
 } from "react-native";
 
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { Searchbar } from "react-native-paper";
 import SelectDropdown from "react-native-select-dropdown";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
-import Checkbox from "react-native-paper";
-import Ionicons from "@expo/vector-icons/Ionicons";
 
-import { button, colors, FontFamily } from "../../../GlobalStyles";
+import { button, colors } from "../../../GlobalStyles";
 import { IngredientSearchCard } from "../../components/IngredientSearchCard";
 import AppContext from "../../Context/AppContext";
 import menu from "../../img/menu.png";

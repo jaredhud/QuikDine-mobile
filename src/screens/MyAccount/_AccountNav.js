@@ -1,9 +1,9 @@
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import AppContext from "../../Context/AppContext";
+import { LoginScreen } from "./LoginScreen";
 import { ProfilePage } from "./ProfilePage";
 import { RegisterPage } from "./RegisterPage";
-import { LoginScreen } from "./LoginScreen";
-import AppContext from "../../Context/AppContext";
 
 const Stack = createNativeStackNavigator();
 export default function AccountNav() {

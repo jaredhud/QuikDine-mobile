@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import AppContext from "./src/Context/AppContext";
+import React from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import AppContext from "./src/Context/AppContext";
 
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { Home } from "./src/screens/Home";
 import AccountNav from "./src/screens/MyAccount/_AccountNav";
-import RecipeNav from "./src/screens/RecipePage/_RecipeNav";
 import PantryNav from "./src/screens/MyPantry/_PantryNav";
 import PlanNav from "./src/screens/PlanDinner/_PlanNav";
-import { Home } from "./src/screens/Home";
+import RecipeNav from "./src/screens/RecipePage/_RecipeNav";
 // import TestNav from "./src/screens/TestPage/_TestNav";
 import initializeVariables from "./src/Context/StateInitializer";
 

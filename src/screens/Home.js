@@ -1,29 +1,21 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/core";
 import {
+  Image,
+  ImageBackground,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  Image,
-  Platform,
-  ImageBackground,
 } from "react-native";
 
-import {
-  menuBorderRadius,
-  button,
-  buttonBorder,
-  colors,
-  innerTabBorder,
-  FontFamily,
-} from "../../GlobalStyles";
+import { buttonBorder, colors, FontFamily } from "../../GlobalStyles";
 import { SubInfo, SubInfo2, SubInfo3 } from "../components/DashBoardText";
 
 import fallveggie from "../img/falling-veggies.png";
-import quikdine from "../img/quik-dine.png";
 import pantrybg from "../img/pantry-bg.jpg";
 import planmeals from "../img/planmeals.png";
+import quikdine from "../img/quik-dine.png";
 // import Icon from "react-native-ico";
 
 export const Home = () => {

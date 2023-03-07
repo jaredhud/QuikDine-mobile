@@ -1,31 +1,20 @@
 import React, { useCallback, useContext, useState } from "react";
-import { useFocusEffect, useNavigation } from "@react-navigation/core";
-import { StatusBar } from "expo-status-bar";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import { useFocusEffect, useNavigation } from "@react-navigation/core";
+import { StatusBar } from "expo-status-bar";
 import {
+  Platform,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  Image,
-  Platform,
-  ImageBackground,
-  Button,
-  ScrollView,
 } from "react-native";
-import { TextInput } from "react-native-paper";
-import AppContext from "../../Context/AppContext";
 import { RecipeCard } from "../../components/RecipeCard";
+import AppContext from "../../Context/AppContext";
 
-import {
-  menuBorderRadius,
-  button,
-  buttonBorder,
-  colors,
-  innerTabBorder,
-  FontFamily,
-} from "../../../GlobalStyles";
+import { button, colors, FontFamily } from "../../../GlobalStyles";
 
 export const NewEvent = () => {
   const navigation = useNavigation();

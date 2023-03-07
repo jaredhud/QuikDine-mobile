@@ -1,5 +1,8 @@
 import React, { useContext, useState } from "react";
+import { useNavigation } from "@react-navigation/core";
 import {
+  Image,
+  ImageBackground,
   Keyboard,
   KeyboardAvoidingView,
   ScrollView,
@@ -8,19 +11,14 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  Image,
-  ImageBackground,
 } from "react-native";
-import { useNavigation } from "@react-navigation/core";
 import { colors, FontFamily } from "../../../GlobalStyles";
-import Ionicons from "react-native-vector-icons/Ionicons";
 
 import Ingredient from "../../components/Ingredient";
-import cameraPlus from "../../img/camera-plus.png";
-import plusWhite from "../../img/plus-white.png";
 import AppContext from "../../Context/AppContext";
+import cameraPlus from "../../img/camera-plus.png";
 import fallveggie from "../../img/pantry-bg.jpg";
-import animatedbg from "../../img/animated-bg.gif";
+import plusWhite from "../../img/plus-white.png";
 
 export default function MyPantry() {
   const navigation = useNavigation();

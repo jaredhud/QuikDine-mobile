@@ -1,21 +1,18 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/core";
-import {
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  TextInput,
-  ImageBackground,
-} from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import profile from "../../img/profile.png";
+import {
+  Image,
+  ImageBackground,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import profilebg from "../../img/profile-bg.jpg";
+import profile from "../../img/profile.png";
 
-import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
-import { button, colors, FontFamily } from "../../../GlobalStyles";
+import { FontFamily } from "../../../GlobalStyles";
 
 // import Icon from "react-native-ico";
 

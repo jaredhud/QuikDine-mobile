@@ -1,29 +1,25 @@
-import React, { useState, useEffect, useCallback, useContext } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { useFocusEffect, useNavigation } from "@react-navigation/core";
 import {
   Alert,
+  ImageBackground,
   Modal,
-  ScrollView,
+  Pressable,
   StyleSheet,
   Text,
-  Pressable,
-  View,
   TouchableOpacity,
-  ImageBackground,
+  View,
 } from "react-native";
 
-import { Appbar, Searchbar, Card, Paragraph } from "react-native-paper";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-import { button } from "../../../GlobalStyles";
 import { buttonBorder, colors, FontFamily } from "../../../GlobalStyles";
-import newevent from "../../img/new-event.jpg";
-import menu from "../../img/menu.png";
+import { SubInfo } from "../../components/DashBoardText";
+import { TextStroke } from "../../components/RecipeCard";
 import AppContext from "../../Context/AppContext";
 import fallveggie from "../../img/falling-veggies.png";
-import { SubInfo, SubInfo2, SubInfo3 } from "../../components/DashBoardText";
-import { TextStroke } from "../../components/RecipeCard";
-// import Icon from "react-native-ico";
+import menu from "../../img/menu.png";
+import newevent from "../../img/new-event.jpg";
 
 export const InProgressEvent = () => {
   const navigation = useNavigation();

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet, Text, ScrollView } from "react-native";
-import { Divider } from "react-native-paper";
 import moment from "moment";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { Divider } from "react-native-paper";
 
 const TimeSlots = () => {
   const [timeSlot, setTimeSlot] = useState([]);

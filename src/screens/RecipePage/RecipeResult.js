@@ -1,14 +1,6 @@
-import React, {
-  Children,
-  cloneElement,
-  isValidElement,
-  useCallback,
-  useContext,
-  useState,
-} from "react";
 import { useFocusEffect, useNavigation } from "@react-navigation/core";
+import React, { useCallback, useContext, useState } from "react";
 import {
-  Image,
   ImageBackground,
   ScrollView,
   StyleSheet,
@@ -17,12 +9,11 @@ import {
 } from "react-native";
 
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { Appbar, Searchbar, Card, Text } from "react-native-paper";
+import { Card, Text } from "react-native-paper";
 
 import { button, colors, FontFamily } from "../../../GlobalStyles";
-import AppContext from "../../Context/AppContext";
-import planmeals from "../../img/planmeals.png";
 import { TextStroke } from "../../components/RecipeCard";
+import AppContext from "../../Context/AppContext";
 // import Icon from "react-native-ico";
 
 export const RecipeResult = () => {

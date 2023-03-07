@@ -1,14 +1,14 @@
+import { useContext, useEffect, useRef, useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 import { Camera, CameraType } from "expo-camera";
-import { useState, useRef, useEffect, useContext } from "react";
 import {
   Button,
+  Dimensions,
   StyleSheet,
   Text,
-  Dimensions,
   TouchableOpacity,
   View,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AppContext from "../../Context/AppContext";
 

@@ -1,20 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigation } from "@react-navigation/core";
 import {
-  KeyboardAvoidingView,
+  Image,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
-  Image,
 } from "react-native";
-//import { auth } from "../../firebase";
-import { processFontFamily } from "expo-font";
 import { colors, FontFamily } from "../../../GlobalStyles.js";
-import chefGreg from "../../img/chef-greg.png";
-import chefGreg2 from "../../img/chef-greg2.png";
 import AppContext from "../../Context/AppContext.js";
+import chefGreg2 from "../../img/chef-greg2.png";
 
 export function LoginScreen() {
   const [tempEmail, setTempEmail] = useState("");

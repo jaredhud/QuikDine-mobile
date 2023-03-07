@@ -1,12 +1,12 @@
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { EventList } from "./EventList";
-import { NewEvent } from "./NewEvent";
-import { InProgressEvent } from "./InProgressEvent";
-import SendEmail from "./SendEmail";
 import AppContext from "../../Context/AppContext";
 import { LoginScreen } from "../MyAccount/LoginScreen";
+import { EventList } from "./EventList";
+import { InProgressEvent } from "./InProgressEvent";
+import { NewEvent } from "./NewEvent";
+import SendEmail from "./SendEmail";
 
 const Stack = createNativeStackNavigator();
 export default function PlanNav() {

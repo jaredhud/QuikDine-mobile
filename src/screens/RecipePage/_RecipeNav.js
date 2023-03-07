@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { RecipeSearch } from "./RecipeSearch";
-import { RecipeResult } from "./RecipeResult";
 import { AdvancedSearch } from "./AdvancedSearch";
+import { RecipeResult } from "./RecipeResult";
+import { RecipeSearch } from "./RecipeSearch";
 
 const Stack = createNativeStackNavigator();
 

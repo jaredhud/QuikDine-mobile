@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import MyPantry from "./MyPantry";
-import CameraPage from "../MyPantry/CameraPage";
 import BarCodeScan from "../MyPantry/BarCodeScanner";
+import CameraPage from "../MyPantry/CameraPage";
+import MyPantry from "./MyPantry";
 
 const Stack = createNativeStackNavigator();
 export default function PantryNav() {
