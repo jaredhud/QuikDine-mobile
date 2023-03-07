@@ -20,6 +20,7 @@ Recipe made Easy! - Mobile Repo
 
 ## Table of Contents
 
+- [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
 - [Key Features](#key-features)
 - [Installation](#installation)
@@ -76,6 +77,16 @@ We hope that you have fun and enjoy our app!
 - \_RecipeNav and similar folders handles the Tab Navigation part
 - Modal is used to create pop-ups (useful for creating help notes)
 - When creating page layout, use percentages to divide sections. ie. 10% 10% 30%
+
+<strong>Important</strong>: Add this code on src/context/ folder and name it as IPAddress.js:
+
+    import { useState } from "react";
+     
+    export function setIP() {
+    // your IP address, ipconfig in command prompt
+    const [serverIP, setServerIP] = useState("Your IP address here");
+    return { serverIP, setServerIP };
+    }
 
 ## Credits
 
