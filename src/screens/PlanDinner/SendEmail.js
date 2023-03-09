@@ -146,13 +146,6 @@ export default function SendEmail() {
           onChangeText={setSubject}
           style={styles.input}
         />
-        {/* <TextInput
-          placeholder="Body"
-          value={body}
-          onChangeText={setBody}
-          style={styles.input}
-          // secureTextEntry
-        /> */}
         <TextInput
           placeholder="Email"
           value={emailaddress}
@@ -161,16 +154,6 @@ export default function SendEmail() {
           // secureTextEntry
         />
       </View>
-      {/* <TextInput
-        value={subject}
-        onChangeText={setSubject}
-        placeholder="Subject"
-      />
-      <TextInput value={body} onChangeText={setBody} placeholder="Body" />
-      <TextInput value={email} onChangeText={setEmail} placeholder="Email" /> */}
-      {/* <TouchableOpacity onPress={addRecipient} style={styles.button}>
-        <Text style={styles.buttonText}>Login</Text>
-      </TouchableOpacity> */}
       <View style={{ flexDirection: "row" }}>
         <TouchableOpacity onPress={removeRecipients} style={styles.buttonRed}>
           <Text style={styles.buttonText}>Remove Recipients</Text>

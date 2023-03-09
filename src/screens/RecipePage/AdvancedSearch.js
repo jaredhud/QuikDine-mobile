@@ -257,10 +257,6 @@ export const AdvancedSearch = () => {
           Advanced Options
         </Text>
       </View>
-      {/* <Appbar>
-        <Appbar.Content title="Advanced Search" />
-      </Appbar> */}
-
       <View
         style={{
           height: "51%",
@@ -527,7 +523,6 @@ export const AdvancedSearch = () => {
             {
               alignItems: "center",
               width: "67%",
-              // height: "60%",
               justifyContent: "center",
               marginLeft: 15,
             },

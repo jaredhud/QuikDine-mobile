@@ -195,10 +195,6 @@ export const InProgressEvent = () => {
             style={styles.image}
             borderRadius={16}
           >
-            {/* <Text style={{ marginBottom: -5 }}>
-              {" "}
-              <SubInfo />{" "}
-            </Text> */}
             <TextStroke stroke={2} color={colors.darkgreen}>
               <Text style={styles.textStrokeText}> {"View Vote Results"} </Text>
             </TextStroke>
@@ -214,27 +210,11 @@ export const InProgressEvent = () => {
             style={styles.image}
             borderRadius={16}
           >
-            {/* <Text style={{ marginBottom: -5 }}>
-              {" "}
-              <SubInfo />{" "}
-            </Text> */}
             <TextStroke stroke={2} color={colors.darkgreen}>
               <Text style={styles.textStrokeText}> {"View Participants"} </Text>
             </TextStroke>
           </ImageBackground>
         </TouchableOpacity>
-        {/* <TouchableOpacity
-          onPress={() => setModalVisible(true)}
-          style={[[button], { alignItems: "center" }]}
-        >
-          <Text style={styles.buttonText}>View Vote Results</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => setModalVisible2(true)}
-          style={[[button], { alignItems: "center" }]}
-        >
-          <Text style={styles.buttonText}>View Participants</Text>
-        </TouchableOpacity> */}
       </View>
       <TouchableOpacity
         onPress={() => navigation.navigate("SuggestedRecipes")}

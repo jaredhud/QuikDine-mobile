@@ -146,7 +146,6 @@ export const RecipeSearch = () => {
       {/* Help Popup - End */}
       <View style={{ backgroundColor: colors.lightgreen }}>
         <View style={[containerRecipe, { marginTop: 40 }]}>
-          {/* <Text style={styles.title}>Recipes</Text> */}
           <View
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           >

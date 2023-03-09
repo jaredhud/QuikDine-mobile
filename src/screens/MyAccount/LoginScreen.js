@@ -86,7 +86,6 @@ export function LoginScreen() {
             borderColor: "#379540",
             borderRadius: 30,
             borderWidth: 10,
-            // borderStartWidth: 10,
             marginTop: 30,
 
             padding: 0,
@@ -137,12 +136,6 @@ export function LoginScreen() {
             </Text>
           </Text>
         </View>
-        {/* <TouchableOpacity
-          onPress={() => navigation.navigate("RegisterPage")}
-          style={[styles.button, styles.buttonOutline]}
-        >
-          <Text style={styles.buttonOutlineText}>Registers</Text>
-        </TouchableOpacity> */}
       </View>
     </View>
   );

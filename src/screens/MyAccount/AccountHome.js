@@ -14,8 +14,6 @@ import profile from "../../img/profile.png";
 
 import { FontFamily } from "../../../GlobalStyles";
 
-// import Icon from "react-native-ico";
-
 export const AccountHome = () => {
   const navigation = useNavigation();
   const name = "Sophia";
@@ -31,7 +29,6 @@ export const AccountHome = () => {
           source={profilebg}
           style={{
             width: "100%",
-            // backgroundColor: "#379540",
             height: 150,
           }}
         ></ImageBackground>
@@ -62,7 +59,6 @@ export const AccountHome = () => {
             style={{
               fontSize: 25,
               fontWeight: "bold",
-              // fontWeight: "bold",
               padding: 10,
             }}
           >

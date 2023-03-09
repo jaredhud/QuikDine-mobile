@@ -69,7 +69,6 @@ const CameraPage = () => {
     setPantryList([...pantryList, obj.description]);
     setIdObj([]);
     alert("Added to pantry");
-    // navigation.navigate("My Pantry");
   }
   // quality compresses image to reduce size, value of 0-1
   async function takePic() {

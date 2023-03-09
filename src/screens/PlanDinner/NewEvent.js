@@ -124,7 +124,6 @@ export const NewEvent = () => {
         <Text style={styles.sectionTitle}>Pick your Date and Time</Text>
       </View>
       <View style={styles.dateAndTime}>
-        {/* <Text style={{ fontWeight: "bold", fontSize: 20 }}>{text}</Text> */}
         <Text
           // placeholder="Date and Time"
           style={{
@@ -175,13 +174,6 @@ export const NewEvent = () => {
         >
           <Text style={styles.buttonTimeText}>Pick Meal Time</Text>
         </TouchableOpacity>
-
-        {/* <TouchableOpacity
-          onPress={() => showMode("endTime")}
-          style={styles.buttonRed}
-        >
-          <Text style={styles.buttonTimeText}>Pick End Time</Text>
-        </TouchableOpacity> */}
       </View>
       <View
         style={{
@@ -217,7 +209,6 @@ export const NewEvent = () => {
       <View
         style={{
           height: "10%",
-          // backgroundColor: "blue"
         }}
       ></View>
     </View>

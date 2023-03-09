@@ -53,7 +53,6 @@ export const ProfilePage = () => {
           source={profilebg}
           style={{
             width: "100%",
-            // backgroundColor: "#379540",
             height: 150,
           }}
         ></ImageBackground>
@@ -84,12 +83,10 @@ export const ProfilePage = () => {
             style={{
               fontSize: 25,
               fontWeight: "bold",
-              // fontWeight: "bold",
               padding: 10,
             }}
           >
             Sophia
-            {/* {email} */}
           </Text>
           <Text style={{ fontSize: 15, fontWeight: "bold", color: "grey" }}>
             26, Female
@@ -148,9 +145,7 @@ export const ProfilePage = () => {
           }}
         >
           <Ionicons name={favoritesIcon} size={20} color="black" />
-          <Text
-            style={styles.pText}
-          >{`  Bananas, Pies, Bacon, and Cheese`}</Text>
+          <Text style={styles.pText}>{`Bananas, Pies, Bacon, and Cheese`}</Text>
         </View>
         <TouchableOpacity onPress={logout}>
           <View

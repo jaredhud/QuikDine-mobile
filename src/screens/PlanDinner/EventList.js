@@ -57,9 +57,6 @@ export const EventList = () => {
   );
   return (
     <View style={styles.mainContainer}>
-      {/* <Appbar>
-        <Appbar.Content title="Event List" />
-      </Appbar> */}
       <View
         style={{
           width: "95%",
@@ -111,25 +108,6 @@ export const EventList = () => {
             </TouchableOpacity>
           );
         })}
-
-        {/* <TouchableOpacity
-        onPress={() => navigation.navigate("New Event")}
-        style={[button]}
-      >
-        <Text style={styles.buttonText}>New Event</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("In-Progress Event")}
-        style={[button]}
-      >
-        <Text style={styles.buttonText}>In-Progress Event</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Past Event")}
-        style={[button]}
-      >
-        <Text style={styles.buttonText}>Past Event</Text>
-      </TouchableOpacity> */}
       </ScrollView>
     </View>
   );

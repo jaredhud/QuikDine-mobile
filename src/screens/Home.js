@@ -16,7 +16,6 @@ import fallveggie from "../img/falling-veggies.png";
 import pantrybg from "../img/pantry-bg.jpg";
 import planmeals from "../img/planmeals.png";
 import quikdine from "../img/quik-dine.png";
-// import Icon from "react-native-ico";
 
 export const Home = () => {
   const navigation = useNavigation();
@@ -32,20 +31,6 @@ export const Home = () => {
           margin: "2%",
         }}
       >
-        {/* <Text
-          style={{
-            fontSize: 23,
-            color: "#379540",
-            textAlign: "left",
-            marginBottom: "7%",
-            marginTop: "17%",
-            fontFamily: FontFamily.ubuntubold,
-            fontStyle: "italic",
-          }}
-        >
-          {" "}
-          Welcome to{" "}
-        </Text> */}
         <Text
           style={{
             fontSize: 23,
@@ -60,20 +45,6 @@ export const Home = () => {
           {" "}
           Welcome to{" "}
         </Text>
-        {/* <Text
-          style={{
-            fontSize: 50,
-            color: "#379540",
-            textAlign: "left",
-            marginBottom: "7%",
-
-            fontFamily: FontFamily.ubuntubold,
-            fontStyle: "italic",
-          }}
-        >
-          {" "}
-          QuikDine{" "}
-        </Text> */}
         <Image
           flex={1}
           source={quikdine}
@@ -86,10 +57,6 @@ export const Home = () => {
           }}
         ></Image>
       </View>
-      {/* <Text>Email: {auth.currentUser?.email}</Text> */}
-      {/* <TouchableOpacity onPress={handleSignOut} style={styles.button}>
-        <Text style={styles.buttonText}>Sign out</Text>
-      </TouchableOpacity> */}
       {/* First Tab */}
       <TouchableOpacity
         onPress={() => navigation.navigate("Plan Meal")}
@@ -142,18 +109,6 @@ export const Home = () => {
           </Text>
         </ImageBackground>
       </TouchableOpacity>
-      {/* <TouchableOpacity
-        onPress={() => navigation.navigate("Pantry")}
-        style={[button]}
-      >
-        <Text style={styles.buttonText}>My Pantrys</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Plan Event")}
-        style={[button]}
-      >
-        <Text style={styles.buttonText}>Plan a Meal</Text>
-      </TouchableOpacity> */}
     </View>
   );
 };

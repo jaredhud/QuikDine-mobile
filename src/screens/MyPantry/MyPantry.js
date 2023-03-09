@@ -38,9 +38,7 @@ export default function MyPantry() {
   };
 
   return (
-    // <ImageBackground style={{ flex: 1 }} source={animatedbg}>
     <ImageBackground style={{ flex: 1 }} source={fallveggie}>
-      {/* <View style={styles.container}> */}
       <View style={styles.ingredientsWrapper}>
         <Text style={styles.title}>My Pantry</Text>
         <Text style={styles.sectionTitle}>Ingredients List</Text>
@@ -65,45 +63,7 @@ export default function MyPantry() {
           { flexDirection: "row-reverse" },
           { justifyContent: "space-between" },
         ]}
-      >
-        {/* <TouchableOpacity
-          onPress={() => navigation.navigate("Camera")}
-          style={{ justifyContent: "flex-end" }}
-        >
-          <View style={styles.addWrapperCamera}>
-            <Image
-              // flex={1}
-              source={cameraPlus}
-              resizeMode="contain"
-              style={{
-                // marginTop: "-25%",
-                // marginLeft: "-15%",
-                width: "120%",
-                height: "120%",
-              }}
-            ></Image>
-          </View>
-        </TouchableOpacity> */}
-        {/* Barcode Scanner */}
-        {/* <TouchableOpacity
-          onPress={() => navigation.navigate("BarCodeScanner")}
-          style={[{ justifyContent: "flex-end" }, { marginRight: 5 }]}
-        >
-          <View style={styles.addWrapperCamera}>
-            <Image
-              // flex={1}
-              source={barcodePlus}
-              resizeMode="contain"
-              style={{
-                // marginTop: "-25%",
-                // marginLeft: "-15%",
-                width: "120%",
-                height: "120%",
-              }}
-            ></Image>
-          </View>
-        </TouchableOpacity> */}
-      </KeyboardAvoidingView>
+      ></KeyboardAvoidingView>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.writeIngredientWrapper}
@@ -129,7 +89,6 @@ export default function MyPantry() {
         <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
           <View style={styles.addWrapperCamera}>
             <Image
-              // flex={1}
               source={cameraPlus}
               resizeMode="contain"
               style={{
@@ -140,7 +99,6 @@ export default function MyPantry() {
           </View>
         </TouchableOpacity>
       </KeyboardAvoidingView>
-      {/* </View> */}
     </ImageBackground>
   );
 }
@@ -158,14 +116,12 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 24,
     fontFamily: FontFamily.poppins,
-    // color: "#000000",
     color: "#fefbf3",
   },
   title: {
     fontSize: 44,
     fontFamily: FontFamily.ubuntubold,
     color: "#fefbf3",
-    // color: "#000000",
   },
   items: {
     marginTop: 30,
