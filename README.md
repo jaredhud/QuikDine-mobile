@@ -17,6 +17,12 @@ Recipe made Easy! - Mobile Repo
 <img src="https://github.com/jaredhud/QuikDine-mobile/blob/main/src/img/architecture.jpg?raw=true" alt="QuikDine logo" style="width:100%">
 </div>
 <!-- <h1 align="center">QuikDine-mobile</h1> -->
+&nbsp;
+<div>
+<a href="https://github.com/jaredhud/QuikDine-mobile">
+<img src="https://img.shields.io/badge/PDF%20-DIGITAL FLYER%20%E2%86%92-gray.svg?colorA=5d5d5d&colorB=b30b00&style=for-the-badge"/></a>
+&nbsp;
+</div>
 
 ## Table of Contents
 
