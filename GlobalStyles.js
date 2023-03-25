@@ -113,3 +113,35 @@ export const addWrapperCamera = {
   borderColor: "#C0C0C0",
   borderWidth: 1,
 };
+export const containerCamera = {
+  flex: 1,
+  justifyContent: "center",
+  backgroundColor: "black",
+};
+export const camera = { flex: 1 };
+export const cameraResult = {
+  flexDirection: "column",
+  justifyContent: "flex-end",
+};
+export const buttonContainer = {
+  flexDirection: "row",
+  backgroundColor: "transparent",
+  marginBottom: 20,
+  marginTop: -25,
+};
+export const cameraButton = {
+  flex: 1,
+  alignSelf: "flex-end",
+  alignItems: "center",
+};
+export const textBold = {
+  fontSize: 15,
+  fontWeight: "bold",
+  color: "white",
+};
+export const cameraText = {
+  marginTop: -8,
+  fontSize: 15,
+  fontWeight: "bold",
+  color: "white",
+};

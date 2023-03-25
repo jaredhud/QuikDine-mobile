@@ -1,15 +1,17 @@
-import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Camera, CameraType } from "expo-camera";
-import {
-  Button,
-  Dimensions,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { useContext, useEffect, useRef, useState } from "react";
+import { Button, Dimensions, Text, TouchableOpacity, View } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import {
+  buttonContainer,
+  camera,
+  cameraButton,
+  cameraResult,
+  cameraText,
+  containerCamera,
+  textBold,
+} from "../../../GlobalStyles";
 import AppContext from "../../Context/AppContext";
 
 const CameraPage = () => {
@@ -50,7 +52,7 @@ const CameraPage = () => {
   if (!permission.granted) {
     // Camera permissions are not granted yet
     return (
-      <View style={styles.container}>
+      <View style={styles.containerCamera}>
         <Text style={{ textAlign: "center" }}>
           We need your permission to show the camera
         </Text>
@@ -103,80 +105,48 @@ const CameraPage = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={[containerCamera]}>
       <Camera
         style={[
-          styles.camera,
+          camera,
           { marginTop: cameraPadding, marginBottom: cameraPadding },
         ]}
         type={type}
         ratio={ratio}
         ref={ref}
       >
-        <View style={styles.result}>
+        <View style={[cameraResult]}>
           {idObj.map((obj, index) => {
             return (
               <TouchableOpacity onPress={() => addToPantry(obj)} key={index}>
                 <View>
-                  <Text style={styles.text}>{obj.description}</Text>
+                  <Text style={[textBold]}>{obj.description}</Text>
                 </View>
               </TouchableOpacity>
             );
           })}
         </View>
       </Camera>
-      <View style={styles.buttonContainer}>
+      <View style={[buttonContainer]}>
         <TouchableOpacity
-          style={styles.button}
+          style={[cameraButton]}
           onPress={() => navigation.navigate("My Pantry")}
         >
           <Ionicons name={iconName} size={50} color="white" />
-          <Text style={styles.text}>My Pantry</Text>
+          <Text style={[textBold]}>My Pantry</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={takePic}>
+        <TouchableOpacity style={[cameraButton]} onPress={takePic}>
           <Ionicons name={cameraIcon} size={60} color="white" />
-          <Text style={styles.cameraText}>Scan</Text>
+          <Text style={[cameraText]}>Scan</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={toggleCameraType}>
+        <TouchableOpacity style={[cameraButton]} onPress={toggleCameraType}>
           {/* <Text style={styles.text}>Flip Camera</Text> */}
           <Ionicons name={cameraIconReverse} size={60} color="white" />
-          <Text style={styles.cameraText}>Flip Camera</Text>
+          <Text style={[cameraText]}>Flip Camera</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    backgroundColor: "black",
-  },
-  camera: { flex: 1 },
-  result: { flexDirection: "column", justifyContent: "flex-end" },
-  buttonContainer: {
-    flexDirection: "row",
-    backgroundColor: "transparent",
-    marginBottom: 20,
-    marginTop: -25,
-  },
-  button: {
-    flex: 1,
-    alignSelf: "flex-end",
-    alignItems: "center",
-  },
-  text: {
-    fontSize: 15,
-    fontWeight: "bold",
-    color: "white",
-  },
-  cameraText: {
-    marginTop: -8,
-    fontSize: 15,
-    fontWeight: "bold",
-    color: "white",
-  },
-});
 
 export default CameraPage;
