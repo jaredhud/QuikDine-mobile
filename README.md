@@ -64,7 +64,7 @@ We hope that you have fun and enjoy our app!
 
     + Core: React Native - React
     + API: Spoonacular Google Vision API
-    + SendGrid Node.js Javascript HTML CSS Javascript Firebase Express.js Expo Go
+    + SendGrid Node.js Javascript HTML CSS Firebase Express.js Expo Go
     + Collaboration: Discord Github Zoom Trello Basecamp Figma
 
 ## Eggroll Team Members
