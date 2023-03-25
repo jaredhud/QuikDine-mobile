@@ -11,6 +11,8 @@ import PantryNav from "./src/screens/MyPantry/_PantryNav";
 import PlanNav from "./src/screens/PlanDinner/_PlanNav";
 import RecipeNav from "./src/screens/RecipePage/_RecipeNav";
 // import TestNav from "./src/screens/TestPage/_TestNav";
+
+// This import allows the dev to save states between screens
 import initializeVariables from "./src/Context/StateInitializer";
 
 const Tab = createBottomTabNavigator();

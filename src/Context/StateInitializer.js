@@ -4,6 +4,7 @@ import { setIP } from "./IPAddress.js";
 export default function initializeVariables() {
   const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
+  // For testing, const [isLoggedIn, setIsLoggedIn] = useState(true); will skip login page
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [pantryList, setPantryList] = useState([]);
   const [selectedRecipesList, setSelectedRecipesList] = useState([]);
